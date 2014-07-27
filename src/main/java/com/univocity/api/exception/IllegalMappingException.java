@@ -6,11 +6,11 @@
 package com.univocity.api.exception;
 
 /**
- * 
+ *
  * <code>IllegalMappingException</code> is the exception thrown by uniVocity to notify of an illegal mapping.
- * 
+ *
  * <p> For example, if non-existent fields were used to define a mapping between two entities, this exception will be thrown.
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
@@ -18,7 +18,7 @@ public final class IllegalMappingException extends RuntimeException {
 	private static final long serialVersionUID = -4098776845208982101L;
 
 	/**
-	 * Constructs a new IllegalMappingException exception with the specified detail message and cause.  
+	 * Constructs a new IllegalMappingException exception with the specified detail message and cause.
 	 * @param  message the detail message.
 	 * @param  cause the cause of the exception.
 	 */
@@ -35,7 +35,7 @@ public final class IllegalMappingException extends RuntimeException {
 	}
 
 	/**
-	 * Constructs a new IllegalMappingException exception with the specified cause of error.  
+	 * Constructs a new IllegalMappingException exception with the specified cause of error.
 	 * @param  cause the cause of the exception.
 	 */
 	public IllegalMappingException(Throwable cause) {

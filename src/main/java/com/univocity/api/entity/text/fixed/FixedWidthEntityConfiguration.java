@@ -11,9 +11,9 @@ import com.univocity.api.entity.text.*;
 
 /**
  * This is the class used to configure fixed-width data entities.
- * 
+ *
  * <p>Note the length of all fields is required in order to process fixed-width records.
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
@@ -49,7 +49,7 @@ public final class FixedWidthEntityConfiguration extends TextEntityConfiguration
 
 	/**
 	 * Defines the number of fields per record. Lengths must be defined through either {@link #addField(int)} or {@link #setFieldLengths(int...)}
-	 * @param fieldsPerRecord The number of fields in a fixed-width record. It must be greater than 0. 
+	 * @param fieldsPerRecord The number of fields in a fixed-width record. It must be greater than 0.
 	 */
 	public final void setFieldsPerRecord(int fieldsPerRecord) {
 		Args.positive(fieldsPerRecord, "Number of fields per record");
@@ -60,7 +60,7 @@ public final class FixedWidthEntityConfiguration extends TextEntityConfiguration
 	/**
 	 * Adds the length of the next field in a fixed-width record.
 	 * <p> Note the total number of fields per record must have been defined using {@link #setFieldsPerRecord(int)} prior to invoking this method.
-	 * <p> This method can be called the number of times 
+	 * <p> This method can be called the number of times
 	 * @param length the length of the next field. It must be greater than 0.
 	 */
 	public final void addField(int length) {
@@ -113,7 +113,7 @@ public final class FixedWidthEntityConfiguration extends TextEntityConfiguration
 	 * Indicates whether or not a record is considered parsed when a newline is reached. Examples:
 	 * <ul>
 	 *  <li>Consider two records of length <b>4</b>, and the input <b>12\n3456</b></li>
-	 * 	<li>When {@link #recordEndsOnNewline} is set to true:  the first value will be read as <b>12</b> and the second <b>3456</b></li> 
+	 * 	<li>When {@link #recordEndsOnNewline} is set to true:  the first value will be read as <b>12</b> and the second <b>3456</b></li>
 	 *  <li>When {@link #recordEndsOnNewline} is set to false:  the first value will be read as <b>12\n3</b> and the second <b>456</b></li>
 	 * </ul>
 	 * <p><i>Defaults to false</i>
@@ -130,7 +130,7 @@ public final class FixedWidthEntityConfiguration extends TextEntityConfiguration
 	 * Defines whether or not a record is considered parsed when a newline is reached. Examples:
 	 * <ul>
 	 *  <li>Consider two records of length <b>4</b>, and the input <b>12\n3456</b></li>
-	 * 	<li>When {@link #recordEndsOnNewline} is set to true:  the first value will be read as <b>12</b> and the second <b>3456</b></li> 
+	 * 	<li>When {@link #recordEndsOnNewline} is set to true:  the first value will be read as <b>12</b> and the second <b>3456</b></li>
 	 *  <li>When {@link #recordEndsOnNewline} is set to false:  the first value will be read as <b>12\n3</b> and the second <b>456</b></li>
 	 * </ul>
 	 * @param recordEndsOnNewline a flag indicating whether or not a record is considered parsed when a newline is reached

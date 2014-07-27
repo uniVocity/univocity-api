@@ -9,17 +9,17 @@ import com.univocity.api.config.*;
 
 /**
  * A custom data store factory implementation, responsible for creating new data store instances from a configuration object.
- * 
+ *
  * Instances of this class are expected to be provided in {@link EngineConfiguration#getCustomDataStoreFactories()}
- * 
- * @param <C> the type of data store configurations this factory supports. 
+ *
+ * @param <C> the type of data store configurations this factory supports.
  *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  */
 public interface CustomDataStoreFactory<C extends DataStoreConfiguration> {
 
 	/**
-	 * Creates a new custom data store implementation from a configuration object 
+	 * Creates a new custom data store implementation from a configuration object
 	 * @param configuration the data store configuration
 	 * @return a data store configured with the given settings.
 	 */
@@ -28,8 +28,8 @@ public interface CustomDataStoreFactory<C extends DataStoreConfiguration> {
 	/**
 	 * Informs uniVocity the configuration class this factory supports.
 	 * <p><b>Note </b> uniVocity will not accept objects of subclasses of this class.
-	 * 
-	 * @return the class that extends DataStoreConfiguration to provide configuration information for data stores created by this factory. 
+	 *
+	 * @return the class that extends DataStoreConfiguration to provide configuration information for data stores created by this factory.
 	 */
 	public Class<C> getConfigurationType();
 

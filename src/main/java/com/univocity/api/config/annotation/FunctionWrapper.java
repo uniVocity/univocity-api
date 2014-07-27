@@ -17,7 +17,7 @@ import com.univocity.api.engine.*;
  * @see FunctionCall
  * @see EngineScope
  * @see DataIntegrationEngine
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
@@ -28,7 +28,7 @@ public @interface FunctionWrapper {
 
 	/**
 	 * The name of the function call used in expressions and mappings of a {@link DataIntegrationEngine}. If no explicit name is provided, then the method name will be used.
-	 * @return the name of the function to be used in place of the method name 
+	 * @return the name of the function to be used in place of the method name
 	 */
 	String name() default "";
 

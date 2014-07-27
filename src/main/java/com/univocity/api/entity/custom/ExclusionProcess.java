@@ -6,12 +6,12 @@
 package com.univocity.api.entity.custom;
 
 /**
- * A process for removing records from a {@link CustomDataEntity}. 
- * Instances of this process must created when {@link CustomDataEntity#prepareToDelete(String[])} is called from a user-provided entity implementation 
- * 
+ * A process for removing records from a {@link CustomDataEntity}.
+ * Instances of this process must created when {@link CustomDataEntity#prepareToDelete(String[])} is called from a user-provided entity implementation
+ *
  * @see CustomDataEntity
  * @see CustomProcess
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */

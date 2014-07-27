@@ -6,8 +6,8 @@
 package com.univocity.api.common;
 
 /**
- * Generic interface to define classes that provide a given resource. 
- * 
+ * Generic interface to define classes that provide a given resource.
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  * @param <T> the type of resource provided by this ResourceProvider

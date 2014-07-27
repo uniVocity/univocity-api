@@ -9,15 +9,15 @@ import com.univocity.api.exception.*;
 
 /**
  * The <code>MappingCycleContext</code> is available to {@link RowReader} instances used during the execution of a data mapping between two entities.
- * 
+ *
  * It provides information specific to the mapping cycle being executed.
- *  
- *  
+ *
+ *
  * @see RowReader
  * @see RowMappingContext
  * @see EntityMappingContext
  * @see EngineExecutionContext
- *  
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */

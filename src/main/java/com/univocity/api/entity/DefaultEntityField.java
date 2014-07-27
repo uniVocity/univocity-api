@@ -9,7 +9,7 @@ import com.univocity.api.common.*;
 
 /**
  * Provides basic information for a data entity field.
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
@@ -64,7 +64,7 @@ public class DefaultEntityField {
 	}
 
 	/**
-	 * Obtains a default value to use when the value of this field is null. 
+	 * Obtains a default value to use when the value of this field is null.
 	 * @return the default value of this field.
 	 */
 	public Object getDefaultValue() {
@@ -88,7 +88,7 @@ public class DefaultEntityField {
 	}
 
 	/**
-	 * Defines a default value to use when the value of this field is null. 
+	 * Defines a default value to use when the value of this field is null.
 	 * @param defaultValue the default value of this field.
 	 */
 	public void setDefaultValue(Object defaultValue) {
@@ -106,7 +106,7 @@ public class DefaultEntityField {
 	/**
 	 * Obtains the maximum length of this field. A value of -1 means the length is undefined.
 	 * <p><i>defaults to -1</i>
-	 * 
+	 *
 	 * @return the length of this field.
 	 */
 	public int getLength() {

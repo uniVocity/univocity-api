@@ -9,8 +9,8 @@ import com.univocity.api.entity.*;
 import com.univocity.api.entity.text.*;
 
 /**
- * This is the class used to configure CSV data entities. 
- * 
+ * This is the class used to configure CSV data entities.
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
@@ -24,7 +24,7 @@ public final class CsvEntityConfiguration extends TextEntityConfiguration<CsvFor
 	public CsvEntityConfiguration() {
 	}
 
-	/** 
+	/**
 	 * Defines a default value to be used in substitution of null when there are empty values within quotes in a CSV record.
 	 * <ul>
 	 *	<li><i>when reading:</i> if a value parsed from the input is empty, and the value was enclosed within quotes, then emptyValue is used instead of null.</li>
@@ -40,7 +40,7 @@ public final class CsvEntityConfiguration extends TextEntityConfiguration<CsvFor
 		return emptyValue;
 	}
 
-	/** 
+	/**
 	 * Defines a default value to be used in substitution of null when there are empty values within quotes in a CSV record.
 	 * <ul>
 	 *	<li><i>when reading:</i> if a value parsed from the input is empty, and the value was enclosed within quotes, then emptyValue is used instead of null.</li>
@@ -55,7 +55,7 @@ public final class CsvEntityConfiguration extends TextEntityConfiguration<CsvFor
 	/**
 	 * Defines whether or not all values should be enclosed within quotes (as specified in {@link CsvFormat#getQuote()}) when writing.
 	 * <p>When writing, by default only values that contain a field separator are enclosed within quotes. Set this property to true to enclose all values within quotes.
-	 * 
+	 *
 	 * @param quoteAllValues a flag indicating whether or not to enclose all values within quotes when writing.
 	 */
 	public final void setAlwaysQuoteOnWrite(boolean quoteAllValues) {

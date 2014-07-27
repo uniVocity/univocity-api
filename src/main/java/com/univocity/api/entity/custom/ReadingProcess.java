@@ -6,20 +6,20 @@
 package com.univocity.api.entity.custom;
 
 /**
- * A process for reading rows from a {@link CustomDataEntity}. 
- * Instances of this process must created when {@link CustomReadableEntity#preareToRead(String[])} is called from a user-provided entity implementation 
- * 
+ * A process for reading rows from a {@link CustomDataEntity}.
+ * Instances of this process must created when {@link CustomReadableEntity#preareToRead(String[])} is called from a user-provided entity implementation
+ *
  * @see CustomProcess
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
 public interface ReadingProcess extends CustomProcess {
 
 	/**
-	 * Reads the next record from the entity that originated this process. 
+	 * Reads the next record from the entity that originated this process.
 	 * The data elements must be ordered according to the sequence of field names provided when {@link CustomReadableEntity#preareToRead(String[])} is called.
-	 * @return the next row of data from the entity that originated this process, or null if all rows have been read. 
+	 * @return the next row of data from the entity that originated this process, or null if all rows have been read.
 	 */
 	public Object[] readNext();
 

@@ -18,11 +18,11 @@ import com.univocity.api.entity.custom.*;
 
 /**
  * The JDBC data store configuration class. Use it to configure the JDBC data entities and queries that will be manipulated by a {@link DataIntegrationEngine}.
- * 
+ *
  * @see JdbcEntityConfiguration
  * @see JdbcQueryConfiguration
  * @see DataSource
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  */
 public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
@@ -48,7 +48,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	/**
 	 * Creates a new JDBC data store configuration
 	 * @param dataStoreName the name of the JDBC data store.
-	 * @param dataSource the DataSource used to connect to the underlying database. 
+	 * @param dataSource the DataSource used to connect to the underlying database.
 	 */
 	public JdbcDataStoreConfiguration(String dataStoreName, DataSource dataSource) {
 		super(dataStoreName);
@@ -336,9 +336,9 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 
 	/**
 	 * Obtains the transaction isolation level used when persisting data into entities of this data store.
-	 * <br>The transaction isolation level code returned by this method is passed on 
+	 * <br>The transaction isolation level code returned by this method is passed on
 	 * to {@link java.sql.Connection#setTransactionIsolation(int)} before mapping data to an entity.
-	 * <p><i>Defaults to {@link java.sql.Connection#TRANSACTION_REPEATABLE_READ}</i></p> 
+	 * <p><i>Defaults to {@link java.sql.Connection#TRANSACTION_REPEATABLE_READ}</i></p>
 	 * @return the transaction isolation level
 	 */
 	public final int getTransactionIsolationLevel() {
@@ -347,7 +347,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 
 	/**
 	 * Defines the transaction isolation level used when persisting data into entities of this data store.
-	 * <br>The transaction isolation level code returned by this method is passed on 
+	 * <br>The transaction isolation level code returned by this method is passed on
 	 * to {@link java.sql.Connection#setTransactionIsolation(int)} before mapping data to an entity.
 	 * <p><i>Only the constants defined in java.sql.Connection are accepted.</i></p>
 	 * @param transactionIsolationLevel the transaction isolation level
@@ -358,10 +358,10 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Obtains the maximum number of rows loaded in memory at a time when extracting information from entities and queries in this data store.   
+	 * Obtains the maximum number of rows loaded in memory at a time when extracting information from entities and queries in this data store.
 	 * <p>This number is obtained from default fetch size in {@link #getDefaultEntityConfiguration()}.
 	 * <p><i>Defaults to 10,000 rows</i>
-	 * @return the maximum number of rows kept in memory at any given time when reading values from any entity or query of this data store.  
+	 * @return the maximum number of rows kept in memory at any given time when reading values from any entity or query of this data store.
 	 */
 	@Override
 	public final int getLimitOfRowsLoadedInMemory() {
@@ -369,10 +369,10 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Defines the maximum number of rows loaded in memory at a time when extracting information from entities and queries in this data store.   
+	 * Defines the maximum number of rows loaded in memory at a time when extracting information from entities and queries in this data store.
 	 * <p>This number modifies the default fetch size in {@link #getDefaultEntityConfiguration()} and {@link #getDefaultQueryConfiguration()}.
-	 * <br>The fetch size of already configured entities and queries won't be modified. 
-	 * @param rowLimit the maximum number of rows kept in memory at any given time when reading values from any entity or query of this data store.  
+	 * <br>The fetch size of already configured entities and queries won't be modified.
+	 * @param rowLimit the maximum number of rows kept in memory at any given time when reading values from any entity or query of this data store.
 	 */
 	public final void setLimitOfRowsLoadedInMemory(int rowLimit) {
 		this.defaultEntityConfiguration.setFetchSize(rowLimit);
@@ -380,10 +380,10 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Adds user-defined reserved words that might conflict with table and column names in SQL statements.  
+	 * Adds user-defined reserved words that might conflict with table and column names in SQL statements.
 	 * <p>When generating SQL, an {@link IdentifierEscaper} will handle name conflicts and escape any table or column names that are part of potential reserved words.
-	 * <p>uniVocity already escapes most common reserved words used by different database vendors. Use this method to provide any additional reserved words. 
-	 * @param reservedWords additional reserved words to escape. 
+	 * <p>uniVocity already escapes most common reserved words used by different database vendors. Use this method to provide any additional reserved words.
+	 * @param reservedWords additional reserved words to escape.
 	 */
 	public final void addReservedWordsToEscape(String... reservedWords) {
 		Args.notEmpty(reservedWords, "Reserved words");
@@ -393,10 +393,10 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Adds user-defined reserved words that might conflict with table and column names in SQL statements.  
+	 * Adds user-defined reserved words that might conflict with table and column names in SQL statements.
 	 * <p>When generating SQL, an {@link IdentifierEscaper} will handle name conflicts and escape any table or column names that are part of potential reserved words.
-	 * <p>uniVocity already escapes most common reserved words used by different database vendors. Use this method to provide any additional reserved words. 
-	 * @param reservedWords additional reserved words to escape. 
+	 * <p>uniVocity already escapes most common reserved words used by different database vendors. Use this method to provide any additional reserved words.
+	 * @param reservedWords additional reserved words to escape.
 	 */
 	public final void addReservedWordsToEscape(Collection<String> reservedWords) {
 		Args.notEmpty(reservedWords, "Reserved words");
@@ -406,7 +406,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Returns the collection of user-defined reserved words provided with {@link #addReservedWordsToEscape(String...)}.  
+	 * Returns the collection of user-defined reserved words provided with {@link #addReservedWordsToEscape(String...)}.
 	 * @return an unmodifiable collection of reserved words.
 	 */
 	public final Collection<String> getReservedWordsToEscape() {
@@ -415,8 +415,8 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 
 	/**
 	 * Provides a user-defined {@link IdentifierEscaper} to handle reserved word escaping when generating SQL statements.
-	 * <p> This will override uniVocity's default implementation that escapes reserved words by enclosing them within double quotes(e.g. "escaped identifier").  
-	 * @param escape a custom implementation of {@link IdentifierEscaper} 
+	 * <p> This will override uniVocity's default implementation that escapes reserved words by enclosing them within double quotes(e.g. "escaped identifier").
+	 * @param escape a custom implementation of {@link IdentifierEscaper}
 	 */
 	public final void setIdentifierEscaper(IdentifierEscaper escape) {
 		Args.notNull(escape, "Implementation of com.univocity.api.entity.jdbc.IdentifierEscaper");
@@ -432,14 +432,14 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Has no effect over JDBC data entities as they already support database operations. 
+	 * Has no effect over JDBC data entities as they already support database operations.
 	 */
 	@Override
 	public final void enableDatabaseOperationsIn(String... tableNames) {
 	}
 
 	/**
-	 * Has no effect over JDBC data entities as they already support database operations. 
+	 * Has no effect over JDBC data entities as they already support database operations.
 	 */
 	@Override
 	public final void enableDatabaseOperationsIn(Collection<String> entityNames) {
@@ -447,7 +447,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Returns an empty set as JDBC data entities already support database operations. 
+	 * Returns an empty set as JDBC data entities already support database operations.
 	 */
 	@Override
 	public final Set<String> getDatabaseEnabledEntities() {

@@ -17,15 +17,15 @@ import com.univocity.api.entity.custom.*;
  * to register your engine, and {@link DataIntegrationEngineFactory#getEngine(String)} to obtain the {@link DataIntegrationEngine} instance.
  *
  * <p>uniVocity depends on a database for manipulating the metadata that enables most of its data mapping operations. Use {@link #setMetadataSettings(MetadataSettings)} to
- * provide the specific settings that enable uniVocity's persistent metadata. If no configuration for metadata is provided, then a in-memory instance 
+ * provide the specific settings that enable uniVocity's persistent metadata. If no configuration for metadata is provided, then a in-memory instance
  * of a database with the essential metadata structure will be created automatically. This of course, means any metadata information will be lost
- *  when the application is shut down.   
+ *  when the application is shut down.
  *
  * @see Univocity
  * @see DataIntegrationEngineFactory
  * @see DataIntegrationEngine
  * @see MetadataSettings
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
@@ -37,11 +37,11 @@ public class EngineConfiguration {
 	private MetadataSettings metadataSettings;
 	private ScopeStorageProvider persistentStorageProvider;
 
-	/** 
+	/**
 	 * Creates a new engine configuration with the essential configuration required by uniVocity for enabling the definition and execution of data mappings.
-	 * @param engineName the name of the new engine. The engine name is used to obtain instances of {@link DataIntegrationEngine} 
-	 * and manage them using {@link Univocity} 
-	 * @param dataStores optional parameter for the configurations of data stores that will have their entities mapped through this engine.  
+	 * @param engineName the name of the new engine. The engine name is used to obtain instances of {@link DataIntegrationEngine}
+	 * and manage them using {@link Univocity}
+	 * @param dataStores optional parameter for the configurations of data stores that will have their entities mapped through this engine.
 	 * More dataStores can be added later on using {@link #addDataStoreConfigurations(DataStoreConfiguration...)}
 	 */
 	public EngineConfiguration(String engineName, DataStoreConfiguration... dataStores) {
@@ -104,7 +104,7 @@ public class EngineConfiguration {
 
 	/**
 	 * Defines a storage provider to keep values stored in the {@link EngineScope#PERSISTENT} scope of the {@link DataIntegrationEngine} which instantiated by uniVocity
-	 * with this configuration class. 
+	 * with this configuration class.
 	 * @param persistentStorageProvider the storage abstraction that retains and restores values in the {@link EngineScope#PERSISTENT}
 	 *  from persistent storage (such as a file, distributed cache, or database)
 	 */
@@ -122,7 +122,7 @@ public class EngineConfiguration {
 	};
 
 	/**
-	 * Adds the configurations for data stores whose entities will be mapped using the engine created by this class  
+	 * Adds the configurations for data stores whose entities will be mapped using the engine created by this class
 	 * @param dataStores parameter for the configurations of data stores that will have their entities mapped through this engine.
 	 */
 	public final void addDataStoreConfigurations(DataStoreConfiguration... dataStores) {
@@ -136,7 +136,7 @@ public class EngineConfiguration {
 	/**
 	 * Obtains the (unmodifiable) set of {@link DataStoreConfiguration} instances that will be used by uniVocity to instantiate the data stores
 	 * manipulated by this engine.
-	 * @return the configurations of all data stores whose entities will be mapped using the engine created by this class  
+	 * @return the configurations of all data stores whose entities will be mapped using the engine created by this class
 	 */
 	public final Set<DataStoreConfiguration> getDataStoreConfigurations() {
 		return Collections.unmodifiableSet(dataStoreConfigurations);

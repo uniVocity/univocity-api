@@ -10,10 +10,10 @@ import com.univocity.api.entity.text.*;
 
 /**
  * The Fixed-width data store configuration class. Use it to configure the fixed-width data entities that will be manipulated by a {@link DataIntegrationEngine}.
- * 
+ *
  * @see FixedWidthEntityConfiguration
  * @see FixedWidthFormat
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  */
 public final class FixedWidthDataStoreConfiguration extends TextDataStoreConfiguration<FixedWidthEntityConfiguration> {

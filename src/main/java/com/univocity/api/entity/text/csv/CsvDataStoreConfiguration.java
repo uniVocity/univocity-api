@@ -10,10 +10,10 @@ import com.univocity.api.entity.text.*;
 
 /**
  * The CSV data store configuration class. Use it to configure the CSV data entities that will be manipulated by a {@link DataIntegrationEngine}.
- * 
+ *
  * @see CsvEntityConfiguration
  * @see CsvFormat
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  */
 public final class CsvDataStoreConfiguration extends TextDataStoreConfiguration<CsvEntityConfiguration> {

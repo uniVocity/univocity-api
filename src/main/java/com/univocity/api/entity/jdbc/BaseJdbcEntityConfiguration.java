@@ -8,15 +8,15 @@ package com.univocity.api.entity.jdbc;
 import com.univocity.api.entity.*;
 
 /**
-* This is the parent class for all configuration classes JDBC entities
-* It provides essential configuration settings and sensible defaults for fetching and manipulating data in a database entity.
-* 
-* @see JdbcEntityConfiguration
-* @see JdbcQueryConfiguration
-* 
-* @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
-*
-*/
+ * This is the parent class for all configuration classes JDBC entities
+ * It provides essential configuration settings and sensible defaults for fetching and manipulating data in a database entity.
+ *
+ * @see JdbcEntityConfiguration
+ * @see JdbcQueryConfiguration
+ *
+ * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
+ *
+ */
 abstract class BaseJdbcEntityConfiguration extends Configuration {
 
 	private Integer fetchSize;
@@ -27,9 +27,9 @@ abstract class BaseJdbcEntityConfiguration extends Configuration {
 	 * <p>For performance reasons, you might want to adjust the fetch size to reflect the common number of rows returned
 	 *    for this entity. A big fetch size number might consume too many resources and will be excessive for a small number of records.
 	 *    A small fetch size for too many rows will cause slowness (e.g. a fetch size of 100 to read 10,000 rows and will generate 100 roundtrips to the database).
-	 * 
+	 *
 	 * <p><i>Defaults to 10,000 rows</i>
-	 * @return the fetch size to use when reading values from the configured JDBC data entity.  
+	 * @return the fetch size to use when reading values from the configured JDBC data entity.
 	 * @see java.sql.Statement
 	 */
 	public final int getFetchSize() {
@@ -45,7 +45,7 @@ abstract class BaseJdbcEntityConfiguration extends Configuration {
 	 * <p>For performance reasons, you might want to adjust the fetch size to reflect the common number of rows returned
 	 *    for this entity. A big fetch size number might consume too many resources and will be excessive for a small number of records.
 	 *    A small fetch size for too many rows will cause slowness (e.g. a fetch size of 100 to read 10,000 rows and will generate 100 roundtrips to the database).
-	 *    
+	 *
 	 * @param fetchSize the fetch size to use when reading values from the configured JDBC data entity.
 	 * <br>This parameter is not validated as some database drivers accept special settings for the fetch size, such as Integer.MIN_VALUE.
 	 * @see java.sql.Statement

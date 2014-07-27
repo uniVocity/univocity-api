@@ -10,12 +10,12 @@ import com.univocity.api.entity.*;
 
 /**
  * This is provides essential configuration defaults for reading from and writing to text in conformity to a particular format (such as CSV, for example).
- * 
+ *
  * <p>By default, all uniVocity text-based data entities provide the configuration options available in this class.
- * 
+ *
  * @see com.univocity.api.entity.text.TextFormat
  * @see com.univocity.api.entity.text.TextEntityConfiguration
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  * @param <F> the configuration class that manages a specific text format.
@@ -41,7 +41,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 
 	}
 
-	/** 
+	/**
 	 * Determines whether to skip empty lines of text
 	 * <ul>
 	 * 	<li><i>when reading:</i> if the entity reads an empty line from the input, it will be discarded.</li>
@@ -57,7 +57,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 		return skipEmptyLines;
 	}
 
-	/** 
+	/**
 	 * Determines whether to skip empty lines of text
 	 * <ul>
 	 * 	<li><i>when reading:</i> if the entity reads an empty line from the input, it will be discarded.</li>
@@ -69,7 +69,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 		this.skipEmptyLines = skipEmptyLines;
 	}
 
-	/** 
+	/**
 	 * Determines whether to remove trailing white spaces from values being read/written
 	 * <p><i>defaults to true.</i>
 	 * @return true if trailing white spaces should be removed from values of this entity; false otherwise
@@ -81,7 +81,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 		return ignoreTrailingWhitespaces;
 	}
 
-	/** 
+	/**
 	 * Determines whether to remove trailing white spaces from values being read/written
 	 * @param ignoreTrailingWhitespaces flag indicating whether trailing white spaces should be removed from values of this entity.
 	 */
@@ -101,7 +101,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 		return headerExtractionEnabled;
 	}
 
-	/** 
+	/**
 	 * Defines whether or not the first valid record parsed from the input should be used to derive the names of each column of this entity.
 	 * @param extractHeaders a flag indicating whether the first valid record parsed from the input be used to derive the names of each column of this entity.
 	 */
@@ -109,7 +109,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 		this.headerExtractionEnabled = extractHeaders;
 	}
 
-	/** 
+	/**
 	 * Determines whether to remove leading white spaces from values being read/written
 	 * <p><i>defaults to true.</i>
 	 * @return true if leading white spaces should be removed from values of this entity; false otherwise.
@@ -121,7 +121,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 		return ignoreLeadingWhitespaces;
 	}
 
-	/** 
+	/**
 	 * Determines whether to remove leading white spaces from values being read/written
 	 * <p><i>defaults to true.</i>
 	 * @param ignoreLeadingWhitespaces true if leading white spaces should be removed from values of this entity.
@@ -130,7 +130,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 		this.ignoreLeadingWhitespaces = ignoreLeadingWhitespaces;
 	}
 
-	/** 
+	/**
 	 * Defines the number of characters held by the entity buffer when reading from the input
 	 * <p><i>Defaults to 1024*1024 characters (i.e. 1,048,576 characters).</i>
 	 * @return the number of characters held by the entity buffer when reading from the input
@@ -154,7 +154,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 	/**
 	 * Defines whether or not a separate thread will be used to read characters from the input while parsing.
 	 * <ul>
-	 * 	<li><i>When enabled</i>, a reading thread will be started and load characters from the input, while the parser is processing its input buffer. 
+	 * 	<li><i>When enabled</i>, a reading thread will be started and load characters from the input, while the parser is processing its input buffer.
 	 * 		<br>This yields better performance, especially when reading from big input (>100 mb)</li>
 	 *  <li><i>When disabled</i>, the parsing process will briefly pause so the buffer can be replenished every time it is exhausted.
 	 *  	<br>This setting can be slightly more efficient when the input is small.</li>
@@ -171,7 +171,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 	/**
 	 * Defines whether or not a separate thread will be used to read characters from the input while parsing.
 	 * <ul>
-	 * 	<li><i>When enabled</i>, a reading thread will be started and load characters from the input, while the parser is processing its input buffer. 
+	 * 	<li><i>When enabled</i>, a reading thread will be started and load characters from the input, while the parser is processing its input buffer.
 	 * 		<br>This yields better performance, especially when reading from big input (>100 mb)</li>
 	 *  <li><i>When disabled</i>, the parsing process will briefly pause so the buffer can be replenished every time it is exhausted.
 	 *  	<br>This setting can be slightly more efficient when the input is small.</li>
@@ -181,7 +181,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 		this.readInputOnSeparateThread = readInputOnSeparateThread;
 	}
 
-	/** 
+	/**
 	 * Defines a default value to be used in substitution of null when there are empty fields in a text record.
 	 * <ul>
 	 *	<li><i>when reading:</i> if a value parsed from the input is empty, the nullValue is used instead of null.</li>
@@ -194,14 +194,14 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 		this.nullValue = nullValue;
 	}
 
-	/** 
+	/**
 	 * Returns the default value used in substitution of null when there are empty fields in a text record.
 	 * <ul>
 	 *	<li><i>when reading:</i> if a value parsed from the input is empty, the nullValue is used instead of null.</li>
 	 *  <li><i>when writing:</i> if a value is null then nullValue is written instead of an empty string.</li>
 	 * </ul>
 	 * <p><i>defaults to null.</i>
-	 * 
+	 *
 	 * @return a default value used instead of null for reading and writing.
 	 */
 	public final String getNullValue() {
@@ -212,12 +212,12 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 	}
 
 	/**
-	 * Returns the maximum number of characters allowed for any given value being written/read. 
-	 * <br>This is required to avoid getting an {@link OutOfMemoryError} in case a file does not have a valid format. 
-	 * <br>In such cases the entity might just keep reading from the input until its end, or until the memory is exhausted. 
+	 * Returns the maximum number of characters allowed for any given value being written/read.
+	 * <br>This is required to avoid getting an {@link OutOfMemoryError} in case a file does not have a valid format.
+	 * <br>In such cases the entity might just keep reading from the input until its end, or until the memory is exhausted.
 	 *     This provides a limit which avoids unwanted JVM crashes.
 	 * <p><i>defaults to 4096.</i>
-	 *  
+	 *
 	 * @return the maximum number of characters any given field in a record can have
 	 */
 	public final int getMaxCharsPerColumn() {
@@ -228,9 +228,9 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 	}
 
 	/**
-	 * Defines the maximum number of characters allowed for any given value being written/read. 
-	 * <br>This is required to avoid getting an {@link OutOfMemoryError} in case a file does not have a valid format. 
-	 * <br>In such cases the entity might just keep reading from the input until its end, or until the memory is exhausted. 
+	 * Defines the maximum number of characters allowed for any given value being written/read.
+	 * <br>This is required to avoid getting an {@link OutOfMemoryError} in case a file does not have a valid format.
+	 * <br>In such cases the entity might just keep reading from the input until its end, or until the memory is exhausted.
 	 *     This provides a limit which avoids unwanted JVM crashes.
 	 * @param maxCharsPerColumn the maximum number of characters any given field in a record can have
 	 */
@@ -239,10 +239,10 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 		this.maxCharsPerColumn = maxCharsPerColumn;
 	}
 
-	/** 
-	 * Returns the hard limit on how many columns a record can have. 
-	 * <br>This is required to avoid getting an {@link OutOfMemoryError} in case a file does not have a valid format. 
-	 * <br>In such cases the entity might just keep reading from the input until its end, or until the memory is exhausted. 
+	/**
+	 * Returns the hard limit on how many columns a record can have.
+	 * <br>This is required to avoid getting an {@link OutOfMemoryError} in case a file does not have a valid format.
+	 * <br>In such cases the entity might just keep reading from the input until its end, or until the memory is exhausted.
 	 *     This provides a limit which avoids unwanted JVM crashes.
 	 * <p><i>defaults to 512.</i>
 	 * @return the maximum number of columns a record can have.
@@ -254,10 +254,10 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 		return maxColumns;
 	}
 
-	/** 
-	 * Defines a hard limit on how many columns a record can have. 
-	 * <br>This is required to avoid getting an {@link OutOfMemoryError} in case a file does not have a valid format. 
-	 * <br>In such cases the entity might just keep reading from the input until its end, or until the memory is exhausted. 
+	/**
+	 * Defines a hard limit on how many columns a record can have.
+	 * <br>This is required to avoid getting an {@link OutOfMemoryError} in case a file does not have a valid format.
+	 * <br>In such cases the entity might just keep reading from the input until its end, or until the memory is exhausted.
 	 *     This provides a limit which avoids unwanted JVM crashes.
 	 * @param maxColumns the maximum number of columns a record can have.
 	 */
@@ -267,9 +267,9 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 	}
 
 	/**
-	 * Indicates whether or not to write headers to the output when writing records to an empty entity. 
-	 * <p><b>Note:</b> write-only entities (i.e. obtained from {@link WriterProvider}) do not provide information about whether the output is empty or not. 
-	 * uniVocity will only attempt to write headers to such entities after a call to {@link WriterProvider#clearDestination()} is made   
+	 * Indicates whether or not to write headers to the output when writing records to an empty entity.
+	 * <p><b>Note:</b> write-only entities (i.e. obtained from {@link WriterProvider}) do not provide information about whether the output is empty or not.
+	 * uniVocity will only attempt to write headers to such entities after a call to {@link WriterProvider#clearDestination()} is made
 	 * <p><i>defaults to false.</i>
 	 * @return true if the headers should be written before adding records to an empty entity, false otherwise
 	 */
@@ -281,9 +281,9 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 	}
 
 	/**
-	 * Indicates whether or not to write headers to the output when writing records to an empty entity. 
-	 * <p><b>Note:</b> write-only entities (i.e. obtained from {@link WriterProvider}) do not provide information about whether the output is empty or not. 
-	 * uniVocity will only attempt to write headers to such entities after a call to {@link WriterProvider#clearDestination()} is made   
+	 * Indicates whether or not to write headers to the output when writing records to an empty entity.
+	 * <p><b>Note:</b> write-only entities (i.e. obtained from {@link WriterProvider}) do not provide information about whether the output is empty or not.
+	 * uniVocity will only attempt to write headers to such entities after a call to {@link WriterProvider#clearDestination()} is made
 	 * @param headerWritingEnabled true if the headers should be written before adding records to an empty entity, false otherwise
 	 */
 	public final void setHeaderWritingEnabled(boolean headerWritingEnabled) {
@@ -291,7 +291,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 	}
 
 	/**
-	 * Returns the input/output format settings for a given text. Each text format requires specific configuration, 
+	 * Returns the input/output format settings for a given text. Each text format requires specific configuration,
 	 * but they all share common settings from {@link TextFormat}</li>
 	 * @return the text format settings.
 	 */
@@ -303,7 +303,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 	}
 
 	/**
-	 * Defines the input/output format settings for a given text. Each text format requires specific configuration, 
+	 * Defines the input/output format settings for a given text. Each text format requires specific configuration,
 	 * but they all share common settings from {@link TextFormat}</li>
 	 * @param format the text format settings.
 	 */

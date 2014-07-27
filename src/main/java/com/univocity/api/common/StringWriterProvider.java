@@ -9,9 +9,9 @@ import java.io.*;
 
 /**
  * A {@code WriterProvider} for Strings. Use this to write data directly to a String.
- * This is just a convenience class that you can use to write test cases 
+ * This is just a convenience class that you can use to write test cases
  * without having to deal with files or other persistent resources.
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */

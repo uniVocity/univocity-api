@@ -11,25 +11,25 @@ import com.univocity.api.engine.*;
 /**
  * The <code>UpdateWithMetadata</code> configuration is obtained from a  {@link PersistenceSetup} using {@link PersistenceSetup#usingMetadata()}.
  * It provides configuration options for update operations that rely on uniVocity metadata
- *  
+ *
  * <p>It is used to define how the {@link DataIntegrationEngine} should update records in the destination entity of a {@link EntityMapping}
  *    when executing a data mapping cycle.
- * 
+ *
  * @see EntityMapping
  * @see PersistenceSetup
  * @see DataIntegrationEngine
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
 public interface UpdateWithMetadata extends UpdateWithoutMetadata {
 
 	/**
-	 * Configures the {@link EntityMapping} to update records of the destination entity only 
-	 * if the associated source records have changed since the previous mapping cycle. 
-	 * 
+	 * Configures the {@link EntityMapping} to update records of the destination entity only
+	 * if the associated source records have changed since the previous mapping cycle.
+	 *
 	 * <p><i>Records flagged as disabled for updates (using {@link DataIntegrationEngine#disableUpdateOnRecords(String, Dataset)}) will remain unchanged. </i>
-	 * 
+	 *
 	 * @return the next step of this configuration: configure insertion of new records into the destination entity.
 	 */
 	public InsertionWithMetadata updateModified();

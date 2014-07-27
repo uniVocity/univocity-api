@@ -18,14 +18,14 @@ import com.univocity.api.entity.jdbc.*;
  * If this configuration is not provided by the user, then a in-memory instance of a database with the essential
  * metadata structure will be created automatically. This of course, means any metadata information will be lost
  * when the application is shut down.
- * 
+ *
  * <p>uniVocity requires two database tables only: by default, these have the names "univocity_metadata" and "univocity_tmp".
  * The scripts to create these tables are provided with the univocity implementation package, under the "metadata" folder.
- * 
+ *
  * <p><i><b>Important: </b> always refer to the script on the implementation package as it could have been modified to adapt to the specific implementation requirements.</i>
- * 
+ *
  * <p>Just as a reference, the table creation script should be similar to the following:
- *  
+ *
  * <p><blockquote><pre>
  *	CREATE TABLE univocity_metadata (
  *		source				VARCHAR(256) NOT NULL,
@@ -39,7 +39,7 @@ import com.univocity.api.entity.jdbc.*;
  *		cycle_id			INTEGER NOT NULL,
  *		CONSTRAINT pk_univocity_md PRIMARY KEY (source, source_id, destination, destination_id)
  *	)
- * 
+ *
  *	CREATE TABLE univocity_tmp (
  *		table_name			VARCHAR(256) NOT NULL,
  *		table_id			VARCHAR(256) NOT NULL,
@@ -48,9 +48,9 @@ import com.univocity.api.entity.jdbc.*;
  *		CONSTRAINT pk_univocity_tmp PRIMARY KEY (table_name, table_id)
  *	)
  * </pre></blockquote>
- * 
+ *
  * @see EngineConfiguration
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
@@ -66,7 +66,7 @@ public final class MetadataSettings {
 	private int fetchSize = 10000;
 
 	/**
-	 * Creates a new metadata setting configuration with a {@link javax.sql.DataSource}. 
+	 * Creates a new metadata setting configuration with a {@link javax.sql.DataSource}.
 	 * The data source must provide a connection to the database that contains the metadata tables.
 	 * @param dataSource the factory that provides connections to a database configured to use the necessary metadata tables.
 	 */
@@ -80,8 +80,8 @@ public final class MetadataSettings {
 	 * <p>This setting has an effect only when {@link DatabaseCapabilities#isBatchSupported()} evaluates to true.
 	 * <p>Batching database operations greatly improves performance in general, but you might want to adjust the batch size to better control memory usage and batch duration.
 	 * <p><i>Defaults to 10,000 rows</i>
-	 * @return the batch size to use when persisting metadata records into the configured metadata table 
-	 * @see DatabaseCapabilities  
+	 * @return the batch size to use when persisting metadata records into the configured metadata table
+	 * @see DatabaseCapabilities
 	 */
 	public final int getBatchSize() {
 		return batchSize;
@@ -91,8 +91,8 @@ public final class MetadataSettings {
 	 * Defines the number of metadata rows to be persisted in a single batch execution.
 	 * <p>This setting has an effect only when {@link DatabaseCapabilities#isBatchSupported()} evaluates to true.
 	 * <p>Batching database operations greatly improves performance in general, but you might want to adjust the batch size to better control memory usage and batch duration.
-	 * @param batchSize the batch size to use when persisting metadata records into the configured metadata table 
-	 * @see DatabaseCapabilities  
+	 * @param batchSize the batch size to use when persisting metadata records into the configured metadata table
+	 * @see DatabaseCapabilities
 	 */
 	public final void setBatchSize(int batchSize) {
 		Args.positive(batchSize, "Batch size");
@@ -193,9 +193,9 @@ public final class MetadataSettings {
 
 	/**
 	 * Obtains the transaction isolation level used when persisting metadata.
-	 * <br>The transaction isolation level code returned by this method is passed on 
+	 * <br>The transaction isolation level code returned by this method is passed on
 	 * to {@link java.sql.Connection#setTransactionIsolation(int)} before writing to the metadata table
-	 * <p><i>Defaults to {@link java.sql.Connection#TRANSACTION_REPEATABLE_READ}</i></p> 
+	 * <p><i>Defaults to {@link java.sql.Connection#TRANSACTION_REPEATABLE_READ}</i></p>
 	 * @return the transaction isolation level
 	 */
 	public final int getTransactionIsolationLevel() {
@@ -204,7 +204,7 @@ public final class MetadataSettings {
 
 	/**
 	 * Defines the transaction isolation level used when persisting metadata.
-	 * <br>The transaction isolation level code returned by this method is passed on 
+	 * <br>The transaction isolation level code returned by this method is passed on
 	 * to {@link java.sql.Connection#setTransactionIsolation(int)} before writing to the metadata table
 	 * <p><i>Only the constants defined in java.sql.Connection are accepted.</i></p>
 	 * @param transactionIsolationLevel the transaction isolation level
@@ -220,9 +220,9 @@ public final class MetadataSettings {
 	 * <p>For performance reasons, you might want to adjust the fetch size to reflect the common number of rows returned
 	 *    for metadata operations. A big fetch size number might consume too many resources and will be excessive for a small number of records.
 	 *    A small fetch size for too many rows will cause slowness (e.g. a fetch size of 100 to read 10,000 rows and will generate 100 roundtrips to the database).
-	 * 
+	 *
 	 * <p><i>Defaults to 10,000 rows</i>
-	 * @return the fetch size to use when reading metadata.  
+	 * @return the fetch size to use when reading metadata.
 	 * @see java.sql.Statement
 	 */
 	public final int getFetchSize() {
@@ -235,8 +235,8 @@ public final class MetadataSettings {
 	 * <p>For performance reasons, you might want to adjust the fetch size to reflect the common number of rows returned
 	 *    for metadata operations. A big fetch size number might consume too many resources and will be excessive for a small number of records.
 	 *    A small fetch size for too many rows will cause slowness (e.g. a fetch size of 100 to read 10,000 rows and will generate 100 roundtrips to the database).
-	 *    
-	 * @param fetchSize the fetch size to use when reading metadata.  
+	 *
+	 * @param fetchSize the fetch size to use when reading metadata.
 	 * <br>This parameter is not validated as some database drivers accept special settings for the fetch size, such as Integer.MIN_VALUE.
 	 * @see java.sql.Statement
 	 */

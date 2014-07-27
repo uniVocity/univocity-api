@@ -6,9 +6,9 @@
 package com.univocity.api.entity;
 
 /**
- * This is the root of all uniVocity entity configuration classes. It just defines the protected method 
- * {@link #copyDefaultsFrom(Configuration)} which initializes undefined settings with default values provided by another configuration object. 
- * 
+ * This is the root of all uniVocity entity configuration classes. It just defines the protected method
+ * {@link #copyDefaultsFrom(Configuration)} which initializes undefined settings with default values provided by another configuration object.
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  */
 public abstract class Configuration {

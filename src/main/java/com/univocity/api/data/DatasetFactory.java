@@ -12,8 +12,8 @@ import com.univocity.api.engine.*;
 
 /**
  * A factory for creating {@link Dataset} instances backed by collections.
- * To get a <code>DatasetFactory</code> from uniVocity, use {@link Univocity#datasetFactory()}. 
- * 
+ * To get a <code>DatasetFactory</code> from uniVocity, use {@link Univocity#datasetFactory()}.
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
@@ -38,7 +38,7 @@ public interface DatasetFactory {
 	public ModifiableDataset newDataset(Collection<Object[]> rows, String[] identifiers, String... fieldNames);
 
 	/**
-	 * Creates a new modifiable dataset, where records have a single column. 
+	 * Creates a new modifiable dataset, where records have a single column.
 	 * <br>This dataset is backed by a collection of objects and contains only one field. This field is also the identifier.
 	 * @param rows the rows in the dataset
 	 * @param fieldName the name of the single field all records in this dataset have.
@@ -49,7 +49,7 @@ public interface DatasetFactory {
 	/**
 	 * Creates a new modifiable dataset, backed by a map.
 	 * <i><p><b>Note </b> new records with duplicate identifier values will replace existing records.</i>
-	 * 
+	 *
 	 * @param map the map used to hold all records of the data set.
 	 * @param identifier the field name used as identifier. The values in the identifier column will be used as keys in the map.
 	 * @param fieldNames the sequence of field names of each record in this data set.
@@ -60,7 +60,7 @@ public interface DatasetFactory {
 	/**
 	 * Creates a new modifiable dataset, with 2 columns, backed by a map.
 	 * <i><p><b>Note </b> new records with duplicate identifier values will replace existing records.</i>
-	 * 
+	 *
 	 * @param map the map used to hold all records of the data set.
 	 * @param identifier the field name used as identifier. Values in the identifier column will be used as keys in the map.
 	 * @param fieldName field name of each value associated to an identifier of this data set.
@@ -72,9 +72,9 @@ public interface DatasetFactory {
 	 * Creates a new modifiable dataset, backed by a map.
 	 * <br>The values in the identifier columns will be concatenated into Strings which will be used as the keys in the map.
 	 * <i><p><b>Note </b> new records with duplicate identifier values will replace existing records.</i>
-	 * 
+	 *
 	 * @param map the map used to hold all records of the data set.
-	 * @param identifiers the field names used to compose the identifier. 
+	 * @param identifiers the field names used to compose the identifier.
 	 * @param fieldNames the sequence of field names of each record in this data set.
 	 * @return a new modifiable dataset.
 	 */
@@ -84,9 +84,9 @@ public interface DatasetFactory {
 	 * Creates a new modifiable dataset, backed by a map.
 	 * <br>The values in the identifier columns will be submitted to the {@link FunctionCall} to be converted into a key to be used in the map.
 	 * <i><p><b>Note </b> new records with duplicate identifier values will replace existing records.</i>
-	 * 
+	 *
 	 * @param map the map used to hold all records of the data set.
-	 * @param identifiers the field names used to compose the identifier. 
+	 * @param identifiers the field names used to compose the identifier.
 	 * @param fieldNames the sequence of field names of each record in this data set.
 	 * @param keyBuilder the function that iterates over identifier values to produce keys for the given map.
 	 * @return a new modifiable dataset.
@@ -94,8 +94,8 @@ public interface DatasetFactory {
 	public <K> ModifiableDataset newDataset(Map<K, Object[]> map, String[] identifiers, String[] fieldNames, FunctionCall<K, Object[]> keyBuilder);
 
 	/**
-	 * Creates dummy dataset that does not store nor retrieve any data. 
-	 * 
+	 * Creates dummy dataset that does not store nor retrieve any data.
+	 *
 	 * @param identifier the name of the field used as an identifier among the fields in this dataset
 	 * @param fieldNames the sequence of field names for this data set.
 	 * @return a new dummy dataset.
@@ -103,8 +103,8 @@ public interface DatasetFactory {
 	public ModifiableDataset newDummyDataset(String identifier, String... fieldNames);
 
 	/**
-	 * Creates dummy dataset that does not store nor retrieve any data. 
-	 * 
+	 * Creates dummy dataset that does not store nor retrieve any data.
+	 *
 	 * @param identifiers the names of the fields used as identifiers among the fields in this dataset
 	 * @param fieldNames the sequence of field names for this data set.
 	 * @return a new dummy dataset.

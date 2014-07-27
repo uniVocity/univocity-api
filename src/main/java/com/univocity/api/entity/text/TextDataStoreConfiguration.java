@@ -15,7 +15,7 @@ import com.univocity.api.entity.custom.*;
 /**
  * This is the parent class for all configuration classes used by uniVocity text-based data stores.
  * It provides essential configuration settings for managing inputs and outputs of text-based data entities.
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  * @param <T> the configuration class that manages a specific text-based data entity.
@@ -39,7 +39,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 
 	/**
 	 * Initializes the configuration object of a text-based data store.
-	 *  
+	 *
 	 * @param dataStoreName The name of the data store.
 	 * @param defaultEntityConfiguration An object with default configurations for data entities associated to this data store.
 	 */
@@ -151,7 +151,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 
 	/**
 	 * Adds a read-only data entity to this data store.
-	 * 
+	 *
 	 * @param entityName The entity name
 	 * @param reader The handle to obtain input readers ({@link java.io.Reader}) for this data entity.
 	 */
@@ -162,7 +162,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 
 	/**
 	 * Adds a write-only data entity to this data store.
-	 * 
+	 *
 	 * @param entityName The entity name
 	 * @param writer The handle to obtain output writers ({@link java.io.Writer}) for this data entity.
 	 */
@@ -305,7 +305,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 
 	/**
 	 * Returns an unmodifiable map containing the configurations of all entities in this data store
-	 * @return an unmodifiable map containing the configurations of all entities in this data store 
+	 * @return an unmodifiable map containing the configurations of all entities in this data store
 	 */
 	public final Map<String, T> getEntityConfigurations() {
 		return Collections.unmodifiableMap(entityConfigurations);
@@ -320,10 +320,10 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 		return defaultEntityConfiguration;
 	}
 
-	/** 
-	 * Returns the maximum number of rows loaded in memory from data entities of this data store at any given time. 
+	/**
+	 * Returns the maximum number of rows loaded in memory from data entities of this data store at any given time.
 	 * <br>This is required to avoid getting an {@link OutOfMemoryError} when reading from large inputs.
-	 * <br>uniVocity will block the input reading thread until there is room for more rows.  
+	 * <br>uniVocity will block the input reading thread until there is room for more rows.
 	 * <p><i>defaults to 10,000.</i>
 	 * @return the maximum number of rows loaded in memory from any data entity at any given time.
 	 */
@@ -332,10 +332,10 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 		return maxRowsInMemory;
 	}
 
-	/** 
-	 * Defines the maximum number of rows loaded in memory from data entities of this data store at any given time. 
+	/**
+	 * Defines the maximum number of rows loaded in memory from data entities of this data store at any given time.
 	 * <br>This is required to avoid getting an {@link OutOfMemoryError} when reading from large inputs.
-	 * <br>uniVocity will block the input reading thread until there is room for more rows.  
+	 * <br>uniVocity will block the input reading thread until there is room for more rows.
 	 * @param maxRowsInMemory the maximum number of rows loaded in memory from any data entity at any given time.
 	 * <i>This value must be greater than 0</i>
 	 */
@@ -345,7 +345,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	}
 
 	/**
-	 * Returns an unmodifiable set of file providers for directories 
+	 * Returns an unmodifiable set of file providers for directories
 	 * @return an unmodifiable set of file providers for directories
 	 */
 	public final Set<FileProvider> getFileDirectories() {
@@ -353,7 +353,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	}
 
 	/**
-	 * Returns an unmodifiable map of writer providers for read only entities 
+	 * Returns an unmodifiable map of writer providers for read only entities
 	 * @return an unmodifiable map of writer providers for read only entities
 	 */
 	public final Map<String, ReaderProvider> getEntityReaders() {
@@ -361,7 +361,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	}
 
 	/**
-	 * Returns an unmodifiable map of writer providers for write only entities 
+	 * Returns an unmodifiable map of writer providers for write only entities
 	 * @return an unmodifiable map of writer providers for write only entities
 	 */
 	public final Map<String, WriterProvider> getEntityWriters() {
@@ -369,7 +369,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	}
 
 	/**
-	 * Returns an unmodifiable map of file providers for entities that were created with an explicit name 
+	 * Returns an unmodifiable map of file providers for entities that were created with an explicit name
 	 * @return an unmodifiable map of file providers for entities that were created with an explicit name
 	 */
 	public final Map<String, FileProvider> getNamedEntityFiles() {
@@ -377,7 +377,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	}
 
 	/**
-	 * Returns an unmodifiable set of file providers for entities that were created without an explicit name 
+	 * Returns an unmodifiable set of file providers for entities that were created without an explicit name
 	 * @return an unmodifiable set of file providers for entities that were created without an explicit name
 	 */
 	public final Set<FileProvider> getUnnamedEntityFiles() {

@@ -12,12 +12,12 @@ import com.univocity.api.config.builders.*;
 import com.univocity.api.engine.*;
 
 /**
- * This is the base class of all configuration classes for data stores. 
+ * This is the base class of all configuration classes for data stores.
  * It provides the most basic configuration elements to enable data processing by uniVocity.
  *
  * @see CustomDataStoreFactory
  * @see DataStoreMapping
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
@@ -36,7 +36,7 @@ public abstract class DataStoreConfiguration {
 	}
 
 	/**
-	 * Returns the name of the data store whose configuration is maintained by this object . 
+	 * Returns the name of the data store whose configuration is maintained by this object .
 	 * @return the data store name.
 	 */
 	public final String getDataStoreName() {
@@ -52,11 +52,11 @@ public abstract class DataStoreConfiguration {
 	}
 
 	/**
-	 * If this data store is not backed by a database, you can move data from your custom entities to an in-memory database managed by uniVocity. 
+	 * If this data store is not backed by a database, you can move data from your custom entities to an in-memory database managed by uniVocity.
 	 * <br>This enables operations such as SQL queries that can be executed against data stored in plain text files for example.
 	 * <p>By providing the names of these entities using this method, uniVocity will load all their data into a in-memory database automatically,
 	 *    and any data modifications will be dumped back to the original entity at the end of each data migration cycle (started in {@link DataIntegrationEngine#executeCycle()}.
-	 *    
+	 *
 	 * @param entityNames the entity names that must have their data loaded into an in-memory database managed by uniVocity
 	 */
 	public void enableDatabaseOperationsIn(Collection<String> entityNames) {
@@ -69,11 +69,11 @@ public abstract class DataStoreConfiguration {
 	}
 
 	/**
-	 * If this data store is not backed by a database, you can move data from your custom entities to an in-memory database managed by uniVocity. 
+	 * If this data store is not backed by a database, you can move data from your custom entities to an in-memory database managed by uniVocity.
 	 * <br>This enables operations such as SQL queries that can be executed against data stored in plain text files for example.
 	 * <p>By providing the names of these entities using this method, uniVocity will load all their data into a in-memory database automatically,
 	 *    and any data modifications will be dumped back to the original entity at the end of each data migration cycle (started in {@link DataIntegrationEngine#executeCycle()}.
-	 *    
+	 *
 	 * @param entityNames the entity names that must have their data loaded into an in-memory database managed by uniVocity
 	 */
 	public void enableDatabaseOperationsIn(String... entityNames) {
@@ -86,8 +86,8 @@ public abstract class DataStoreConfiguration {
 	}
 
 	/**
-	 * Obtains the maximum number of rows loaded in memory at a time when extracting information from entities and queries managed by this data store.   
-	 * @return the maximum number of rows kept in memory at any given time when reading values from any entity or query of this data store.  
+	 * Obtains the maximum number of rows loaded in memory at a time when extracting information from entities and queries managed by this data store.
+	 * @return the maximum number of rows kept in memory at any given time when reading values from any entity or query of this data store.
 	 */
 	public abstract int getLimitOfRowsLoadedInMemory();
 }

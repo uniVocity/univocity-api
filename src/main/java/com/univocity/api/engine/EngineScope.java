@@ -9,17 +9,17 @@ import com.univocity.api.config.*;
 
 /**
  * The scopes available in an instance of {@link DataIntegrationEngine}.
- * 
+ *
  * @see DataIntegrationEngine
  * @see ScopeStorageProvider
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  */
 public enum EngineScope {
 	/**
 	 * The persistent scope retains and restores values produced during multiple executions of a {@link DataIntegrationEngine}.
-	 * It must be supported by a {@link ScopeStorageProvider}. If a provider is not supplied in the {@link EngineConfiguration}, then 
-	 * it will behave as the application scope, and no values will exist once the {@link DataIntegrationEngine} is shut down.  
+	 * It must be supported by a {@link ScopeStorageProvider}. If a provider is not supplied in the {@link EngineConfiguration}, then
+	 * it will behave as the application scope, and no values will exist once the {@link DataIntegrationEngine} is shut down.
 	 */
 	PERSISTENT,
 	/**
@@ -40,8 +40,8 @@ public enum EngineScope {
 	 */
 	MAPPING,
 	/**
-	 * The stateless scope never retains or restores any value. {@link FunctionCall}s will never have their results cached in the scope, 
-	 * hence and every call to an stateless-scoped function will trigger a new execution. 
+	 * The stateless scope never retains or restores any value. {@link FunctionCall}s will never have their results cached in the scope,
+	 * hence and every call to an stateless-scoped function will trigger a new execution.
 	 */
 	STATELESS
 }

@@ -6,12 +6,12 @@
 package com.univocity.api.entity.custom;
 
 /**
- * A process for updating records of a {@link CustomDataEntity}. 
- * Instances of this process must created when {@link CustomDataEntity#prepareToUpdate(String[], String[])} is called from a user-provided entity implementation 
- * 
+ * A process for updating records of a {@link CustomDataEntity}.
+ * Instances of this process must created when {@link CustomDataEntity#prepareToUpdate(String[], String[])} is called from a user-provided entity implementation
+ *
  * @see CustomDataEntity
  * @see CustomProcess
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */

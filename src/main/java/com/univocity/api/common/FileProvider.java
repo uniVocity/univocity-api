@@ -9,8 +9,8 @@ import java.io.*;
 import java.nio.charset.*;
 
 /**
- * A FileProvider validates and stores the minimum information required by uniVocity to locate and manipulate files. 
- *  
+ * A FileProvider validates and stores the minimum information required by uniVocity to locate and manipulate files.
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  */
 public final class FileProvider {

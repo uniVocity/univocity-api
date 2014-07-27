@@ -12,7 +12,7 @@ import java.util.*;
 
 /**
  * Utility class used to validate arguments and configuration options passed to objects in uniVocity's API.
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */

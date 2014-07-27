@@ -7,17 +7,17 @@ package com.univocity.api.data;
 
 /**
  * A special {@link Dataset} that allows data modifications.
- * 
+ *
  * @see Dataset
  * @see DatasetFactory
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
 public interface ModifiableDataset extends Dataset {
 
 	/**
-	 * Inserts a new record into this dataset. 
+	 * Inserts a new record into this dataset.
 	 * @param newData the new record. The length of the array must match the number of fields in the dataset
 	 */
 	public void insert(Object[] newData);
@@ -31,7 +31,7 @@ public interface ModifiableDataset extends Dataset {
 
 	/**
 	 * Removes a record from this dataset.
-	 * @param matchingValues identifies which row of this dataset must be removed. The length of the array must match the number of identifiers in the dataset 
+	 * @param matchingValues identifies which row of this dataset must be removed. The length of the array must match the number of identifiers in the dataset
 	 */
 	public void delete(Object[] matchingValues);
 

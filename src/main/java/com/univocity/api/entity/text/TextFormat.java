@@ -12,16 +12,16 @@ import com.univocity.api.entity.*;
 
 /**
  * This is the parent class for all configuration classes that define a file format in uniVocity.
- * 
+ *
  * <p>By default, all plain-text based entities in uniVocity require the following format definitions:
- * 
+ *
  * <ul>
  *  <li><b>lineSeparator:</b> the 1-2 character sequence that indicates the end of a line. Newline sequences are different across operating systems. Typically:
  *		<ul>
  *			<li>Windows uses carriage return and line feed: <i>\r\n</i></li>
  *			<li>Linux/Unix uses line feed only: <i>\n</i></li>
  *			<li>MacOS uses carriage return only: <i>\r</i></li>
- *		</ul>  	
+ *		</ul>
  *   	<i>{@link #lineSeparator} defaults to the system line separator</i>
  *  </li>
  *  <p>
@@ -35,14 +35,14 @@ import com.univocity.api.entity.*;
  *  <p>
  *  <li><b>comment:</b>a character that, if found in the beginning of a line of text, represents comment in any text-based input supported by uniVocity.</li>
  *  	<p><i>{@link #comment} defaults to '#'.</i>
- * </ul> 
- * 
+ * </ul>
+ *
  * @see com.univocity.api.entity.text.csv.CsvFormat
  * @see com.univocity.api.entity.text.fixed.FixedWidthFormat
  * @see com.univocity.api.entity.text.TextEntityConfiguration
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
- * 
+ *
  */
 public class TextFormat extends Configuration {
 
@@ -86,7 +86,7 @@ public class TextFormat extends Configuration {
 	/**
 	 * Identifies whether a given character sequence matches the {@link #lineSeparator} sequence.
 	 * @param string the character sequence to be matched
-	 * @return true if the given character sequence matches the {@link #lineSeparator}, false otherwise 
+	 * @return true if the given character sequence matches the {@link #lineSeparator}, false otherwise
 	 */
 	public final boolean isLineSeparator(String string) {
 		return getLineSeparatorString().equals(string);
@@ -95,7 +95,7 @@ public class TextFormat extends Configuration {
 	/**
 	 * Identifies whether a given character sequence matches the {@link #lineSeparator} sequence.
 	 * @param chars the character sequence to be matched
-	 * @return true if the given character sequence matches the {@link #lineSeparator}, false otherwise 
+	 * @return true if the given character sequence matches the {@link #lineSeparator}, false otherwise
 	 */
 	public final boolean isLineSeparator(char[] chars) {
 		if (chars == null) {
@@ -147,7 +147,7 @@ public class TextFormat extends Configuration {
 	/**
 	 * Compares the given character against the {@link #normalizedNewline} character.
 	 * @param  ch the character to be verified
-	 * @return true if the given character is the normalized newline character, false otherwise 
+	 * @return true if the given character is the normalized newline character, false otherwise
 	 */
 	public final boolean isNormalizedNewLine(char ch) {
 		return this.getNormalizedNewline() == ch;
@@ -177,7 +177,7 @@ public class TextFormat extends Configuration {
 	/**
 	 * Identifies whether a given character represents a comment
 	 * @param ch the character to be verified
-	 * @return true if the given character is the comment character, false otherwise 
+	 * @return true if the given character is the comment character, false otherwise
 	 */
 	public boolean isComment(char ch) {
 		return this.getComment() == ch;

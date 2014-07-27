@@ -11,7 +11,7 @@ import com.univocity.api.engine.*;
 /**
  * The <code>UnivocityFactoryProvider</code> is used to obtain actual implementations of {@link DatasetFactory} and {@link DataIntegrationEngineFactory}
  * from univocity.jar. It is used internally by the {@link Univocity} class.
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
@@ -19,13 +19,13 @@ public interface UnivocityFactoryProvider {
 
 	/**
 	 * Returns a {@link DatasetFactory} provided by uniVocity.
-	 * @return a {@link DatasetFactory} 
+	 * @return a {@link DatasetFactory}
 	 */
 	public DatasetFactory getDatasetFactory();
 
 	/**
 	 * Returns a {@link DataIntegrationEngineFactory} provided by uniVocity.
-	 * @return a {@link DataIntegrationEngineFactory} 
+	 * @return a {@link DataIntegrationEngineFactory}
 	 */
 	public DataIntegrationEngineFactory getDataIntegrationEngineFactory();
 

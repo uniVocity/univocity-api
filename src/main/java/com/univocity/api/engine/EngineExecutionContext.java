@@ -7,8 +7,8 @@ package com.univocity.api.engine;
 
 /**
  * The <code>EngineExecutionContext</code> is provided by a {@link DataIntegrationEngine} through {@link RowReader} and {@link EngineLifecycleContext} and allows
- * access to variables and functions in the current {@link EngineScope}. 
- * 
+ * access to variables and functions in the current {@link EngineScope}.
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
@@ -16,34 +16,34 @@ public interface EngineExecutionContext {
 
 	/**
 	 * Executes an expression and returns the result. Acceptable expressions conform to the following format:
-	 * 
+	 *
 	 * <ul>
 	 *  <li>variables and constant names are prefixed with $</li>
-	 *  <li>a function call is represented by its name and a sequence of parameters, if any, between () and separated by commas. 
+	 *  <li>a function call is represented by its name and a sequence of parameters, if any, between () and separated by commas.
 	 *      Additional expressions such as function calls are accepted as parameters.
 	 *  </li>
 	 *  <li>a single expression can return multiple values. Each value must be separated by a comma.</li>
 	 *  <li>the word "null", without quotes, will be evaluated as a null object; 'null' will be evaluated to the "null" String.
-	 *  </li> 
+	 *  </li>
 	 *  <li>any value between single quotes is interpreted as a String literal. Single quotes are only required if the String literal contains:
 	 *  	<ul>
 	 *  		<li>leading or trailing white spaces.</li>
 	 *  		<li>any of the following characters: <code> $ ) ' ( , </code> </li>
 	 *  		<li>in case the single quote is part of the value, it must be escaped with an addition single quote:
-	 *  			<p>the expression: <code>"' '' this is escaped ''  '"</code> will be parsed as the String<code>" ' this is escaped ' "</code>  
+	 *  			<p>the expression: <code>"' '' this is escaped ''  '"</code> will be parsed as the String<code>" ' this is escaped ' "</code>
 	 *  		</li>
 	 *  	</ul>
 	 * 	</li>
 	 * </ul>
-	 * 
+	 *
 	 * Example:
 	 * <p><blockquote><pre>
 	 * setVariable("b", 1);
 	 * setVariable("e", 2);
 	 * evaluateExpression("a, $b, concat( d, $e, 'f')"); //assume the concat function concatenates any number of arguments into a String.
 	 * </pre></blockquote>
-	 * Will return an object array with: <code>"a", 1, "d2f"</code>  
-	 * 
+	 * Will return an object array with: <code>"a", 1, "d2f"</code>
+	 *
 	 * @param expression the expression to be executed
 	 * @return the result of the expression.
 	 */
@@ -72,16 +72,16 @@ public interface EngineExecutionContext {
 
 	/**
 	 * Invokes a function registered in the {@link DataIntegrationEngine} and returns the result
-	 * 
+	 *
 	 * @param functionName the name of the function to be invoked
 	 * @param args the arguments to pass to the function
-	 * @return the result of the function execution with the given arguments. Results can be cached depending on the scope it is associated to. 
+	 * @return the result of the function execution with the given arguments. Results can be cached depending on the scope it is associated to.
 	 * In this case the function will only be invoked if there is no previous result cached on its scope.
 	 */
 	public Object executeFunction(String functionName, Object... args);
 
 	/**
-	 * Returns the current active scope in the {@link DataIntegrationEngine} 
+	 * Returns the current active scope in the {@link DataIntegrationEngine}
 	 * @return the current scope
 	 */
 	public EngineScope getCurrentActiveScope();

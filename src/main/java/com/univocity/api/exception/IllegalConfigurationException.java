@@ -7,9 +7,9 @@ package com.univocity.api.exception;
 
 /**
  * <code>IllegalConfigurationException</code> is the exception thrown by uniVocity to notify of an illegal configuration.
- * 
+ *
  * <p> For example, if a function that does not exist is configured to be invoked when mapping data between two entities, this exception will be thrown.
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
@@ -17,7 +17,7 @@ public final class IllegalConfigurationException extends RuntimeException {
 	private static final long serialVersionUID = 8697369823358345165L;
 
 	/**
-	 * Constructs a new IllegalConfigurationException exception with the specified detail message and cause.  
+	 * Constructs a new IllegalConfigurationException exception with the specified detail message and cause.
 	 * @param  message the detail message.
 	 * @param  cause the cause of the exception.
 	 */
@@ -34,7 +34,7 @@ public final class IllegalConfigurationException extends RuntimeException {
 	}
 
 	/**
-	 * Constructs a new IllegalConfigurationException exception with the specified cause of error.  
+	 * Constructs a new IllegalConfigurationException exception with the specified cause of error.
 	 * @param  cause the cause of the exception.
 	 */
 	public IllegalConfigurationException(Throwable cause) {

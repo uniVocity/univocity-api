@@ -14,7 +14,7 @@ import com.univocity.api.entity.custom.*;
 /**
  * This is the parent class for all configuration classes used by text-based data entities.
  * It provides essential configuration settings and sensible defaults for reading from and writing to text in conformity to a particular format (such as CSV, for example).
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  * @param <F> the configuration class that manages a specific text format.
@@ -34,7 +34,7 @@ public abstract class TextEntityConfiguration<F extends TextFormat> extends Text
 	/**
 	 * Returns the sequence of field names used to refer to columns in the input/output text of an entity.
 	 * This overrides any headers extracted from a text input (when {@link #isHeaderExtractionEnabled()} == true)
-	 * <p><i>defaults to null.</i> 
+	 * <p><i>defaults to null.</i>
 	 * @return the field name sequence to be associated to each column in the input/output.
 	 */
 	public String[] getHeaders() {
@@ -43,7 +43,7 @@ public abstract class TextEntityConfiguration<F extends TextFormat> extends Text
 
 	/**
 	 * Defines a sequence of field names used to refer to columns in the input/output text of an entity.
-	 * This overrides any headers extracted from a text input (when {@link #isHeaderExtractionEnabled()} == true) 
+	 * This overrides any headers extracted from a text input (when {@link #isHeaderExtractionEnabled()} == true)
 	 * @param headers the field name sequence to be associated to each column in the input/output.
 	 */
 	public void setHeaders(String... headers) {
@@ -75,7 +75,7 @@ public abstract class TextEntityConfiguration<F extends TextFormat> extends Text
 	 * Defines the number of valid records to be parsed before the reading process is stopped.
 	 * <br>A negative value indicates there's no limit and all records in the input will be read.
 	 * <p><i>defaults to -1.</i>
-	 *  
+	 *
 	 * @return the number of records to read before stopping the reading process.
 	 */
 	public int getNumberOfRecordsToRead() {
@@ -86,7 +86,7 @@ public abstract class TextEntityConfiguration<F extends TextFormat> extends Text
 	 * Defines the number of valid records to be parsed before the reading process is stopped.
 	 * <br>A negative value indicates there's no limit and all records in the input will be read.
 	 * <p><i>defaults to -1.</i>
-	 *  
+	 *
 	 * @param numberOfRecordsToRead the number of records to read before stopping the reading process.
 	 */
 	public void setNumberOfRecordsToRead(int numberOfRecordsToRead) {
@@ -158,7 +158,7 @@ public abstract class TextEntityConfiguration<F extends TextFormat> extends Text
 
 	/**
 	 * Defines a sequence of field names used to refer to columns in the input/output text of an entity, along with their lengths.
-	 * This overrides any headers extracted from a text input (when {@link #isHeaderExtractionEnabled()} == true) 
+	 * This overrides any headers extracted from a text input (when {@link #isHeaderExtractionEnabled()} == true)
 	 * @param fields a {@link LinkedHashMap} containing the sequence of fields to be associated to each column in the input/output, with their respective length.
 	 */
 	public void setFieldsAndLengths(LinkedHashMap<String, Integer> fields) {

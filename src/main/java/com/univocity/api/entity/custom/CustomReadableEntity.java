@@ -13,12 +13,12 @@ import com.univocity.api.entity.*;
 /**
  * The CustomReadableEntity is the most basic data entity a user can define.
  * It provides the essential methods to allow data extraction from a user-managed resource.
- * 
- * Instances of this interface are expected to be provided by {@link CustomDataStore} in {@link CustomDataStore#getDataEntities()} 
- * 
+ *
+ * Instances of this interface are expected to be provided by {@link CustomDataStore} in {@link CustomDataStore#getDataEntities()}
+ *
  * @see CustomDataStore
  * @see EntityMapping
- * 
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  */
 public interface CustomReadableEntity {
@@ -30,10 +30,10 @@ public interface CustomReadableEntity {
 	public String getEntityName();
 
 	/**
-	 * Initializes a reading process in this data entity. 
-	 * A list of field names of interest are provided by uniVocity. 
+	 * Initializes a reading process in this data entity.
+	 * A list of field names of interest are provided by uniVocity.
 	 * Subsequent calls to {@link ReadingProcess#readNext()} must return rows with values for the requested fields.
-	 * @param fieldNames the fields selected by uniVocity that identify what values to extract from each record in the {@link ReadingProcess}.  
+	 * @param fieldNames the fields selected by uniVocity that identify what values to extract from each record in the {@link ReadingProcess}.
 	 * @return a {@link ReadingProcess} object is responsible for reading values for the selected fields in each record contained by this entity.
 	 */
 	public ReadingProcess preareToRead(String[] fieldNames);

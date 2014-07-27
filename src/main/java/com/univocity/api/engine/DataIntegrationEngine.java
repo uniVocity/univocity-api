@@ -16,27 +16,27 @@ import com.univocity.api.data.*;
 /**
  * The <code>DataIntegrationEngine</code> is the central component of uniVocity. With it you can define data mappings between entities of different data stores,
  * execute them, and control their execution.
- * 
+ *
  * <p>A <code>DataIntegrationEngine</code> depends on some essential configurations on an {@link EngineConfiguration} object
  * and can only be created through a {@link Univocity}.
- * 
- * <p>A database with a set of tables to store metadata is required for non-trivial mappings. This configuration resides in a {@link MetadataSettings} object. 
+ *
+ * <p>A database with a set of tables to store metadata is required for non-trivial mappings. This configuration resides in a {@link MetadataSettings} object.
  * In case this is not configured in {@link EngineConfiguration#getMetadataSettings()},
- * the <code>DataIntegrationEngine</code> will be started with an in-memory database. Note, however, that all metadata information stored in this in-memory database 
+ * the <code>DataIntegrationEngine</code> will be started with an in-memory database. Note, however, that all metadata information stored in this in-memory database
  * is lost once the <code>DataIntegrationEngine</code> is shut down (using {@link Univocity#shutdown(String)}).
- * 
+ *
  * <p>The <code>DataIntegrationEngine</code> manages an internal scope ({@link EngineScope}) for variables, constants, {@link FunctionCall}s, and {@link DatasetProducer}s.
- * 
+ *
  * <p><b>IMPORTANT: </b> instances of <code>DataIntegrationEngine</code> are not thread safe. If multiple threads share the same instance,
  * the synchronization must be managed externally.
- * 
+ *
  * @see Univocity
  * @see EngineConfiguration
  * @see MetadataSettings
  * @see FunctionCall
  * @see DatasetProducer
  * @see EngineScope
- *  
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
@@ -52,7 +52,7 @@ public interface DataIntegrationEngine {
 	 * Creates a mapping configuration object between entities of two data stores. This is the first step in defining data mappings.
 	 * The {@link DataStoreMapping} instance is unique between two data stores and calling this method multiple times with the
 	 * same data store names will cause and exception.
-	 *  
+	 *
 	 * @param sourceDataStore the name of the source data store.
 	 * @param destinationDataStore the name of the destination data store. Source and destination data stores can be the same.
 	 * @return a new {@link DataStoreMapping} instance.
@@ -61,7 +61,7 @@ public interface DataIntegrationEngine {
 
 	/**
 	 * Obtains the mapping configuration object between entities of two data stores.
-	 *  
+	 *
 	 * @param sourceDataStore the name of the source data store.
 	 * @param destinationDataStore the name of the destination data store. Source and destination data stores can be the same.
 	 * @return a the existing {@link DataStoreMapping} instance associated to the given data store names, or null if there's no mapping between them.
@@ -76,51 +76,51 @@ public interface DataIntegrationEngine {
 	public void removeMapping(String sourceDataStore, String destinationDataStore);
 
 	/**
-	 * Adds a callback object that intercepts life cycle events produced within this engine.  
+	 * Adds a callback object that intercepts life cycle events produced within this engine.
 	 * @param interceptor the callback object that will be notified of this engine's life cycle events.
 	 */
 	public void addInterceptor(EngineLifecycleInterceptor interceptor);
 
 	/**
-	 * Removes a {@link EngineLifecycleInterceptor} instance from this engine, so it stops being notified of updates in this engine's internal state.  
+	 * Removes a {@link EngineLifecycleInterceptor} instance from this engine, so it stops being notified of updates in this engine's internal state.
 	 * @param interceptor the callback object to be removed
 	 */
 	public void removeInterceptor(EngineLifecycleInterceptor interceptor);
 
 	/**
-	 * Associates a variable name to an expression. When the variable is accessed, the expression will be evaluated and the result will be 
-	 * reused while the scope is active. These values are lost when the scope is deactivated. 
+	 * Associates a variable name to an expression. When the variable is accessed, the expression will be evaluated and the result will be
+	 * reused while the scope is active. These values are lost when the scope is deactivated.
 	 * For example, a expression variable associated to the {@link EngineScope#CYCLE} scope won't be accessible if a there is no mapping cycle in execution.
 	 * Trying to read a variable whose scope is not active will yield an {@link IllegalStateException}.
-	 * 
+	 *
 	 * <p>Acceptable expressions conform to the following format:
-	 * 
+	 *
 	 * <ul>
 	 *  <li>variables and constant names are prefixed with $</li>
-	 *  <li>a function call is represented by its name and a sequence of parameters, if any, between () and separated by commas. 
+	 *  <li>a function call is represented by its name and a sequence of parameters, if any, between () and separated by commas.
 	 *      Additional expressions such as function calls are accepted as parameters.
 	 *  </li>
 	 *  <li>a single expression can return multiple values. Each value must be separated by a comma and the result will be an array of objects</li>
 	 *  <li>the word "null", without quotes, will be evaluated as a null object; 'null' will be evaluated to the "null" String.
-	 *  </li> 
+	 *  </li>
 	 *  <li>any value between single quotes is interpreted as a String literal. Single quotes are only required if the String literal contains:
 	 *  	<ul>
 	 *  		<li>leading or trailing white spaces.</li>
 	 *  		<li>any of the following characters: <code> $ ) ' ( , </code> </li>
 	 *  		<li>in case the single quote is part of the value, it must be escaped with an addition single quote:
-	 *  			<p>the expression: <code>"' '' this is escaped ''  '"</code> will be parsed as the String<code>" ' this is escaped ' "</code>  
+	 *  			<p>the expression: <code>"' '' this is escaped ''  '"</code> will be parsed as the String<code>" ' this is escaped ' "</code>
 	 *  		</li>
 	 *  	</ul>
 	 * 	</li>
 	 * </ul>
-	 * 
+	 *
 	 * Example: assume the concat function concatenates any number of arguments into a String, and the variables <code>b = 1</code> and <code>e = 2</code>:
 	 * <p><code>
-	 * "a, $b, concat( d, $e, 'f')" 
+	 * "a, $b, concat( d, $e, 'f')"
 	 * </code>
-	 * The expression result will be an object array with: <code>["a", 1, "d2f"]</code>.  
-	 *     
-	 * @param scope the scope of this expression variable 
+	 * The expression result will be an object array with: <code>["a", 1, "d2f"]</code>.
+	 *
+	 * @param scope the scope of this expression variable
 	 * @param name the name of the expression variable
 	 * @param expression the expression to be executed when the variable name is read for the first time in its scope.
 	 */
@@ -130,11 +130,11 @@ public interface DataIntegrationEngine {
 	 * Adds a custom function implementation to this engine. The result of a function call will be reused within a given scope. For example
 	 * if the function "currentTime('yyyy-mm-dd')" is associated to the {@link EngineScope#CYCLE} scope, the value returned by this particular invocation
 	 * will be reused until a mapping cycle ends.
-	 * 
+	 *
 	 * <p><i><b>Note:</b> functions are accessible from any scope</i>.
-	 * 
+	 *
 	 * @param scope the scope of values returned by the given function. The engine will retain and reuse the result of each function call into the given scope.
-	 * @param name the name of the given function. This name can be used in expressions, followed by the function arguments. 
+	 * @param name the name of the given function. This name can be used in expressions, followed by the function arguments.
 	 * @param function the actual implementation of the function.
 	 */
 	public <F extends FunctionCall<?, ?>> void addFunction(EngineScope scope, String name, F function);
@@ -142,26 +142,26 @@ public interface DataIntegrationEngine {
 	/**
 	 * Creates a function backed by an implementation if {@link java.util.Map}. Functions based on a map accept only one parameter as argument, which is used as the key
 	 * to retrieve a value from the map. This map can be modified externally at any time.
-	 * 
+	 *
 	 * Examples:
 	 * <p><hr><blockquote><pre>
-	 * 
+	 *
 	 * Map<String, String> languages = new HashMap<String, String>();
 	 * locales.put("en_US", "American English");
 	 * locales.put("en_GB", "British English");
 	 * locales.put("en_AU", "Australian English");
-	 * 
+	 *
 	 * //creates a function named "languages" with values given in the languages map
-	 * engine.addMap("languages", languages); 
-	 * 
-	 * //executes "languages(en_GB)" to obtain the description and maps it to the "language_description" field in the destination entity.  
+	 * engine.addMap("languages", languages);
+	 *
+	 * //executes "languages(en_GB)" to obtain the description and maps it to the "language_description" field in the destination entity.
 	 * mapping.value().copy("{languages(en_GB)}").to("language_description");
-	 * 
-	 * //For each value extracted from the source "lang_code", calls the "languages" function 
-	 * //to obtain the description then writes to "language_description" in the destination    
+	 *
+	 * //For each value extracted from the source "lang_code", calls the "languages" function
+	 * //to obtain the description then writes to "language_description" in the destination
 	 * mapping.value().copy("lang_code").to("language_description").readingWith("languages");
-	 * </pre></blockquote><hr> 
-	 * 
+	 * </pre></blockquote><hr>
+	 *
 	 * @param name the name of function
 	 * @param mapFunction the implementation of {@link java.util.Map} that will be used to store and fetch key-value pairs.
 	 */
@@ -169,56 +169,56 @@ public interface DataIntegrationEngine {
 
 	/**
 	 * Configures a query to be executed against a data store as a function. The query will be accessible from any {@link EntityMapping}s of this engine.
-	 * 
+	 *
 	 * The result of a query-based function call will be reused within a given scope. For example
-	 * if query named as "selectLocaleId" is associated to the {@link EngineScope#CYCLE} scope, the value returned by multiple invocations of 
+	 * if query named as "selectLocaleId" is associated to the {@link EngineScope#CYCLE} scope, the value returned by multiple invocations of
 	 * "selectLocaleId('en_US')" will be reused until the end of a data mapping cycle.
-	 * 
+	 *
 	 * <p><i><b>Note:</b> The query-based function will be accessible from any scope</i>.
-	 * 
-	 * @param scope the scope of values returned by the query. The engine will retain and reuse the result of each query call into the given scope. 
+	 *
+	 * @param scope the scope of values returned by the query. The engine will retain and reuse the result of each query call into the given scope.
 	 * @param queryName the name of the given query. This name can be used in expressions, followed by the query arguments.
-	 * @return an object used to properly configure the query as a function.  
+	 * @return an object used to properly configure the query as a function.
 	 */
 	public QuerySetup addQuery(EngineScope scope, String queryName);
 
 	/**
-	 * Sets or adds then initializes a variable in the current scope. To read the value of a variable in expressions, prepend it with $. 
+	 * Sets or adds then initializes a variable in the current scope. To read the value of a variable in expressions, prepend it with $.
 	 * For example: <code>"$en_US"</code> reads the value of the variable "en_US".
-	 * 
+	 *
 	 * <p>The scope of the new variable depends on the current active scope (see {@link EngineScope})
-	 * 
+	 *
 	 * @param name the name of the new variable
 	 * @param value the value of the variable to be set/created in the current scope.
 	 */
 	public void setVariable(String name, Object value);
 
 	/**
-	 * Sets or adds then initializes a variable in the persistent scope ({@link EngineScope#PERSISTENT}). If no {@link ScopeStorageProvider} is defined 
+	 * Sets or adds then initializes a variable in the persistent scope ({@link EngineScope#PERSISTENT}). If no {@link ScopeStorageProvider} is defined
 	 * in {@link EngineConfiguration#getPersistentScopeStorageProvider()}, then the variable will be added/set using {@link EngineScope#APPLICATION}.
-	 * 
-	 * <p>To read the value of a variable in expressions, prepend it with $. 
+	 *
+	 * <p>To read the value of a variable in expressions, prepend it with $.
 	 * For example: <code>"$en_US"</code> reads the value of the variable "en_US".
-	 * 
+	 *
 	 * @param name the name of the new variable added to the {@link EngineScope#PERSISTENT} scope
 	 * @param value the value of the variable to be set/created in the persistent scope.
 	 */
 	public void setPersistentVariable(String name, Object value);
 
 	/**
-	 * Adds a constant value that can accessed from any given scope. To read the value of a constant in expressions, prepend it with $. 
+	 * Adds a constant value that can accessed from any given scope. To read the value of a constant in expressions, prepend it with $.
 	 * For example: <code>"$en_US"</code> reads the value of the constant "en_US".
-	 * 
-	 * <p>Constants cannot have their value modified. 
-	 * 
+	 *
+	 * <p>Constants cannot have their value modified.
+	 *
 	 * @param name the name of the new constant
 	 * @param value the value of the constant
 	 */
 	public void setConstant(String name, Object value);
 
 	/**
-	 * Reads the value of a variable or constant registered to this engine 
-	 * 
+	 * Reads the value of a variable or constant registered to this engine
+	 *
 	 * @param name the name of the variable
 	 * @return the value of the variable
 	 */
@@ -234,29 +234,29 @@ public interface DataIntegrationEngine {
 	/**
 	 * Associates a {@link RowReader} implementation class to a name and a scope. When required, a row reader instance will be instantiated using the class default
 	 * constructor. This instance will be reused within the given scope and destroyed when the scope is deactivated.
-	 *  
+	 *
 	 * @param scope to row reader scope that determines when its instances will be destroyed.
 	 * @param name the name of the given row reader
-	 * @param reader the implementation of a {@link RowReader} to be instantiated when required. 
+	 * @param reader the implementation of a {@link RowReader} to be instantiated when required.
 	 */
 	public void addRowReader(EngineScope scope, String name, Class<? extends RowReader> reader);
 
 	/**
 	 * Associates a {@link RowReader} instance to name. As this is a user-provided instance, it is the user
-	 * responsibility to manage how its internal state, if any, should be managed.  
-	 *  
+	 * responsibility to manage how its internal state, if any, should be managed.
+	 *
 	 * @param name the name of the given row reader
-	 * @param reader an instance of a row reader, managed by the user. 
+	 * @param reader an instance of a row reader, managed by the user.
 	 */
 	public void addRowReader(String name, RowReader reader);
 
 	/**
 	 * Adds a new {@link Dataset} to this engine. The given dataset can contain data, and be used as a source or, if the dataset implements
 	 * {@link ModifiableDataset}, as the destination entity in entity mappings. The user can create his/her own implementation of this interface.
-	 * 
-	 * 
+	 *
+	 *
 	 * <p>As a convenience, many useful dataset implementations can be obtained through a {@link DatasetFactory}.
-	 * 
+	 *
 	 * @param name the name of the dataset
 	 * @param dataset the dataset implementation
 	 */
@@ -266,8 +266,8 @@ public interface DataIntegrationEngine {
 	 * Adds and configures a {@link DatasetProducer} for reading information from an entity accessible through this engine, and producing different
 	 * datasets as a result. The resulting datasets can then be used in entity mappings. The dataset producer is associated to a scope, therefore
 	 * the datasets will be kept while the scope is active.
-	 *   
-	 * @param scope the scope of the datasets produced by the given producer 
+	 *
+	 * @param scope the scope of the datasets produced by the given producer
 	 * @param producer the object responsible for producing datasets.
 	 * @return a {@link DatasetProducerSetup} object for configuring the inputs and outputs of the given dataset producer.
 	 */
@@ -276,56 +276,56 @@ public interface DataIntegrationEngine {
 	/**
 	 * Disables data modifications on a given set of records of a data entity that were already mapped.
 	 * <br>This will create a flag in uniVocity metadata tables for the given records, which prevents
-	 * data modifications on all rows already mapped. 
-	 * 
+	 * data modifications on all rows already mapped.
+	 *
 	 * <p><i><b>Note: </b></i>This only takes effect if the entity mapping configuration uses uniVocity metadata information (i.e. {@link PersistenceSetup#usingMetadata()}).
-	 * 
+	 *
 	 * @param dataEntityName the name of the data entity to have some records disabled for updates.
 	 * @param dataset the dataset containing the identifiers of a mapped destination entity.
 	 */
 	public void disableUpdateOnRecords(String dataEntityName, Dataset dataset);
 
 	/**
-	 * Disables data modifications all records of this data entity that were already mapped. 
+	 * Disables data modifications all records of this data entity that were already mapped.
 	 * New records introduced after another mapping cycle will be enabled for updates.
 	 * <br>This will create a flag in uniVocity metadata tables for a given entity, which prevents
-	 * data modifications on all rows already mapped. 
-	 * 
+	 * data modifications on all rows already mapped.
+	 *
 	 * <p><i><b>Note: </b></i>This only takes effect if the entity mapping configuration uses uniVocity metadata information (i.e. {@link PersistenceSetup#usingMetadata()}).
-	 * 
+	 *
 	 * @param dataEntityName the name of the data entity to have all records already mapped disabled for updates.
 	 */
 	public void disableUpdateOnAllRecords(String dataEntityName);
 
 	/**
-	 * Re-enables data modifications on a given set records of a data entity. This reverts the metadata changes made 
+	 * Re-enables data modifications on a given set records of a data entity. This reverts the metadata changes made
 	 * with {@link #disableUpdateOnRecords(String, Dataset)} or {@link #disableUpdateOnAllRecords(String)} for the given records
-	 * 
+	 *
 	 * @param dataEntityName the name of the data entity to have some records enabled for updates.
 	 * @param dataset the dataset containing the identifiers of a mapped destination entity.
 	 */
 	public void enableUpdateOnRecords(String dataEntityName, Dataset dataset);
 
 	/**
-	 * Re-enables data modifications on all records of a data entity. This will any metadata changes made 
+	 * Re-enables data modifications on all records of a data entity. This will any metadata changes made
 	 * with {@link #disableUpdateOnRecords(String, Dataset)} or {@link #disableUpdateOnAllRecords(String)}.
-	 * 
+	 *
 	 * @param dataEntityName the name of the data entity to have all of its records enabled for data updates.
 	 */
 	public void enableUpdateOnAllRecords(String dataEntityName);
 
 	/**
-	 * Use this method to define the correct sequence of mappings that have to be executed in order to correctly process the default data mapping cycle 
+	 * Use this method to define the correct sequence of mappings that have to be executed in order to correctly process the default data mapping cycle
 	 * (started with {@link #executeCycle()} or {@link #executeCycle(DataIncrement)}).
-	 * 
-	 * <p>By default, the sequence of mappings is executed by in the same sequence they were configured, however, entity mappings generated automatically (using 
+	 *
+	 * <p>By default, the sequence of mappings is executed by in the same sequence they were configured, however, entity mappings generated automatically (using
 	 * {@link DataStoreMapping#autodetectMappings()}) won't have the correct mapping sequence.
-	 * 
+	 *
 	 * <p>This might be required to ensure data exclusions and updates occur in the proper sequence (which is usually the reverse order of insertion), and that
 	 * references to other entities are correctly populated.
-	 * 
+	 *
 	 * <p>If there are duplicate names from different data stores, these names must be written in the format <i><code>dataStoreName.entityName</code></i>.
-	 * 
+	 *
 	 * @param sequenceOfDestinationEntities the sequence of destination fields to be mapped. Not all destination entities need to be declared here. The ones that appear
 	 * in the sequence will be executed first, in the given order. Omitted data entities will have their mappings executed after the give sequence of mappings took place.
 	 */
@@ -339,8 +339,8 @@ public interface DataIntegrationEngine {
 
 	/**
 	 * Executes a data mapping cycle against a {@link DataIncrement} object with all mappings configured in this engine using (i.e. through {@link #map(String, String)}),
-	 * <p>The data increment is used in place of one or more source data entities. 
-	 * 
+	 * <p>The data increment is used in place of one or more source data entities.
+	 *
 	 * @param increment The increment with data changes for one or more source entities that should be applied to the destination using the configured mappings.
 	 */
 	public void executeCycle(DataIncrement increment);
@@ -348,18 +348,18 @@ public interface DataIntegrationEngine {
 	/**
 	 * Executes a data mapping cycle against the selected destination entities. If there are duplicate names from different data stores, these names must be written in
 	 * the format <i><code>dataStoreName.entityName</code></i>. The mappings will be executed in the same order the given entities are declared.
-	 * 
+	 *
 	 * @param destinationEntities the sequence of destination entities to receive data from the mappings.
 	 */
 	public void executeCycle(String... destinationEntities);
 
 	/**
-	 * Executes a data mapping cycle against a {@link DataIncrement} object and a selection of destination entities. 
-	 * If there are duplicate names from different data stores, these names must be written in the format <i><code>dataStoreName.entityName</code></i>. 
+	 * Executes a data mapping cycle against a {@link DataIncrement} object and a selection of destination entities.
+	 * If there are duplicate names from different data stores, these names must be written in the format <i><code>dataStoreName.entityName</code></i>.
 	 * The mappings will be executed in the same order the given entities are declared.
-	 * 
-	 * <p>The data increment is used in place of one or more source data entities. 
-	 * 
+	 *
+	 * <p>The data increment is used in place of one or more source data entities.
+	 *
 	 * @param increment the object with additional data to be used in place of one or more source data entities in this cycle.
 	 * @param destinationEntities the sequence of destination entities to receive data from the mappings.
 	 */
@@ -373,8 +373,8 @@ public interface DataIntegrationEngine {
 
 	/**
 	 * Executes a data mapping cycle against a {@link DataIncrement} object with all mappings configured in this engine using (i.e. through {@link #map(String, String)}),
-	 * <p>The data increment is used in place of one or more source data entities. 
-	 * 
+	 * <p>The data increment is used in place of one or more source data entities.
+	 *
 	 * @param transactionConfig the configuration that defines how transactions should be created while executing mappings in this cycle.
 	 * @param increment The increment with data changes for one or more source entities that should be applied to the destination using the configured mappings.
 	 */
@@ -383,19 +383,19 @@ public interface DataIntegrationEngine {
 	/**
 	 * Executes a data mapping cycle against the selected destination entities. If there are duplicate names from different data stores, these names must be written in
 	 * the format <i><code>dataStoreName.entityName</code></i>. The mappings will be executed in the same order the given entities are declared.
-	 * 
+	 *
 	 * @param transactionConfig the configuration that defines how transactions should be created while executing mappings in this cycle.
 	 * @param destinationEntities the sequence of destination entities to receive data from the mappings.
 	 */
 	public void executeCycle(Transactions transactionConfig, String... destinationEntities);
 
 	/**
-	 * Executes a data mapping cycle against a {@link DataIncrement} object and a selection of destination entities. 
-	 * If there are duplicate names from different data stores, these names must be written in the format <i><code>dataStoreName.entityName</code></i>. 
+	 * Executes a data mapping cycle against a {@link DataIncrement} object and a selection of destination entities.
+	 * If there are duplicate names from different data stores, these names must be written in the format <i><code>dataStoreName.entityName</code></i>.
 	 * The mappings will be executed in the same order the given entities are declared.
-	 * 
-	 * <p>The data increment is used in place of one or more source data entities. 
-	 * 
+	 *
+	 * <p>The data increment is used in place of one or more source data entities.
+	 *
 	 * @param transactionConfig the configuration that defines how transactions should be created while executing mappings in this cycle.
 	 * @param increment the object with additional data to be used in place of one or more source data entities in this cycle.
 	 * @param destinationEntities the sequence of destination entities to receive data from the mappings.

@@ -7,14 +7,14 @@ package com.univocity.api.engine;
 
 /**
  * The <code>EntityMappingContext</code> is available to {@link RowReader} instances used during the execution of a data mapping between two entities.
- * 
+ *
  * It provides information specific to the entities being mapped
- *  
+ *
  * @see RowReader
  * @see RowMappingContext
  * @see EngineExecutionContext
  * @see MappingCycleContext
- *  
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
@@ -52,15 +52,15 @@ public interface EntityMappingContext {
 	/**
 	 * Informs whether the current mapping is for removal of records in the destination entity.
 	 * In general, when mappings are configured to use deletion of records is uniVocity will automatically generate a mapping for exclusion.
-	 *  
-	 * <p>For example: suppose <code>GroupMember</code> has a reference to <code>Group</code>. 
-	 * 
+	 *
+	 * <p>For example: suppose <code>GroupMember</code> has a reference to <code>Group</code>.
+	 *
 	 * If no removal of records is enabled, the mappings will be executed in the following order:
 	 * <ul>
 	 *  <li>map: <code>source -> Group</code></li>
 	 *  <li>map: <code>otherSource -> GroupMember</code></li>
 	 * </ul>
-	 * 
+	 *
 	 * If removal is enabled in these mappings then uniVocity may generate exclusion mappings to be executed in reverse order.
 	 * The exact removal sequence depends on the mapping configuration. In this example, GroupMember records that might be associated to Group will be removed first.
 	 *  <ul>
@@ -69,8 +69,8 @@ public interface EntityMappingContext {
 	 *  <li>map: <code>source -> Group</code></li>
 	 *  <li>map: <code>otherSource -> GroupMember</code></li>
 	 * </ul>
-	 *  
-	 * @return true if this mapping will identify and remove records in the destination; false otherwise.  
+	 *
+	 * @return true if this mapping will identify and remove records in the destination; false otherwise.
 	 */
 	public boolean isExclusionMapping();
 
