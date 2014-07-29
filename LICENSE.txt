@@ -336,6 +336,7 @@ uniVocity License Agreement
  29. DEFINITIONS
 
 Confidential Information includes confidential information about the business, structure, programs, processes, methods, operating procedures, activities, products and services, trade secrets, know how, financial, accounting, marketing and technical information, customer and supplier lists (including prospective customer and supplier information), ideas, concepts, know-how, Intellectual Property, technology, and other information whether or not such information is reduced to a tangible form or marked in writing as "confidential".
+
 Intellectual Property includes any and all intellectual and industrial property rights throughout the world, whether subsisting now or in the future and includes all copyright and analogous rights, all rights in relation to inventions (including patent rights), registered and unregistered trademarks, designs (whether or not registered or registrable), circuit layouts, trade names, trade secrets, business names, company names or internet domain names.
 
 
