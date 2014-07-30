@@ -3,7 +3,7 @@ uniVocity License Agreement
 
 ## TERMS AND CONDITIONS
 
- 1. ACCEPTANCE  
+1. ACCEPTANCE  
 
 1.1. These Terms and Conditions (Terms) form the agreement (Agreement) between uniVocity Software Pty Ltd trading as uniVocity Data Integration ABN 37 165 465 501 (referred to as "uniVocity", "we" or "us") and the user (referred to as "the User" or "you"), collectively referred to as the Parties or each a Party.
  
@@ -17,7 +17,7 @@ uniVocity License Agreement
 
 1.6. By using our Software and obtaining a License, you acknowledge that you have read and understood these Terms and you have the authority to act on behalf of any person or entity for whom you are using the Software, and you are deemed to have agreed to these Terms on behalf of any entity for whom you use the Software.
  
- 2. SOFTWARE
+2. SOFTWARE
 
 2.1. uniVocity grants the User the right to download and use the Software with the particular licenses available to the User according to the license type. This right is a non-exclusive, non-transferable, and limited by and subject to this Agreement. 
 
@@ -31,7 +31,7 @@ uniVocity License Agreement
 
 2.6. uniVocity will provide you with updates for the Software (Software Updates) in accordance with the form of Upgrade Support outlined in this Agreement. Software Updates will be valid only while your License is valid. 
 
- 3. ACCOUNT AND LICENSE 
+3. ACCOUNT AND LICENSE 
 
 3.1. The License you will receive is the License as outlined in this Agreement. 
 
@@ -59,13 +59,13 @@ uniVocity License Agreement
 
 3.13. Each non-perpetual License will expire after a set time period. If you wish to continue using the Software, you must renew the License by making appropriate payment for renewal. This payment can be made prior or after expiration, but you will not be able to access the Software, until payment is received.
  
- 4. PAYMENT
+4. PAYMENT
 
 4.1. When purchasing a Production License or Development License, the User will agree to pay the License Fee as required. 
 
 4.2. The User will may make payment by way of direct transfer or credit card. We will provide you with our bank details.
  
- 5. TERMINATION
+5. TERMINATION
 
 5.1. Prior to purchasing a Production or Development License, the User is encouraged to trial the Software by obtaining an Evaluation License. 
 
@@ -89,7 +89,7 @@ uniVocity License Agreement
 
 5.5. On expiration of your License, we will retain your documents (including copies) as required by law or regularity requirements. Your express or implied agreement to the Terms constitutes your authority for us to retain or destroy documents in accordance with the statutory periods, or on termination of these Terms.
 
- 6. USER OBLIGATONS
+6. USER OBLIGATONS
 
 6.1. The User warrants that all information provided to uniVocity is true, accurate and complete. 
 
@@ -127,7 +127,7 @@ uniVocity License Agreement
 
 6.7. Each User must have their own safeguards and back up processes in place to recover from any failures or loss of Data which might occur whilst using the Software.
   
- 7. PROHIBITED USE
+7. PROHIBITED USE
 
 7.1. You acknowledge and agree that you will not:
 
@@ -157,7 +157,7 @@ uniVocity License Agreement
 
 7.3. You acknowledge that any breaches of this clause may lead to termination of this Agreement.
 
- 8. CONFIDENTIAL INFORMATION
+8. CONFIDENTIAL INFORMATION
 
 8.1. Subject to clause The User's obligations set out in sub-clause 1 do not apply to Confidential Information:, the User agrees:
 
@@ -179,13 +179,13 @@ uniVocity License Agreement
 
 8.3. This clause CONFIDENTIAL INFORMATION will survive termination of this Agreement.
  
- 9. PRIVACY POLICY
+9. PRIVACY POLICY
 
 9.1. We agree to comply with the legal requirements of the Australian Privacy Principles as set out in the Privacy Act 1988 (Cth) and any other applicable legislation or privacy guidelines, as set out in our Privacy Policy which is available on our Site. 
 
 9.2. You will be taken to have read the terms of the Privacy Policy when you accept these Terms.
  
- 10. INTELLECTUAL PROPERTY
+10. INTELLECTUAL PROPERTY
 
 10.1. Title to, and all Intellectual Property rights in the Software, the Site, and any documentation relating to the Software, remain the property of uniVocity and its licensors. 
 
@@ -203,7 +203,7 @@ uniVocity License Agreement
 
 10.6. If the User enables third-party applications for use in conjunction with the Software, the User acknowledges that uniVocity may allow the providers of those third-party applications to access any inputted data as required for the interoperation of such third-party applications with the Software. uniVocity is not responsible for any disclosure, modification or deletion of data resulting from any such access by third-party application providers.
 
- 11. SUPPORT 
+11. SUPPORT 
 
 11.1. uniVocity can provide paid support services to the User. If you require technical support, please contact uniVocity at support@univocity.com. 
 
@@ -213,7 +213,7 @@ uniVocity License Agreement
 
 11.4. Whilst uniVocity intends that the Site should be available on a full-time basis, it is possible that the Site is unavailable to due to maintenance or other development activity. 
 
- 12. FEEDBACK AND DISPUTE RESOLUTION 
+12. FEEDBACK AND DISPUTE RESOLUTION 
 
 12.1. Your feedback is important to us.  We seek to resolve your concerns quickly and effectively. If you have any feedback or questions about our Services, please contact uniVocity at contact@univocity.com. 
 
@@ -225,7 +225,7 @@ uniVocity License Agreement
 
 12.3. Any attempts made by the Parties to resolve a dispute pursuant to this clause are without prejudice to other rights or entitlements of the Parties under these Terms, by law or in equity.
  
- 13. LIMITATION OF LIABILITY AND DISCLAIMERS
+13. LIMITATION OF LIABILITY AND DISCLAIMERS
 
 13.1. uniVocity and the User agree that uniVocity's liability for the services provided via the Site, Software and License is governed solely by the Australian Consumer Law to the extent applicable, and this Agreement. 
 
@@ -251,7 +251,7 @@ uniVocity License Agreement
 
 13.9. uniVocity or its licensors' liability for breach of any of its obligations under this Agreement for the Software, or breach of any warranty implied by law, will be limited, to the extent permitted by law, to the total price paid for the License to execute the Software. uniVocity's total liability to you for all damages in connection with the Software will not exceed the price paid by you under this Agreement for the License to use the Software. The foregoing limitations, exclusions and disclaimers will apply to the maximum extent permitted by applicable law, even if any remedy fails its essential purpose. 
 
- 14. AUSTRALIAN CONSUMER LAW 
+14. AUSTRALIAN CONSUMER LAW 
 
 14.1. Certain legislation including the Australian Consumer Law (ACL) in the Consumer and Competition Act 2010 (Cth), and similar consumer protection laws and regulations may confer you with rights, warranties, guarantees and remedies relating to the provision of services by us to you which cannot be excluded, restricted or modified (Statutory Rights).   
 
@@ -261,7 +261,7 @@ uniVocity License Agreement
 
 14.4. If you are a consumer as defined in the ACL, the following applies to you: We guarantee that the services we supply to you are rendered with due care and skill; fit for the purpose that we advertise, or that you have told us you are acquiring the services for or for a result which you have told us you wish the services achieve, unless we consider and disclose that this purpose is not achievable; and will be supplied within a reasonable time. To the extent we are unable to exclude liability; our total liability for loss or damage you suffer or incur from our services is limited to us re-supplying the services to you, or, at our option, us refunding to you the amount you have paid us for the services to which your claim relates.
 
- 15. INDEMNITY
+15. INDEMNITY
 
 15.1. You will be liable for and agree to indemnify, defend and hold us harmless for and against any and all claims, liabilities, suits, actions and expenses, including costs of litigation and reasonable legal costs, resulting directly or indirectly from: (i) any information that is not accurate, up to date or complete or is misleading or a misrepresentation; (ii) any breach of these Terms; (iii) and any misuse of the Software and/or License; from or by you, your employees, contractors or agents.
 
@@ -269,57 +269,57 @@ uniVocity License Agreement
 
 15.3. The obligations under this clause will survive termination of these Terms.
 
- 16. NOTICE
+16. NOTICE
 
 16.1. Any notice required or permitted to be given to the User under these Terms will be addressed to the User at the email address provided by the User when requesting a License.  
 
- 17. RELATIONSHIP OF PARTIES
+17. RELATIONSHIP OF PARTIES
 
 17.1. Neither Party is authorized to bind the other Party in any way without prior written consent of the other Party.
 
 17.2. The Parties acknowledge and agree that they will not seek to bind the other Party other than with the prior written consent of the other Party.
 
- 18. RIGHTS OF THIRD PARTIES
+18. RIGHTS OF THIRD PARTIES
 
 18.1. Any person or entity who is not a party to these Terms has no right to benefit under or to enforce any of these Terms. 
 
- 19. ASSIGNMENT
+19. ASSIGNMENT
 
 19.1. This Agreement is personal to the Parties.  A Party must not assign or deal with the whole or any part of its rights and/or obligations under this Agreement without the prior written consent of the other Parties (such consent not to be unreasonably withheld).
 
 19.2. Any purported dealing in breach of this clause is of no effect.
 
- 20. WAIVER OR VARIATION OF RIGHTS
+20. WAIVER OR VARIATION OF RIGHTS
 
 20.1. Any failure or delay by a Party in exercising a power or right (either wholly or partially) in relation to this Agreement does not operate as a waiver or prevent that Party from exercising that power or right or any other power or right.
 
 20.2. A Party is not liable to any other Party for any loss, cost or expense that may have been caused or contributed to by the failure, delay, waiver or exercise of a power or right.
 
- 21. POWERS, RIGHTS AND REMEDIES
+21. POWERS, RIGHTS AND REMEDIES
 
 21.1. Except as expressly stated to the contrary in this Agreement, the powers, rights and/or remedies of a Party under this Agreement are cumulative and are in addition to any other powers, rights and remedies of that Party.  Nothing in this Agreement merges, extinguishes, postpones, lessens or otherwise prejudicially affects any power, right, or remedy that a Party may have at any time against the other Party to this Agreement or any other person.
 
- 22. FORCE MAJEURE
+22. FORCE MAJEURE
 
 22.1. Neither Party will be liable for any delay in performing any of its obligations under this Agreement if such delay is caused by circumstances beyond the reasonable control of the party so delaying, and such party will be entitled to a reasonable extension of time for the performance of such obligations.
 
- 23. CONSENTS AND APPROVALS
+23. CONSENTS AND APPROVALS
 
 23.1. Where this Agreement provides that a Party may conditionally or unconditionally give or withhold any consent or approval in relation to any matter in this Agreement, that Party may in its absolute discretion, and without being obliged to give reasons for doing so, withhold any consent or approval or give consent or approval conditionally or unconditionally. 
 
- 24. FURTHER ASSURANCE
+24. FURTHER ASSURANCE
 
 24.1. Each Party must from time to time and in a timely manner do all things reasonably required of it by another Party to give effect to this Agreement. 
 
- 25. ENFORCEABILITY 
+25. ENFORCEABILITY 
 
 25.1. If any provision of these Terms is held by any competent authority to be invalid or unenforceable in whole or in part, the validity of the other provisions of these Terms and the remainder of the provisions in question will not be affected. 
 
- 26. COUNTERPARTS 
+26. COUNTERPARTS 
 
 26.1. This Agreement may be executed in any number of counterparts and, if so, the counterparts taken together will constitute one and the same Agreement. 
 
- 27. ENTIRE AGREEMENT AND UNDERSTANDING
+27. ENTIRE AGREEMENT AND UNDERSTANDING
 	
 27.1. The date of this Agreement is the date that these Terms are accepted by the User.
  
@@ -329,11 +329,11 @@ uniVocity License Agreement
 
   (b) all previous oral and written communications, representations, warranties or commitments are superseded by this Agreement and do not affect the interpretation or meaning of this Agreement. 
 
- 28. GOVERNING LAW AND JURISDICTION
+28. GOVERNING LAW AND JURISDICTION
 
 28.1. This Agreement is governed by the laws of South Australia. Each party irrevocably and unconditionally submits to the non-exclusive jurisdiction of the courts of South Australia. 
 
- 29. DEFINITIONS
+29. DEFINITIONS
 
 Confidential Information includes confidential information about the business, structure, programs, processes, methods, operating procedures, activities, products and services, trade secrets, know how, financial, accounting, marketing and technical information, customer and supplier lists (including prospective customer and supplier information), ideas, concepts, know-how, Intellectual Property, technology, and other information whether or not such information is reduced to a tangible form or marked in writing as "confidential".
 
