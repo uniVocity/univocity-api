@@ -43,7 +43,7 @@ public interface EntityMapping {
 	 * Configures the mapping of one or more fields in the source entity that are used to construct a reference to a destination entity.
 	 * The source fields will be used for querying uniVocity's metadata to restore values associated to the identifier of an entity. For example:
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 * //Maps fields "nbr" and "seq" from the source entity "WGT" to a destination entity "weight"
 	 *
 	 * EntityMapping weightMapping = mapping.map("WGT", "weight");
@@ -63,7 +63,7 @@ public interface EntityMapping {
 	 *
 	 * With this information on the metadata, a reference mapping can be defined as:
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 * //Uses fields "nbr" and "seq" from the source entity "WGT" to obtain the identifier associated to "weight".
 	 * //After getting the correct identifier of "weight", copy it to "weight_id"
 	 *
@@ -210,7 +210,7 @@ public interface EntityMapping {
 	 *
 	 * <p>Input sharing has performance implications and can also affect how the data mapping process is organized. For example, consider the following mappings:
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 * //Maps fields "nbr" and "seq" from the source entity "WGT" to a destination entity "weight"
 	 * EntityMapping weightMapping = mapping.map("WGT", "weight");
 	 * weightMapping.identity().associate("nbr", "seq").toGeneratedId("id");
@@ -250,9 +250,9 @@ public interface EntityMapping {
 	 * Defines whether data read from the source entity in this mapping can be shared and reused by the previous or the next entity mapping. Irrespective of any configuration,
 	 * the input will only be shared if the source entity in the next entity mapping uses the same source entity, and this method returns true in both mappings.
 	 *
-	 * <p>Input sharing has performance implications and can also affect how the data mapping process is organized. For example, consider the following mappings:
+	 * <p>Input sharing has performance implications and can also affect how the data mapping process is organized. For example, consider the following mappings:</p>
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 * //Maps fields "nbr" and "seq" from the source entity "WGT" to a destination entity "weight"
 	 * EntityMapping weightMapping = mapping.map("WGT", "weight");
 	 * weightMapping.identity().associate("nbr", "seq").toGeneratedId("id");

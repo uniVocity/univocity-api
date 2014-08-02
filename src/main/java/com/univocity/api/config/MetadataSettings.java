@@ -20,13 +20,13 @@ import com.univocity.api.entity.jdbc.*;
  * when the application is shut down.
  *
  * <p>uniVocity requires two database tables only: by default, these have the names "univocity_metadata" and "univocity_tmp".
- * The scripts to create these tables are provided with the univocity implementation package, under the "metadata" folder.
+ * The scripts to create these tables are provided with the univocity implementation package, under the "metadata" folder.</p>
  *
- * <p><i><b>Important: </b> always refer to the script on the implementation package as it could have been modified to adapt to the specific implementation requirements.</i>
+ * <p><i><b>Important: </b> always refer to the script on the implementation package as it could have been modified to adapt to the specific implementation requirements.</i></p>
  *
- * <p>Just as a reference, the table creation script should be similar to the following:
+ * <p>Just as a reference, the table creation script should be similar to the following:</p>
  *
- * <p><blockquote><pre>
+ * <hr><blockquote><pre>
  *	CREATE TABLE univocity_metadata (
  *		source				VARCHAR(256) NOT NULL,
  *		source_id			VARCHAR(256) NOT NULL,
@@ -47,7 +47,7 @@ import com.univocity.api.entity.jdbc.*;
  *		batch_id			CHARACTER(36) DEFAULT NULL,
  *		CONSTRAINT pk_univocity_tmp PRIMARY KEY (table_name, table_id)
  *	)
- * </pre></blockquote>
+ * </pre></blockquote><hr>
  *
  * @see EngineConfiguration
  *
@@ -101,7 +101,7 @@ public final class MetadataSettings {
 
 	/**
 	 * Obtains the configured metadata table name configured for uniVocity.
-	 *  <p><i>Defaults to "univocity_metadata"</i>
+	 *  <p><i>Defaults to "univocity_metadata"</i></p>
 	 * @return the name of the metadata table
 	 */
 	public final String getMetadataTableName() {

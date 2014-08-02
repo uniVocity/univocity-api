@@ -36,8 +36,8 @@ public interface EngineExecutionContext {
 	 * 	</li>
 	 * </ul>
 	 *
-	 * Example:
-	 * <p><blockquote><pre>
+	 * <p>Example:</p>
+	 * <blockquote><pre>
 	 * setVariable("b", 1);
 	 * setVariable("e", 2);
 	 * evaluateExpression("a, $b, concat( d, $e, 'f')"); //assume the concat function concatenates any number of arguments into a String.

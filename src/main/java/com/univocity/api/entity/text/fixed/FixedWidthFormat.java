@@ -15,9 +15,9 @@ import com.univocity.api.entity.text.*;
  * <ul>
  *  <li><b>padding:</b> the character used for filling unwritten spaces in a fixed-width record.
  *  	<p>e.g. if a field has a length of 5 characters, but the value is 'ZZ', the field should contain <b>[ZZ   ]</b> (i.e. ZZ followed by 3 unwritten spaces).
- *  	<br>If the padding is set to '_', then the field will be written as <b>[ZZ___]</b></li>
+ *  	<br>If the padding is set to '_', then the field will be written as <b>[ZZ___]</b>
  *  	<p><i>{@link #padding} defaults to <b>' '</b></i>
- *  	<br>
+ *  	<br></li>
  * </ul>
  *
  * @see FixedWidthEntityConfiguration
@@ -33,7 +33,7 @@ public final class FixedWidthFormat extends TextFormat {
 	/**
 	 * Returns the character used for filling unwritten spaces in a fixed-width record.
 	 * 	<p>e.g. if a field has a length of 5 characters, but the value is 'ZZ', the field should contain <b>[ZZ   ]</b> (i.e. ZZ followed by 3 unwritten spaces).
-	 * 	<br>If the padding is set to '_', then the field will be written as <b>[ZZ___]</b></li>
+	 * 	<br>If the padding is set to '_', then the field will be written as <b>[ZZ___]</b>
 	 * 	<p><i>Defaults to ' '</i>
 	 * @return the padding character
 	 */
@@ -47,7 +47,7 @@ public final class FixedWidthFormat extends TextFormat {
 	/**
 	 * Defines the character used for filling unwritten spaces in a fixed-width record.
 	 * 	<p>e.g. if a field has a length of 5 characters, but the value is 'ZZ', the field should contain <b>[ZZ   ]</b> (i.e. ZZ followed by 3 unwritten spaces).
-	 * 	<br>If the padding is set to '_', then the field will be written as <b>[ZZ___]</b></li>
+	 * 	<br>If the padding is set to '_', then the field will be written as <b>[ZZ___]</b>
 	 * @param padding the padding character
 	 */
 	public final void setPadding(char padding) {

@@ -25,11 +25,11 @@ public interface GeneratedIdentifierTransform {
 	 * Defines what sequence of functions in the {@link DataIntegrationEngine} should be used to process values from an input field and transform them into values
 	 * that will then be associated to generated identifier of a destination entity.
 	 *
-	 * <p><i>This completes the configuration started in {@link IdentifierMappingSetup#associate(String...)} </i>
+	 * <p><i>This completes the configuration started in {@link IdentifierMappingSetup#associate(String...)} </i></p>
 	 *
 	 * @param functionNames the sequence of function names that will be executed against each value read from the input.
-	 * <p><i><i>Note: </i> this establishes a chaining of functions:
-	 *  				   If the first function trims strings, then the second function will receive a trimmed String instead of the original value.
+	 * <p><i>Note: </i> this establishes a chaining of functions:
+	 *  				If the first function trims strings, then the second function will receive a trimmed String instead of the original value.</p>
 	 */
 	public void readingWith(String... functionNames);
 }

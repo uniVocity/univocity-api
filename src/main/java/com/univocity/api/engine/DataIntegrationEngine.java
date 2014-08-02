@@ -133,6 +133,7 @@ public interface DataIntegrationEngine {
 	 *
 	 * <p><i><b>Note:</b> functions are accessible from any scope</i>.
 	 *
+	 * @param <F> the function call type
 	 * @param scope the scope of values returned by the given function. The engine will retain and reuse the result of each function call into the given scope.
 	 * @param name the name of the given function. This name can be used in expressions, followed by the function arguments.
 	 * @param function the actual implementation of the function.
@@ -143,10 +144,10 @@ public interface DataIntegrationEngine {
 	 * Creates a function backed by an implementation if {@link java.util.Map}. Functions based on a map accept only one parameter as argument, which is used as the key
 	 * to retrieve a value from the map. This map can be modified externally at any time.
 	 *
-	 * Examples:
-	 * <p><hr><blockquote><pre>
+	 * <p>Examples:</p>
+	 * <hr><blockquote><pre>
 	 *
-	 * Map<String, String> languages = new HashMap<String, String>();
+	 * Map&lt;String, String&gt; languages = new HashMap&lt;String, String&gt;();
 	 * locales.put("en_US", "American English");
 	 * locales.put("en_GB", "British English");
 	 * locales.put("en_AU", "Australian English");
@@ -162,6 +163,7 @@ public interface DataIntegrationEngine {
 	 * mapping.value().copy("lang_code").to("language_description").readingWith("languages");
 	 * </pre></blockquote><hr>
 	 *
+	 * @param <F> the map type
 	 * @param name the name of function
 	 * @param mapFunction the implementation of {@link java.util.Map} that will be used to store and fetch key-value pairs.
 	 */
@@ -174,7 +176,7 @@ public interface DataIntegrationEngine {
 	 * if query named as "selectLocaleId" is associated to the {@link EngineScope#CYCLE} scope, the value returned by multiple invocations of
 	 * "selectLocaleId('en_US')" will be reused until the end of a data mapping cycle.
 	 *
-	 * <p><i><b>Note:</b> The query-based function will be accessible from any scope</i>.
+	 * <p><i><b>Note:</b> The query-based function will be accessible from any scope</i>.</p>
 	 *
 	 * @param scope the scope of values returned by the query. The engine will retain and reuse the result of each query call into the given scope.
 	 * @param queryName the name of the given query. This name can be used in expressions, followed by the query arguments.
@@ -186,7 +188,7 @@ public interface DataIntegrationEngine {
 	 * Sets or adds then initializes a variable in the current scope. To read the value of a variable in expressions, prepend it with $.
 	 * For example: <code>"$en_US"</code> reads the value of the variable "en_US".
 	 *
-	 * <p>The scope of the new variable depends on the current active scope (see {@link EngineScope})
+	 * <p>The scope of the new variable depends on the current active scope (see {@link EngineScope})</p>
 	 *
 	 * @param name the name of the new variable
 	 * @param value the value of the variable to be set/created in the current scope.
@@ -198,7 +200,7 @@ public interface DataIntegrationEngine {
 	 * in {@link EngineConfiguration#getPersistentScopeStorageProvider()}, then the variable will be added/set using {@link EngineScope#APPLICATION}.
 	 *
 	 * <p>To read the value of a variable in expressions, prepend it with $.
-	 * For example: <code>"$en_US"</code> reads the value of the variable "en_US".
+	 * For example: <code>"$en_US"</code> reads the value of the variable "en_US".</p>
 	 *
 	 * @param name the name of the new variable added to the {@link EngineScope#PERSISTENT} scope
 	 * @param value the value of the variable to be set/created in the persistent scope.
@@ -209,7 +211,7 @@ public interface DataIntegrationEngine {
 	 * Adds a constant value that can accessed from any given scope. To read the value of a constant in expressions, prepend it with $.
 	 * For example: <code>"$en_US"</code> reads the value of the constant "en_US".
 	 *
-	 * <p>Constants cannot have their value modified.
+	 * <p>Constants cannot have their value modified.</p>
 	 *
 	 * @param name the name of the new constant
 	 * @param value the value of the constant
@@ -278,7 +280,7 @@ public interface DataIntegrationEngine {
 	 * <br>This will create a flag in uniVocity metadata tables for the given records, which prevents
 	 * data modifications on all rows already mapped.
 	 *
-	 * <p><i><b>Note: </b></i>This only takes effect if the entity mapping configuration uses uniVocity metadata information (i.e. {@link PersistenceSetup#usingMetadata()}).
+	 * <p><i><b>Note: </b></i>This only takes effect if the entity mapping configuration uses uniVocity metadata information (i.e. {@link PersistenceSetup#usingMetadata()}).</p>
 	 *
 	 * @param dataEntityName the name of the data entity to have some records disabled for updates.
 	 * @param dataset the dataset containing the identifiers of a mapped destination entity.
@@ -291,7 +293,7 @@ public interface DataIntegrationEngine {
 	 * <br>This will create a flag in uniVocity metadata tables for a given entity, which prevents
 	 * data modifications on all rows already mapped.
 	 *
-	 * <p><i><b>Note: </b></i>This only takes effect if the entity mapping configuration uses uniVocity metadata information (i.e. {@link PersistenceSetup#usingMetadata()}).
+	 * <p><i><b>Note: </b></i>This only takes effect if the entity mapping configuration uses uniVocity metadata information (i.e. {@link PersistenceSetup#usingMetadata()}).</p>
 	 *
 	 * @param dataEntityName the name of the data entity to have all records already mapped disabled for updates.
 	 */
@@ -319,12 +321,12 @@ public interface DataIntegrationEngine {
 	 * (started with {@link #executeCycle()} or {@link #executeCycle(DataIncrement)}).
 	 *
 	 * <p>By default, the sequence of mappings is executed by in the same sequence they were configured, however, entity mappings generated automatically (using
-	 * {@link DataStoreMapping#autodetectMappings()}) won't have the correct mapping sequence.
+	 * {@link DataStoreMapping#autodetectMappings()}) won't have the correct mapping sequence.</p>
 	 *
 	 * <p>This might be required to ensure data exclusions and updates occur in the proper sequence (which is usually the reverse order of insertion), and that
-	 * references to other entities are correctly populated.
+	 * references to other entities are correctly populated.</p>
 	 *
-	 * <p>If there are duplicate names from different data stores, these names must be written in the format <i><code>dataStoreName.entityName</code></i>.
+	 * <p>If there are duplicate names from different data stores, these names must be written in the format <i><code>dataStoreName.entityName</code></i>.</p>
 	 *
 	 * @param sequenceOfDestinationEntities the sequence of destination fields to be mapped. Not all destination entities need to be declared here. The ones that appear
 	 * in the sequence will be executed first, in the given order. Omitted data entities will have their mappings executed after the give sequence of mappings took place.
@@ -339,7 +341,7 @@ public interface DataIntegrationEngine {
 
 	/**
 	 * Executes a data mapping cycle against a {@link DataIncrement} object with all mappings configured in this engine using (i.e. through {@link #map(String, String)}),
-	 * <p>The data increment is used in place of one or more source data entities.
+	 * <p>The data increment is used in place of one or more source data entities.</p>
 	 *
 	 * @param increment The increment with data changes for one or more source entities that should be applied to the destination using the configured mappings.
 	 */
@@ -358,7 +360,7 @@ public interface DataIntegrationEngine {
 	 * If there are duplicate names from different data stores, these names must be written in the format <i><code>dataStoreName.entityName</code></i>.
 	 * The mappings will be executed in the same order the given entities are declared.
 	 *
-	 * <p>The data increment is used in place of one or more source data entities.
+	 * <p>The data increment is used in place of one or more source data entities.</p>
 	 *
 	 * @param increment the object with additional data to be used in place of one or more source data entities in this cycle.
 	 * @param destinationEntities the sequence of destination entities to receive data from the mappings.
@@ -373,7 +375,7 @@ public interface DataIntegrationEngine {
 
 	/**
 	 * Executes a data mapping cycle against a {@link DataIncrement} object with all mappings configured in this engine using (i.e. through {@link #map(String, String)}),
-	 * <p>The data increment is used in place of one or more source data entities.
+	 * <p>The data increment is used in place of one or more source data entities.</p>
 	 *
 	 * @param transactionConfig the configuration that defines how transactions should be created while executing mappings in this cycle.
 	 * @param increment The increment with data changes for one or more source entities that should be applied to the destination using the configured mappings.
@@ -394,7 +396,7 @@ public interface DataIntegrationEngine {
 	 * If there are duplicate names from different data stores, these names must be written in the format <i><code>dataStoreName.entityName</code></i>.
 	 * The mappings will be executed in the same order the given entities are declared.
 	 *
-	 * <p>The data increment is used in place of one or more source data entities.
+	 * <p>The data increment is used in place of one or more source data entities.</p>
 	 *
 	 * @param transactionConfig the configuration that defines how transactions should be created while executing mappings in this cycle.
 	 * @param increment the object with additional data to be used in place of one or more source data entities in this cycle.

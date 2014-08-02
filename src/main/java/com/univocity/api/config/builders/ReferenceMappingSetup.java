@@ -11,7 +11,7 @@ package com.univocity.api.config.builders;
  *
  * The source fields will be used for querying uniVocity's metadata to restore values associated to the identifier of an entity. For example:
  *
- * <p><hr><blockquote><pre>
+ * <hr><blockquote><pre>
  * //Maps fields "nbr" and "seq" from the source entity "WGT" to a destination entity "weight"
  *
  * EntityMapping weightMapping = mapping.map("WGT", "weight");
@@ -31,7 +31,7 @@ package com.univocity.api.config.builders;
  *
  * With this information on the metadata, a reference mapping can be defined as:
  *
- * <p><hr><blockquote><pre>
+ * <hr><blockquote><pre>
  * //Uses fields "wgt_nbr" and "wgt_seq" from the source entity "WGT_DET" to obtain the identifier associated to "weight".
  * //After getting the correct identifier of "weight", copy it to "weight_ref"
  *

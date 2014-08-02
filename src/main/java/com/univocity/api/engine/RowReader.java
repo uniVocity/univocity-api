@@ -46,7 +46,6 @@ public abstract class RowReader {
 	 * Processes a row extracted from the input.
 	 * @param inputRow the original data in a record read from the input data entity
 	 * @param outputRow the transformed data. The value of this parameter varies according to where the <code>RowReader</code> is applied in the {@link EntityMapping}:
-	 * <p>
 	 * <ul>
 	 * 	<li><i><b>while reading from input </b></i><code>{@link EntityMapping#addInputRowReader(RowReader)}</code>:
 	 * 		<br>outputRow will be null.

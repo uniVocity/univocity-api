@@ -23,7 +23,7 @@ public interface FieldMappingSetup {
 	 *
 	 * <p>Example:
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 * //Splits "field_name" using "split_function" to generate values to "field_1" and "field_2" in the destination entity.
 	 *
 	 *  mapping.value().split("field_name").with("split_function").into("field_1", "field_2");
@@ -39,7 +39,7 @@ public interface FieldMappingSetup {
 	 *
 	 * <p>Example:
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 *  //Merges "item", "price" and the result of the function "getDate()" using "pipe_separator_function"
 	 *  //to generate a single value for the field "receipt" in the destination entity.
 	 *
@@ -54,9 +54,9 @@ public interface FieldMappingSetup {
 	/**
 	 * Copies the value of one field from the source entity in an {@link EntityMapping} and write it to a field in the destination entity.
 	 *
-	 * <p>Example:
+	 * <p>Example:</p>
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 *  //Copies "CHO_Factor" to "carbohydrate_factor".
 	 *
 	 *  mapping.value().copy("CHO_Factor").to("carbohydrate_factor");
@@ -74,9 +74,9 @@ public interface FieldMappingSetup {
 	/**
 	 * Copies values of multiple fields from the source entity in an {@link EntityMapping} and write them to multiple fields in the destination entity.
 	 *
-	 * <p>Example:
+	 * <p>Example:</p>
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 *  //Copies "CHO_Factor", "Fat_Factor" and "Pro_Factor" to "carbohydrate_factor", "fat_factor" and "protein_factor" respectively.
 	 *
 	 *  mapping.value().copy("CHO_Factor", "Fat_Factor", "Pro_Factor").to("carbohydrate_factor", "fat_factor", "protein_factor");
@@ -93,9 +93,9 @@ public interface FieldMappingSetup {
 	 * This is used to obtain values from the input that might be required for custom processing such as logging, statistics or generating data structures and objects.
 	 * These values will be available to {@link RowReader}s while executing the mapping.
 	 *
-	 * <p>Example:
+	 * <p>Example:</p>
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 *  //Reads "CHO_Factor" and "Fat_Factor"  to memory for custom processing.
 	 *  mapping.value().read("CHO_Factor", "Fat_Factor");
 	 * </pre></blockquote><hr>

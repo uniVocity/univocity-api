@@ -34,8 +34,8 @@ public interface QueryResultReader {
 	 *  <li><b>multiple rows: </b>parameters must be compatible with <code>Object[][]</code></li>
 	 * </ul>
 	 *
-	 * <p><i><i>Note: </i> this establishes a chaining of functions:
-	 *  				   If the first function trims strings, then the second function will receive a trimmed String instead of the original value.
+	 * <p><i>Note: </i> this establishes a chaining of functions:
+	 *  				If the first function trims strings, then the second function will receive a trimmed String instead of the original value.
 	 *
 	 * @return the last step of the query configuration process: define how to handle an unexpected result from the execution of this query.
 	 */

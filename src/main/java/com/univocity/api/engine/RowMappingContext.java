@@ -26,9 +26,10 @@ public interface RowMappingContext extends EntityMappingContext, EngineExecution
 	/**
 	 * Discards the current row being processed. This behavior varies depending where the {@link RowReader} is applied:
 	 *
-	 * <li><i><b>while reading from the input </b></i><code>{@link EntityMapping#addInputRowReader(RowReader)}</code>:
+	 * <ul>
+	 *  <li><i><b>while reading from the input </b></i><code>{@link EntityMapping#addInputRowReader(RowReader)}</code>:
 	 * 		<br>discards the input row. The discarded row won't be available to <code>RowReader</code> instances that manipulate output rows.
-	 * </li>
+	 *  </li>
 	 *  <li><i><b>before writing to the output </b></i><code>{@link EntityMapping#addInputRowReader(RowReader)}</code>:
 	 *  	<br>discards the output row. The discarded row won't be available to <code>RowReader</code> instances that manipulate persisted rows.
 	 *  </li>

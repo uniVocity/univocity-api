@@ -129,9 +129,9 @@ public final class JdbcEntityConfiguration extends BaseJdbcEntityConfiguration {
 	 *
 	 * <p>If you can't use the {@link java.sql.Connection#TRANSACTION_SERIALIZABLE} transaction isolation level, then this strategy have data consistency implications you must be aware of:
 	 * <ul>
-	 * 	<li>When inserting rows to this entity, you must ensure no other process is modifying the database table.</i>
+	 * 	<li>When inserting rows to this entity, you must ensure no other process is modifying the database table.</li>
 	 *  <li>An exception will be thrown in case the key extraction query produces more (or less) results than the number of rows inserted, but you are still at risk of getting inconsistent data if another process adds or removes rows to the same table at the same time</li>
-	 *  <li>Consider using another generated key extraction strategy if there is any risk of data corruption.
+	 *  <li>Consider using another generated key extraction strategy if there is any risk of data corruption.</li>
 	 * </ul>
 	 *
 	 * @param generatedKeyColumn the name of the auto-generated key column of this table.

@@ -17,7 +17,7 @@ import com.univocity.api.engine.*;
  * </ul>
  *
  * The following example demonstrates how an identifier mapping can be written:
- * <p><hr><blockquote><pre>
+ * <hr><blockquote><pre>
  *  // The identifier of this mapping contains two fields: "id" and "locale".
  *  // The mapping associates source fields "number" and "seq" to derive the value of "id"
  *  // and executes a function to get the locale ID of "en_US" to derive the value of "locale"

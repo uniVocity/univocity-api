@@ -155,10 +155,11 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 	 * Defines whether or not a separate thread will be used to read characters from the input while parsing.
 	 * <ul>
 	 * 	<li><i>When enabled</i>, a reading thread will be started and load characters from the input, while the parser is processing its input buffer.
-	 * 		<br>This yields better performance, especially when reading from big input (>100 mb)</li>
+	 * 		<br>This yields better performance, especially when reading from big input (&gt;100 mb)</li>
 	 *  <li><i>When disabled</i>, the parsing process will briefly pause so the buffer can be replenished every time it is exhausted.
 	 *  	<br>This setting can be slightly more efficient when the input is small.</li>
-	 *  <p><i>Defaults to true if the number of available processors at runtime is greater than 1</i>
+	 * </ul>
+	 *  <i>Defaults to true if the number of available processors at runtime is greater than 1</i>
 	 * @return true if the input should be read on a separate thread, false otherwise
 	 */
 	public final boolean getReadInputOnSeparateThread() {
@@ -172,9 +173,10 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 	 * Defines whether or not a separate thread will be used to read characters from the input while parsing.
 	 * <ul>
 	 * 	<li><i>When enabled</i>, a reading thread will be started and load characters from the input, while the parser is processing its input buffer.
-	 * 		<br>This yields better performance, especially when reading from big input (>100 mb)</li>
+	 * 		<br>This yields better performance, especially when reading from big input (&gt;100 mb)</li>
 	 *  <li><i>When disabled</i>, the parsing process will briefly pause so the buffer can be replenished every time it is exhausted.
 	 *  	<br>This setting can be slightly more efficient when the input is small.</li>
+	 * </ul>
 	 * @param readInputOnSeparateThread the flag indicating whether or not the input should be read on a separate thread
 	 */
 	public final void setReadInputOnSeparateThread(boolean readInputOnSeparateThread) {
@@ -292,7 +294,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 
 	/**
 	 * Returns the input/output format settings for a given text. Each text format requires specific configuration,
-	 * but they all share common settings from {@link TextFormat}</li>
+	 * but they all share common settings from {@link TextFormat}
 	 * @return the text format settings.
 	 */
 	public final F getFormat() {
@@ -304,7 +306,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 
 	/**
 	 * Defines the input/output format settings for a given text. Each text format requires specific configuration,
-	 * but they all share common settings from {@link TextFormat}</li>
+	 * but they all share common settings from {@link TextFormat}
 	 * @param format the text format settings.
 	 */
 	public final void setFormat(F format) {

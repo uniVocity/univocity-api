@@ -24,7 +24,6 @@ import com.univocity.api.entity.*;
  *		</ul>
  *   	<i>{@link #lineSeparator} defaults to the system line separator</i>
  *  </li>
- *  <p>
  *  <li><b>normalizedNewLine:</b> a single character used to represent the end of a line uniformly in any parsed content. It has the following implications:
  *  	<ul>
  *			<li>When <i>reading</i> a text-based input, the sequence of characters defined in {@link #lineSeparator} will be replaced by this character.</li>
@@ -32,9 +31,8 @@ import com.univocity.api.entity.*;
  *		</ul>
  *  	<p><i>{@link #normalizedNewline} defaults to '\n'.</i>
  *  </li>
- *  <p>
- *  <li><b>comment:</b>a character that, if found in the beginning of a line of text, represents comment in any text-based input supported by uniVocity.</li>
- *  	<p><i>{@link #comment} defaults to '#'.</i>
+ *  <li><b>comment:</b>a character that, if found in the beginning of a line of text, represents comment in any text-based input supported by uniVocity.
+ *  	<p><i>{@link #comment} defaults to '#'.</i></li>
  * </ul>
  *
  * @see com.univocity.api.entity.text.csv.CsvFormat
