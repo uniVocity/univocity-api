@@ -30,8 +30,8 @@ public interface CopyTransform {
 	 * <p><i>This completes the configuration started in {@link FieldMappingSetup#copy(String)}, {@link FieldMappingSetup#copy(String...)} or {@link FieldMappingSetup#read(String...)} </i>
 	 *
 	 * @param functionNames the sequence of function names that will be executed against each value read from the input.
-	 * <p><i><i>Note: </i> this establishes a chaining of functions:
-	 *  				   If the first function trims strings, then the second function will receive a trimmed String instead of the original value.
+	 * <p><i>Note: </i> this establishes a chaining of functions:
+	 *  				If the first function trims strings, then the second function will receive a trimmed String instead of the original value.
 	 */
 	public void readingWith(String... functionNames);
 }

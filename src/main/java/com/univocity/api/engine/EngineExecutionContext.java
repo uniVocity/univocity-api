@@ -18,26 +18,26 @@ public interface EngineExecutionContext {
 	 * Executes an expression and returns the result. Acceptable expressions conform to the following format:
 	 *
 	 * <ul>
-	 *  <li>variables and constant names are prefixed with $</li>
-	 *  <li>a function call is represented by its name and a sequence of parameters, if any, between () and separated by commas.
+	 *  <li>Variables and constant names are prefixed with {@code $}</li>
+	 *  <li>A function call is represented by its name and a sequence of parameters, if any, between {@code ()} and separated by commas.
 	 *      Additional expressions such as function calls are accepted as parameters.
 	 *  </li>
-	 *  <li>a single expression can return multiple values. Each value must be separated by a comma.</li>
-	 *  <li>the word "null", without quotes, will be evaluated as a null object; 'null' will be evaluated to the "null" String.
+	 *  <li>A single expression can return multiple values. Each value must be separated by a comma.</li>
+	 *  <li>The word "null", without quotes, will be evaluated as a {@code null} object; 'null' will be evaluated to the "null" {@code String}.
 	 *  </li>
-	 *  <li>any value between single quotes is interpreted as a String literal. Single quotes are only required if the String literal contains:
+	 *  <li>Any value between single quotes is interpreted as a {@code String} literal. Single quotes are only required if the {@code String} literal contains:
 	 *  	<ul>
-	 *  		<li>leading or trailing white spaces.</li>
+	 *  		<li>leading or trailing white spaces,</li>
 	 *  		<li>any of the following characters: <code> $ ) ' ( , </code> </li>
 	 *  		<li>in case the single quote is part of the value, it must be escaped with an addition single quote:
-	 *  			<p>the expression: <code>"' '' this is escaped ''  '"</code> will be parsed as the String<code>" ' this is escaped ' "</code>
+	 *  			<p>the expression: <code>"' '' this is escaped ''  '"</code> will be parsed as the string <code>" ' this is escaped ' "</code>
 	 *  		</li>
 	 *  	</ul>
 	 * 	</li>
 	 * </ul>
 	 *
-	 * Example:
-	 * <p><blockquote><pre>
+	 * <p>Example:</p>
+	 * <blockquote><pre>
 	 * setVariable("b", 1);
 	 * setVariable("e", 2);
 	 * evaluateExpression("a, $b, concat( d, $e, 'f')"); //assume the concat function concatenates any number of arguments into a String.
@@ -65,8 +65,8 @@ public interface EngineExecutionContext {
 
 	/**
 	 * Queries the current scope for the existence of a variable
-	 * @param variableName the name of the variable have its existence verified
-	 * @return true if the current scope contains the given variable, false otherwise.
+	 * @param variableName the name of the variable to have its existence verified
+	 * @return {@code true} if the current scope contains the given variable, otherwise {@code false}.
 	 */
 	public boolean containsVariable(String variableName);
 
@@ -75,14 +75,14 @@ public interface EngineExecutionContext {
 	 *
 	 * @param functionName the name of the function to be invoked
 	 * @param args the arguments to pass to the function
-	 * @return the result of the function execution with the given arguments. Results can be cached depending on the scope it is associated to.
+	 * @return the result of the function execution with the given arguments. Results can be cached depending on the scope with which they are associated.
 	 * In this case the function will only be invoked if there is no previous result cached on its scope.
 	 */
 	public Object executeFunction(String functionName, Object... args);
 
 	/**
 	 * Returns the current active scope in the {@link DataIntegrationEngine}
-	 * @return the current scope
+	 * @return the current active scope
 	 */
 	public EngineScope getCurrentActiveScope();
 }

@@ -47,7 +47,7 @@ public interface QueryDefinition {
 	/**
 	 * Uses a query definition from a file.
 	 * @param query the file containing a query definition that the data store is able to recognize and execute to produce values.
-	 * @param encoding the encoding that should be used to read the given file.</i>
+	 * @param encoding the encoding that should be used to read the given file.
 	 * @return the next step of this configuration: determine how the result of this query should be read.
 	 */
 	public QueryResult fromFile(File query, String encoding);
@@ -55,7 +55,7 @@ public interface QueryDefinition {
 	/**
 	 * Uses a query definition from a resource available either in the classpath or the file system.
 	 * @param resourcePath the path to a resource containing a query definition that the data store is able to recognize and execute to produce values.
-	 * @param encoding the encoding that should be used to read the given resource.</i>
+	 * @param encoding the encoding that should be used to read the given resource.
 	 * @return the next step of this configuration: determine how the result of this query should be read.
 	 */
 	public QueryResult fromResource(String resourcePath, String encoding);
@@ -63,7 +63,7 @@ public interface QueryDefinition {
 	/**
 	 * Uses a query definition from a file.
 	 * @param query the file containing a query definition that the data store is able to recognize and execute to produce values.
-	 * @param encoding the encoding that should be used to read the given file.</i>
+	 * @param encoding the encoding that should be used to read the given file.
 	 * @return the next step of this configuration: determine how the result of this query should be read.
 	 */
 	public QueryResult fromFile(File query, Charset encoding);
@@ -71,7 +71,7 @@ public interface QueryDefinition {
 	/**
 	 * Uses a query definition from a resource available either in the classpath or the file system.
 	 * @param resourcePath the path to a resource containing a query definition that the data store is able to recognize and execute to produce values.
-	 * @param encoding the encoding that should be used to read the given resource.</i>
+	 * @param encoding the encoding that should be used to read the given resource.
 	 * @return the next step of this configuration: determine how the result of this query should be read.
 	 */
 	public QueryResult fromResource(String resourcePath, Charset encoding);

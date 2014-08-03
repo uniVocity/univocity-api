@@ -25,13 +25,13 @@ public final class CsvEntityConfiguration extends TextEntityConfiguration<CsvFor
 	}
 
 	/**
-	 * Defines a default value to be used in substitution of null when there are empty values within quotes in a CSV record.
+	 * Defines a default value to be used in substitution of {@code null} when there are empty values within quotes in a CSV record.
 	 * <ul>
-	 *	<li><i>when reading:</i> if a value parsed from the input is empty, and the value was enclosed within quotes, then emptyValue is used instead of null.</li>
-	 *  <li><i>when writing:</i> if the String representation of a value is empty, emptyValue is written instead of an empty String.</li>
+	 *	<li><i>when reading:</i> if a value parsed from the input is empty, and the value was enclosed within quotes, then {@code emptyValue} is used instead of {@code null}.</li>
+	 *  <li><i>when writing:</i> if the string representation of a value is empty, {@code emptyValue} is written instead of an empty string.</li>
 	 * </ul>
-	 * <p><i>defaults to null.</i>
-	 * @return the default value used instead of null when reading and writing empty (but not null) fields.
+	 * <p><i>defaults to {@code null}.</i>
+	 * @return the default value used instead of {@code null} when reading and writing empty (but not {@code null}) fields.
 	 */
 	public final String getEmptyValue() {
 		if (!emptyValueSet) {
@@ -41,12 +41,12 @@ public final class CsvEntityConfiguration extends TextEntityConfiguration<CsvFor
 	}
 
 	/**
-	 * Defines a default value to be used in substitution of null when there are empty values within quotes in a CSV record.
+	 * Defines a default value to be used in substitution of {@code null} when there are empty values within quotes in a CSV record.
 	 * <ul>
-	 *	<li><i>when reading:</i> if a value parsed from the input is empty, and the value was enclosed within quotes, then emptyValue is used instead of null.</li>
-	 *  <li><i>when writing:</i> if the String representation of a value is empty, emptyValue is written instead of an empty String.</li>
+	 *	<li><i>when reading:</i> if a value parsed from the input is empty, and the value was enclosed within quotes, then {@code emptyValue} is used instead of {@code null}.</li>
+	 *  <li><i>when writing:</i> if the string representation of a value is empty, {@code emptyValue} is written instead of an empty string.</li>
 	 * </ul>
-	 * @param emptyValue the default value used instead of null when reading and writing empty (but not null) fields.
+	 * @param emptyValue the default value used instead of {@code null} when reading and writing empty (but not {@code null}) fields.
 	 */
 	public final void setEmptyValue(String emptyValue) {
 		this.emptyValue = emptyValue;
@@ -54,7 +54,7 @@ public final class CsvEntityConfiguration extends TextEntityConfiguration<CsvFor
 
 	/**
 	 * Defines whether or not all values should be enclosed within quotes (as specified in {@link CsvFormat#getQuote()}) when writing.
-	 * <p>When writing, by default only values that contain a field separator are enclosed within quotes. Set this property to true to enclose all values within quotes.
+	 * <p>When writing, by default only values that contain a field separator are enclosed within quotes. Set this property to {@code true} to enclose all values within quotes.
 	 *
 	 * @param quoteAllValues a flag indicating whether or not to enclose all values within quotes when writing.
 	 */
@@ -74,7 +74,7 @@ public final class CsvEntityConfiguration extends TextEntityConfiguration<CsvFor
 	}
 
 	/**
-	 * Creates a new default {@link CsvFormat} instance
+	 * Creates a new default {@link CsvFormat} instance.
 	 */
 	@Override
 	protected final CsvFormat newDefaultFormat() {

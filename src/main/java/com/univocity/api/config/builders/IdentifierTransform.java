@@ -26,8 +26,8 @@ public interface IdentifierTransform extends AdditionalIdentifiers {
 	 * that will then be associated to the identifiers of a destination entity.
 	 *
 	 * @param functionNames the sequence of function names that will be executed against each value read from the input.
-	 * <p><i><i>Note: </i> this establishes a chaining of functions:
-	 *  				   If the first function trims strings, then the second function will receive a trimmed String instead of the original value.
+	 * <p><i>Note: </i> this establishes a chaining of functions:
+	 *  				If the first function trims strings, then the second function will receive a trimmed String instead of the original value.</p>
 	 *
 	 * @return an optional next step of this configuration to associate additional fields from the source entity in to more identifier fields of the destination entity.
 	 */

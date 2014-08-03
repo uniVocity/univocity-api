@@ -13,7 +13,7 @@ import com.univocity.api.config.builders.*;
  * By default, {@link DataStoreMapping#autodetectMappings()} and {@link EntityMapping#autodetectMappings()} will automatically
  * create associations between entities and their fields based on their names.
  * Entities with similar names will be automatically associated. Underscores and spaces are ignored, for example: <code>entity1</code> will
- * be associated to <code>ENTITY 1</code> or <code>ENTITY_1</code>
+ * be associated with <code>ENTITY 1</code> or <code>ENTITY_1</code>
  *
  * <p>To override this behavior and provide a custom auto detection mechanism,
  * {@link DataStoreMapping#autodetectMappings(NameMatcher, NameMatcher)} and {@link EntityMapping#autodetectMappings(NameMatcher)}
@@ -29,9 +29,9 @@ public interface NameMatcher {
 
 	/**
 	 * Identifies whether two entity or field names match and should be associated to each other automatically.
-	 * @param nameOnsource the name in the source
-	 * @param nameOnDestination the name in the destination
-	 * @return true if the entity of field name on source must be mapped to the entity or field name in the destination; false otherwise.
+	 * @param nameInSource the name in the source
+	 * @param nameInDestination the name in the destination
+	 * @return {@code true} if the entity of field name in source must be mapped to the entity or field name in the destination, otherwise {@code false}.
 	 */
-	public boolean matches(String nameOnsource, String nameOnDestination);
+	public boolean matches(String nameInSource, String nameInDestination);
 }

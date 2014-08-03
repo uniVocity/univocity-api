@@ -23,7 +23,7 @@ public interface FieldMappingSetup {
 	 *
 	 * <p>Example:
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 * //Splits "field_name" using "split_function" to generate values to "field_1" and "field_2" in the destination entity.
 	 *
 	 *  mapping.value().split("field_name").with("split_function").into("field_1", "field_2");
@@ -35,11 +35,11 @@ public interface FieldMappingSetup {
 	public Split split(String sourceField);
 
 	/**
-	 * Merges values of multiple fields from the source entity in an {@link EntityMapping} and merge them into a single value using a function.
+	 * Takes values of multiple fields from the source entity in an {@link EntityMapping} and merges them into a single value using a function.
 	 *
 	 * <p>Example:
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 *  //Merges "item", "price" and the result of the function "getDate()" using "pipe_separator_function"
 	 *  //to generate a single value for the field "receipt" in the destination entity.
 	 *
@@ -52,11 +52,11 @@ public interface FieldMappingSetup {
 	public Merge merge(String... sourceFields);
 
 	/**
-	 * Copies the value of one field from the source entity in an {@link EntityMapping} and write it to a field in the destination entity.
+	 * Copies the value of one field from the source entity in an {@link EntityMapping} and writes it to a field in the destination entity.
 	 *
-	 * <p>Example:
+	 * <p>Example:</p>
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 *  //Copies "CHO_Factor" to "carbohydrate_factor".
 	 *
 	 *  mapping.value().copy("CHO_Factor").to("carbohydrate_factor");
@@ -72,11 +72,11 @@ public interface FieldMappingSetup {
 	public CopyToSingleField copy(String sourceField);
 
 	/**
-	 * Copies values of multiple fields from the source entity in an {@link EntityMapping} and write them to multiple fields in the destination entity.
+	 * Copies values of multiple fields from the source entity in an {@link EntityMapping} and writes them to multiple fields in the destination entity.
 	 *
-	 * <p>Example:
+	 * <p>Example:</p>
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 *  //Copies "CHO_Factor", "Fat_Factor" and "Pro_Factor" to "carbohydrate_factor", "fat_factor" and "protein_factor" respectively.
 	 *
 	 *  mapping.value().copy("CHO_Factor", "Fat_Factor", "Pro_Factor").to("carbohydrate_factor", "fat_factor", "protein_factor");
@@ -89,13 +89,13 @@ public interface FieldMappingSetup {
 	public CopyToMultipleFields copy(String... sourceFields);
 
 	/**
-	 * Reads values of multiple fields from the source entity in an {@link EntityMapping} but does not transfer them to the destination.
+	 * Reads values of multiple fields from the source entity in an {@link EntityMapping}, but does not transfer them to the destination.
 	 * This is used to obtain values from the input that might be required for custom processing such as logging, statistics or generating data structures and objects.
 	 * These values will be available to {@link RowReader}s while executing the mapping.
 	 *
-	 * <p>Example:
+	 * <p>Example:</p>
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 *  //Reads "CHO_Factor" and "Fat_Factor"  to memory for custom processing.
 	 *  mapping.value().read("CHO_Factor", "Fat_Factor");
 	 * </pre></blockquote><hr>

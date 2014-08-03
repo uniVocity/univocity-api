@@ -13,7 +13,7 @@ import com.univocity.api.entity.custom.*;
 
 /**
  * This is the parent class for all configuration classes used by text-based data entities.
- * It provides essential configuration settings and sensible defaults for reading from and writing to text in conformity to a particular format (such as CSV, for example).
+ * It provides essential configuration settings and sensible defaults for reading from and writing to text in conformance to a particular format (such as CSV, for example).
  *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
@@ -33,9 +33,9 @@ public abstract class TextEntityConfiguration<F extends TextFormat> extends Text
 
 	/**
 	 * Returns the sequence of field names used to refer to columns in the input/output text of an entity.
-	 * This overrides any headers extracted from a text input (when {@link #isHeaderExtractionEnabled()} == true)
-	 * <p><i>defaults to null.</i>
-	 * @return the field name sequence to be associated to each column in the input/output.
+	 * This overrides any headers extracted from a text input (when {@link #isHeaderExtractionEnabled()}{@code == true})
+	 * <p><i>Defaults to {@code null}.</i>
+	 * @return the field name sequence to be associated with each column in the input/output.
 	 */
 	public String[] getHeaders() {
 		return headers == null ? null : headers.clone();
@@ -43,8 +43,8 @@ public abstract class TextEntityConfiguration<F extends TextFormat> extends Text
 
 	/**
 	 * Defines a sequence of field names used to refer to columns in the input/output text of an entity.
-	 * This overrides any headers extracted from a text input (when {@link #isHeaderExtractionEnabled()} == true)
-	 * @param headers the field name sequence to be associated to each column in the input/output.
+	 * This overrides any headers extracted from a text input (when {@link #isHeaderExtractionEnabled()}{@code == true})
+	 * @param headers the field name sequence to be associated with each column in the input/output.
 	 */
 	public void setHeaders(String... headers) {
 		Args.notEmpty(headers, "Header sequence");
@@ -65,16 +65,16 @@ public abstract class TextEntityConfiguration<F extends TextFormat> extends Text
 	/**
 	 * Returns the sequence of field names to use as data entity identifiers.
 	 * <p><i>defaults to null.</i>
-	 * @return sequence of field names to use as identifiers of each record of the data entity
+	 * @return the sequence of field names to use as identifiers of each record of the data entity
 	 */
 	public String[] getIdentifiers() {
 		return identifiers == null ? null : identifiers.clone();
 	}
 
 	/**
-	 * Defines the number of valid records to be parsed before the reading process is stopped.
+	 * Returns the number of valid records to be parsed before the reading process is stopped.
 	 * <br>A negative value indicates there's no limit and all records in the input will be read.
-	 * <p><i>defaults to -1.</i>
+	 * <p><i>Defaults to -1.</i>
 	 *
 	 * @return the number of records to read before stopping the reading process.
 	 */
@@ -85,7 +85,7 @@ public abstract class TextEntityConfiguration<F extends TextFormat> extends Text
 	/**
 	 * Defines the number of valid records to be parsed before the reading process is stopped.
 	 * <br>A negative value indicates there's no limit and all records in the input will be read.
-	 * <p><i>defaults to -1.</i>
+	 * <p><i>Defaults to -1.</i>
 	 *
 	 * @param numberOfRecordsToRead the number of records to read before stopping the reading process.
 	 */
@@ -98,8 +98,8 @@ public abstract class TextEntityConfiguration<F extends TextFormat> extends Text
 
 	/**
 	 * Returns the length of each column of records returned by the data entity.
-	 * <br>This information is only used when enabling database-like operations on the entity through {@link DataStoreConfiguration#enableDatabaseOperationsIn(String...)}
-	 * <p><i>defaults to null.</i>
+	 * <br>This information is only used when enabling database-like operations on the entity via {@link DataStoreConfiguration#enableDatabaseOperationsIn(String...)}
+	 * <p><i>Defaults to {@code null}.</i>
 	 * @return fieldLengths the length of each field of the records produced by the data entity.
 	 */
 	public int[] getFieldLengths() {
@@ -118,7 +118,7 @@ public abstract class TextEntityConfiguration<F extends TextFormat> extends Text
 	}
 
 	/**
-	 * Validates headers and information associated to them
+	 * Validates headers and information associated with them.
 	 * @param headers the headers to validate
 	 * @param identifiers the identifiers that can be found among the given headers
 	 * @param lengths the lengths of each field
@@ -158,8 +158,8 @@ public abstract class TextEntityConfiguration<F extends TextFormat> extends Text
 
 	/**
 	 * Defines a sequence of field names used to refer to columns in the input/output text of an entity, along with their lengths.
-	 * This overrides any headers extracted from a text input (when {@link #isHeaderExtractionEnabled()} == true)
-	 * @param fields a {@link LinkedHashMap} containing the sequence of fields to be associated to each column in the input/output, with their respective length.
+	 * This overrides any headers extracted from a text input (when {@link #isHeaderExtractionEnabled()}{@code == true})
+	 * @param fields a {@link LinkedHashMap} containing the sequence of fields to be associated with each column in the input/output, with their respective lengths.
 	 */
 	public void setFieldsAndLengths(LinkedHashMap<String, Integer> fields) {
 		Args.notNull(fields, "Map of field and their lengths");

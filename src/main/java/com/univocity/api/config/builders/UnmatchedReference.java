@@ -11,7 +11,7 @@ package com.univocity.api.config.builders;
  *
  * <p>It is used as an access point for further configuration options that define how to handle references that could not be matched.
  *
- * <p>For example, consider the following information in uniVocity's metadata:
+ * <p>For example, consider the following information in uniVocity's metadata:</p>
  *
  * <hr><blockquote><pre>
  * Source entity (WGT)    Destination entity (weight)
@@ -22,16 +22,16 @@ package com.univocity.api.config.builders;
  *     002 | 1                       3
  * </pre></blockquote><hr>
  *
- * <p>And the following mapping:
- * <p><hr><blockquote><pre>
+ * <p>And the following mapping:</p>
+ * <hr><blockquote><pre>
  * EntityMapping weightDetails = mapping.map("WGT_DET", "weight_details");
  * weightDetails.reference().using("wgt_nbr", "wgt_seq").referTo("WGT", "weight").on("weight_ref");
  * </pre></blockquote><hr>
  *
  * <p>If a record in the source entity <code>WGT_DET</code> contains <code>wgt_nbr = 1, seq = 3</code> and this is used to refer to
- * <code>WGT</code>, no results will come from uniVocity's metadata.
+ * <code>WGT</code>, no results will come from uniVocity's metadata.</p>
  *
- * <p>This configuration class gives some options to handle such situations.
+ * <p>This configuration class gives some options to handle such situations.</p>
  *
  * @see ReferenceMappingSetup
  * @see UnmatchedReferenceHandling

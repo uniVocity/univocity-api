@@ -22,7 +22,7 @@ public interface DataIntegrationEngineFactory {
 	/**
 	 * Obtains the {@link DataIntegrationEngine} instance which was configured using {@link Univocity#registerEngine(com.univocity.api.config.EngineConfiguration)}
 	 * @param engineName the name of the data integration engine
-	 * @return the {@link DataIntegrationEngine} associated to the given engine name
+	 * @return the {@link DataIntegrationEngine} associated with the given engine name
 	 */
 	public DataIntegrationEngine getEngine(String engineName);
 
@@ -36,8 +36,8 @@ public interface DataIntegrationEngineFactory {
 	public void shutdown(String engineName);
 
 	/**
-	 * Informs whether or not a given data integration engine is active.
-	 * <p>An active engine is one that has been instantiated through {@link DataIntegrationEngineFactory#getEngine(String)} and has to been shut down yet
+	 * Is the data integration engine with the given name active?
+	 * <p>An active engine is one that has been instantiated via {@link DataIntegrationEngineFactory#getEngine(String)} and has yet to be shut down.
 	 *
 	 * @param engineName the name of the engine to be verified.
 	 * @return true if the {@link DataIntegrationEngine} associated to the given engine name is active, false otherwise

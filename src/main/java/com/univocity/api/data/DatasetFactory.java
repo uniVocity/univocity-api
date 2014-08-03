@@ -40,6 +40,7 @@ public interface DatasetFactory {
 	/**
 	 * Creates a new modifiable dataset, where records have a single column.
 	 * <br>This dataset is backed by a collection of objects and contains only one field. This field is also the identifier.
+	 * @param <T> the row type
 	 * @param rows the rows in the dataset
 	 * @param fieldName the name of the single field all records in this dataset have.
 	 * @return a new single-column, modifiable, dataset.
@@ -48,7 +49,7 @@ public interface DatasetFactory {
 
 	/**
 	 * Creates a new modifiable dataset, backed by a map.
-	 * <i><p><b>Note </b> new records with duplicate identifier values will replace existing records.</i>
+	 * <p><i><b>Note </b> new records with duplicate identifier values will replace existing records.</i></p>
 	 *
 	 * @param map the map used to hold all records of the data set.
 	 * @param identifier the field name used as identifier. The values in the identifier column will be used as keys in the map.
@@ -59,7 +60,7 @@ public interface DatasetFactory {
 
 	/**
 	 * Creates a new modifiable dataset, with 2 columns, backed by a map.
-	 * <i><p><b>Note </b> new records with duplicate identifier values will replace existing records.</i>
+	 * <p><i><b>Note </b> new records with duplicate identifier values will replace existing records.</i></p>
 	 *
 	 * @param map the map used to hold all records of the data set.
 	 * @param identifier the field name used as identifier. Values in the identifier column will be used as keys in the map.
@@ -71,7 +72,7 @@ public interface DatasetFactory {
 	/**
 	 * Creates a new modifiable dataset, backed by a map.
 	 * <br>The values in the identifier columns will be concatenated into Strings which will be used as the keys in the map.
-	 * <i><p><b>Note </b> new records with duplicate identifier values will replace existing records.</i>
+	 * <p><i><b>Note </b> new records with duplicate identifier values will replace existing records.</i>
 	 *
 	 * @param map the map used to hold all records of the data set.
 	 * @param identifiers the field names used to compose the identifier.
@@ -83,8 +84,9 @@ public interface DatasetFactory {
 	/**
 	 * Creates a new modifiable dataset, backed by a map.
 	 * <br>The values in the identifier columns will be submitted to the {@link FunctionCall} to be converted into a key to be used in the map.
-	 * <i><p><b>Note </b> new records with duplicate identifier values will replace existing records.</i>
+	 * <p><i><b>Note </b> new records with duplicate identifier values will replace existing records.</i>
 	 *
+	 * @param <K> the key type
 	 * @param map the map used to hold all records of the data set.
 	 * @param identifiers the field names used to compose the identifier.
 	 * @param fieldNames the sequence of field names of each record in this data set.

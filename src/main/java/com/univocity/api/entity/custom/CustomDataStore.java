@@ -51,9 +51,9 @@ public interface CustomDataStore<E extends CustomReadableEntity> {
 	/**
 	 * Executes an instance of {@link TransactionalOperation}, provided by uniVocity.
 	 *
-	 * A possible implementation of transaction handling might look like:
+	 * <p>A possible implementation of transaction handling might look like:</p>
 	 *
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 * public void executeInTransaction(TransactionalOperation operation) {
 	 *     try {
 	 *         operation.execute();
@@ -66,13 +66,13 @@ public interface CustomDataStore<E extends CustomReadableEntity> {
 	 * </pre></blockquote><hr>
 	 *
 	 * If the custom data store does not implement transactions, then it can simply be written as:
-	 * <p><hr><blockquote><pre>
+	 * <hr><blockquote><pre>
 	 *  public void executeInTransaction(TransactionalOperation operation) {
 	 *      operation.execute();
 	 *  }
 	 * </pre></blockquote><hr>
 	 *
-	 * <i><b>Notes</b>
+	 * <i><b>Notes</b></i>
 	 * <ul>
 	 *  <li>This method implementation must invoke {@link TransactionalOperation#execute()}.</li>
 	 *  <li>If an exception occurs, it must be rethrown so any other active transactional operation can be rolled back.
@@ -80,7 +80,6 @@ public interface CustomDataStore<E extends CustomReadableEntity> {
 	 *  <li>Each data mapping in the cycle (started with {@link DataIntegrationEngine#executeCycle()}) runs on its own independent {@link TransactionalOperation#execute()}.
 	 *      An exception in one of the mappings in a cycle will not revert changes made by mappings already executed.</li>
 	 * </ul>
-	 * </i>
 	 *
 	 * @param operation the transactional operation that must be executed
 	 */

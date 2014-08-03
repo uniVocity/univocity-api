@@ -33,22 +33,24 @@ package com.univocity.api.entity.jdbc;
 public abstract class SqlProducer {
 
 	/**
-	 * Creates custom select statement
+	 * Creates a custom select statement.
+	 * 
 	 * @param tableName the name of the database table to be selected
 	 * @param columnNames the sequence of column names selected from the table.
 	 * <p><b>Note: </b><i>These identifiers might have been escaped.</i>
-	 * @return a custom select statement or null if the default select statement produced by uniVocity should be used.
+	 * @return a custom select statement or {@code null} if the default select statement produced by uniVocity should be used.
 	 */
 	public String newSelectStatement(String tableName, String[] columnNames) {
 		return null;
 	}
 
 	/**
-	 * Creates custom insert statement
+	 * Creates a custom insert statement.
+	 * 
 	 * @param tableName the name of the database table that will receive new records
 	 * @param columnNames the sequence of column names that will receive new records
 	 * <p><b>Note: </b><i>These identifiers might have been escaped.</i>
-	 * @return a custom insert statement or null if the default insert statement produced by uniVocity should be used.
+	 * @return a custom insert statement or {@code null} if the default insert statement produced by uniVocity should be used.
 	 *
 	 * <p><b>Note: </b> The statement must contain wildcards for the values of each column, in their original order. Example:
 	 * <br><i>INSERT INTO tableName (columnNames_1, columnNames_2, my_custom_date) VALUES (?, ?, SYSDATE)</i>
@@ -58,12 +60,12 @@ public abstract class SqlProducer {
 	}
 
 	/**
-	 * Creates custom update statement
+	 * Creates a custom update statement
 	 * @param tableName the name of the database table that will have records updated
 	 * @param updatedColumns the sequence of column names that will have values modified
-	 * @param matchingColumns the sequence of column names that will be used to identify what records should be modified
+	 * @param matchingColumns the sequence of column names that will be used to identify which records should be modified
 	 * <p><b>Note: </b><i>These identifiers might have been escaped.</i>
-	 * @return a custom update statement or null if the default update statement produced by uniVocity should be used.
+	 * @return a custom update statement or {@code null} if the default update statement produced by uniVocity should be used.
 	 *
 	 * <p><b>Note: </b> The statement must contain wildcards for the values of each column, in their original order. Example:
 	 * <br><i>UPDATE tableName SET updatedColumns_1 = ?, updatedColumns_2 = ? WHERE matchingColumns_1 = ? AND my_custom_flag='Y' AND matchingColumns_2 = ?</i>
@@ -73,11 +75,11 @@ public abstract class SqlProducer {
 	}
 
 	/**
-	 * Creates custom delete statement
+	 * Creates a custom delete statement
 	 * @param tableName the name of the database table that will have records removed
-	 * @param matchingColumns the sequence of column names that will be used to identify what records should be deleted
+	 * @param matchingColumns the sequence of column names that will be used to identify which records should be deleted
 	 * <p><b>Note: </b><i>These identifiers might have been escaped.</i>
-	 * @return a custom delete statement or null if the default delete statement produced by uniVocity should be used.
+	 * @return a custom delete statement or {@code null} if the default delete statement produced by uniVocity should be used.
 	 *
 	 * <p><b>Note: </b> The statement must contain wildcards for the values of each column, in their original order. Example:
 	 * <br><i>DELETE FROM tableName WHERE my_custom_flag='Y' AND matchingColumns_1 = ? AND matchingColumns_2 = ?</i>
@@ -87,10 +89,10 @@ public abstract class SqlProducer {
 	}
 
 	/**
-	 * Creates custom delete statement to delete all records of a table.
+	 * Creates a custom delete statement to delete all records of a table.
 	 * @param tableName the name of the database table that will have all records removed
 	 * <p><b>Note: </b><i>The tableName might have been escaped.</i>
-	 * @return a custom delete statement or null if the default delete statement produced by uniVocity should be used.
+	 * @return a custom delete statement or {@code null} if the default delete statement produced by uniVocity should be used.
 	 */
 	public String newDeleteAllStatement(String tableName) {
 		return null;

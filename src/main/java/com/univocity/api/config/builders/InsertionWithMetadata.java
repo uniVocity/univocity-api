@@ -11,7 +11,7 @@ import com.univocity.api.engine.*;
 /**
  * The <code>InsertionWithMetadata</code> configuration is obtained from a  {@link PersistenceSetup} instance.
  *
- * <p>It is used to define how the {@link DataIntegrationEngine}, with the assistance of metadata information,
+ * <p>It is used to define how the {@link DataIntegrationEngine}, with the assistance of metadata,
  *    should insert new records into the destination entity of an {@link EntityMapping} when executing a data mapping cycle.
  *
  * @see EntityMapping
@@ -29,7 +29,7 @@ public interface InsertionWithMetadata extends InsertionConfig {
 	 * <br>This is particularly useful when multiple {@link EntityMapping}s write to the same destination entity. One mapping can insert rows and the second one,
 	 *     using this configuration option, will then update these records with information extracted from another source.
 	 *
-	 * <p><i>This completes the configuration started with {@link EntityMapping#persistence()} </i>
+	 * <p><i>This completes the configuration started with {@link EntityMapping#persistence()}.</i>
 	 */
 	public void updateNewRows();
 }

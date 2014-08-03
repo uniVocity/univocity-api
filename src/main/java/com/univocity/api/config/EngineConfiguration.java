@@ -13,12 +13,12 @@ import com.univocity.api.engine.*;
 import com.univocity.api.entity.custom.*;
 
 /**
- * The <code>EngineConfiguration</code> provides the essential configuration of a {@link DataIntegrationEngine}. Use {@link Univocity#registerEngine(EngineConfiguration)},
+ * The <code>EngineConfiguration</code> provides the essential configuration of a {@link DataIntegrationEngine}. Use {@link Univocity#registerEngine(EngineConfiguration)}
  * to register your engine, and {@link DataIntegrationEngineFactory#getEngine(String)} to obtain the {@link DataIntegrationEngine} instance.
  *
  * <p>uniVocity depends on a database for manipulating the metadata that enables most of its data mapping operations. Use {@link #setMetadataSettings(MetadataSettings)} to
- * provide the specific settings that enable uniVocity's persistent metadata. If no configuration for metadata is provided, then a in-memory instance
- * of a database with the essential metadata structure will be created automatically. This of course, means any metadata information will be lost
+ * provide the specific settings that enable uniVocity's persistent metadata. If no configuration for metadata is provided, an in-memory instance
+ * of a database with the essential metadata structure will be created automatically. This, of course, means any metadata information will be lost
  *  when the application is shut down.
  *
  * @see Univocity
@@ -42,7 +42,7 @@ public class EngineConfiguration {
 	 * @param engineName the name of the new engine. The engine name is used to obtain instances of {@link DataIntegrationEngine}
 	 * and manage them using {@link Univocity}
 	 * @param dataStores optional parameter for the configurations of data stores that will have their entities mapped through this engine.
-	 * More dataStores can be added later on using {@link #addDataStoreConfigurations(DataStoreConfiguration...)}
+	 * More dataStores can be added later using {@link #addDataStoreConfigurations(DataStoreConfiguration...)}
 	 */
 	public EngineConfiguration(String engineName, DataStoreConfiguration... dataStores) {
 		Args.notBlank(engineName, "Engine name");
@@ -55,7 +55,7 @@ public class EngineConfiguration {
 
 	/**
 	 * Defines the database settings required by uniVocity to persist its metadata information.
-	 * <p>If set to null, then uniVocity will create an internal in-memory database for metadata handling while this engine is active.
+	 * <p>If set to {@code null}, uniVocity will create an internal in-memory database for metadata handling while this engine is active.
 	 * @param metadataSettings the database settings required for accessing and persisting metadata produced by this engine.
 	 */
 	public final void setMetadataSettings(MetadataSettings metadataSettings) {
@@ -103,9 +103,9 @@ public class EngineConfiguration {
 	}
 
 	/**
-	 * Defines a storage provider to keep values stored in the {@link EngineScope#PERSISTENT} scope of the {@link DataIntegrationEngine} which instantiated by uniVocity
+	 * Defines a storage provider to keep values stored in the {@link EngineScope#PERSISTENT} scope of the {@link DataIntegrationEngine} which is instantiated by uniVocity
 	 * with this configuration class.
-	 * @param persistentStorageProvider the storage abstraction that retains and restores values in the {@link EngineScope#PERSISTENT}
+	 * @param persistentStorageProvider the storage abstraction that retains and restores values in the {@link EngineScope#PERSISTENT} scope
 	 *  from persistent storage (such as a file, distributed cache, or database)
 	 */
 	public final void setPersistentStorageProvider(ScopeStorageProvider persistentStorageProvider) {
@@ -114,7 +114,7 @@ public class EngineConfiguration {
 
 	/**
 	 * Obtains the storage provider configured to keep values stored in the {@link EngineScope#PERSISTENT} scope of the {@link DataIntegrationEngine}.
-	 * @return the configured {@link ScopeStorageProvider} instance that retains and restores values in the {@link EngineScope#PERSISTENT}
+	 * @return the configured {@link ScopeStorageProvider} instance that retains and restores values in the {@link EngineScope#PERSISTENT} scope
 	 *  from persistent storage (such as a file, distributed cache, or database)
 	 */
 	public final ScopeStorageProvider getPersistentScopeStorageProvider() {
@@ -122,8 +122,8 @@ public class EngineConfiguration {
 	};
 
 	/**
-	 * Adds the configurations for data stores whose entities will be mapped using the engine created by this class
-	 * @param dataStores parameter for the configurations of data stores that will have their entities mapped through this engine.
+	 * Adds the configurations for data stores whose entities will be mapped using the engine created by this class.
+	 * @param dataStores configurations of data stores that will have their entities mapped through this engine.
 	 */
 	public final void addDataStoreConfigurations(DataStoreConfiguration... dataStores) {
 		Args.notEmpty(dataStores, "Data stores");

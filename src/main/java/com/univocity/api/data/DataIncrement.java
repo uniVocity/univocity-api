@@ -8,8 +8,8 @@ package com.univocity.api.data;
 import com.univocity.api.engine.*;
 
 /**
- * A data increment provides a limited number of records for mapped data entities.
- * It is used by uniVocity to execute incremental data mapping cycles on limited sets of information,
+ * A {@code DataIncrement} provides a limited number of records for mapped data entities.
+ * It is used by uniVocity to execute incremental data mapping cycles on limited sets of information.
  *
  * <p>This can be used to execute mappings in real-time as data increments return in-memory {@link Dataset} instances instead of loading records from a source entity.
  * <br>Use {@link DataIntegrationEngine#executeCycle(DataIncrement)} to execute a data mapping cycle against a <code>DataIncrement</code>.
@@ -30,7 +30,7 @@ public interface DataIncrement {
 	 *
 	 * @param datastoreName the name of the data store that (potentially) contains a dataset for an entity
 	 * @param entityName the name of the data entity being read as a source of data in a data mapping cycle.
-	 * @return the {@link Dataset} that contains a number of records of the given entity, or null if there is no dataset.
+	 * @return the {@link Dataset} that contains a number of records of the given entity, or {@code null} if there is no dataset.
 	 */
 	public Dataset getDataset(String datastoreName, String entityName);
 

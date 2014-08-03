@@ -57,17 +57,17 @@ public interface EntityMappingContext {
 	 *
 	 * If no removal of records is enabled, the mappings will be executed in the following order:
 	 * <ul>
-	 *  <li>map: <code>source -> Group</code></li>
-	 *  <li>map: <code>otherSource -> GroupMember</code></li>
+	 *  <li>map: <code>source -&gt; Group</code></li>
+	 *  <li>map: <code>otherSource -&gt; GroupMember</code></li>
 	 * </ul>
 	 *
 	 * If removal is enabled in these mappings then uniVocity may generate exclusion mappings to be executed in reverse order.
 	 * The exact removal sequence depends on the mapping configuration. In this example, GroupMember records that might be associated to Group will be removed first.
 	 *  <ul>
-	 *  <li>remove: <code>otherSource -> GroupMember</code></li>
-	 *  <li>remove: <code>source -> Group</code></li>
-	 *  <li>map: <code>source -> Group</code></li>
-	 *  <li>map: <code>otherSource -> GroupMember</code></li>
+	 *  <li>remove: <code>otherSource -&gt; GroupMember</code></li>
+	 *  <li>remove: <code>source -&gt; Group</code></li>
+	 *  <li>map: <code>source -&gt; Group</code></li>
+	 *  <li>map: <code>otherSource -&gt; GroupMember</code></li>
 	 * </ul>
 	 *
 	 * @return true if this mapping will identify and remove records in the destination; false otherwise.
