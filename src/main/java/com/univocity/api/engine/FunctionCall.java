@@ -63,7 +63,7 @@ public interface FunctionCall<O, I> {
 
 	/**
 	 * Executes the function and returns the result (if any)
-	 * 
+	 *
 	 * @param input the function arguments
 	 * @return the function result.
 	 */

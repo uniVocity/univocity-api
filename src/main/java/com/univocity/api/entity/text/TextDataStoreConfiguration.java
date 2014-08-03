@@ -353,8 +353,8 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	}
 
 	/**
-	 * Returns an unmodifiable map of writer providers for read-only entities.
-	 * @return an unmodifiable map of writer providers for read-only entities
+	 * Returns an unmodifiable map of reader providers for read only entities
+	 * @return an unmodifiable map of reader providers for read only entities
 	 */
 	public final Map<String, ReaderProvider> getEntityReaders() {
 		return Collections.unmodifiableMap(entityReaders);

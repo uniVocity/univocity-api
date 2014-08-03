@@ -67,7 +67,7 @@ public interface DataStoreMapping {
 
 	/**
 	 * Removes a mapping between two data entities. All configuration settings defined in the underlying {@link EntityMapping} will be lost.
-	 * 
+	 *
 	 * @param sourceEntityName the name of the source data entity.
 	 * @param destinationEntityName the name of the destination data entity.
 	 */

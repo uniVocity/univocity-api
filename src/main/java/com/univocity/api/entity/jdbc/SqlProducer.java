@@ -34,7 +34,7 @@ public abstract class SqlProducer {
 
 	/**
 	 * Creates a custom select statement.
-	 * 
+	 *
 	 * @param tableName the name of the database table to be selected
 	 * @param columnNames the sequence of column names selected from the table.
 	 * <p><b>Note: </b><i>These identifiers might have been escaped.</i>
@@ -46,7 +46,7 @@ public abstract class SqlProducer {
 
 	/**
 	 * Creates a custom insert statement.
-	 * 
+	 *
 	 * @param tableName the name of the database table that will receive new records
 	 * @param columnNames the sequence of column names that will receive new records
 	 * <p><b>Note: </b><i>These identifiers might have been escaped.</i>

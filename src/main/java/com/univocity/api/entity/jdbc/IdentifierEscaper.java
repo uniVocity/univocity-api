@@ -38,7 +38,7 @@ public abstract class IdentifierEscaper {
 
 	/**
 	 * Should uniVocity always escape all identifiers in SQL statements?
-	 * 
+	 *
 	 * @return {@code true} if all identifiers must be escaped by default, otherwise {@code false}.
 	 */
 	public abstract boolean alwaysEscape();
