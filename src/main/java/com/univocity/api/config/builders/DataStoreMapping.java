@@ -30,7 +30,7 @@ public interface DataStoreMapping {
 	public String getSourceDataStore();
 
 	/**
-	 * Returns the name of the destination data store whose entities will receive data mapped from the inputs configured an {@link EntityMapping}
+	 * Returns the name of the destination data store whose entities will receive data mapped from the inputs configured in an {@link EntityMapping}
 	 * @return the name of the destination data store
 	 */
 	public String getDestinationDataStore();
@@ -38,7 +38,7 @@ public interface DataStoreMapping {
 	/**
 	 * Creates a mapping configuration object to an entity in the destination data store that does not require input from any entity in the source data store.
 	 * The {@link EntityMapping} instance is unique in a data store mapping and calling this method multiple times with the
-	 * same entity name will cause and exception.
+	 * same entity name will cause an exception.
 	 *
 	 * @param destinationEntityName the name of the entity in the destination data store.
 	 * @return a new {@link EntityMapping} instance.
@@ -48,25 +48,26 @@ public interface DataStoreMapping {
 	/**
 	 * Creates a mapping configuration object between a data entity in the source data store to another entity in the destination data store.
 	 * The {@link EntityMapping} instance is unique in a data store mapping and calling this method multiple times with the
-	 * same entity names will cause and exception.
+	 * same entity names will cause an exception.
 	 *
-	 * @param sourceEntityName the name of the data entity in the source data store
+	 * @param sourceEntityName the name of the entity in the source data store
 	 * @param destinationEntityName the name of the entity in the destination data store.
 	 * @return a new {@link EntityMapping} instance.
 	 */
 	public EntityMapping map(String sourceEntityName, String destinationEntityName);
 
 	/**
-	 * Obtains the mapping configuration object between entities of two data stores.
+	 * Obtains the mapping configuration object between two entities.
 	 *
 	 * @param sourceEntityName the name of the source data entity.
 	 * @param destinationEntityName the name of the destination data entity.
-	 * @return the existing {@link DataStoreMapping} instance associated to the given data entity names, or null if there's no mapping between them.
+	 * @return the existing {@link DataStoreMapping} instance associated to the given data entity names, or {@code null} if there's no mapping between them.
 	 */
 	public EntityMapping getMapping(String sourceEntityName, String destinationEntityName);
 
 	/**
 	 * Removes a mapping between two data entities. All configuration settings defined in the underlying {@link EntityMapping} will be lost.
+	 * 
 	 * @param sourceEntityName the name of the source data entity.
 	 * @param destinationEntityName the name of the destination data entity.
 	 */
@@ -76,7 +77,7 @@ public interface DataStoreMapping {
 	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.
 	 *
 	 * <p>Entities and fields with similar names will be automatically associated. Underscores and spaces are ignored, for example: <code>entity1</code> will
-	 * be associated to <code>ENTITY 1</code> or <code>ENTITY_1</code>. When mapping fields, if the field in either source or destination is an identifier,
+	 * be associated with <code>ENTITY 1</code> or <code>ENTITY_1</code>. When mapping fields, if the field in either source or destination is an identifier,
 	 * the mapping will be created using {@link IdentifierMappingSetup}, otherwise a regular field copy will be created using {@link FieldMappingSetup}.
 	 *
 	 * <p><b>Important: </b> You may want to define the correct sequence of mappings to be
@@ -92,8 +93,8 @@ public interface DataStoreMapping {
 	 * If the field in either source or destination is an identifier, the mapping will be created using {@link IdentifierMappingSetup}, otherwise a
 	 * regular field copy will be created using {@link FieldMappingSetup}.
 	 *
-	 *  @param entityNameMatcher a matcher for entity names. If null the default matching algorithm will be used.
-	 *  @param fieldNameMatcher a matcher for field names. If null the default matching algorithm will be used.
+	 *  @param entityNameMatcher a matcher for entity names. If {@code null}, the default matching algorithm will be used.
+	 *  @param fieldNameMatcher a matcher for field names. If {@code null}, the default matching algorithm will be used.
 	 */
 	public void autodetectMappings(NameMatcher entityNameMatcher, NameMatcher fieldNameMatcher);
 
@@ -115,7 +116,7 @@ public interface DataStoreMapping {
 
 	/**
 	 * Tests if this data store mapping is enabled, in which case the entity mappings defined in it can be executed in a {@link DataIntegrationEngine} cycle.
-	 * @return true if the mappings configured in this object are enabled and can be executed by a {@link DataIntegrationEngine}, false otherwise
+	 * @return {@code true} if the mappings configured in this object are enabled and can be executed by a {@link DataIntegrationEngine}, otherwise {@code false}
 	 */
 	public boolean isEnabled();
 

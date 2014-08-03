@@ -14,17 +14,17 @@ import com.univocity.api.engine.*;
 import com.univocity.api.entity.custom.*;
 
 /**
- * This is the entry point to uniVocity data integration engine. It connects the resources in this API to their actual implementations in univocity.jar.
+ * This is the entry point to the uniVocity data integration engine. It connects the resources in this API to their actual implementations in univocity.jar.
  *
- * <p>uniVocity abstracts the specifics of any source of data. It works with the concept of <i>data stores</i>, <i>data entities</i> and <i>queries</i>.
+ * <p>uniVocity abstracts the specifics of any source of data. It works with the concepts of <i>data stores</i>, <i>data entities</i> and <i>queries</i>.
  * <ul>
  *  <li>A <b>data entity</b> is a structure that contains fields and data. uniVocity reads and writes the data stored in its records
  *      when mapping information from one entity to another.
  *      <p>There is a default set of data entities supported by uniVocity,
  *      but you can write your own data entities by implementing {@link CustomDataEntity}.
  *  </li>
- *  <li>A <b>query</b> is a special read-only data entity that provides fields and data. It is represented by a String and can be parameterized. The
- *      actual behavior of a query is dependent on the underlying data store and there is no restriction on what a query represent. It can be a SQL query,
+ *  <li>A <b>query</b> is a special read-only data entity that provides fields and data. It is represented by a {@code String} and can be parameterized. The
+ *      actual behavior of a query is dependent on the underlying data store and there is no restriction on what a query represents. It can be a SQL query,
  *      a web service call, or anything the data store supports.
  *      <p>Queries can also act as <i>functions</i> in uniVocity, and can be used within <i>expressions</i>
  *      <p>You can provide your own query implementation by implementing a {@link CustomQuery}.
@@ -66,7 +66,7 @@ public final class Univocity {
 	/**
 	 * Defines the class loader to be used to load uniVocity implementation classes (from univocity.jar)
 	 *
-	 * @param classLoader The class loader to be used to load provider classes, or <tt>null</tt> if the system class loader is to be used
+	 * @param classLoader The class loader to be used to load provider classes, or <tt>null</tt> if the system class loader is to be used.
 	 */
 	public static final synchronized void setClassLoader(ClassLoader classLoader) {
 		factoryProviderLoader = ServiceLoader.load(UnivocityFactoryProvider.class, classLoader);
@@ -75,7 +75,7 @@ public final class Univocity {
 	/**
 	 * Obtains the configured path to the uniVocity license file. The path can be either relative or absolute.
 	 * <p><i>By default, uniVocity will look for a file named "license.zip" on the classpath.</i>
-	 * <p><i>To request a license, execute the <b>licenseRequest script</b> that comes with <b>univocity.jar</b></i></p>
+	 * <p><i>To request a license, execute the <b>licenseRequest script</b> that comes with <b>univocity.jar</b></i>.</p>
 	 * @return the path to the license file.
 	 */
 	public static final synchronized String getLicensePath() {
@@ -125,7 +125,7 @@ public final class Univocity {
 	}
 
 	/**
-	 * Loads and returns the {@link DatasetFactory} that provides convenient implementations of {@link Dataset}
+	 * Loads and returns the {@link DatasetFactory} that provides convenient implementations of {@link Dataset}.
 	 * @return the singleton instance of {@link DatasetFactory} provided by the implementation of the uniVocity API (from univocity.jar)
 	 */
 	public static final synchronized DatasetFactory datasetFactory() {
@@ -141,7 +141,7 @@ public final class Univocity {
 	}
 
 	/**
-	 * Obtains the {@link DataIntegrationEngine} instance which was configured using {@link Univocity#registerEngine(com.univocity.api.config.EngineConfiguration)}
+	 * Obtains the {@link DataIntegrationEngine} instance which was configured using {@link Univocity#registerEngine(com.univocity.api.config.EngineConfiguration)}.
 	 * @param engineName the name of the data integration engine
 	 * @return the {@link DataIntegrationEngine} associated to the given engine name
 	 */
@@ -161,11 +161,11 @@ public final class Univocity {
 	}
 
 	/**
-	 * Informs whether or not a given data integration engine is active.
-	 * <p>An active engine is one that has been instantiated through {@link Univocity#getEngine(String)} and has to been shut down yet
+	 * Is the data integration engine with the given name active?
+	 * <p>An active engine is one that has been instantiated through {@link Univocity#getEngine(String)} and has yet to be shut down.
 	 *
 	 * @param engineName the name of the engine to be verfied.
-	 * @return true if the {@link DataIntegrationEngine} associated to the given engine name is active, false otherwise
+	 * @return {@code true} if the {@link DataIntegrationEngine} associated to the given engine name is active, otherwise {@code false}
 	 */
 	public static final synchronized boolean isActive(String engineName) {
 		return engineFactory().isActive(engineName);

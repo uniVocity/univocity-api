@@ -61,7 +61,7 @@ public final class CsvFormat extends TextFormat {
 	/**
 	 * Identifies whether or not a given character is used for escaping values where the field delimiter is part of the value
 	 * @param ch the character to be verified
-	 * @return true if the given character is the character used for escaping values that contain a field delimiter character, false otherwise
+	 * @return {@code true} if the given character is the character used for escaping values that contain a field delimiter character, otherwise {@code false}
 	 */
 	public final boolean isQuote(char ch) {
 		return getQuote() == ch;
@@ -92,7 +92,7 @@ public final class CsvFormat extends TextFormat {
 	/**
 	 * Identifies whether or not a given character is used for escaping quotes inside an already quoted value.
 	 * @param ch the character to be verified
-	 * @return true if the given character is the quote escape character, false otherwise
+	 * @return {@code true} if the given character is the quote escape character, otherwise {@code false}
 	 */
 	public final boolean isQuoteEscape(char ch) {
 		return getQuoteEscape() == ch;
@@ -123,7 +123,7 @@ public final class CsvFormat extends TextFormat {
 	/**
 	 * Identifies whether or not a given character is the field delimiter used to separate individual fields in a CSV record.
 	 * @param ch the character to be verified
-	 * @return true if the given character is the field delimiter character, false otherwise
+	 * @return {@code true} if the given character is the field delimiter character, otherwise {@code false}
 	 */
 	public final boolean isDelimiter(char ch) {
 		return getDelimiter() == ch;

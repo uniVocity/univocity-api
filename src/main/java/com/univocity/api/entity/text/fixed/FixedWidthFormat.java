@@ -14,7 +14,7 @@ import com.univocity.api.entity.text.*;
  *
  * <ul>
  *  <li><b>padding:</b> the character used for filling unwritten spaces in a fixed-width record.
- *  	<p>e.g. if a field has a length of 5 characters, but the value is 'ZZ', the field should contain <b>[ZZ   ]</b> (i.e. ZZ followed by 3 unwritten spaces).
+ *  	<p>e.g. if a field has a length of 5 characters, but the value is 'ZZ', the field should contain <b>[ZZ&nbsp;&nbsp;&nbsp;]</b> (i.e. ZZ followed by 3 unwritten spaces).
  *  	<br>If the padding is set to '_', then the field will be written as <b>[ZZ___]</b>
  *  	<p><i>{@link #padding} defaults to <b>' '</b></i>
  *  	<br></li>
@@ -32,7 +32,7 @@ public final class FixedWidthFormat extends TextFormat {
 
 	/**
 	 * Returns the character used for filling unwritten spaces in a fixed-width record.
-	 * 	<p>e.g. if a field has a length of 5 characters, but the value is 'ZZ', the field should contain <b>[ZZ   ]</b> (i.e. ZZ followed by 3 unwritten spaces).
+	 * 	<p>e.g. if a field has a length of 5 characters, but the value is 'ZZ', the field should contain <b>[ZZ&nbsp;&nbsp;&nbsp;]</b> (i.e. ZZ followed by 3 unwritten spaces).
 	 * 	<br>If the padding is set to '_', then the field will be written as <b>[ZZ___]</b>
 	 * 	<p><i>Defaults to ' '</i>
 	 * @return the padding character
@@ -58,7 +58,7 @@ public final class FixedWidthFormat extends TextFormat {
 	 * Identifies whether or not a given character is used for representing unwritten spaces in a fixed-width record.
 	 *
 	 * @param ch the character to be verified
-	 * @return true if the given character is the padding character, false otherwise
+	 * @return {@code true} if the given character is the padding character, otherwise {@code false}
 	 */
 	public final boolean isPadding(char ch) {
 		return getPadding() == ch;

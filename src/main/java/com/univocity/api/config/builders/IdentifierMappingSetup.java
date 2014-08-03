@@ -9,13 +9,13 @@ import com.univocity.api.config.*;
 import com.univocity.api.engine.*;
 
 /**
- * The <code>IdentifierMappingSetup</code> is the base configuration used to define what fields from the source entity,
+ * The <code>IdentifierMappingSetup</code> is the base configuration used to define which fields from the source entity,
  * when mapped to the destination, represent an identifier in the destination entity of the {@link EntityMapping}.
  *
- * <p>An identifier has the property of uniquely identify an individual record. Records with the same values in
+ * <p>An identifier has the property of uniquely identifying an individual record. Records with the same values in
  * their identifier fields will be considered by uniVocity as the same record.
  *
- * <p>Values read from the source entity to produce identifiers in the destination will be stored into uniVocity metadata
+ * <p>Values read from the source entity to produce identifiers in the destination will be stored in uniVocity metadata
  * tables (as defined in {@link MetadataSettings}) in order to enable features such as:
  *
  * <ul>
@@ -24,8 +24,8 @@ import com.univocity.api.engine.*;
  *  <li>Exclusion of absent records (those mapped in previous mapping cycles but not in the source anymore)</li>
  * </ul>
  *
- * <p>Values used as identifiers MUST will have their String representation used in uniVocity metadata tables. You must ensure identifiers
- * can be converted from/to String consistently. If required, {@link FunctionCall}s or input {@link RowReader}s can be used to convert identifiers.
+ * <p>Values used as identifiers MUST have their string representation used in uniVocity metadata tables. You must ensure identifiers
+ * can be converted from/to {@code String} consistently. If required, {@link FunctionCall}s or input {@link RowReader}s can be used to convert identifiers.
  *
  * @see ReferenceMappingSetup
  * @see EntityMapping
@@ -37,7 +37,7 @@ import com.univocity.api.engine.*;
  */
 public interface IdentifierMappingSetup {
 	/**
-	 * Associates one or more fields from the source entity in an {@link EntityMapping} to the identifier of the destination entity.
+	 * Associates one or more fields from the source entity in an {@link EntityMapping} with the identifier of the destination entity.
 	 *
 	 * @param sourceFields the field names in the source entity to be associated to an identifier of the destination.
 	 * 		   Expressions are allowed within curly braces (i.e. "{expression}")

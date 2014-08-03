@@ -40,8 +40,8 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	/**
 	 * Initializes the configuration object of a text-based data store.
 	 *
-	 * @param dataStoreName The name of the data store.
-	 * @param defaultEntityConfiguration An object with default configurations for data entities associated to this data store.
+	 * @param dataStoreName the name of the data store.
+	 * @param defaultEntityConfiguration an object with default configurations for data entities associated with this data store.
 	 */
 	public TextDataStoreConfiguration(String dataStoreName, T defaultEntityConfiguration) {
 		super(dataStoreName);
@@ -93,7 +93,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 * Adds all files under the given directory path to this data store. Each file will be used as an individual data entity for reading/writing.
 	 * <p>The file names will be used as entity names.
 	 * <p><i><b>Note: </b>As the encoding of these files is not provided, the default system encoding will be used.</i>
-	 * @param directoryPath The path to directory in the file system that contains files to be used as data entities.
+	 * @param directoryPath the path to directory in the file system that contains files to be used as data entities.
 	 */
 	public final void addEntities(String directoryPath) {
 		fileDirectories.add(new FileProvider(directoryPath));
@@ -102,7 +102,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	/**
 	 * Adds all files under the given directory path to this data store. Each file will be used as an individual data entity for reading/writing.
 	 * <p>The file names will be used as entity names.
-	 * @param directoryPath The path to directory in the file system that contains files to be used as data entities.
+	 * @param directoryPath the path to directory in the file system that contains files to be used as data entities.
 	 * @param encoding the encoding to be used when handling the provided files.
 	 */
 	public final void addEntities(String directoryPath, String encoding) {
@@ -112,7 +112,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	/**
 	 * Adds all files under the given directory path to this data store. Each file will be used as an individual data entity for reading/writing.
 	 * <p>The file names will be used as entity names.
-	 * @param directoryPath The path to directory in the file system that contains files to be used as data entities.
+	 * @param directoryPath the path to directory in the file system that contains files to be used as data entities.
 	 * @param encoding the encoding to be used when handling the provided files.
 	 */
 	public final void addEntities(String directoryPath, Charset encoding) {
@@ -123,7 +123,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 * Adds all files under the given directory to this data store. Each file will be used as an individual data entity for reading/writing.
 	 * <p>The file names will be used as entity names.
 	 * <p><i><b>Note: </b>As the encoding of these files is not provided, the default system encoding will be used.</i>
-	 * @param directory The directory in the file system that contains files to be used as data entities.
+	 * @param directory the directory in the file system that contains files to be used as data entities.
 	 */
 	public final void addEntities(File directory) {
 		fileDirectories.add(new FileProvider(directory));
@@ -132,7 +132,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	/**
 	 * Adds all files under the given directory to this data store. Each file will be used as an individual data entity for reading/writing.
 	 * <p>The file names will be used as entity names.
-	 * @param directory The directory in the file system that contains files to be used as data entities.
+	 * @param directory the directory in the file system that contains files to be used as data entities.
 	 * @param encoding the encoding to be used when handling the provided files.
 	 */
 	public final void addEntities(File directory, String encoding) {
@@ -142,7 +142,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	/**
 	 * Adds all files under the given directory to this data store. Each file will be used as an individual data entity for reading/writing.
 	 * <p>The file names will be used as entity names.
-	 * @param directory The directory in the file system that contains files to be used as data entities.
+	 * @param directory the directory in the file system that contains files to be used as data entities.
 	 * @param encoding the encoding to be used when handling the provided files.
 	 */
 	public final void addEntities(File directory, Charset encoding) {
@@ -152,8 +152,8 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	/**
 	 * Adds a read-only data entity to this data store.
 	 *
-	 * @param entityName The entity name
-	 * @param reader The handle to obtain input readers ({@link java.io.Reader}) for this data entity.
+	 * @param entityName the entity name
+	 * @param reader the handle to obtain input readers ({@link java.io.Reader}) for this data entity.
 	 */
 	public final void addEntity(String entityName, ReaderProvider reader) {
 		entityName = getValidatedEntityName(entityName);
@@ -163,8 +163,8 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	/**
 	 * Adds a write-only data entity to this data store.
 	 *
-	 * @param entityName The entity name
-	 * @param writer The handle to obtain output writers ({@link java.io.Writer}) for this data entity.
+	 * @param entityName the entity name
+	 * @param writer the handle to obtain output writers ({@link java.io.Writer}) for this data entity.
 	 */
 	public final void addEntity(String entityName, WriterProvider writer) {
 		entityName = getValidatedEntityName(entityName);
@@ -283,7 +283,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 
 	/**
 	 * Returns the configuration of a given data entity. The returned configuration object will contain default values provided in the object returned by {@link #getDefaultEntityConfiguration()}.
-	 * <br>If the entity was not explicitly configured before, a new configuration object will be created and associated to the entity.
+	 * <br>If the entity was not explicitly configured before, a new configuration object will be created and associated with the entity.
 	 * <p>You can change the default configuration at any time by calling {@link #getDefaultEntityConfiguration()} and altering the settings you need.
 	 *    Subsequent calls to {@link #getEntityConfiguration(String)} will return a configuration object with the new defaults.
 	 *    Existing configurations will retain their original values, including the default settings previously used.
@@ -312,7 +312,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	}
 
 	/**
-	 * Returns the default configuration object
+	 * Returns the default configuration object.
 	 * This object returns all default values used for creating new configuration objects for data entities.
 	 * @return the {@link #defaultEntityConfiguration} object which was provided in the constructor of this data store.
 	 */
@@ -337,7 +337,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 * <br>This is required to avoid getting an {@link OutOfMemoryError} when reading from large inputs.
 	 * <br>uniVocity will block the input reading thread until there is room for more rows.
 	 * @param maxRowsInMemory the maximum number of rows loaded in memory from any data entity at any given time.
-	 * <i>This value must be greater than 0</i>
+	 * <i>This value must be greater than 0.</i>
 	 */
 	public final void setLimitOfRowsLoadedInMemory(int maxRowsInMemory) {
 		Args.positive(maxRowsInMemory, "Maximum number of rows in memory");
@@ -345,7 +345,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	}
 
 	/**
-	 * Returns an unmodifiable set of file providers for directories
+	 * Returns an unmodifiable set of file providers for directories.
 	 * @return an unmodifiable set of file providers for directories
 	 */
 	public final Set<FileProvider> getFileDirectories() {
@@ -353,23 +353,23 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	}
 
 	/**
-	 * Returns an unmodifiable map of writer providers for read only entities
-	 * @return an unmodifiable map of writer providers for read only entities
+	 * Returns an unmodifiable map of writer providers for read-only entities.
+	 * @return an unmodifiable map of writer providers for read-only entities
 	 */
 	public final Map<String, ReaderProvider> getEntityReaders() {
 		return Collections.unmodifiableMap(entityReaders);
 	}
 
 	/**
-	 * Returns an unmodifiable map of writer providers for write only entities
-	 * @return an unmodifiable map of writer providers for write only entities
+	 * Returns an unmodifiable map of writer providers for write-only entities.
+	 * @return an unmodifiable map of writer providers for write-only entities
 	 */
 	public final Map<String, WriterProvider> getEntityWriters() {
 		return Collections.unmodifiableMap(entityWriters);
 	}
 
 	/**
-	 * Returns an unmodifiable map of file providers for entities that were created with an explicit name
+	 * Returns an unmodifiable map of file providers for entities that were created with an explicit name.
 	 * @return an unmodifiable map of file providers for entities that were created with an explicit name
 	 */
 	public final Map<String, FileProvider> getNamedEntityFiles() {
@@ -377,7 +377,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	}
 
 	/**
-	 * Returns an unmodifiable set of file providers for entities that were created without an explicit name
+	 * Returns an unmodifiable set of file providers for entities that were created without an explicit name.
 	 * @return an unmodifiable set of file providers for entities that were created without an explicit name
 	 */
 	public final Set<FileProvider> getUnnamedEntityFiles() {
@@ -385,7 +385,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	}
 
 	/**
-	 * Creates a new configuration object for an entity of this data store
+	 * Creates a new configuration object for an entity of this data store.
 	 * @return new configuration object for an entity of this data store
 	 */
 	protected abstract T newEntityConfiguration();

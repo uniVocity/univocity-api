@@ -35,7 +35,7 @@ public interface FieldMappingSetup {
 	public Split split(String sourceField);
 
 	/**
-	 * Merges values of multiple fields from the source entity in an {@link EntityMapping} and merge them into a single value using a function.
+	 * Takes values of multiple fields from the source entity in an {@link EntityMapping} and merges them into a single value using a function.
 	 *
 	 * <p>Example:
 	 *
@@ -52,7 +52,7 @@ public interface FieldMappingSetup {
 	public Merge merge(String... sourceFields);
 
 	/**
-	 * Copies the value of one field from the source entity in an {@link EntityMapping} and write it to a field in the destination entity.
+	 * Copies the value of one field from the source entity in an {@link EntityMapping} and writes it to a field in the destination entity.
 	 *
 	 * <p>Example:</p>
 	 *
@@ -72,7 +72,7 @@ public interface FieldMappingSetup {
 	public CopyToSingleField copy(String sourceField);
 
 	/**
-	 * Copies values of multiple fields from the source entity in an {@link EntityMapping} and write them to multiple fields in the destination entity.
+	 * Copies values of multiple fields from the source entity in an {@link EntityMapping} and writes them to multiple fields in the destination entity.
 	 *
 	 * <p>Example:</p>
 	 *
@@ -89,7 +89,7 @@ public interface FieldMappingSetup {
 	public CopyToMultipleFields copy(String... sourceFields);
 
 	/**
-	 * Reads values of multiple fields from the source entity in an {@link EntityMapping} but does not transfer them to the destination.
+	 * Reads values of multiple fields from the source entity in an {@link EntityMapping}, but does not transfer them to the destination.
 	 * This is used to obtain values from the input that might be required for custom processing such as logging, statistics or generating data structures and objects.
 	 * These values will be available to {@link RowReader}s while executing the mapping.
 	 *

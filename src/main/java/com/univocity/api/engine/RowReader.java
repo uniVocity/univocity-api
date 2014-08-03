@@ -18,7 +18,7 @@ import com.univocity.api.config.builders.*;
  *  <li>written to the output</li>
  * </ul>
  *
- * The user can read and modify the contents of each rows, and easily perform common tasks such as data monitoring, logging and statistics.
+ * The user can read and modify the contents of each row, and easily perform common tasks such as data monitoring, logging and statistics.
  * <br>The {@link #initialize(RowMappingContext)} and {@link #cleanup(RowMappingContext)} methods can be overridden to allow initialization before
  *     and after the <code>RowReader</code> receives rows for processing.
  *
@@ -35,7 +35,7 @@ import com.univocity.api.config.builders.*;
 public abstract class RowReader {
 
 	/**
-	 * Gives the RowReader a chance to perform any initialization it requires before the first call to {@link #processRow(Object[], Object[], RowMappingContext)} is made.
+	 * Gives the {@code RowReader} a chance to perform any initialization it requires before the first call to {@link #processRow(Object[], Object[], RowMappingContext)} is made.
 	 * <p><b>Note: </b> this method is only invoked by uniVocity if there are rows in the input entity.
 	 * @param context the contextual information and controls available to the user during the execution of a data mapping process.
 	 */
@@ -51,7 +51,7 @@ public abstract class RowReader {
 	 * 		<br>outputRow will be null.
 	 * </li>
 	 *  <li><i><b>before writing to the output </b></i><code>{@link EntityMapping#addOutputRowReader(RowReader)}</code>:
-	 *  	<br>outputRow will contain all values transformed from the input, with values for references to fully populated and
+	 *  	<br>outputRow will contain all values transformed from the input, with values for references fully populated and
 	 *  	ready to be written to the destination entity.
 	 *  </li>
 	 *  <li><i><b>after writing to the output </b></i><code>{@link EntityMapping#addPersistedRowReader(RowReader)}</code>:
@@ -63,7 +63,7 @@ public abstract class RowReader {
 	public abstract void processRow(Object[] inputRow, Object[] outputRow, RowMappingContext context);
 
 	/**
-	 * Cleans up the RowReader after the reading process.
+	 * Cleans up the {@code RowReader} after the reading process.
 	 * <b>Note: </b> this method is always invoked by uniVocity even if the input entity is empty or in case of exceptions.
 	 * @param context the contextual information and controls available to the user after the execution of a data mapping process.
 	 */

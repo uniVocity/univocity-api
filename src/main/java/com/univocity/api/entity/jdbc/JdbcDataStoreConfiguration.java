@@ -48,7 +48,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	/**
 	 * Creates a new JDBC data store configuration
 	 * @param dataStoreName the name of the JDBC data store.
-	 * @param dataSource the DataSource used to connect to the underlying database.
+	 * @param dataSource the {@code DataSource} used to connect to the underlying database.
 	 */
 	public JdbcDataStoreConfiguration(String dataStoreName, DataSource dataSource) {
 		super(dataStoreName);
@@ -101,7 +101,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 
 	/**
 	 * Obtains an object describing the capabilities of the database managed by this JDBC data store.
-	 * <p><i>By default, uniVocity tries to detect this information automatically</i>
+	 * <p><i>By default, uniVocity tries to detect this information automatically.</i>
 	 * @return the database capabilities information
 	 */
 	public final DatabaseCapabilities getDatabaseInformation() {
@@ -109,7 +109,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Defines what are the capabilities of the database managed by this JDBC data store.
+	 * Defines the capabilities of the database managed by this JDBC data store.
 	 * <p><i>By default, uniVocity tries to detect this information automatically. The configuration you set here takes precedence over any auto-detected data.</i>
 	 * @param databaseInformation the database information.
 	 */
@@ -120,7 +120,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 
 	/**
 	 * Returns the configuration of a given data entity. The returned configuration object will contain default values provided in the object returned by {@link #getDefaultEntityConfiguration()}.
-	 * <br>If the entity was not explicitly configured before, a new configuration object will be created and associated to the entity.
+	 * <br>If the entity was not explicitly configured before, a new configuration object will be created and associated with the entity.
 	 * <p>You can change the default configuration at any time by calling {@link #getDefaultEntityConfiguration()} and altering the settings you need.
 	 *    Subsequent calls to {@link #getEntityConfiguration(String)} will return a configuration object with the new defaults.
 	 *    Existing configurations will retain their original values, including the default settings previously used.
@@ -158,9 +158,9 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Creates a new a SQL query entity from a resource and adds it to this data store. The resource path can be a file in the class path or in the file system.
-	 * @param queryName queryName the name of the query
-	 * @param resourcePath the path to a resource that contains a SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
+	 * Creates a new SQL query entity from a resource and adds it to this data store. The resource path can be a file in the class path or in the file system.
+	 * @param queryName the name of the query
+	 * @param resourcePath the path to a resource that contains an SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
 	 * <p><i><b>Note: </b>As the resource encoding is not provided, the default system encoding will be used.</i>
 	 * @return a configuration object for the new query.
 	 */
@@ -169,9 +169,9 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Creates a new a SQL query entity from a resource and adds it to this data store. The resource path can be a file in the class path or in the file system.
+	 * Creates a new SQL query entity from a resource and adds it to this data store. The resource path can be a file in the class path or in the file system.
 	 * @param queryName the name of the query
-	 * @param resourcePath the path to a resource that contains a SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
+	 * @param resourcePath the path to a resource that contains an SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
 	 * @param encoding the encoding of the resource
 	 * @return a configuration object for the new query.
 	 */
@@ -180,9 +180,9 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Creates a new a SQL query entity from a resource and adds it to this data store. The resource path can be a file in the class path or in the file system.
+	 * Creates a new SQL query entity from a resource and adds it to this data store. The resource path can be a file in the class path or in the file system.
 	 * @param name queryName the name of the query
-	 * @param resourcePath the path to a resource that contains a SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
+	 * @param resourcePath the path to a resource that contains an SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
 	 * @param encoding the encoding of the resource
 	 * @return a configuration object for the new query.
 	 */
@@ -191,8 +191,8 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Creates a new a SQL query entity from a file and adds it to this data store. The file name will be used as the query name.
-	 * @param queryFile a text file containing a SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
+	 * Creates a new SQL query entity from a file and adds it to this data store. The file name will be used as the query name.
+	 * @param queryFile a text file containing an SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
 	 * <p><i><b>Note: </b>As the encoding of the query file is not provided, the default system encoding will be used.</i>
 	 * @return a configuration object for the new query.
 	 */
@@ -201,8 +201,8 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Creates a new a SQL query entity from a file and adds it to this data store. The file name will be used as the query name.
-	 * @param queryFile a text file containing a SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
+	 * Creates a new SQL query entity from a file and adds it to this data store. The file name will be used as the query name.
+	 * @param queryFile a text file containing an SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
 	 * @param encoding the file encoding
 	 * @return a configuration object for the new query.
 	 */
@@ -212,8 +212,8 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Creates a new a SQL query entity from a file and adds it to this data store. The file name will be used as the query name.
-	 * @param queryFile a text file containing a SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
+	 * Creates a new SQL query entity from a file and adds it to this data store. The file name will be used as the query name.
+	 * @param queryFile a text file containing an SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
 	 * @param encoding the file encoding
 	 * @return a configuration object for the new query.
 	 */
@@ -232,9 +232,9 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Creates a new a SQL query entity from a file and adds it to this data store.
+	 * Creates a new SQL query entity from a file and adds it to this data store.
 	 * @param queryName the name of the query
-	 * @param queryFile a text file containing a SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
+	 * @param queryFile a text file containing an SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
 	 * <p><i><b>Note: </b>As the encoding of the query file is not provided, the default system encoding will be used.</i>
 	 * @return a configuration object for the new query.
 	 */
@@ -243,9 +243,9 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Creates a new a SQL query entity from a file and adds it to this data store.
+	 * Creates a new SQL query entity from a file and adds it to this data store.
 	 * @param queryName the name of the query
-	 * @param queryFile a text file containing a SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
+	 * @param queryFile a text file containing an SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
 	 * @param encoding the file encoding
 	 * @return a configuration object for the new query.
 	 */
@@ -255,9 +255,9 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Creates a new a SQL query entity from a file and adds it to this data store.
+	 * Creates a new SQL query entity from a file and adds it to this data store.
 	 * @param queryName the name of the query
-	 * @param queryFile a text file containing a SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
+	 * @param queryFile a text file containing an SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
 	 * @param encoding the file encoding
 	 * @return a configuration object for the new query.
 	 */
@@ -267,7 +267,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Creates a new a SQL query entity and adds it to this data store.
+	 * Creates a new SQL query entity and adds it to this data store.
 	 * @param queryName the name of the query
 	 * @param query the SQL query. Parameters must be prefixed with a colon, for example: <i>SELECT col_1, col2 FROM table WHERE col_1 = <b>:param_1</b> OR col_2 = <b>:param_2</b></i>
 	 * @return a configuration object for the new query.
@@ -293,7 +293,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 
 	/**
 	 * Returns the configuration of a given query entity. The returned configuration object will contain default values provided in the object returned by {@link #getDefaultQueryConfiguration()}.
-	 * <br>If the query was not explicitly configured before, a new configuration object will be created and associated to it.
+	 * <br>If the query was not explicitly configured before, a new configuration object will be created and associated with it.
 	 * <p>You can change the default configuration at any time by calling {@link #getDefaultQueryConfiguration()} and altering the settings you need.
 	 *    Subsequent calls to {@link #getQueryConfiguration(String)} will return a configuration object with the new defaults.
 	 *    Existing configurations will retain their original values, including the default settings previously used.
@@ -314,7 +314,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 
 	/**
 	 * Obtains the timeout, in number of seconds, for transactions created from this data store.
-	 * <p>Transactions will created automatically by uniVocity while performing data mapping operations to this data store.
+	 * <p>Transactions will be created automatically by uniVocity while performing data mapping operations to this data store.
 	 * <br>A new transaction will be created for each mapping cycle started with {@link DataIntegrationEngine#executeCycle()}.
 	 * <p><i>Defaults to -1 (no timeout)</i>
 	 * @return the transaction timeout.
@@ -325,7 +325,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 
 	/**
 	 * Defines a timeout, in number of seconds, for transactions created from this data store.
-	 * <p>Transactions will created automatically by uniVocity while performing data mapping operations to this data store.
+	 * <p>Transactions will be created automatically by uniVocity while performing data mapping operations to this data store.
 	 * <br>A new transaction will be created for each mapping cycle started with {@link DataIntegrationEngine#executeCycle()}.
 	 * @param transactionTimeout the transaction timeout.
 	 */
@@ -349,7 +349,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	 * Defines the transaction isolation level used when persisting data into entities of this data store.
 	 * <br>The transaction isolation level code returned by this method is passed on
 	 * to {@link java.sql.Connection#setTransactionIsolation(int)} before mapping data to an entity.
-	 * <p><i>Only the constants defined in java.sql.Connection are accepted.</i></p>
+	 * <p><i>Only the constants defined in {@link java.sql.Connection} are accepted.</i></p>
 	 * @param transactionIsolationLevel the transaction isolation level
 	 */
 	public final void setTransactionIsolationLevel(int transactionIsolationLevel) {
@@ -425,7 +425,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 
 	/**
 	 * Returns the user-defined {@link IdentifierEscaper} configured to handle reserved word escaping when SQL statements are generated.
-	 * @return a custom implementation of {@link IdentifierEscaper}, or null if uniVocity's default implementation should be used.
+	 * @return a custom implementation of {@link IdentifierEscaper}, or {@code null} if uniVocity's default implementation should be used.
 	 */
 	public final IdentifierEscaper getIdentifierEscaper() {
 		return this.identifierEscaper;

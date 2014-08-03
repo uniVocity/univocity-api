@@ -22,29 +22,29 @@ import com.univocity.api.entity.jdbc.*;
  * <p>uniVocity requires two database tables only: by default, these have the names "univocity_metadata" and "univocity_tmp".
  * The scripts to create these tables are provided with the univocity implementation package, under the "metadata" folder.</p>
  *
- * <p><i><b>Important: </b> always refer to the script on the implementation package as it could have been modified to adapt to the specific implementation requirements.</i></p>
+ * <p><i><b>Important: </b> always refer to the script in the implementation package as it could have been modified to adapt to the specific implementation requirements.</i></p>
  *
  * <p>Just as a reference, the table creation script should be similar to the following:</p>
  *
  * <hr><blockquote><pre>
  *	CREATE TABLE univocity_metadata (
- *		source				VARCHAR(256) NOT NULL,
- *		source_id			VARCHAR(256) NOT NULL,
- *		source_hash			INTEGER,
- *		destination			VARCHAR(256) NOT NULL,
- *		destination_id		VARCHAR(256) NOT NULL,
- *		destination_hash	INTEGER,
- *		flag				CHARACTER(1) DEFAULT 'N',
- *		batch_id			CHARACTER(36) DEFAULT NULL,
- *		cycle_id			INTEGER NOT NULL,
+ *		source              VARCHAR(256) NOT NULL,
+ *		source_id           VARCHAR(256) NOT NULL,
+ *		source_hash         INTEGER,
+ *		destination         VARCHAR(256) NOT NULL,
+ *		destination_id      VARCHAR(256) NOT NULL,
+ *		destination_hash    INTEGER,
+ *		flag                CHARACTER(1) DEFAULT 'N',
+ *		batch_id            CHARACTER(36) DEFAULT NULL,
+ *		cycle_id            INTEGER NOT NULL,
  *		CONSTRAINT pk_univocity_md PRIMARY KEY (source, source_id, destination, destination_id)
  *	)
  *
  *	CREATE TABLE univocity_tmp (
- *		table_name			VARCHAR(256) NOT NULL,
- *		table_id			VARCHAR(256) NOT NULL,
- *		table_hash			INTEGER,
- *		batch_id			CHARACTER(36) DEFAULT NULL,
+ *		table_name          VARCHAR(256) NOT NULL,
+ *		table_id            VARCHAR(256) NOT NULL,
+ *		table_hash          INTEGER,
+ *		batch_id            CHARACTER(36) DEFAULT NULL,
  *		CONSTRAINT pk_univocity_tmp PRIMARY KEY (table_name, table_id)
  *	)
  * </pre></blockquote><hr>
@@ -77,7 +77,7 @@ public final class MetadataSettings {
 
 	/**
 	 * Obtains the number of metadata rows to be persisted in a single batch execution.
-	 * <p>This setting has an effect only when {@link DatabaseCapabilities#isBatchSupported()} evaluates to true.
+	 * <p>This setting has an effect only when {@link DatabaseCapabilities#isBatchSupported()} evaluates to {@code true}.
 	 * <p>Batching database operations greatly improves performance in general, but you might want to adjust the batch size to better control memory usage and batch duration.
 	 * <p><i>Defaults to 10,000 rows</i>
 	 * @return the batch size to use when persisting metadata records into the configured metadata table
@@ -115,7 +115,7 @@ public final class MetadataSettings {
 	}
 
 	/**
-	 * Defines the table of the table configured for uniVocity metadata storage.
+	 * Defines the name of the table configured for uniVocity metadata storage.
 	 * @param metadataTableName the name of the metadata table
 	 */
 	public final void setMetadataTableName(String metadataTableName) {
@@ -144,8 +144,8 @@ public final class MetadataSettings {
 	}
 
 	/**
-	 * Obtains an object describing the capabilities of the database that stores uniVocity metadata
-	 * <p><i>By default, uniVocity tries to detect this information automatically</i>
+	 * Obtains an object describing the capabilities of the database that stores uniVocity metadata.
+	 * <p><i>By default, uniVocity tries to detect this information automatically.</i>
 	 * @return the database capabilities information
 	 */
 	public final DatabaseCapabilities getDatabaseInformation() {
@@ -153,7 +153,7 @@ public final class MetadataSettings {
 	}
 
 	/**
-	 * Defines what are the capabilities of the database that stores uniVocity metadata
+	 * Defines the capabilities of the database that stores uniVocity metadata.
 	 * <p><i>By default, uniVocity tries to detect this information automatically. The configuration you set here takes precedence over any auto-detected data.</i>
 	 * @param databaseInformation the database information.
 	 */
@@ -171,7 +171,7 @@ public final class MetadataSettings {
 
 	/**
 	 * Obtains the timeout, in number of seconds, for transactions created for metadata manipulation.
-	 * <p>Transactions will created automatically by uniVocity while performing data mapping operations between two entities.
+	 * <p>Transactions will be created automatically by uniVocity while performing data mapping operations between two entities.
 	 * <br>A new transaction will be created for each data mapping cycle executed with {@link DataIntegrationEngine#executeCycle()}.
 	 * <p><i>Defaults to -1 (no timeout)</i>
 	 * @return the transaction timeout.
@@ -182,7 +182,7 @@ public final class MetadataSettings {
 
 	/**
 	 * Defines a timeout, in number of seconds, for transactions created for metadata manipulation.
-	 * <p>Transactions will created automatically by uniVocity while performing data mapping cycles that involve multiple entity mappings.
+	 * <p>Transactions will be created automatically by uniVocity while performing data mapping cycles that involve multiple entity mappings.
 	 * <br>A new transaction will be created for mapping cycle executed with {@link DataIntegrationEngine#executeCycle()}.
 	 * @param transactionTimeout the transaction timeout.
 	 */
@@ -215,7 +215,7 @@ public final class MetadataSettings {
 	}
 
 	/**
-	 * Obtains the number of rows to return for an open ResultSet in a each each trip to the database.
+	 * Obtains the number of rows to return for an open {@code ResultSet} in a each each trip to the database.
 	 * <p>uniVocity passes this value directly to your database driver using {@link java.sql.Statement#setFetchSize(int)}.
 	 * <p>For performance reasons, you might want to adjust the fetch size to reflect the common number of rows returned
 	 *    for metadata operations. A big fetch size number might consume too many resources and will be excessive for a small number of records.
@@ -230,7 +230,7 @@ public final class MetadataSettings {
 	}
 
 	/**
-	 * Defines the number of rows to return for an open ResultSet in a each each trip to the database.
+	 * Defines the number of rows to return for an open {@code ResultSet} in a each each trip to the database.
 	 * <p>uniVocity passes this value directly to your database driver using {@link java.sql.Statement#setFetchSize(int)}.
 	 * <p>For performance reasons, you might want to adjust the fetch size to reflect the common number of rows returned
 	 *    for metadata operations. A big fetch size number might consume too many resources and will be excessive for a small number of records.

@@ -31,7 +31,7 @@ public final class FixedWidthEntityConfiguration extends TextEntityConfiguration
 	}
 
 	/**
-	 * Associates a length to each column of records returned by the fixed-width data entity. All lengths must be greater than 0.
+	 * Associates a length with each column of records returned by the fixed-width data entity. All lengths must be greater than 0.
 	 * @param fieldLengths the sequence of lengths for each field that form a fixed-width record.
 	 */
 	@Override
@@ -60,7 +60,7 @@ public final class FixedWidthEntityConfiguration extends TextEntityConfiguration
 	/**
 	 * Adds the length of the next field in a fixed-width record.
 	 * <p> Note the total number of fields per record must have been defined using {@link #setFieldsPerRecord(int)} prior to invoking this method.
-	 * <p> This method can be called the number of times
+	 * <p> This method can be called the same number of times as there are fields per record.
 	 * @param length the length of the next field. It must be greater than 0.
 	 */
 	public final void addField(int length) {
@@ -79,7 +79,7 @@ public final class FixedWidthEntityConfiguration extends TextEntityConfiguration
 	}
 
 	/**
-	 * Returns the number of fields in each record of a fixed-width data entity
+	 * Returns the number of fields in each record of a fixed-width data entity.
 	 * @return the number of fields in each record of a fixed-width data entity
 	 */
 	public final int getFieldsPerRecord() {
@@ -113,11 +113,11 @@ public final class FixedWidthEntityConfiguration extends TextEntityConfiguration
 	 * Indicates whether or not a record is considered parsed when a newline is reached. Examples:
 	 * <ul>
 	 *  <li>Consider two records of length <b>4</b>, and the input <b>12\n3456</b></li>
-	 * 	<li>When {@link #recordEndsOnNewline} is set to true:  the first value will be read as <b>12</b> and the second <b>3456</b></li>
-	 *  <li>When {@link #recordEndsOnNewline} is set to false:  the first value will be read as <b>12\n3</b> and the second <b>456</b></li>
+	 * 	<li>When {@link #recordEndsOnNewline} is set to {@code true}:  the first value will be read as <b>12</b> and the second <b>3456</b></li>
+	 *  <li>When {@link #recordEndsOnNewline} is set to {@code false}:  the first value will be read as <b>12\n3</b> and the second <b>456</b></li>
 	 * </ul>
-	 * <p><i>Defaults to false</i>
-	 * @return true if a record should be considered parsed when a newline is reached; false otherwise
+	 * <p><i>Defaults to {@code false}</i>
+	 * @return {@code true} if a record should be considered parsed when a newline is reached, otherwise {@code false}
 	 */
 	public final boolean getRecordEndsOnNewline() {
 		if (this.recordEndsOnNewline == null) {
@@ -130,8 +130,8 @@ public final class FixedWidthEntityConfiguration extends TextEntityConfiguration
 	 * Defines whether or not a record is considered parsed when a newline is reached. Examples:
 	 * <ul>
 	 *  <li>Consider two records of length <b>4</b>, and the input <b>12\n3456</b></li>
-	 * 	<li>When {@link #recordEndsOnNewline} is set to true:  the first value will be read as <b>12</b> and the second <b>3456</b></li>
-	 *  <li>When {@link #recordEndsOnNewline} is set to false:  the first value will be read as <b>12\n3</b> and the second <b>456</b></li>
+	 * 	<li>When {@link #recordEndsOnNewline} is set to {@code true}:  the first value will be read as <b>12</b> and the second <b>3456</b></li>
+	 *  <li>When {@link #recordEndsOnNewline} is set to {@code false}:  the first value will be read as <b>12\n3</b> and the second <b>456</b></li>
 	 * </ul>
 	 * @param recordEndsOnNewline a flag indicating whether or not a record is considered parsed when a newline is reached
 	 */
@@ -141,9 +141,9 @@ public final class FixedWidthEntityConfiguration extends TextEntityConfiguration
 
 	/**
 	 * Indicates whether or not any trailing characters beyond the record's length should be skipped until the newline is reached.
-	 * <br>For example, if the record length is 5, but the row contains <b>12345678\n</b>, then portion containing <b>678\n</b> will be discarded and not considered part of the next record
-	 * <p><i>Defaults to false</i>
-	 * @return returns true if any trailing characters beyond the record's length should be skipped until the newline is reached, false otherwise
+	 * <br>For example, if the record length is 5, but the row contains <b>12345678\n</b>, the portion containing <b>678\n</b> will be discarded and not considered part of the next record
+	 * <p><i>Defaults to {@code false}</i>
+	 * @return {@code true} if any trailing characters beyond the record's length should be skipped until the newline is reached, otherwise {@code false}
 	 */
 	public final boolean getSkipTrailingCharsUntilNewline() {
 		if (this.skipTrailingCharsUntilNewline == null) {

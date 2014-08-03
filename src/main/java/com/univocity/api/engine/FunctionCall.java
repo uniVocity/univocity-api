@@ -13,8 +13,8 @@ import com.univocity.api.config.annotation.*;
  *
  * <p>Use {@link DataIntegrationEngine#addFunction(EngineScope, String, FunctionCall)} to associate it with a name and a scope.</p>
  * <p>Use {@link DataIntegrationEngine#addFunctions(Object...)} to automatically create functions with the methods annotated with {@link FunctionWrapper}.
- *    The object instances will be used to execute the function calls and there is no restriction about their state. Keep in mind that depending on your configuration,
- *    concurrent function invocations might happen. In this situation it is important to avoid sharing an object with multiple functions; or synchronize any code that alters its state.</p>
+ *    The object instances will be used to execute the function calls and there is no restriction on their state. Keep in mind that, depending on your configuration,
+ *    concurrent function invocations might occur. In this situation it is important either to avoid sharing an object with multiple functions or to synchronize any code that alters its state.</p>
  *
  * <p>Calls executed within uniVocity will cache the function result in the given scope and will only be executed again once data stored in that scope is lost.</p>
  *
@@ -36,9 +36,9 @@ import com.univocity.api.config.annotation.*;
  * </pre></blockquote><hr>
  *
  * <p>The <i>getLocaleId</i> function can be used as a source field in a mapping as well. When used within a field mapping, the function must be
- * enclosed within curly brackets. The following example uses it to obtain the <i>en_AU</i> locale ID in a mapping using different constructs:</p>
+ * enclosed within curly braces. The following example uses it to obtain the <i>en_AU</i> locale ID in a mapping using different constructs:</p>
  * <hr><blockquote><pre>
- * // invokes getLocaleId with the <code>en_AU</code> String as an argument.:
+ * // invokes getLocaleId with the "en_AU" String as an argument
  * mapping.identity().associate("{getLocaleId(en_AU)}").to("locale_id");
  *
  * //or: invokes getLocaleId with the value of the variable currentLocale
@@ -48,7 +48,7 @@ import com.univocity.api.config.annotation.*;
  * mapping.identity().associate("{getLocaleId(getCurrentLocale())}").to("locale_id");
  * </pre></blockquote><hr>
  *
- * <p>There is no limitation on the number of arguments used to invoke a function. If a function takes multiple arguments, use an array of Objects.</p>
+ * <p>There is no limitation on the number of arguments used to invoke a function. If a function takes multiple arguments, use an array of {@code Object}s.</p>
  *
  * @see FunctionWrapper
  * @see EngineScope
@@ -57,12 +57,13 @@ import com.univocity.api.config.annotation.*;
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  * @param <O> the output type of this function
- * @param <I> the input expected for this function.
+ * @param <I> the input type expected for this function.
  */
 public interface FunctionCall<O, I> {
 
 	/**
-	 * Executes the function and returns result (if any)
+	 * Executes the function and returns the result (if any)
+	 * 
 	 * @param input the function arguments
 	 * @return the function result.
 	 */

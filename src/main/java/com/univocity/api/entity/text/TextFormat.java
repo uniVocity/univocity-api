@@ -22,7 +22,7 @@ import com.univocity.api.entity.*;
  *			<li>Linux/Unix uses line feed only: <i>\n</i></li>
  *			<li>MacOS uses carriage return only: <i>\r</i></li>
  *		</ul>
- *   	<i>{@link #lineSeparator} defaults to the system line separator</i>
+ *   	<i>{@link #lineSeparator} defaults to the system line separator.</i>
  *  </li>
  *  <li><b>normalizedNewLine:</b> a single character used to represent the end of a line uniformly in any parsed content. It has the following implications:
  *  	<ul>
@@ -31,7 +31,7 @@ import com.univocity.api.entity.*;
  *		</ul>
  *  	<p><i>{@link #normalizedNewline} defaults to '\n'.</i>
  *  </li>
- *  <li><b>comment:</b>a character that, if found in the beginning of a line of text, represents comment in any text-based input supported by uniVocity.
+ *  <li><b>comment:</b> a character that, if found in the beginning of a line of text, represents comment in any text-based input supported by uniVocity.
  *  	<p><i>{@link #comment} defaults to '#'.</i></li>
  * </ul>
  *
@@ -84,7 +84,7 @@ public class TextFormat extends Configuration {
 	/**
 	 * Identifies whether a given character sequence matches the {@link #lineSeparator} sequence.
 	 * @param string the character sequence to be matched
-	 * @return true if the given character sequence matches the {@link #lineSeparator}, false otherwise
+	 * @return {@code true} if the given character sequence matches the {@link #lineSeparator}, otherwise {@code false}
 	 */
 	public final boolean isLineSeparator(String string) {
 		return getLineSeparatorString().equals(string);
@@ -93,7 +93,7 @@ public class TextFormat extends Configuration {
 	/**
 	 * Identifies whether a given character sequence matches the {@link #lineSeparator} sequence.
 	 * @param chars the character sequence to be matched
-	 * @return true if the given character sequence matches the {@link #lineSeparator}, false otherwise
+	 * @return {@code true} if the given character sequence matches the {@link #lineSeparator}, otherwise {@code false}
 	 */
 	public final boolean isLineSeparator(char[] chars) {
 		if (chars == null) {
@@ -145,14 +145,14 @@ public class TextFormat extends Configuration {
 	/**
 	 * Compares the given character against the {@link #normalizedNewline} character.
 	 * @param  ch the character to be verified
-	 * @return true if the given character is the normalized newline character, false otherwise
+	 * @return {@code true} if the given character is the normalized newline character, otherwise {@code false}
 	 */
 	public final boolean isNormalizedNewLine(char ch) {
 		return this.getNormalizedNewline() == ch;
 	}
 
 	/**
-	 * Returns the character that represents a line comment. Defaults to '#'
+	 * Returns the character that represents a line comment. Defaults to '#'.
 	 * <p> Set it to '\0' to disable comment skipping.
 	 * @return the comment character
 	 */
@@ -173,9 +173,9 @@ public class TextFormat extends Configuration {
 	}
 
 	/**
-	 * Identifies whether a given character represents a comment
+	 * Identifies whether a given character represents a comment.
 	 * @param ch the character to be verified
-	 * @return true if the given character is the comment character, false otherwise
+	 * @return {@code true} if the given character is the comment character, otherwise {@code false}
 	 */
 	public boolean isComment(char ch) {
 		return this.getComment() == ch;

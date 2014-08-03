@@ -41,7 +41,7 @@ public enum EngineScope {
 	MAPPING,
 	/**
 	 * The stateless scope never retains or restores any value. {@link FunctionCall}s will never have their results cached in the scope,
-	 * hence and every call to an stateless-scoped function will trigger a new execution.
+	 * therefore every call to an stateless-scoped function will trigger a new execution.
 	 */
 	STATELESS
 }
