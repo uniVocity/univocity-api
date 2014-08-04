@@ -40,7 +40,7 @@
 			<email>jbax@univocity.com</email>
 			<timezone>+9:30</timezone>
 		</developer>
-		
+
 		<developer>
 			<id>dev</id>
 			<name>uniVocity development team</name>
@@ -53,7 +53,7 @@
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
-		
+
 		<repository>
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
@@ -71,7 +71,7 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -85,7 +85,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -99,7 +99,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
@@ -121,7 +121,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -135,7 +135,7 @@
 					</archive>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.4</version>
@@ -145,7 +145,7 @@
 					</descriptorRefs>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
@@ -157,8 +157,26 @@
 					<autoReleaseAfterClose>false</autoReleaseAfterClose>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<applyJavadocSecurityFix>true</applyJavadocSecurityFix>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
-		
+
 		<pluginManagement>
 			<!-- All this crap just to remove a warning from my eclipse workspace... -->
 			<plugins>
@@ -199,31 +217,13 @@
 		<!-- No dependencies allowed here -->
 	</dependencies>
 
-	<!-- only generate (1) javadocs, (2) source jar and (3) sign the artifact,
+	<!-- only generate source jar and sign the artifact
 		 when releasing (i.e. "mvn release:perform") -->
 	<profiles>
 		<profile>
 			<id>release</id>
 			<build>
 				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>2.9.1</version>
-						<executions>
-							<execution>
-								<id>attach-javadocs</id>
-								<phase>package</phase>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-								<configuration>
-									<applyJavadocSecurityFix>true</applyJavadocSecurityFix>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
