@@ -10,9 +10,9 @@ import com.univocity.api.engine.*;
 /**
  * The <code>IdentifierType</code> configuration is obtained from a  {@link IdentifierMappingSetup} using {@link IdentifierMappingSetup#associate(String...)}.
  *
- * <p>It is used to define how the values read from the source entity are to be associated to the destination identifiers:
+ * <p>It is used to define how the values read from the source entity are to be associated with the destination identifiers:
  * <ul>
- * 	<li>If the destination identifier is generated automatically, the source values will be associated to the generated identifier using uniVocity metadata</li>
+ * 	<li>If the destination identifier is generated automatically, the source values will be associated with the generated identifier using uniVocity metadata</li>
  *  <li>Otherwise, the source values will be transferred to the appropriate destination fields that form an identifier. This association will also be stored in uniVocity metadata</li>
  * </ul>
  *
@@ -37,7 +37,7 @@ import com.univocity.api.engine.*;
 public interface IdentifierType extends IdentifierCopy {
 
 	/**
-	 * Defines what generated identifier field of a destination entity should be associated to values extracted from a
+	 * Defines what generated identifier field of a destination entity should be associated with values extracted from a
 	 * selection of fields in the source entity.
 	 *
 	 * @param destinationField the name of the generated field in the destination entity
@@ -50,7 +50,7 @@ public interface IdentifierType extends IdentifierCopy {
 	public GeneratedIdentifierTransform toGeneratedId(String destinationField, String valueIfEmpty);
 
 	/**
-	 * Defines what generated identifier field of a destination entity should be associated to values extracted from a
+	 * Defines what generated identifier field of a destination entity should be associated with values extracted from a
 	 * selection of fields in the source entity.
 
 	 * @param destinationField the name of the generated field in the destination entity

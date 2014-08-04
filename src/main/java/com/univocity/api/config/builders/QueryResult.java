@@ -47,7 +47,7 @@ public interface QueryResult {
 
 	/**
 	 * Uses the result of the query as a {@link Dataset}. This allows the query to be used as the source entity of any {@link EntityMapping}.
-	 * Note that the results of this query are kept in memory and reused according to the scope associated to it.
+	 * Note that the results of this query are kept in memory and reused according to the scope associated with it.
 	 * <p><i>This completes the configuration started in {@link DataIntegrationEngine#addQuery(EngineScope, String)}</i>
 	 */
 	public void returnDataset();

@@ -64,7 +64,7 @@ public interface EntityMapping {
 	 * With this information on the metadata, a reference mapping can be defined as:
 	 *
 	 * <hr><blockquote><pre>
-	 * //Uses fields "nbr" and "seq" from the source entity "WGT" to obtain the identifier associated to "weight".
+	 * //Uses fields "nbr" and "seq" from the source entity "WGT" to obtain the identifier associated with "weight".
 	 * //After getting the correct identifier of "weight", copy it to "weight_id"
 	 *
 	 * EntityMapping weightDetails = mapping.map("WGT", "weight_details");
@@ -72,9 +72,9 @@ public interface EntityMapping {
 	 * ...
 	 * </pre></blockquote><hr>
 	 *
-	 * Using the above mapping, uniVocity will execute a query against its metadata requesting for any values associated to <code>nbr</code> and <code>seq</code>,
+	 * Using the above mapping, uniVocity will execute a query against its metadata requesting for any values associated with <code>nbr</code> and <code>seq</code>,
 	 * where the source entity is <code>WGT</code> and the destination entity is <code>weight</code>. The returned identifiers for <code>weight</code> will then be
-	 * associated to the <code>weight_id</code> field in <code>weight_details</code>.
+	 * associated with the <code>weight_id</code> field in <code>weight_details</code>.
 	 *
 	 *
 	 * @return the reference mapping builder that exposes the appropriate configuration options required to map one or more

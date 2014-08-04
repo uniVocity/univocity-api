@@ -9,7 +9,7 @@ package com.univocity.api.config.builders;
  * The <code>ReferencedEntity</code> configuration is obtained from a {@link ReferenceMappingSetup} with {@link ReferenceMappingSetup#using(String...)}.
  *
  * <p>It is used to identify what source entity has an {@link IdentifierMappingSetup} compatible with the selection of reference fields, and
- *    what destination entity had its identifier associated to these fields.
+ *    what destination entity had its identifier associated with these fields.
  *
  * @see ReferenceMappingSetup
  * @see IdentifierMappingSetup

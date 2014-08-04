@@ -12,7 +12,7 @@ import com.univocity.api.engine.*;
  * which is part of the configuration initialized by a call to {@link IdentifierMappingSetup#associate(String...)}
  *
  * <p>It is used to define what functions in the {@link DataIntegrationEngine} should be used to process values from an input field and transform them into values
- * that will then be associated to the identifiers of a destination field.
+ * that will then be associated with the identifiers of a destination field.
  *
  * @see IdentifierMappingSetup
  * @see FunctionCall
@@ -23,7 +23,7 @@ import com.univocity.api.engine.*;
 public interface IdentifierTransform extends AdditionalIdentifiers {
 	/**
 	 * Defines what sequence of functions in the {@link DataIntegrationEngine} should be used to process values from an input field and transform them into values
-	 * that will then be associated to the identifiers of a destination entity.
+	 * that will then be associated with the identifiers of a destination entity.
 	 *
 	 * @param functionNames the sequence of function names that will be executed against each value read from the input.
 	 * <p><i>Note: </i> this establishes a chaining of functions:

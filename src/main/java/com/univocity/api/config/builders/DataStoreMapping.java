@@ -61,7 +61,7 @@ public interface DataStoreMapping {
 	 *
 	 * @param sourceEntityName the name of the source data entity.
 	 * @param destinationEntityName the name of the destination data entity.
-	 * @return the existing {@link DataStoreMapping} instance associated to the given data entity names, or {@code null} if there's no mapping between them.
+	 * @return the existing {@link DataStoreMapping} instance associated with the given data entity names, or {@code null} if there's no mapping between them.
 	 */
 	public EntityMapping getMapping(String sourceEntityName, String destinationEntityName);
 

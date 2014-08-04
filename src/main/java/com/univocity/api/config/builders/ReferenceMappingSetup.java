@@ -32,7 +32,7 @@ package com.univocity.api.config.builders;
  * With this information on the metadata, a reference mapping can be defined as:
  *
  * <hr><blockquote><pre>
- * //Uses fields "wgt_nbr" and "wgt_seq" from the source entity "WGT_DET" to obtain the identifier associated to "weight".
+ * //Uses fields "wgt_nbr" and "wgt_seq" from the source entity "WGT_DET" to obtain the identifier associated with "weight".
  * //After getting the correct identifier of "weight", copy it to "weight_ref"
  *
  * EntityMapping weightDetails = mapping.map("WGT_DET", "weight_details");

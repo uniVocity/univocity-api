@@ -54,7 +54,7 @@ public class EngineConfiguration {
 	}
 
 	/**
-	 * Defines the database settings required by uniVocity to persist its metadata information.
+	 * Defines the database settings required by uniVocity to persist its metadata.
 	 * <p>If set to {@code null}, uniVocity will create an internal in-memory database for metadata handling while this engine is active.
 	 * @param metadataSettings the database settings required for accessing and persisting metadata produced by this engine.
 	 */
@@ -71,7 +71,7 @@ public class EngineConfiguration {
 	}
 
 	/**
-	 * Obtains the database settings required by uniVocity to persist its metadata information.
+	 * Obtains the database settings required by uniVocity to persist its metadata.
 	 * <p><i>Defaults to to null. If no configuration is provided using {@link #setMetadataSettings(MetadataSettings)}, then  an internal
 	 * in-memory database will be used for metadata handling while this engine is active.</i>
 	 * @return the database settings required for accessing and persisting metadata produced by this engine.

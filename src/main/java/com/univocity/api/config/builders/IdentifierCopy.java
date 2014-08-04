@@ -8,7 +8,7 @@ package com.univocity.api.config.builders;
 /**
  * The <code>IdentifierCopy</code> configuration is obtained from a  {@link IdentifierMappingSetup} using {@link IdentifierMappingSetup#associate(String...)}.
  *
- * <p>It is used to define what identifier fields of a destination entity should receive values extracted from a selection of fields in the source entity.
+ * <p>It is used to define which identifier fields of a destination entity should receive values extracted from a selection of fields in the source entity.
  *
  * @see FieldMappingSetup
  *
@@ -17,7 +17,7 @@ package com.univocity.api.config.builders;
  */
 public interface IdentifierCopy {
 	/**
-	 * Defines what identifier fields of a destination entity should receive values extracted from a selection of fields in the source entity.
+	 * Defines which identifier fields of a destination entity should receive values extracted from a selection of fields in the source entity.
 	 *
 	 * @param destinationFields the fields of the destination entity. Source and destination fields must:
 	 * <ul>

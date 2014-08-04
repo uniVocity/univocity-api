@@ -28,7 +28,7 @@ import com.univocity.api.config.builders.*;
 public interface NameMatcher {
 
 	/**
-	 * Identifies whether two entity or field names match and should be associated to each other automatically.
+	 * Identifies whether two entity or field names match and should be associated with each other automatically.
 	 * @param nameInSource the name in the source
 	 * @param nameInDestination the name in the destination
 	 * @return {@code true} if the entity of field name in source must be mapped to the entity or field name in the destination, otherwise {@code false}.

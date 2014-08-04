@@ -36,7 +36,7 @@ public @interface FunctionWrapper {
 	 * The {@link EngineScope} of the {@link FunctionCall} created with this method. It determines how the result produced by this call is retained before the
 	 * function has to be called again. A new function call with the same parameters (if any) will be executed only once in each active scope.
 	 *  <p><i><b>Note:</b> functions are accessible from any scope</i>.
-	 * @return the scope associated to values returned by this function.
+	 * @return the scope associated with values returned by this function.
 	 */
 	EngineScope scope() default EngineScope.STATELESS;
 

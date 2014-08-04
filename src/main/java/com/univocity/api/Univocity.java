@@ -143,14 +143,14 @@ public final class Univocity {
 	/**
 	 * Obtains the {@link DataIntegrationEngine} instance which was configured using {@link Univocity#registerEngine(com.univocity.api.config.EngineConfiguration)}.
 	 * @param engineName the name of the data integration engine
-	 * @return the {@link DataIntegrationEngine} associated to the given engine name
+	 * @return the {@link DataIntegrationEngine} associated with the given engine name
 	 */
 	public static final synchronized DataIntegrationEngine getEngine(String engineName) {
 		return engineFactory().getEngine(engineName);
 	}
 
 	/**
-	 * Shuts down the {@link DataIntegrationEngine} associated to the given engine name. All resources allocated by this engine will be released.
+	 * Shuts down the {@link DataIntegrationEngine} associated with the given engine name. All resources allocated by this engine will be released.
 	 * <br>If the engine was started using an in-memory database to store metadata information, its values will be lost.
 	 * <p>A new engine instance can be started with {@link #getEngine(String)}.
 	 *
@@ -165,7 +165,7 @@ public final class Univocity {
 	 * <p>An active engine is one that has been instantiated through {@link Univocity#getEngine(String)} and has yet to be shut down.
 	 *
 	 * @param engineName the name of the engine to be verfied.
-	 * @return {@code true} if the {@link DataIntegrationEngine} associated to the given engine name is active, otherwise {@code false}
+	 * @return {@code true} if the {@link DataIntegrationEngine} associated with the given engine name is active, otherwise {@code false}
 	 */
 	public static final synchronized boolean isActive(String engineName) {
 		return engineFactory().isActive(engineName);

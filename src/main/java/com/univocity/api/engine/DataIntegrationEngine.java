@@ -22,7 +22,7 @@ import com.univocity.api.data.*;
  *
  * <p>A database with a set of tables to store metadata is required for non-trivial mappings. This configuration resides in a {@link MetadataSettings} object.
  * In case this is not configured in {@link EngineConfiguration#getMetadataSettings()},
- * the <code>DataIntegrationEngine</code> will be started with an in-memory database. Note, however, that all metadata information stored in this in-memory database
+ * the <code>DataIntegrationEngine</code> will be started with an in-memory database. Note, however, that all metadata stored in this in-memory database
  * is lost once the <code>DataIntegrationEngine</code> is shut down (using {@link Univocity#shutdown(String)}).
  *
  * <p>The <code>DataIntegrationEngine</code> manages an internal scope ({@link EngineScope}) for variables, constants, {@link FunctionCall}s, and {@link DatasetProducer}s.
@@ -64,7 +64,7 @@ public interface DataIntegrationEngine {
 	 *
 	 * @param sourceDataStore the name of the source data store.
 	 * @param destinationDataStore the name of the destination data store. Source and destination data stores can be the same.
-	 * @return the existing {@link DataStoreMapping} instance associated to the given data store names, or {@code null} if no such mapping between them exists.
+	 * @return the existing {@link DataStoreMapping} instance associated with the given data store names, or {@code null} if no such mapping between them exists.
 	 */
 	public DataStoreMapping getMapping(String sourceDataStore, String destinationDataStore);
 
@@ -173,7 +173,7 @@ public interface DataIntegrationEngine {
 	 * Configures a query to be executed against a data store as a function. The query will be accessible from any {@link EntityMapping}s of this engine.
 	 *
 	 * The result of a query-based function call will be reused within a given scope. For example
-	 * if query named as "selectLocaleId" is associated to the {@link EngineScope#CYCLE} scope, the value returned by multiple invocations of
+	 * if query named as "selectLocaleId" is associated with the {@link EngineScope#CYCLE} scope, the value returned by multiple invocations of
 	 * "selectLocaleId('en_US')" will be reused until the end of a data mapping cycle.
 	 *
 	 * <p><i><b>Note:</b> The query-based function will be accessible from any scope</i>.</p>

@@ -64,7 +64,7 @@ public interface DatasetFactory {
 	 *
 	 * @param map the map used to hold all records of the data set.
 	 * @param identifier the field name used as identifier. Values in the identifier column will be used as keys in the map.
-	 * @param fieldName field name of each value associated to an identifier of this data set.
+	 * @param fieldName field name of each value associated with an identifier of this data set.
 	 * @return a new modifiable dataset.
 	 */
 	public ModifiableDataset newDataset(Map<?, ?> map, String identifier, String fieldName);

@@ -39,7 +39,7 @@ public interface IdentifierMappingSetup {
 	/**
 	 * Associates one or more fields from the source entity in an {@link EntityMapping} with the identifier of the destination entity.
 	 *
-	 * @param sourceFields the field names in the source entity to be associated to an identifier of the destination.
+	 * @param sourceFields the field names in the source entity to be associated with an identifier of the destination.
 	 * 		   Expressions are allowed within curly braces (i.e. "{expression}")
 	 * @return the next step of this configuration: define what fields of the destination are identifiers and how they will
 	 *         receive the values read from the source.

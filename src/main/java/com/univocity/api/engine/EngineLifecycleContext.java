@@ -27,7 +27,7 @@ package com.univocity.api.engine;
 public interface EngineLifecycleContext {
 
 	/**
-	 * Returns the name associated to the {@link DataIntegrationEngine}
+	 * Returns the name associated with the {@link DataIntegrationEngine}
 	 * @return the data integration engine name.
 	 */
 	public String getEngineName();

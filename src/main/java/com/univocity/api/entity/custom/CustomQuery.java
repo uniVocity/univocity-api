@@ -44,7 +44,7 @@ public interface CustomQuery extends CustomReadableEntity {
 	/**
 	 * Associates a value, provided by uniVocity, to a parameter.
 	 * @param parameterName the name of the parameter to be set
-	 * @param parameterValue the value associated to the given parameter.
+	 * @param parameterValue the value associated with the given parameter.
 	 */
 	public void setParameter(String parameterName, Object parameterValue);
 }

@@ -29,17 +29,17 @@ import com.univocity.api.config.*;
 public interface ScopeStorageProvider {
 
 	/**
-	 * Obtains a value associated to a key in the scope storage.
+	 * Obtains a value associated with a key in the scope storage.
 	 * @param key the key that refers to a value stored in this scope
-	 * @return the value associated to the given key, or null if this scope does not contain a value for the key.
+	 * @return the value associated with the given key, or null if this scope does not contain a value for the key.
 	 */
 	public Object getValue(Object key);
 
 	/**
 	 * Associates a value to a key in this scope storage.
-	 * @param key the key to be associated to a value in this storage
-	 * @param value the value associated to the given key
-	 * @return the previous value associated to the given key, if any.
+	 * @param key the key to be associated with a value in this storage
+	 * @param value the value associated with the given key
+	 * @return the previous value associated with the given key, if any.
 	 */
 	public Object setValue(Object key, Object value);
 

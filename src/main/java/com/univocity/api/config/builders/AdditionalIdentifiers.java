@@ -22,7 +22,7 @@ public interface AdditionalIdentifiers {
 	 * This is an optional configuration used to associate additional fields from the source entity
 	 * in an {@link EntityMapping} to other identifier fields in the destination entity.
 	 *
-	 * @param sourceFields the field names in the source entity to be associated to other identifier fields of the destination.
+	 * @param sourceFields the field names in the source entity to be associated with other identifier fields of the destination.
 	 * 		   Expressions are allowed within curly braces (i.e. "{expression}")
 	 * @return the next step of this configuration: define what fields of the destination are identifiers and how they will
 	 *         receive the values read from the source.

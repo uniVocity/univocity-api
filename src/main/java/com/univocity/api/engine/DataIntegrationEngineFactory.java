@@ -27,7 +27,7 @@ public interface DataIntegrationEngineFactory {
 	public DataIntegrationEngine getEngine(String engineName);
 
 	/**
-	 * Shuts down the {@link DataIntegrationEngine} associated to the given engine name. All resources allocated by this engine will be released.
+	 * Shuts down the {@link DataIntegrationEngine} associated with the given engine name. All resources allocated by this engine will be released.
 	 * <br>If the engine was started using an in-memory database to store metadata information, its values will be lost.
 	 * <p>A new engine instance can be started with {@link DataIntegrationEngineFactory#getEngine(String)}.
 	 *
@@ -40,7 +40,7 @@ public interface DataIntegrationEngineFactory {
 	 * <p>An active engine is one that has been instantiated via {@link DataIntegrationEngineFactory#getEngine(String)} and has yet to be shut down.
 	 *
 	 * @param engineName the name of the engine to be verified.
-	 * @return true if the {@link DataIntegrationEngine} associated to the given engine name is active, false otherwise
+	 * @return true if the {@link DataIntegrationEngine} associated with the given engine name is active, false otherwise
 	 */
 	public boolean isActive(String engineName);
 }
