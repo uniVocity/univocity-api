@@ -20,7 +20,7 @@ import com.univocity.api.entity.jdbc.*;
  * when the application is shut down.
  *
  * <p>uniVocity requires two database tables only: by default, these have the names "univocity_metadata" and "univocity_tmp".
- * The scripts to create these tables are provided with the univocity implementation package, under the "metadata" folder.</p>
+ * The scripts to create these tables and associated indexes are provided with the univocity implementation package, under the "metadata" folder.</p>
  *
  * <p><i><b>Important: </b> always refer to the script in the implementation package as it could have been modified to adapt to the specific implementation requirements.</i></p>
  *
@@ -28,24 +28,24 @@ import com.univocity.api.entity.jdbc.*;
  *
  * <hr><blockquote><pre>
  *	CREATE TABLE univocity_metadata (
- *		source              VARCHAR(256) NOT NULL,
- *		source_id           VARCHAR(256) NOT NULL,
- *		source_hash         INTEGER,
- *		destination         VARCHAR(256) NOT NULL,
- *		destination_id      VARCHAR(256) NOT NULL,
- *		destination_hash    INTEGER,
- *		flag                CHARACTER(1) DEFAULT 'N',
- *		batch_id            CHARACTER(36) DEFAULT NULL,
- *		cycle_id            INTEGER NOT NULL,
- *		CONSTRAINT pk_univocity_md PRIMARY KEY (source, source_id, destination, destination_id)
- *	)
+ *		source				VARCHAR(256) NOT NULL,
+ *		source_id			VARCHAR(256) NOT NULL,
+ *		source_hash			INTEGER,
+ *		destination			VARCHAR(256) NOT NULL,
+ *		destination_id		VARCHAR(256) NOT NULL,
+ *		destination_hash	INTEGER,
+ *		flag				CHARACTER(1) DEFAULT 'N',
+ *		batch_id			BIGINT DEFAULT NULL,
+ *		CONSTRAINT pk_univocity_md PRIMARY KEY (source, destination, source_id, destination_id)
+ *	);
  *
- *	CREATE TABLE univocity_tmp (
- *		table_name          VARCHAR(256) NOT NULL,
- *		table_id            VARCHAR(256) NOT NULL,
- *		table_hash          INTEGER,
- *		batch_id            CHARACTER(36) DEFAULT NULL,
- *		CONSTRAINT pk_univocity_tmp PRIMARY KEY (table_name, table_id)
+ *	CREATE INDEX u_md_dst_idx ON univocity_metadata (source, destination, destination_id);
+ *
+ *  CREATE TABLE univocity_tmp (
+ *		table_name			VARCHAR(256),
+ *		table_id			VARCHAR(256),
+ *		batch_id			BIGINT,
+ *		CONSTRAINT pk_univocity_tmp PRIMARY KEY (table_name, table_id, batch_id)
  *	)
  * </pre></blockquote><hr>
  *
