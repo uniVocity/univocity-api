@@ -71,4 +71,52 @@ public interface RowMappingContext extends EntityMappingContext, EngineExecution
 	 * @return the sequence of fields read from the output data entity.
 	 */
 	public String[] getOutputFields();
+
+	/**
+	 * Returns the value of a given field in the current input row.
+	 * @param fieldName name of the input field whose value will be returned.
+	 * @return the value of the field in the current input row.
+	 */
+	public Object getInputValue(String fieldName);
+
+	/**
+	 * Returns the value of a given field in the current output row.
+	 * @param fieldName name of the output field whose value will be returned.
+	 * @return the value of the field in the current output row.
+	 */
+	public Object getOutputValue(String fieldName);
+
+	/**
+	 * Modifies the value of a given field in the current input row.
+	 * @param fieldName name of the input field whose value will be modified.
+	 * @param value the new value of the field in the current input row.
+	 */
+	public void setInputValue(String fieldName, Object value);
+
+	/**
+	 * Modifies the value of a given field in the current output row.
+	 * @param fieldName name of the output field whose value will be modified.
+	 * @param value the new value of the field in the current output row.
+	 */
+	public void setOutputValue(String fieldName, Object value);
+
+	/**
+	 * Returns the value of a given field in the current input row.
+	 * @param <T> fieldType the type of the value stored in the input field
+	 * @param fieldName name of the input field whose value will be returned.
+	 * @param fieldType the class of the value stored in the input field
+	 * @return the value of the field in the current input row.
+	 *
+	 */
+	public <T> T getInputValue(String fieldName, Class<T> fieldType);
+
+	/**
+	 * Returns the value of a given field in the current output row.
+	 * @param <T> fieldType the type of the value stored in the output field
+	 * @param fieldName name of the output field whose value will be returned.
+	 * @param fieldType the class of the value stored in the output field
+	 * @return the value of the field in the current output row.
+	 */
+	public <T> T getOutputValue(String fieldName, Class<T> fieldType);
+
 }
