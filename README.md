@@ -24,8 +24,9 @@ Here's a quick example:
 		//This creates an entity mapping builder
 		EntityMapping entityMapping = mapping.map("source_entity", "destination_entity");
 
-		//With an entity mapping builder, we can create mappings between their fields. Queries, methods, external services 
-		//and any object available in your application can be used as well.
+		//With an entity mapping builder, we can create mappings between their fields. 
+		//Queries, methods, external services and any object available in your 
+		//application can be used as well.
 		entityMapping.identity()
 				.associate("source_key_1", "source_key_2")
 				.toGeneratedId("destination_id");
@@ -38,8 +39,9 @@ Here's a quick example:
 				.to("some_field", "another_field")
 				.readingWith("trim", "toLowerCase");
 
-		//Creates a function that will execute calls to `yourAccountService` for some account number
-		//The engine scope caches the result for each given account and reuses it while a mapping cycle is active.  
+		//Creates a function that will execute calls to `yourAccountService` for some 
+		//account number. The engine scope caches the result for each given account 
+		//and reuses it while a mapping cycle is active.  
 		engine.addFunction(EngineScope.CYCLE, "getAccountBalance", new FunctionCall<BigDecimal, String>() {
             @Override
             public BigDecimal execute(String accountNumber) {
@@ -57,12 +59,13 @@ Here's a quick example:
        engine.setVariable("account", myAccountObject);
        entityMapping.value().copy("{getAccountBalance($account)}").to("balance");
               
-		//Configures how data mapped from `source_entity` to `destination_entity` should be persisted, if at all.
+		//Configures how data mapped from `source_entity` to 
+		//`destination_entity` should be persisted, if at all.
 		entityMapping.persistence()
-				.usingMetadata()  //Generate metadata to enable features such as auto-detection of data modifications. 
+				.usingMetadata()  //Generate metadata to enable features such as data change detection. 
 				.deleteDisabled() //Do not remove any existing records
-				.updateModified() //Records mapped in a previous cycle will only be overridden if the associated record has been modified in the source.
-				.insertNewRows(); //Inserts new rows identified in the source entity
+				.updateModified() //Update destination records if the counterpart in the source has been changed.
+				.insertNewRows(); //Insert new rows identified in the source entity
 
 		//Executes a data mapping cycle
 		engine.executeCycle();
@@ -70,6 +73,6 @@ Here's a quick example:
 		...
 ```
 
-The source code in this project is fully documented and you'll soon realize that uniVocity offer much more than other ETL tools and frameworks.
+The source code in this project is fully documented and you'll soon realize that uniVocity offers much more than any other ETL tool.
 
 **[There is much, much more! Check our tutorial to learn all about uniVocity's unique features.](http://www.univocity.com/pages/univocity-tutorial)**
