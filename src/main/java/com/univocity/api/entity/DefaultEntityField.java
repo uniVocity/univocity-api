@@ -21,6 +21,7 @@ public class DefaultEntityField {
 	private boolean isGenerated = false;
 	private Object defaultValue = null;
 	private int length = -1;
+	private Class<?> type = null;
 
 	/**
 	 * Creates an entity field instance with its name.
@@ -125,4 +126,26 @@ public class DefaultEntityField {
 		}
 		this.length = length;
 	}
+
+	/**
+	 * Obtains the type of values stored by this field. If defined, uniVocity will
+	 * try to convert values before writing to this field.
+	 * <p><i>defaults to {@code null}</i>
+	 *
+	 * @return the type of values stored by this field.
+	 */
+	public Class<?> getType() {
+		return type;
+	}
+
+	/**
+	 * Defines the type of values stored by this field. uniVocity will
+	 * try to convert values before writing to this field.
+	 *
+	 * @param type the type of values stored by this field.
+	 */
+	public void setType(Class<?> type) {
+		this.type = type;
+	}
+
 }

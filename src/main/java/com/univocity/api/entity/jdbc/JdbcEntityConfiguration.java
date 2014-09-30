@@ -5,6 +5,8 @@
  ******************************************************************************/
 package com.univocity.api.entity.jdbc;
 
+import java.sql.*;
+
 import com.univocity.api.common.*;
 import com.univocity.api.entity.*;
 
@@ -27,6 +29,7 @@ public final class JdbcEntityConfiguration extends BaseJdbcEntityConfiguration {
 	String[] otherGeneratedColumnsToRetrieve;
 	String trackingColumn;
 	String processIdentificationColumn;
+	private Boolean parameterConversionEnabled = null;
 
 	enum GeneratedKeyRetrieval {
 		Statement,
@@ -53,6 +56,41 @@ public final class JdbcEntityConfiguration extends BaseJdbcEntityConfiguration {
 		if (this.batchSize == null) {
 			this.batchSize = defaults.getBatchSize();
 		}
+
+		if (this.parameterConversionEnabled == null) {
+			this.parameterConversionEnabled = defaults.isParameterConversionEnabled();
+		}
+	}
+
+	/**
+	 * Indicates whether values passed to prepared statements will be converted to expected database type by uniVocity.
+	 * This might be required for some JDBC drivers that won't convert values automatically when
+	 * {@link PreparedStatement#setObject(int, Object)} is used.
+	 *
+	 * For example, on insertion if a field of type Integer is written, this setting will make uniVocity try to convert the value and
+	 * then invoke {@link PreparedStatement#setInt(int, int)}.
+	 *
+	 * @return parameterConversionEnabled indicates whether uniVocity will convert parameter values when calling prepared statements.
+	 */
+	public boolean isParameterConversionEnabled() {
+		if (parameterConversionEnabled == null) {
+			return false;
+		}
+		return parameterConversionEnabled;
+	}
+
+	/**
+	 * Attempts to convert values passed to prepared statements to the expected database type.
+	 * This might be required for some JDBC drivers that won't convert values automatically when
+	 * {@link PreparedStatement#setObject(int, Object)} is used.
+	 *
+	 * For example, on insertion if a field of type Integer is written, this setting will make uniVocity try to convert the value and
+	 * then invoke {@link PreparedStatement#setInt(int, int)}.
+	 *
+	 * @param parameterConversionEnabled indicates whether to convert parameter values on prepared statements.
+	 */
+	public void setParameterConversionEnabled(boolean parameterConversionEnabled) {
+		this.parameterConversionEnabled = parameterConversionEnabled;
 	}
 
 	/**
