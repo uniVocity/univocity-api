@@ -30,8 +30,8 @@ public final class TsvFormat extends TextFormat {
 
 	/**
 	 * Returns the character used for escaping special characters in TSV inputs: \t, \n, \r and \ . Defaults to '\\'
-	 * <p>e.g. the value <b>"\\n" "</b> is parsed as the newline character '\n')
-	 * <p><i>Defaults to  to '\\'</i></li>
+	 * <p>e.g. the value <b>"\\n" "</b> is parsed as the newline character '\n')</p>
+	 * <p><i>Defaults to  to '\\'</i></p>
 	 * @return the escape character for special sequences in TSV values
 	 */
 	public final char getEscapeChar() {
