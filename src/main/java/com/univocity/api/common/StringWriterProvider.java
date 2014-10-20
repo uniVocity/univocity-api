@@ -59,6 +59,6 @@ public final class StringWriterProvider extends WriterProvider {
 
 	@Override
 	public final boolean isEmpty() {
-		return string.isEmpty();
+		return string.isEmpty() && writer.getBuffer().length() == 0;
 	}
 }

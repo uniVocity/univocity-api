@@ -23,6 +23,7 @@ package com.univocity.api.entity.jdbc;
  *
  * @see JdbcDataStoreConfiguration
  * @see SqlProducer
+ * @see DefaultEscaper
  *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
