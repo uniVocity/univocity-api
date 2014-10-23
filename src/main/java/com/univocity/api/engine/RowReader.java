@@ -69,4 +69,18 @@ public abstract class RowReader {
 	 */
 	public void cleanup(RowMappingContext context) {
 	}
+
+	/**
+	 * Notifies the {@code RowReader} a new batch of rows will be processed. This method will be invoked by uniVocity before a new batch of rows is
+	 * sent to the {@link #processRow(Object[], Object[], RowMappingContext)} method.
+	 * 
+	 * <p>
+	 * <b>Note:</b> This method will only be invoked by uniVocity when processing output and persisted rows.
+	 * It won't invoked during input reading (i.e. if you registered the {@code RowReader} using <code>{@link EntityMapping#addInputRowReader(RowReader)}</code>)
+	 * </p>
+	 *  
+	 * @param context the contextual information and controls available to the user after the execution of a data mapping process.
+	 */
+	public void nextBatch(RowMappingContext context) {
+	};
 }
