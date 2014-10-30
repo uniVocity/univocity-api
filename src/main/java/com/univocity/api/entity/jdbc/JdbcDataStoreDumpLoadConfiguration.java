@@ -7,6 +7,7 @@ package com.univocity.api.entity.jdbc;
 
 import java.io.*;
 import java.nio.charset.*;
+import java.sql.*;
 
 import com.univocity.api.common.*;
 
@@ -30,6 +31,8 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	private int maxColumns = 512;
 
 	private boolean processDDLScripts = true;
+	private boolean parameterConversionEnabled = false;
+	private int batchSize = 10000;
 
 	final FileProvider dumpFile;
 
@@ -41,7 +44,6 @@ public class JdbcDataStoreDumpLoadConfiguration {
 		dumpFile = new FileProvider(file);
 	}
 
-	
 	/**
 	 * Creates database dump load configuration using the file represented by a given path. The file will be read with the default system encoding.
 	 * @param pathToFile the path to a file. It can either be the path to a file in the file system or a resource in the classpath.
@@ -49,7 +51,6 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	public JdbcDataStoreDumpLoadConfiguration(String pathToFile) {
 		dumpFile = new FileProvider(pathToFile);
 	}
-
 
 	/**
 	 * Creates database dump load configuration using a file. The file will be read using the given encoding
@@ -68,7 +69,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	public JdbcDataStoreDumpLoadConfiguration(String pathToFile, Charset encoding) {
 		dumpFile = new FileProvider(pathToFile, encoding);
 	}
-	
+
 	/**
 	 * Creates database dump load configuration using a file. The file will be read using the given encoding
 	 * @param file the dump File
@@ -188,4 +189,55 @@ public class JdbcDataStoreDumpLoadConfiguration {
 		this.processDDLScripts = processDDLScripts;
 	}
 
+	/**
+	 * Indicates whether values loaded from the input file will be converted to expected database type by uniVocity.
+	 * This might be required for some JDBC drivers that won't convert values automatically when
+	 * {@link PreparedStatement#setObject(int, Object)} is used.
+	 *
+	 * For example, on insertion if a field of type Integer is written, this setting will make uniVocity try to convert the value and
+	 * then invoke {@link PreparedStatement#setInt(int, int)}.
+	 *
+	 * @return parameterConversionEnabled indicates whether uniVocity will convert parameter values when calling prepared statements.
+	 */
+	public boolean isParameterConversionEnabled() {
+		return parameterConversionEnabled;
+	}
+
+	/**
+	 * Attempts to convert values passed to prepared statements to the expected database type.
+	 * This might be required for some JDBC drivers that won't convert values automatically when
+	 * {@link PreparedStatement#setObject(int, Object)} is used.
+	 *
+	 * For example, on insertion if a field of type Integer is written, this setting will make uniVocity try to convert the value and
+	 * then invoke {@link PreparedStatement#setInt(int, int)}.
+	 *
+	 * @param parameterConversionEnabled indicates whether to convert parameter values on prepared statements.
+	 */
+	public void setParameterConversionEnabled(boolean parameterConversionEnabled) {
+		this.parameterConversionEnabled = parameterConversionEnabled;
+	}
+
+	/**
+	 * Obtains the number of rows to be persisted in a single batch execution.
+	 * <p>This setting has an effect only when {@link DatabaseCapabilities#isBatchSupported()} evaluates to true.
+	 * <p>Batching database operations greatly improves performance in general, but you might want to adjust the batch size to better control memory usage and batch duration.
+	 * <p><i>Defaults to 10,000 rows</i>
+	 * @return the batch size to use when loading data from the database dump file.
+	 * @see DatabaseCapabilities
+	 */
+	public final int getBatchSize() {
+		return this.batchSize;
+	}
+
+	/**
+	 * Defines the number of rows to be persisted in a single batch execution.
+	 * <p>This setting has an effect only when {@link DatabaseCapabilities#isBatchSupported()} evaluates to true.
+	 * <p>Batching database operations greatly improves performance in general, but you might want to adjust the batch size to better control memory usage and batch duration.
+	 * @param batchSize the batch size to use when loading data from the database dump file.
+	 * @see DatabaseCapabilities
+	 */
+	public final void setBatchSize(int batchSize) {
+		Args.positive(batchSize, "Batch size");
+		this.batchSize = batchSize;
+	}
 }
