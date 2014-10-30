@@ -19,7 +19,7 @@ import com.univocity.api.common.*;
  * @see JdbcDataStoreConfiguration
  * @see DumpFileFormat
  *
- * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com
+ * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
 public class JdbcDataStoreDumpLoadConfiguration {
