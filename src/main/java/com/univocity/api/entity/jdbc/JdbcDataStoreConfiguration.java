@@ -19,7 +19,7 @@ import com.univocity.api.entity.custom.*;
 /**
  * The JDBC data store configuration class. Use it to configure the JDBC data entities and queries that will be manipulated by a {@link DataIntegrationEngine}.
  *
- * @see JdbcDataStoreDumpLoad
+ * @see DumpLoadConfiguration
  * @see JdbcEntityConfiguration
  * @see JdbcQueryConfiguration
  * @see DataSource
@@ -46,7 +46,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	private final Collection<String> reservedWordsToEscape = new TreeSet<String>();
 	private IdentifierEscaper identifierEscaper = null;
 
-	private JdbcDataStoreDumpLoad initialDumpLoadConfiguration = null;
+	private DumpLoadConfiguration initialDumpLoadConfiguration = null;
 
 	/**
 	 * Creates a new JDBC data store configuration
@@ -463,7 +463,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	 *
 	 * @param initialDumpLoadConfiguration the configuration of the input dump file.
 	 */
-	public void setInitialDumpLoadConfiguration(JdbcDataStoreDumpLoad initialDumpLoadConfiguration) {
+	public void setInitialDumpLoadConfiguration(DumpLoadConfiguration initialDumpLoadConfiguration) {
 		this.initialDumpLoadConfiguration = initialDumpLoadConfiguration;
 	}
 
@@ -472,7 +472,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	 * database. For example, you can load a dump file generated from MySQL into Oracle or Postgres.
 	 *
 	 * @return the configuration to process and load a database dump file, or null if the database does not need to be initialized.	 */
-	public JdbcDataStoreDumpLoad getInitialDumpLoadConfiguration() {
+	public DumpLoadConfiguration getInitialDumpLoadConfiguration() {
 		return this.initialDumpLoadConfiguration;
 	}
 

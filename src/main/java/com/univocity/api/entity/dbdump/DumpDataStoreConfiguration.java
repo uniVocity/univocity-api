@@ -34,11 +34,13 @@ public abstract class DumpDataStoreConfiguration<F extends DumpFileFormat> exten
 	private int inputBufferSize = 1024 * 1024;
 	private boolean readInputOnSeparateThread = Runtime.getRuntime().availableProcessors() > 1;
 	private DatabaseScriptCallback databaseScriptCallback = null;
+	private int limitOfRowsLoadedInMemory = 10000;
 
 	final FileProvider dumpFile;
 
 	/**
-	 * Creates a database dump load configuration using a file. The data store name will be the name of the file, without the file extension. The file will be read with the default system encoding.
+	 * Creates a database dump load configuration using a file. The data store name will be the name of the file, without the file extension. 
+	 * The file will be read with the default system encoding.
 	 * @param file the dump File
 	 */
 	public DumpDataStoreConfiguration(File file) {
@@ -118,7 +120,6 @@ public abstract class DumpDataStoreConfiguration<F extends DumpFileFormat> exten
 	 * @param pathToFile the path to a file. It can either be the path to a file in the file system or a resource in the classpath.
 	 * @param encoding the encoding that must be used to read from the given file.
 	 */
-
 	public DumpDataStoreConfiguration(String dataStoreName, String pathToFile, String encoding) {
 		this(dataStoreName, null, new FileProvider(pathToFile, encoding));
 	}
@@ -227,6 +228,26 @@ public abstract class DumpDataStoreConfiguration<F extends DumpFileFormat> exten
 	 */
 	public final void setDatabaseScriptCallback(DatabaseScriptCallback databaseScriptCallback) {
 		this.databaseScriptCallback = databaseScriptCallback;
+	}
+	
+	/**
+	 * Obtains the maximum number of rows loaded in memory at a time when extracting information from this database dump.
+	 * <p><i>Defaults to 10,000 rows</i>
+	 * @return the maximum number of rows kept in memory at any given time when reading values from any table in the database dump file
+	 */
+	@Override
+	public final int getLimitOfRowsLoadedInMemory() {
+		return limitOfRowsLoadedInMemory;
+	}
+
+	/**
+	 * Defines the maximum number of rows loaded in memory at a time when extracting information from this database dump.
+	 * <p><i>Defaults to 10,000 rows</i>
+	 * @param rowLimit the maximum number of rows kept in memory at any given time when reading values from any table in the database dump file
+	 */
+	public final void setLimitOfRowsLoadedInMemory(int rowLimit) {
+		Args.positive(rowLimit, "Number of rows loaded in memory by database dump data store " + getDataStoreName());
+		limitOfRowsLoadedInMemory = rowLimit;
 	}
 
 	/**
