@@ -19,6 +19,7 @@ import com.univocity.api.entity.custom.*;
 /**
  * The JDBC data store configuration class. Use it to configure the JDBC data entities and queries that will be manipulated by a {@link DataIntegrationEngine}.
  *
+ * @see JdbcDataStoreDumpLoad
  * @see JdbcEntityConfiguration
  * @see JdbcQueryConfiguration
  * @see DataSource
@@ -45,7 +46,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	private final Collection<String> reservedWordsToEscape = new TreeSet<String>();
 	private IdentifierEscaper identifierEscaper = null;
 
-	private JdbcDataStoreDumpLoadConfiguration initialDumpLoadConfiguration = null;
+	private JdbcDataStoreDumpLoad initialDumpLoadConfiguration = null;
 
 	/**
 	 * Creates a new JDBC data store configuration
@@ -457,21 +458,21 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Configures this data store to load the entire database from a dump file. The dump file may not be compatible with the destination
+	 * Configures this data store to load the entire database from a dump file. The dump file does not need to be compatible with the destination
 	 * database. For example, you can load a dump file generated from MySQL into Oracle or Postgres.
 	 *
 	 * @param initialDumpLoadConfiguration the configuration of the input dump file.
 	 */
-	public void setInitialDumpLoadConfiguration(JdbcDataStoreDumpLoadConfiguration initialDumpLoadConfiguration) {
+	public void setInitialDumpLoadConfiguration(JdbcDataStoreDumpLoad initialDumpLoadConfiguration) {
 		this.initialDumpLoadConfiguration = initialDumpLoadConfiguration;
 	}
 
 	/**
-	 * Returns the configuration for this data store to initialize from a database dump file. The dump file may not be compatible with the destination
+	 * Returns the configuration for this data store to initialize from a database dump file. The dump file does not need to be compatible with the destination
 	 * database. For example, you can load a dump file generated from MySQL into Oracle or Postgres.
 	 *
 	 * @return the configuration to process and load a database dump file, or null if the database does not need to be initialized.	 */
-	public JdbcDataStoreDumpLoadConfiguration getInitialDumpLoadConfiguration() {
+	public JdbcDataStoreDumpLoad getInitialDumpLoadConfiguration() {
 		return this.initialDumpLoadConfiguration;
 	}
 

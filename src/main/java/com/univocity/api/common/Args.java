@@ -113,4 +113,23 @@ public class Args {
 			throw new IllegalArgumentException("Illegal transaction isolation level: " + transactionIsolationLevel + ". Accepted isolation levels are: " + levels + " (from java.sql.Connection)");
 		}
 	}
+
+	public static String guessAndValidateName(String name, File file, String fieldName) {
+		if (name != null) {
+			notBlank(name, fieldName);
+			return name;
+		}
+		validFile(file, fieldName);
+
+		name = file.getName();
+		if (name.lastIndexOf('.') != -1) {
+			name = name.substring(0, name.lastIndexOf('.'));
+		}
+
+		if (name.trim().isEmpty()) {
+			throw new IllegalArgumentException("Cannot derive " + fieldName + " from file " + file.getAbsolutePath());
+		}
+
+		return name;
+	}
 }
