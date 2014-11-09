@@ -54,7 +54,7 @@ public abstract class DataStoreConfiguration {
 	/**
 	 * If this data store is not backed by a database, you can move data from your custom entities to an in-memory database managed by uniVocity.
 	 * <br>This enables operations such as SQL queries that can be executed against data stored in plain text files for example.
-	 * <p>By providing the names of these entities using this method, uniVocity will load all their data into a in-memory database automatically,
+	 * <p>By providing the names of these entities using this method, uniVocity will load all their data into an in-memory database automatically,
 	 *    and any data modifications will be dumped back to the original entity at the end of each data migration cycle (started in {@link DataIntegrationEngine#executeCycle()}.
 	 *
 	 * @param entityNames the entity names that must have their data loaded into an in-memory database managed by uniVocity
@@ -71,7 +71,7 @@ public abstract class DataStoreConfiguration {
 	/**
 	 * If this data store is not backed by a database, you can move data from your custom entities to an in-memory database managed by uniVocity.
 	 * <br>This enables operations such as SQL queries that can be executed against data stored in plain text files for example.
-	 * <p>By providing the names of these entities using this method, uniVocity will load all their data into a in-memory database automatically,
+	 * <p>By providing the names of these entities using this method, uniVocity will load all their data into an in-memory database automatically,
 	 *    and any data modifications will be dumped back to the original entity at the end of each data migration cycle (started in {@link DataIntegrationEngine#executeCycle()}.
 	 *
 	 * @param entityNames the entity names that must have their data loaded into an in-memory database managed by uniVocity

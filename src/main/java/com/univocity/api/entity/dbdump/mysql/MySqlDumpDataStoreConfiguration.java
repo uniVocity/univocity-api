@@ -8,6 +8,7 @@ package com.univocity.api.entity.dbdump.mysql;
 import java.io.*;
 import java.nio.charset.*;
 
+import com.univocity.api.common.*;
 import com.univocity.api.config.builders.*;
 import com.univocity.api.entity.dbdump.*;
 import com.univocity.api.entity.jdbc.*;
@@ -26,14 +27,23 @@ import com.univocity.api.entity.jdbc.*;
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com
  *
  */
-public final class MySqlDumpDataStore extends DumpDataStoreConfiguration<MySqlDumpFormat> {
+public final class MySqlDumpDataStoreConfiguration extends DumpDataStoreConfiguration<MySqlDumpFormat> {
+
+	/**
+	 * Creates a MySQL dump configuration using a user-provided {@link java.io.Reader} to read a database dump. 
+	 * @param dataStoreName the name of this data store.
+	 * @param inputProvider a {@link ReaderProvider}, defined by the user, that provides instances of {@link java.io.Reader} for processing a database dump.
+	 */
+	public MySqlDumpDataStoreConfiguration(String dataStoreName, ReaderProvider inputProvider) {
+		super(dataStoreName, inputProvider);
+	}
 
 	/**
 	 * Creates a MySQL dump configuration using a file. The data store name will be the name of the file, without the file extension.
 	 * The file will be read with the default system encoding.
 	 * @param file the dump File
 	 */
-	public MySqlDumpDataStore(File file) {
+	public MySqlDumpDataStoreConfiguration(File file) {
 		super(file);
 	}
 
@@ -42,7 +52,7 @@ public final class MySqlDumpDataStore extends DumpDataStoreConfiguration<MySqlDu
 	 * @param dataStoreName the name of this data store.
 	 * @param file the dump File
 	 */
-	public MySqlDumpDataStore(String dataStoreName, File file) {
+	public MySqlDumpDataStoreConfiguration(String dataStoreName, File file) {
 		super(dataStoreName, file);
 	}
 
@@ -51,7 +61,7 @@ public final class MySqlDumpDataStore extends DumpDataStoreConfiguration<MySqlDu
 	 * @param dataStoreName the name of this data store.
 	 * @param pathToFile the path to a file. It can either be the path to a file in the file system or a resource in the classpath.
 	 */
-	public MySqlDumpDataStore(String dataStoreName, String pathToFile) {
+	public MySqlDumpDataStoreConfiguration(String dataStoreName, String pathToFile) {
 		super(dataStoreName, pathToFile);
 	}
 
@@ -60,7 +70,7 @@ public final class MySqlDumpDataStore extends DumpDataStoreConfiguration<MySqlDu
 	 * @param file the dump File
 	 * @param encoding the encoding that must be used to read from the given file.
 	 */
-	public MySqlDumpDataStore(File file, Charset encoding) {
+	public MySqlDumpDataStoreConfiguration(File file, Charset encoding) {
 		super(file, encoding);
 	}
 
@@ -70,7 +80,7 @@ public final class MySqlDumpDataStore extends DumpDataStoreConfiguration<MySqlDu
 	 * @param file the dump File
 	 * @param encoding the encoding that must be used to read from the given file.
 	 */
-	public MySqlDumpDataStore(String dataStoreName, File file, Charset encoding) {
+	public MySqlDumpDataStoreConfiguration(String dataStoreName, File file, Charset encoding) {
 		super(dataStoreName, file, encoding);
 	}
 
@@ -80,7 +90,7 @@ public final class MySqlDumpDataStore extends DumpDataStoreConfiguration<MySqlDu
 	 * @param pathToFile the path to a file. It can either be the path to a file in the file system or a resource in the classpath.
 	 * @param encoding the encoding that must be used to read from the given file.
 	 */
-	public MySqlDumpDataStore(String dataStoreName, String pathToFile, Charset encoding) {
+	public MySqlDumpDataStoreConfiguration(String dataStoreName, String pathToFile, Charset encoding) {
 		super(dataStoreName, pathToFile, encoding);
 	}
 
@@ -90,7 +100,7 @@ public final class MySqlDumpDataStore extends DumpDataStoreConfiguration<MySqlDu
 	 * @param file the dump File
 	 * @param encoding the encoding that must be used to read from the given file.
 	 */
-	public MySqlDumpDataStore(File file, String encoding) {
+	public MySqlDumpDataStoreConfiguration(File file, String encoding) {
 		super(file, encoding);
 	}
 
@@ -100,7 +110,7 @@ public final class MySqlDumpDataStore extends DumpDataStoreConfiguration<MySqlDu
 	 * @param file the dump File
 	 * @param encoding the encoding that must be used to read from the given file.
 	 */
-	public MySqlDumpDataStore(String dataStoreName, File file, String encoding) {
+	public MySqlDumpDataStoreConfiguration(String dataStoreName, File file, String encoding) {
 		super(dataStoreName, file, encoding);
 	}
 
@@ -110,7 +120,7 @@ public final class MySqlDumpDataStore extends DumpDataStoreConfiguration<MySqlDu
 	 * @param pathToFile the path to a file. It can either be the path to a file in the file system or a resource in the classpath.
 	 * @param encoding the encoding that must be used to read from the given file.
 	 */
-	public MySqlDumpDataStore(String dataStoreName, String pathToFile, String encoding) {
+	public MySqlDumpDataStoreConfiguration(String dataStoreName, String pathToFile, String encoding) {
 		super(dataStoreName, pathToFile, encoding);
 	}
 
