@@ -16,7 +16,7 @@ import com.univocity.api.entity.dbdump.*;
  * Use it in conjunction with a {@link JdbcDataStoreConfiguration} in {@link JdbcDataStoreConfiguration#setInitialDumpLoadConfiguration(DumpLoadConfiguration)}.
  * The dump file can be produced by a database implementation that does not match the destination.
  * For example, you can load a dump file generated from MySQL into Oracle or Postgres.
- * 
+ *
  * <p>
  * If the dump file matches the destination database, you can execute the DDL scripts (if any) using {@link #setExecuteScripts(boolean)}.
  * Alternatively, you can use a {@link DatabaseScriptCallback} to modify the scripts parsed by uniVocity in order to make them work on the destination database.
@@ -33,9 +33,9 @@ public class DumpLoadConfiguration {
 	private boolean executeScripts = false;
 	private int batchSize = 10000;
 	private boolean parameterConversionEnabled = false;
+	private final Set<String> tablesToLoad = new TreeSet<String>();
+	private final Set<String> tablesToSkip = new TreeSet<String>();
 	final DumpDataStoreConfiguration<?> databaseDumpDataStore;
-	final Set<String> tablesToLoad = new TreeSet<String>();
-	final Set<String> tablesToSkip = new TreeSet<String>();
 
 	public <T extends DumpDataStoreConfiguration<?>> DumpLoadConfiguration(T databaseDumpDataStore) {
 		Args.notNull(databaseDumpDataStore, "Database dump configuration");
@@ -127,10 +127,10 @@ public class DumpLoadConfiguration {
 	 * An empty set means all tables will be processed.
 	 * @return the names of those tables in the dump file that should be processed.
 	 */
-	public Collection<String> getTablesToLoad(){
+	public Collection<String> getTablesToLoad() {
 		return Collections.unmodifiableSet(tablesToLoad);
 	}
-	
+
 	/**
 	 * Defines a set of tables to be skipped from the database dump file. Values of tables that are part of the given collection will be skipped.
 	 * An empty or null set means no tables will be skipped.
@@ -139,13 +139,13 @@ public class DumpLoadConfiguration {
 	public void setTablesToSkip(Collection<String> tableNames) {
 		setTables(tablesToSkip, tablesToLoad, tableNames);
 	}
-	
+
 	/**
 	 * Returns the set of tables to be skipped from the database dump file. Values of tables that are part of the given collection will be skipped.
 	 * An empty set means no tables will be skipped.
 	 * @return the names of those tables in the dump file that should not be processed.
 	 */
-	public Collection<String> getTablesToSkip(){
+	public Collection<String> getTablesToSkip() {
 		return Collections.unmodifiableSet(tablesToSkip);
 	}
 
@@ -155,7 +155,7 @@ public class DumpLoadConfiguration {
 		} else {
 			for (String table : tableNames) {
 				Args.notBlank(table, "Name of table in database dump");
-				if(other.contains(table)){
+				if (other.contains(table)) {
 					throw new IllegalArgumentException("Cannot set table '" + table + "' to be loaded and skipped at the same time.");
 				}
 			}

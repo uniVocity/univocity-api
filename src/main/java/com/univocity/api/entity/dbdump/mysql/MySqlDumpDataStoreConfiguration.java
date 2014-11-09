@@ -16,21 +16,21 @@ import com.univocity.api.entity.jdbc.*;
 /**
  * A data store capable of handling MySQL dump files. Table names defined within the database dump script can be used as entities in
  * entity mappings (i.e. through a {@link DataStoreMapping}) as with any other regular data entity. However, only read operations are available.
- * 
- * Instances of this class can also be used to initialize any database represented by a {@link JdbcDataStoreConfiguration}, by using its 
+ *
+ * Instances of this class can also be used to initialize any database represented by a {@link JdbcDataStoreConfiguration}, by using its
  * {@link JdbcDataStoreConfiguration#setInitialDumpLoadConfiguration(DumpLoadConfiguration)}.
- * 
+ *
  * @see MySqlDumpFormat
  * @see DumpLoadConfiguration
  * @see JdbcDataStoreConfiguration
- *  
+ *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com
  *
  */
 public final class MySqlDumpDataStoreConfiguration extends DumpDataStoreConfiguration<MySqlDumpFormat> {
 
 	/**
-	 * Creates a MySQL dump configuration using a user-provided {@link java.io.Reader} to read a database dump. 
+	 * Creates a MySQL dump configuration using a user-provided {@link java.io.Reader} to read a database dump.
 	 * @param dataStoreName the name of this data store.
 	 * @param inputProvider a {@link ReaderProvider}, defined by the user, that provides instances of {@link java.io.Reader} for processing a database dump.
 	 */

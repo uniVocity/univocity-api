@@ -40,7 +40,7 @@ public abstract class DumpDataStoreConfiguration<F extends DumpFileFormat> exten
 	private final ReaderProvider inputReader;
 
 	/**
-	 * Creates a database dump load configuration using a user-provided {@link java.io.Reader} to read a database dump. 
+	 * Creates a database dump load configuration using a user-provided {@link java.io.Reader} to read a database dump.
 	 * @param dataStoreName the name of this data store.
 	 * @param inputProvider a {@link ReaderProvider}, defined by the user, that provides instances of {@link java.io.Reader} for processing a database dump.
 	 */
@@ -52,7 +52,7 @@ public abstract class DumpDataStoreConfiguration<F extends DumpFileFormat> exten
 	}
 
 	/**
-	 * Creates a database dump load configuration using a file. The data store name will be the name of the file, without the file extension. 
+	 * Creates a database dump load configuration using a file. The data store name will be the name of the file, without the file extension.
 	 * The file will be read with the default system encoding.
 	 * @param file the dump File
 	 */
@@ -139,7 +139,9 @@ public abstract class DumpDataStoreConfiguration<F extends DumpFileFormat> exten
 
 	private DumpDataStoreConfiguration(String dataStoreName, File file, FileProvider fileProvider) {
 		super(Args.guessAndValidateName(dataStoreName, file, "name of database dump data store"));
-		Args.validFile(file, "database dump file used by data store " + getDataStoreName());
+		if (file != null) {
+			Args.validFile(file, "database dump file used by data store " + getDataStoreName());
+		}
 		this.inputFile = fileProvider;
 		this.inputReader = null;
 	}
@@ -271,20 +273,19 @@ public abstract class DumpDataStoreConfiguration<F extends DumpFileFormat> exten
 	protected abstract F newDefaultFormat();
 
 	/**
-	 * Returns the database dump file provider. 
+	 * Returns the database dump file provider.
 	 * @return the database dump file provider, or null if a {@link ReaderProvider} will be used to read the database dump.
 	 */
 	public FileProvider getInputFile() {
 		return inputFile;
 	}
-	
+
 	/**
-	 * Returns the database dump reader provider. 
+	 * Returns the database dump reader provider.
 	 * @return the database dump reader provider, or null if a {@link FileProvider} will be used to read the database dump.
 	 */
 	public ReaderProvider getInputReader() {
 		return inputReader;
 	}
 
-	
 }
