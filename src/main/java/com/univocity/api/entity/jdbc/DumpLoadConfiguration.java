@@ -121,6 +121,15 @@ public class DumpLoadConfiguration {
 	public void setTablesToLoad(Collection<String> tableNames) {
 		setTables(tablesToLoad, tablesToSkip, tableNames);
 	}
+	
+	/**
+	 * Defines a set of tables to be read from the database dump file. Values of tables that are not part of the given collection will be skipped.
+	 * An empty or null set means all tables will be processed.
+	 * @param tableNames names of those tables in the dump file that should be processed.
+	 */
+	public void setTablesToLoad(String ... tableNames) {
+		setTables(tablesToLoad, tablesToSkip, tableNames);
+	}
 
 	/**
 	 * Returns the set of tables to be read from the database dump file. Values of tables that are not part of the given collection will be skipped.
@@ -131,6 +140,16 @@ public class DumpLoadConfiguration {
 		return Collections.unmodifiableSet(tablesToLoad);
 	}
 
+	/**
+	 * Defines a set of tables to be skipped from the database dump file. Values of tables that are part of the given collection will be skipped.
+	 * An empty or null set means no tables will be skipped.
+	 * @param tableNames names of those tables in the dump file that should not be processed.
+	 */
+	public void setTablesToSkip(String ... tableNames) {
+		setTables(tablesToSkip, tablesToLoad, tableNames);
+	}
+
+	
 	/**
 	 * Defines a set of tables to be skipped from the database dump file. Values of tables that are part of the given collection will be skipped.
 	 * An empty or null set means no tables will be skipped.
@@ -147,6 +166,16 @@ public class DumpLoadConfiguration {
 	 */
 	public Collection<String> getTablesToSkip() {
 		return Collections.unmodifiableSet(tablesToSkip);
+	}
+	
+	private void setTables(Set<String> set, Set<String> other,String ... tableNames) {
+		Set<String> names = new HashSet<String>();
+		for(String name : tableNames){
+			if(name != null){
+				names.add(name);
+			}
+		}
+		setTables(set, other, names);
 	}
 
 	private void setTables(Set<String> set, Set<String> other, Collection<String> tableNames) {
