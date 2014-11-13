@@ -93,7 +93,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	 * The maximum number of characters allowed for any given value being written/read. Used to avoid OutOfMemoryErrors (defaults to 8192).
 	 * @return The maximum number of characters allowed for any given value being written/read
 	 */
-	public final int getMaxCharsPerColumn() {
+	public int getMaxCharsPerColumn() {
 		return maxCharsPerColumn;
 	}
 
@@ -101,7 +101,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	 * Defines the maximum number of characters allowed for any given value being written/read. Used to avoid OutOfMemoryErrors (defaults to 8192).
 	 * @param maxCharsPerColumn The maximum number of characters allowed for any given value being written/read
 	 */
-	public final void setMaxCharsPerColumn(int maxCharsPerColumn) {
+	public void setMaxCharsPerColumn(int maxCharsPerColumn) {
 		this.maxCharsPerColumn = maxCharsPerColumn;
 	}
 
@@ -110,7 +110,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	 * 	You need this to avoid OutOfMemory errors in case of inputs that might be inconsistent with the format you are dealing width .
 	 * @return The maximum number of columns a record can have.
 	 */
-	public final int getMaxColumns() {
+	public int getMaxColumns() {
 		return maxColumns;
 	}
 
@@ -119,7 +119,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	 * 	You need this to avoid OutOfMemory errors in case of inputs that might be inconsistent with the format you are dealing width.
 	 * @param maxColumns The maximum number of columns a record can have.
 	 */
-	public final void setMaxColumns(int maxColumns) {
+	public void setMaxColumns(int maxColumns) {
 		this.maxColumns = maxColumns;
 	}
 
@@ -127,7 +127,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	 * The format of the file to be parsed/written (returns the format's defaults).
 	 * @return The format of the file to be parsed/written
 	 */
-	public final DumpFileFormat getFormat() {
+	public DumpFileFormat getFormat() {
 		return format;
 	}
 
@@ -139,7 +139,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	 *  <p>When disabled, the parsing process will briefly pause so the buffer can be replenished every time it is exhausted
 	 * @return true if the input should be read on a separate thread, false otherwise
 	 */
-	public final boolean getReadInputOnSeparateThread() {
+	public boolean getReadInputOnSeparateThread() {
 		return readInputOnSeparateThread;
 	}
 
@@ -151,7 +151,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	 *  <p>When disabled, the parsing process will briefly pause so the buffer can be replenished every time it is exhausted
 	 * @param readInputOnSeparateThread the flag indicating whether or not the input should be read on a separate thread
 	 */
-	public final void setReadInputOnSeparateThread(boolean readInputOnSeparateThread) {
+	public void setReadInputOnSeparateThread(boolean readInputOnSeparateThread) {
 		this.readInputOnSeparateThread = readInputOnSeparateThread;
 	}
 
@@ -159,7 +159,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	 * Informs the number of characters held by the parser's buffer when processing the input (defaults to 1024*1024 characters).
 	 * @return the number of characters held by the parser's buffer when processing the input
 	 */
-	public final int getInputBufferSize() {
+	public int getInputBufferSize() {
 		return inputBufferSize;
 	}
 
@@ -167,7 +167,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	 * Defines the number of characters held by the parser's buffer when processing the input (defaults to 1024*1024 characters).
 	 * @param inputBufferSize the new input buffer size (in number of characters)
 	 */
-	public final void setInputBufferSize(int inputBufferSize) {
+	public void setInputBufferSize(int inputBufferSize) {
 		this.inputBufferSize = inputBufferSize;
 	}
 
@@ -176,7 +176,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	 * If {@code false}, uniVocity will simply try to insert the data from the dump file into the corresponding database table. Please ensure the table exists.
 	 * @return true if uniVocity should read the DDL scripts (such as CREATE TABLE) and execute them before attempting to insert data to the destination table.
 	 */
-	public final boolean isProcessDDLScripts() {
+	public boolean isProcessDDLScripts() {
 		return processDDLScripts;
 	}
 
@@ -185,7 +185,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	 * If set to {@code false}, uniVocity will simply try to insert the data from the dump file into the corresponding database table. Please ensure the table exists.
 	 * @param processDDLScripts true if uniVocity should read the DDL scripts (such as CREATE TABLE) and execute them before attempting to insert data to the destination table.
 	 */
-	public final void setProcessDDLScripts(boolean processDDLScripts) {
+	public void setProcessDDLScripts(boolean processDDLScripts) {
 		this.processDDLScripts = processDDLScripts;
 	}
 
@@ -199,7 +199,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	 *
 	 * @return parameterConversionEnabled indicates whether uniVocity will convert parameter values when calling prepared statements.
 	 */
-	public final boolean isParameterConversionEnabled() {
+	public boolean isParameterConversionEnabled() {
 		return parameterConversionEnabled;
 	}
 
@@ -213,7 +213,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	 *
 	 * @param parameterConversionEnabled indicates whether to convert parameter values on prepared statements.
 	 */
-	public final void setParameterConversionEnabled(boolean parameterConversionEnabled) {
+	public void setParameterConversionEnabled(boolean parameterConversionEnabled) {
 		this.parameterConversionEnabled = parameterConversionEnabled;
 	}
 
@@ -240,5 +240,4 @@ public class JdbcDataStoreDumpLoadConfiguration {
 		Args.positive(batchSize, "Batch size");
 		this.batchSize = batchSize;
 	}
-	
 }
