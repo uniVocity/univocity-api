@@ -5,7 +5,6 @@
  ******************************************************************************/
 package com.univocity.api.entity.jdbc;
 
-
 /**
  * Definition of the format of a database dump script. The configurations defined in this class allow uniVocity to parse database dump scripts and load their values
  * into equivalent database schemas. The destination database does not need to be the same database used to generate the dump file. You can load a dump generated from
@@ -49,28 +48,6 @@ package com.univocity.api.entity.jdbc;
  *
  */
 public class DumpFileFormat {
-	
-	private static final String systemLineSeparatorString;
-	private static final char[] systemLineSeparator;
-
-	static {
-		String lineSeparator = System.getProperty("line.separator");
-		if (lineSeparator == null) {
-			systemLineSeparatorString = "\n";
-		} else {
-			systemLineSeparatorString = lineSeparator;
-		}
-		systemLineSeparator = systemLineSeparatorString.toCharArray();
-	}
-
-	private String lineSeparatorString;
-	private char[] lineSeparator;
-
-	public DumpFileFormat () {
-		this.lineSeparator = systemLineSeparator.clone();
-		this.lineSeparatorString = systemLineSeparatorString;
-	}
-
 	private char quote = '\'';
 	private char quoteEscape = '\\';
 	private char delimiter = ',';
@@ -81,50 +58,6 @@ public class DumpFileFormat {
 
 	private boolean oneInsertPerRow = true;
 
-	/**
-	 * Returns the current line separator character sequence, which can contain 1 to 2 characters. Defaults to the system's line separator sequence (usually '\r\n' in Windows, '\r' in MacOS, and '\n' in Linux/Unix).
-	 * @return the sequence of 1 to 2 characters that identifies the end of a line
-	 */
-	public char[] getLineSeparator() {
-		return lineSeparator.clone();
-	}
-
-	/**
-	 * Returns the current line separator sequence as a String of 1 to 2 characters. Defaults to the system's line separator sequence (usually "\r\n" in Windows, "\r" in MacOS, and "\n" in Linux/Unix).
-	 * @return the sequence of 1 to 2 characters that identifies the end of a line
-	 */
-	public String getLineSeparatorString() {
-		return lineSeparatorString;
-	}
-
-	/**
-	 * Defines the line separator sequence that should be used for parsing the dump file.
-	 * @param lineSeparator a sequence of 1 to 2 characters that identifies the end of a line
-	 */
-	public void setLineSeparator(String lineSeparator) {
-		if (lineSeparator == null || lineSeparator.isEmpty()) {
-			throw new IllegalArgumentException("Line separator cannot be empty");
-		}
-		setLineSeparator(lineSeparator.toCharArray());
-	}
-
-	/**
-	 * Defines the line separator sequence that should be used for parsing the dump file.
-	 * @param lineSeparator a sequence of 1 to 2 characters that identifies the end of a line
-	 */
-	public void setLineSeparator(char[] lineSeparator) {
-		if (lineSeparator == null || lineSeparator.length == 0) {
-			throw new IllegalArgumentException("Invalid line separator. Expected 1 to 2 characters");
-		}
-		if (lineSeparator.length > 2) {
-			throw new IllegalArgumentException("Invalid line separator. Up to 2 characters are expected. Got " + lineSeparator.length + " characters.");
-		}
-		this.lineSeparator = lineSeparator;
-		this.lineSeparatorString = new String(lineSeparator);
-	}
-
-	
-	
 	/**
 	 * Returns the character used for escaping values where the field delimiter is part of the value. Defaults to '\''
 	 * @return the quote character
