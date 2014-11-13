@@ -13,12 +13,12 @@ import com.univocity.api.common.*;
 
 /**
  * This class provides basic settings that control how to read a database dump file and load its data into a destination database.
- * The dump file can be produced by a database implementation that does not match the destination.
- * For example, you can load a dump file generated from MySQL into Oracle or Postgres.
- *
+ * The dump file can be produced by a database implementation that does not match the destination. 
+ * For example, you can load a dump file generated from MySQL into Oracle or Postgres.  
+ * 
  * @see JdbcDataStoreConfiguration
  * @see DumpFileFormat
- *
+ * 
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com
  *
  */
@@ -173,8 +173,8 @@ public class JdbcDataStoreDumpLoadConfiguration {
 
 	/**
 	 * Flag that tells uniVocity to parse the DDL scripts in the dump file and execute them accordingly. Defaults to {@code true}.
-	 * If {@code false}, uniVocity will simply try to insert the data from the dump file into the corresponding database table. Please ensure the table exists.
-	 * @return true if uniVocity should read the DDL scripts (such as CREATE TABLE) and execute them before attempting to insert data to the destination table.
+	 * If {@code false}, uniVocity will simply try to insert the data from the dump file into the corresponding database table. Please ensure the table exists. 
+	 * @return true if uniVocity should read the DDL scripts (such as CREATE TABLE) and execute them before attempting to insert data to the destination table. 
 	 */
 	public boolean isProcessDDLScripts() {
 		return processDDLScripts;
@@ -183,7 +183,7 @@ public class JdbcDataStoreDumpLoadConfiguration {
 	/**
 	 * Defines whether uniVocity should parse the DDL scripts in the dump file and execute them before attempting to insert data to the destination table.
 	 * If set to {@code false}, uniVocity will simply try to insert the data from the dump file into the corresponding database table. Please ensure the table exists.
-	 * @param processDDLScripts true if uniVocity should read the DDL scripts (such as CREATE TABLE) and execute them before attempting to insert data to the destination table.
+	 * @param processDDLScripts true if uniVocity should read the DDL scripts (such as CREATE TABLE) and execute them before attempting to insert data to the destination table. 
 	 */
 	public void setProcessDDLScripts(boolean processDDLScripts) {
 		this.processDDLScripts = processDDLScripts;

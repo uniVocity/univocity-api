@@ -7,13 +7,14 @@ package com.univocity.api.entity.jdbc;
 
 import com.univocity.api.common.*;
 
+
 /**
  * Definition of the format of a database dump script. The configurations defined in this class allow uniVocity to parse database dump scripts and load their values
  * into equivalent database schemas. The destination database does not need to be the same database used to generate the dump file. You can load a dump generated from
- * MySQL into Oracle or Postgres, for example.
- *
+ * MySQL into Oracle or Postgres, for example.  
+ * 
  * For example, a MySQL dump script will look like:
- *
+ * 
  * <p><hr><blockquote><pre>
  * --
  * -- Table structure for table `worldcities`
@@ -33,24 +34,24 @@ import com.univocity.api.common.*;
  * -- Dumping data for table `worldcities`
  * --
  *
- * INSERT INTO `worldcities` VALUES (1,'ad','aixas','Aixàs','06',NULL,42.48333330,1.46666670);
+ * INSERT INTO `worldcities` VALUES (1,'ad','aixas','Aixàs','06',NULL,42.48333330,1.46666670); 
  * INSERT INTO `worldcities` VALUES (2,'ad','aixirivali','Aixirivali','06',NULL,42.46666670,1.50000000);
  * INSERT INTO `worldcities` VALUES (3,'ad','aixirivall','Aixirivall','06',NULL,42.46666670,1.50000000);
  * ...
  * </pre></blockquote><hr></p>
- *
+ * 
  * uniVocity can read such inputs and execute an initial database load from the dump file provided. The configurations in this class
  * allow uniVocity to correctly parse your dump file and insert the values in the database of your preference. The dump file can be
  * originated from a different database. Provided that the tables exist in the database with an equivalent structure, uniVocity will get the values from each
- * insert statement in the file and pass them to your database tables.
+ * insert statement in the file and pass them to your database tables. 
  *
  * @see JdbcDataStoreDumpLoadConfiguration
- *
+ * 
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com
  *
  */
 public class DumpFileFormat {
-
+	
 	private static final String systemLineSeparatorString;
 	private static final char[] systemLineSeparator;
 
@@ -67,7 +68,7 @@ public class DumpFileFormat {
 	private String lineSeparatorString;
 	private char[] lineSeparator;
 
-	public DumpFileFormat() {
+	public DumpFileFormat () {
 		this.lineSeparator = systemLineSeparator.clone();
 		this.lineSeparatorString = systemLineSeparatorString;
 	}
@@ -124,6 +125,8 @@ public class DumpFileFormat {
 		this.lineSeparatorString = new String(lineSeparator);
 	}
 
+	
+	
 	/**
 	 * Returns the character used for escaping values where the field delimiter is part of the value. Defaults to '\''
 	 * @return the quote character
@@ -191,7 +194,7 @@ public class DumpFileFormat {
 	/**
 	 * Returns the sequence of characters that precedes the start of a record, or a set of records if the {@link #isOneInsertPerRow()} evaluates to {@code false}.
 	 * Defaults to: {@code "INSERT INTO ? VALUES"}. The '?' is used to indicate the location of the table name in each input record.
-	 *
+	 * 
 	 * Once the parser matches the expression, values that follow will be collected for insertion into the database.
 	 * @return the expression that precedes the values of individual records of a database table.
 	 */
@@ -202,13 +205,13 @@ public class DumpFileFormat {
 	/**
 	 * Defines the sequence of characters that precedes the start of a record, or a set of records if the {@link #isOneInsertPerRow()} evaluates to {@code false}.
 	 * Defaults to: {@code "INSERT INTO ? VALUES"}. The '?' is used to indicate the location of the table name in each input record, and is mandatory.
-	 *
+	 * 
 	 * Once the parser matches the expression, values that follow will be collected for insertion into the database.
 	 * @param recordIdentifier the expression that precedes the values of individual records of a database table.
 	 */
 	public void setRecordIdentifier(String recordIdentifier) {
 		Args.notBlank(recordIdentifier, "Record identifier");
-		if (!recordIdentifier.contains("?")) {
+		if(!recordIdentifier.contains("?")){
 			throw new IllegalArgumentException("Unexpected record identifier format. Expected '?' in the String to subsitute the table name in the database dump script (e.g. 'INSERT INTO ? VALUES')");
 		}
 		this.recordIdentifier = recordIdentifier;
@@ -217,7 +220,7 @@ public class DumpFileFormat {
 	/**
 	 * Returns the character that indicates the beginning of a sequence of values for an individual record of the table. Defaults to '('
 	 * @return the character that represents the beginning of a sequence of values of a record.
-	 */
+	 */ 
 	public char getRecordStart() {
 		return recordStart;
 	}
@@ -233,7 +236,7 @@ public class DumpFileFormat {
 	/**
 	 * Returns the character that indicates the end of a sequence of values for an individual record of the table. Defaults to ')'
 	 * @return the character that represents the end of a sequence of values of a record.
-	 */
+	 */ 
 	public char getRecordEnd() {
 		return recordEnd;
 	}
@@ -241,7 +244,7 @@ public class DumpFileFormat {
 	/**
 	 * Defines the character that indicates the end of a sequence of values for an individual record of the table. Defaults to ')'
 	 * @param recordEnd the character that represents the end of a sequence of values of a record.
-	 */
+	 */ 
 	public void setRecordEnd(char recordEnd) {
 		this.recordEnd = recordEnd;
 	}
@@ -254,10 +257,10 @@ public class DumpFileFormat {
 	 *		INSERT INTO `worldcities` VALUES (3,'ad','aixirivall','Aixirivall','06',NULL,42.46666670,1.50000000);
 	 *      ...
 	 * </pre></blockquote><hr></p>
-	 *
+	 * 
 	 * Instead of:
 	 * <p><hr><blockquote><pre>
-	 * 		INSERT INTO `worldcities` VALUES
+	 * 		INSERT INTO `worldcities` VALUES 
 	 * 			(1,'ad','aixas','Aixàs','06',NULL,42.48333330,1.46666670),
 	 * 			(2,'ad','aixirivali','Aixirivali','06',NULL,42.46666670,1.50000000),
 	 * 			(3,'ad','aixirivall','Aixirivall','06',NULL,42.46666670,1.50000000),
@@ -277,10 +280,10 @@ public class DumpFileFormat {
 	 *		INSERT INTO `worldcities` VALUES (3,'ad','aixirivall','Aixirivall','06',NULL,42.46666670,1.50000000);
 	 *      ...
 	 * </pre></blockquote><hr></p>
-	 *
+	 * 
 	 * Instead of:
 	 * <p><hr><blockquote><pre>
-	 * 		INSERT INTO `worldcities` VALUES
+	 * 		INSERT INTO `worldcities` VALUES 
 	 * 			(1,'ad','aixas','Aixàs','06',NULL,42.48333330,1.46666670),
 	 * 			(2,'ad','aixirivali','Aixirivali','06',NULL,42.46666670,1.50000000),
 	 * 			(3,'ad','aixirivall','Aixirivall','06',NULL,42.46666670,1.50000000),
