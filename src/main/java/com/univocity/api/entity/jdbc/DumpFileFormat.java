@@ -5,8 +5,6 @@
  ******************************************************************************/
 package com.univocity.api.entity.jdbc;
 
-import com.univocity.api.common.*;
-
 
 /**
  * Definition of the format of a database dump script. The configurations defined in this class allow uniVocity to parse database dump scripts and load their values
@@ -144,6 +142,15 @@ public class DumpFileFormat {
 	}
 
 	/**
+	 * Identifies whether or not a given character is used for escaping values where the field delimiter is part of the value
+	 * @param ch the character to be verified
+	 * @return true if the given character is the character used for escaping values, false otherwise
+	 */
+	public boolean isQuote(char ch) {
+		return this.quote == ch;
+	}
+
+	/**
 	 * Returns the character used for escaping quotes inside an already quoted value. Defaults to '\\'
 	 * @return the quote escape character
 	 */
@@ -160,6 +167,15 @@ public class DumpFileFormat {
 	}
 
 	/**
+	 * Identifies whether or not a given character is used for escaping quotes inside an already quoted value.
+	 * @param ch the character to be verified
+	 * @return true if the given character is the quote escape character, false otherwise
+	 */
+	public boolean isQuoteEscape(char ch) {
+		return this.quoteEscape == ch;
+	}
+
+	/**
 	 * Returns the field delimiter character. Defaults to ','
 	 * @return the field delimiter character
 	 */
@@ -173,6 +189,15 @@ public class DumpFileFormat {
 	 */
 	public void setDelimiter(char delimiter) {
 		this.delimiter = delimiter;
+	}
+
+	/**
+	 * Identifies whether or not a given character represents a field delimiter
+	 * @param ch the character to be verified
+	 * @return true if the given character is the field delimiter character, false otherwise
+	 */
+	public boolean isDelimiter(char ch) {
+		return this.delimiter == ch;
 	}
 
 	/**
@@ -210,10 +235,6 @@ public class DumpFileFormat {
 	 * @param recordIdentifier the expression that precedes the values of individual records of a database table.
 	 */
 	public void setRecordIdentifier(String recordIdentifier) {
-		Args.notBlank(recordIdentifier, "Record identifier");
-		if(!recordIdentifier.contains("?")){
-			throw new IllegalArgumentException("Unexpected record identifier format. Expected '?' in the String to subsitute the table name in the database dump script (e.g. 'INSERT INTO ? VALUES')");
-		}
 		this.recordIdentifier = recordIdentifier;
 	}
 
