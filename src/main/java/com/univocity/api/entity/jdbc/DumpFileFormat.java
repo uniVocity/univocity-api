@@ -14,7 +14,7 @@ import com.univocity.api.common.*;
  *
  * For example, a MySQL dump script will look like:
  *
- * <hr><blockquote><pre>
+ * <p><hr><blockquote><pre>
  * --
  * -- Table structure for table `worldcities`
  * --
@@ -37,7 +37,7 @@ import com.univocity.api.common.*;
  * INSERT INTO `worldcities` VALUES (2,'ad','aixirivali','Aixirivali','06',NULL,42.46666670,1.50000000);
  * INSERT INTO `worldcities` VALUES (3,'ad','aixirivall','Aixirivall','06',NULL,42.46666670,1.50000000);
  * ...
- * </pre></blockquote><hr>
+ * </pre></blockquote><hr></p>
  *
  * uniVocity can read such inputs and execute an initial database load from the dump file provided. The configurations in this class
  * allow uniVocity to correctly parse your dump file and insert the values in the database of your preference. The dump file can be
@@ -46,7 +46,7 @@ import com.univocity.api.common.*;
  *
  * @see JdbcDataStoreDumpLoadConfiguration
  *
- * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
+ * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com
  *
  */
 public class DumpFileFormat {
@@ -248,21 +248,21 @@ public class DumpFileFormat {
 
 	/**
 	 * Indicates that the database dump file has one insert statement for each individual row of a given table, e.g.
-	 * <hr><blockquote><pre>
+	 * <p><hr><blockquote><pre>
 	 *		INSERT INTO `worldcities` VALUES (1,'ad','aixas','Aixàs','06',NULL,42.48333330,1.46666670);
 	 *		INSERT INTO `worldcities` VALUES (2,'ad','aixirivali','Aixirivali','06',NULL,42.46666670,1.50000000);
 	 *		INSERT INTO `worldcities` VALUES (3,'ad','aixirivall','Aixirivall','06',NULL,42.46666670,1.50000000);
 	 *      ...
-	 * </pre></blockquote><hr>
+	 * </pre></blockquote><hr></p>
 	 *
 	 * Instead of:
-	 * <hr><blockquote><pre>
+	 * <p><hr><blockquote><pre>
 	 * 		INSERT INTO `worldcities` VALUES
 	 * 			(1,'ad','aixas','Aixàs','06',NULL,42.48333330,1.46666670),
 	 * 			(2,'ad','aixirivali','Aixirivali','06',NULL,42.46666670,1.50000000),
 	 * 			(3,'ad','aixirivall','Aixirivall','06',NULL,42.46666670,1.50000000),
 	 * 			...
-	 * </pre></blockquote><hr>
+	 * </pre></blockquote><hr></p>
 	 * @return true if the dump file contains a new insert statement for each record, otherwise false.
 	 */
 	public boolean isOneInsertPerRow() {
@@ -271,21 +271,21 @@ public class DumpFileFormat {
 
 	/**
 	 * Defines whether the database dump file has one insert statement for each individual row of a given table, e.g.
-	 * <hr><blockquote><pre>
+	 * <p><hr><blockquote><pre>
 	 *		INSERT INTO `worldcities` VALUES (1,'ad','aixas','Aixàs','06',NULL,42.48333330,1.46666670);
 	 *		INSERT INTO `worldcities` VALUES (2,'ad','aixirivali','Aixirivali','06',NULL,42.46666670,1.50000000);
 	 *		INSERT INTO `worldcities` VALUES (3,'ad','aixirivall','Aixirivall','06',NULL,42.46666670,1.50000000);
 	 *      ...
-	 * </pre></blockquote><hr>
+	 * </pre></blockquote><hr></p>
 	 *
 	 * Instead of:
-	 * <hr><blockquote><pre>
+	 * <p><hr><blockquote><pre>
 	 * 		INSERT INTO `worldcities` VALUES
 	 * 			(1,'ad','aixas','Aixàs','06',NULL,42.48333330,1.46666670),
 	 * 			(2,'ad','aixirivali','Aixirivali','06',NULL,42.46666670,1.50000000),
 	 * 			(3,'ad','aixirivall','Aixirivall','06',NULL,42.46666670,1.50000000),
 	 * 			...
-	 * </pre></blockquote><hr>
+	 * </pre></blockquote><hr></p>
 	 * @param oneInsertPerRow flag indicating whether or not the dump file contains a new insert statement for each record
 	 */
 	public void setOneInsertPerRow(boolean oneInsertPerRow) {
