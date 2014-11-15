@@ -79,9 +79,10 @@ public abstract class DumpFileFormat {
 	private char valueDelimiter = ',';
 	private char scriptDelimiter = ';';
 	private char identifierEscape = '"';
-	private String recordIdentifier = "INSERT INTO ? VALUES";
+	private String recordIdentifier = getDefaultMultiRecordIdentifier();
+	private boolean recordIdentifierIsProvidedByUser = false;
 
-	private boolean oneInsertPerRow = true;
+	private boolean oneInsertPerRow = false;
 
 	/**
 	 * Returns the current line separator character sequence, which can contain 1 to 2 characters. Defaults to the system's line separator sequence (usually '\r\n' in Windows, '\r' in MacOS, and '\n' in Linux/Unix).
@@ -190,8 +191,8 @@ public abstract class DumpFileFormat {
 	}
 
 	/**
-	 * Returns the sequence of characters that precedes the start of a record, or a set of records if the {@link #isOneInsertPerRow()} evaluates to {@code false}.
-	 * <p>Defaults to: {@code "INSERT INTO ? VALUES"}. The '?' is used to indicate the location of the table name in each input record.</p>
+	 * Returns the sequence of characters that precedes the start of a record, or a set of records.
+	 * <p>Defaults to: {@code "INSERT INTO ? "}. The '?' is used to indicate the location of the table name in each input record.</p>
 	 *
 	 * <p>Once the parser matches the expression, values that follow will be collected for insertion into the database.</p>
 	 * @return the expression that precedes the values of individual records of a database table.
@@ -201,8 +202,8 @@ public abstract class DumpFileFormat {
 	}
 
 	/**
-	 * Defines the sequence of characters that precedes the start of a record, or a set of records if the {@link #isOneInsertPerRow()} evaluates to {@code false}.
-	 * <p>Defaults to: {@code "INSERT INTO ? VALUES"}. The '?' is used to indicate the location of the table name in each input record, and is mandatory.</p>
+	 * Defines the sequence of characters that precedes the start of a record, or a set of records.
+	 * <p>Defaults to: {@code "INSERT INTO ? "}. The '?' is used to indicate the location of the table name in each input record, and is mandatory.</p>
 	 *
 	 * <p>Once the parser matches the expression, values that follow will be collected for insertion into the database.</p>
 	 * @param recordIdentifier the expression that precedes the values of individual records of a database table.
@@ -213,6 +214,7 @@ public abstract class DumpFileFormat {
 			throw new IllegalArgumentException("Unexpected record identifier format. Expected '?' in the String to subsitute the table name in the database dump script (e.g. 'INSERT INTO ? VALUES')");
 		}
 		this.recordIdentifier = recordIdentifier;
+		this.recordIdentifierIsProvidedByUser = true;
 	}
 
 	/**
@@ -280,6 +282,13 @@ public abstract class DumpFileFormat {
 	 */
 	public final void setOneInsertPerRow(boolean oneInsertPerRow) {
 		this.oneInsertPerRow = oneInsertPerRow;
+		if (!recordIdentifierIsProvidedByUser) {
+			if (oneInsertPerRow) {
+				this.recordIdentifier = getDefaultSingleRecordIdentifier();
+			} else {
+				this.recordIdentifier = getDefaultMultiRecordIdentifier();
+			}
+		}
 	}
 
 	/**
@@ -307,4 +316,30 @@ public abstract class DumpFileFormat {
 		this.identifierEscape = identifierEscape;
 	}
 
+	/**
+	 * Returns the sequence of characters that identifies the table name in a single database command to insert multiple records into a database table.
+	 * <p>For example in Postgres, the sequence "COPY ? " identifies bulk inserts in the format:</p>
+	 * <hr><blockquote><pre>
+	 * 		COPY city (id, region_id, name, population, latitude, longitude) FROM stdin;
+	 *			1	5	Aixàs	\N	42.48333330	1.46666670
+	 *			2	5	Aixirivali	\N	42.46666670	1.50000000
+	 *			3	5	Aixirivall	\N	42.46666670	1.50000000
+	 *	...
+	 * </pre></blockquote><hr>
+	 * @return the expression that identifies the the beginning of a sequence of records to be inserted.
+	 */
+	protected abstract String getDefaultMultiRecordIdentifier();
+
+	/**
+	 * Returns the sequence of characters that identifies the table name in a single database command to insert a single record into a database table.
+	 * <p>For example in MySQL, the sequence "INSERT INTO ? " identifies insert statements in the format:</p>
+	 * <hr><blockquote><pre>
+	 *		INSERT INTO `worldcities` VALUES (1,'ad','aixas','Aixàs','06',NULL,42.48333330,1.46666670);
+	 *		INSERT INTO `worldcities` VALUES (2,'ad','aixirivali','Aixirivali','06',NULL,42.46666670,1.50000000);
+	 *		INSERT INTO `worldcities` VALUES (3,'ad','aixirivall','Aixirivall','06',NULL,42.46666670,1.50000000);
+	 *      ...
+	 * </pre></blockquote><hr>
+	 * @return the expression that identifies the the beginning of a single database record be inserted.
+	 */
+	protected abstract String getDefaultSingleRecordIdentifier();
 }

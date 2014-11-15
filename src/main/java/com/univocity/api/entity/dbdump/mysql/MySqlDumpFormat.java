@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Cpyright (c) 2014 uniVocity Software Pty Ltd. All rights reserved.
+ * Copyright (c) 2014 uniVocity Software Pty Ltd. All rights reserved.
  * This file is subject to the terms and conditions defined in file
  * 'LICENSE.txt', which is part of this source code package.
  ******************************************************************************/
@@ -68,68 +68,8 @@ import com.univocity.api.entity.dbdump.*;
  */
 public class MySqlDumpFormat extends DumpFileFormat {
 
-	private char recordStart = '(';
-	private char recordEnd = ')';
-
 	public MySqlDumpFormat() {
-		this.setRecordIdentifier("INSERT INTO `?` VALUES");
 		this.setIdentifierEscape('`');
-	}
-
-	/**
-	 * Returns the character that indicates the beginning of a sequence of values for an individual record of the table. Defaults to '('
-	 * @return the character that represents the beginning of a sequence of values of a record.
-	 */
-	public final char getRecordStart() {
-		return recordStart;
-	}
-
-	/**
-	 * Defines the character that indicates the beginning of a sequence of values for an individual record of the table. Defaults to '('
-	 * @param recordStart the character that represents the beginning of a sequence of values of a record.
-	 */
-	public final void setRecordStart(char recordStart) {
-		this.recordStart = recordStart;
-	}
-
-	/**
-	 * Returns the character that indicates the end of a sequence of values for an individual record of the table. Defaults to ')'
-	 * @return the character that represents the end of a sequence of values of a record.
-	 */
-	public final char getRecordEnd() {
-		return recordEnd;
-	}
-
-	/**
-	 * Defines the character that indicates the end of a sequence of values for an individual record of the table. Defaults to ')'
-	 * @param recordEnd the character that represents the end of a sequence of values of a record.
-	 */
-	public final void setRecordEnd(char recordEnd) {
-		this.recordEnd = recordEnd;
-	}
-
-	/**
-	 * Returns the sequence of characters that precedes the start of a record, or a set of records if {@link #isOneInsertPerRow()} evaluates to {@code false}.
-	 * Defaults to: {@code "INSERT INTO `?` VALUES"}. The '?' is used to indicate the location of the table name in each input record.
-	 *
-	 * Once the parser matches the expression, values that follow will be collected for insertion into the database.
-	 * @return the expression that precedes the values of individual records of a database table.
-	 */
-	@Override
-	public String getRecordIdentifier() {
-		return super.getRecordIdentifier();
-	}
-
-	/**
-	 * Defines the sequence of characters that precedes the start of a record, or a set of records if {@link #isOneInsertPerRow()} evaluates to {@code false}.
-	 * Defaults to: {@code "INSERT INTO `?` VALUES"}. The '?' is used to indicate the location of the table name in each input record, and is mandatory.
-	 *
-	 * Once the parser matches the expression, values that follow will be collected for insertion into the database.
-	 * @param recordIdentifier the expression that precedes the values of individual records of a database table.
-	 */
-	@Override
-	public void setRecordIdentifier(String recordIdentifier) {
-		super.setRecordIdentifier(recordIdentifier);
 	}
 
 	/**
@@ -157,5 +97,15 @@ public class MySqlDumpFormat extends DumpFileFormat {
 	@Override
 	public void setIdentifierEscape(char identifierEscape) {
 		super.setIdentifierEscape(identifierEscape);
+	}
+	
+	@Override
+	protected String getDefaultMultiRecordIdentifier() {
+		return "INSERT INTO ? ";
+	}
+
+	@Override
+	protected String getDefaultSingleRecordIdentifier() {
+		return "INSERT INTO ? ";
 	}
 }
