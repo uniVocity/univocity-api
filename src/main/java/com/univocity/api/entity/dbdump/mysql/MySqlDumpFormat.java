@@ -59,7 +59,8 @@ import com.univocity.api.entity.dbdump.*;
  * </pre></blockquote><hr>
  *
  * This class lets you configure the specific format of your database dump files.
- *
+ * 
+ * @see MySqlDumpDataStoreConfiguration
  * @see DumpDataStoreConfiguration
  * @see DumpFileFormat
  *
@@ -75,7 +76,7 @@ public class MySqlDumpFormat extends DumpFileFormat {
 	/**
 	 * Returns the character used to escape database identifiers used as table or column names.
 	 * <p>For example,
-	 * {@code INSERT INTO "Max" (1,2,3);} is a valid SQL statement but {@code INSERT INTO Max (1,2,3);} is not, as {@code max} is also a built-in function of the database
+	 * {@code INSERT INTO `Max` (1,2,3);} is a valid SQL statement but {@code INSERT INTO Max (1,2,3);} is not, as {@code max} is also a built-in function of the database
 	 * </p>
 	 * <p>Defaults to '`'</p>
 	 * @return the identifier escape character
@@ -88,7 +89,7 @@ public class MySqlDumpFormat extends DumpFileFormat {
 	/**
 	 * Defines the character used to escape database identifiers used as table or column names.
 	 * <p>For example,
-	 * {@code INSERT INTO "Max" (1,2,3);} is a valid SQL statement but {@code INSERT INTO Max (1,2,3);} is not, as {@code max} is also a built-in function of the database
+	 * {@code INSERT INTO `Max` (1,2,3);} is a valid SQL statement but {@code INSERT INTO Max (1,2,3);} is not, as {@code max} is also a built-in function of the database
 	 * </p>
 	 * <p>Defaults to '`'</p>
 	 *
