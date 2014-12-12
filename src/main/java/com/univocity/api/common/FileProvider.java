@@ -45,9 +45,7 @@ public final class FileProvider {
 		if (file == null) {
 			throw new IllegalArgumentException("File cannot be null");
 		}
-		if (!file.exists()) {
-			throw new IllegalArgumentException("File " + file.getAbsolutePath() + " does not exist ");
-		}
+		
 		this.encoding = getEncoding(encoding);
 		this.file = file;
 		this.filePath = file.getAbsolutePath();
