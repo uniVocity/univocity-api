@@ -12,6 +12,7 @@ import com.univocity.api.config.*;
 import com.univocity.api.config.annotation.*;
 import com.univocity.api.config.builders.*;
 import com.univocity.api.data.*;
+import com.univocity.api.entity.*;
 
 /**
  * The <code>DataIntegrationEngine</code> is the central component of uniVocity. With it you can define data mappings between entities of different data stores,
@@ -403,4 +404,11 @@ public interface DataIntegrationEngine {
 	 * @param destinationEntities the sequence of destination entities to receive data from the mappings.
 	 */
 	public void executeCycle(Transactions transactionConfig, DataIncrement increment, String... destinationEntities);
+
+	/**
+	 * Get an accessible data entity which provides direct access to the underlying data store.
+	 * @param entityName the name of a data entity managed by this {@code DataIntegrationEngine}
+	 * @return an {@link Entity} for the given entity name.
+	 */
+	public Entity getEntity(String entityName);
 }
