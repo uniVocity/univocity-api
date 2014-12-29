@@ -27,6 +27,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	private final Map<String, WriterProvider> entityWriters = new TreeMap<String, WriterProvider>();
 	private final Map<String, FileProvider> namedEntityFiles = new TreeMap<String, FileProvider>();
 	private final Set<FileProvider> unnamedEntityFiles = new HashSet<FileProvider>();
+	private FileProvider dumpOutputDirectory;
 
 	private final Map<String, T> entityConfigurations = new TreeMap<String, T>();
 
@@ -389,4 +390,32 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 * @return new configuration object for an entity of this data store
 	 */
 	protected abstract T newEntityConfiguration();
+
+	public final void setDumpOutputDirectory(String directoryPath, Charset encoding) {
+		this.dumpOutputDirectory = new FileProvider(directoryPath, encoding);
+	}
+
+	public final void setDumpOutputDirectory(String directoryPath, String encoding) {
+		this.dumpOutputDirectory = new FileProvider(directoryPath, encoding);
+	}
+
+	public final void setDumpOutputDirectory(File directory, Charset encoding) {
+		this.dumpOutputDirectory = new FileProvider(directory, encoding);
+	}
+
+	public final void setDumpOutputDirectory(File directory, String encoding) {
+		this.dumpOutputDirectory = new FileProvider(directory, encoding);
+	}
+
+	public final void setDumpOutputDirectory(File directory) {
+		this.dumpOutputDirectory = new FileProvider(directory);
+	}
+
+	public final void setDumpOutputDirectory(String directoryPath) {
+		this.dumpOutputDirectory = new FileProvider(directoryPath);
+	}
+
+	public final FileProvider getDumpOutputDirectory() {
+		return this.dumpOutputDirectory;
+	}
 }

@@ -84,6 +84,8 @@ public interface DataStoreMapping {
 	 * executed by default using {@link DataIntegrationEngine#setMappingSequence(String...)}
 	 */
 	public void autodetectMappings();
+	
+	public void autodetectMappings(boolean createDestinationEntities);
 
 	/**
 	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.
