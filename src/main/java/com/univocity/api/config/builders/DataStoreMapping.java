@@ -7,6 +7,7 @@ package com.univocity.api.config.builders;
 
 import com.univocity.api.engine.*;
 import com.univocity.api.entity.custom.*;
+import com.univocity.api.entity.text.*;
 
 /**
  * The {@link DataStoreMapping} provides builder-style configuration options for defining mappings between entities of two data stores.
@@ -84,8 +85,41 @@ public interface DataStoreMapping {
 	 * executed by default using {@link DataIntegrationEngine#setMappingSequence(String...)}
 	 */
 	public void autodetectMappings();
-	
+
+	/**
+	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.
+	 *
+	 * <p>Entities and fields with similar names will be automatically associated. Underscores and spaces are ignored, for example: <code>entity1</code> will
+	 * be associated with <code>ENTITY 1</code> or <code>ENTITY_1</code>. When mapping fields, if the field in either source or destination is an identifier,
+	 * the mapping will be created using {@link IdentifierMappingSetup}, otherwise a regular field copy will be created using {@link FieldMappingSetup}.
+	 *
+	 * <p><b>Important: </b> You may want to define the correct sequence of mappings to be
+	 * executed by default using {@link DataIntegrationEngine#setMappingSequence(String...)}
+	 *
+	 * @param createDestinationEntities flag indicating whether "clones" of the source entities should be created in the destination data store. Some data stores
+	 * support dynamic creation of entities, such as uniVocity-provided CSV, TSV and Fixed-Width data stores (but only when an output directory is defined:
+	 * see {@link TextDataStoreConfiguration#setOutputDirectory(java.io.File)}). New entities will be created with the exact same name of the source entity,
+	 * and with the same fields.
+	 */
 	public void autodetectMappings(boolean createDestinationEntities);
+
+	/**
+	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.
+	 *
+	 * <p>A {@link NameMatcher} will be used to match names of entities and create a mapping between them. If an {@link EntityMapping} is created for
+	 * matching entities, then another {@link NameMatcher} will be executed to match the names of each field in both entities.
+	 * If the field in either source or destination is an identifier, the mapping will be created using {@link IdentifierMappingSetup}, otherwise a
+	 * regular field copy will be created using {@link FieldMappingSetup}.
+	 *
+	 *  @param createDestinationEntities flag indicating whether "clones" of the source entities should be created in the destination data store. Some data stores
+	 *  support dynamic creation of entities, such as uniVocity-provided CSV, TSV and Fixed-Width data stores (but only when an output directory is defined:
+	 *  see {@link TextDataStoreConfiguration#setOutputDirectory(java.io.File)}). New entities will be created with the exact same name of the source entity,
+	 *  and with the same fields.
+	 *  @param entityNameMatcher a matcher for entity names. If {@code null}, the default matching algorithm will be used.
+	 *  @param fieldNameMatcher a matcher for field names. If {@code null}, the default matching algorithm will be used.
+	 *
+	 */
+	public void autodetectMappings(boolean createDestinationEntities, NameMatcher entityNameMatcher, NameMatcher fieldNameMatcher);
 
 	/**
 	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.

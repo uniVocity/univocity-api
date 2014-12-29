@@ -27,7 +27,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	private final Map<String, WriterProvider> entityWriters = new TreeMap<String, WriterProvider>();
 	private final Map<String, FileProvider> namedEntityFiles = new TreeMap<String, FileProvider>();
 	private final Set<FileProvider> unnamedEntityFiles = new HashSet<FileProvider>();
-	private FileProvider dumpOutputDirectory;
+	private FileProvider OutputDirectory;
 
 	private final Map<String, T> entityConfigurations = new TreeMap<String, T>();
 
@@ -391,31 +391,87 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 */
 	public abstract T newEntityConfiguration();
 
-	public final void setDumpOutputDirectory(String directoryPath, Charset encoding) {
-		this.dumpOutputDirectory = new FileProvider(directoryPath, encoding);
+	/**
+	 *  Defines an output directory onto which files that serve as "clones" of source entities should be created.
+	 *  If required, new entities will be created with the exact same name of the source entity, and with the same fields.
+	 *
+	 * @param directoryPath the path to directory in the file system that stores files that may be created automatically to
+	 * store data dumped from a source entity. Once the file is created its data can be accessed normally.
+	 * @param encoding encoding the encoding that must be used to read from/write to each file in this directory.
+	 */
+	public final void setOutputDirectory(String directoryPath, Charset encoding) {
+		this.OutputDirectory = new FileProvider(directoryPath, encoding);
 	}
 
-	public final void setDumpOutputDirectory(String directoryPath, String encoding) {
-		this.dumpOutputDirectory = new FileProvider(directoryPath, encoding);
+	/**
+	 *  Defines an output directory onto which files that serve as "clones" of source entities should be created.
+	 *  If required, new entities will be created with the exact same name of the source entity, and with the same fields.
+	 *
+	 * @param directoryPath the path to directory in the file system that stores files that may be created automatically to
+	 * store data dumped from a source entity. Once the file is created its data can be accessed normally.
+	 * @param encoding encoding the encoding that must be used to read from/write to each file in this directory.
+	 */
+	public final void setOutputDirectory(String directoryPath, String encoding) {
+		this.OutputDirectory = new FileProvider(directoryPath, encoding);
 	}
 
-	public final void setDumpOutputDirectory(File directory, Charset encoding) {
-		this.dumpOutputDirectory = new FileProvider(directory, encoding);
+	/**
+	 *  Defines an output directory onto which files that serve as "clones" of source entities should be created.
+	 *  If required, new entities will be created with the exact same name of the source entity, and with the same fields.
+	 *
+	 * @param directory a directory in the file system that stores files that may be created automatically to
+	 * store data dumped from a source entity. Once the file is created its data can be accessed normally.
+	 * @param encoding encoding the encoding that must be used to read from/write to each file in this directory.
+	 */
+	public final void setOutputDirectory(File directory, Charset encoding) {
+		this.OutputDirectory = new FileProvider(directory, encoding);
 	}
 
-	public final void setDumpOutputDirectory(File directory, String encoding) {
-		this.dumpOutputDirectory = new FileProvider(directory, encoding);
+	/**
+	 *  Defines an output directory onto which files that serve as "clones" of source entities should be created.
+	 *  If required, new entities will be created with the exact same name of the source entity, and with the same fields.
+	 *
+	 * @param directory a directory in the file system that stores files that may be created automatically to
+	 * store data dumped from a source entity. Once the file is created its data can be accessed normally.
+	 * @param encoding encoding the encoding that must be used to read from/write to each file in this directory.
+	 */
+	public final void setOutputDirectory(File directory, String encoding) {
+		this.OutputDirectory = new FileProvider(directory, encoding);
 	}
 
-	public final void setDumpOutputDirectory(File directory) {
-		this.dumpOutputDirectory = new FileProvider(directory);
+	/**
+	 *  Defines an output directory onto which files that serve as "clones" of source entities should be created.
+	 *  If required, new entities will be created with the exact same name of the source entity, and with the same fields.
+	 *
+	 * <p><i><b>Note: </b>As no encoding is provided in this method, the default system encoding will be used.</i>
+	 *
+	 * @param directory a directory in the file system that stores files that may be created automatically to
+	 * store data dumped from a source entity. Once the file is created its data can be accessed normally.
+	 */
+	public final void setOutputDirectory(File directory) {
+		this.OutputDirectory = new FileProvider(directory);
 	}
 
-	public final void setDumpOutputDirectory(String directoryPath) {
-		this.dumpOutputDirectory = new FileProvider(directoryPath);
+	/**
+	 *  Defines an output directory onto which files that serve as "clones" of source entities should be created.
+	 *  If required, new entities will be created with the exact same name of the source entity, and with the same fields.
+	 *
+	 * <p><i><b>Note: </b>As no encoding is provided in this method, the default system encoding will be used.</i>
+	 *
+	 * @param directoryPath the path to directory in the file system that stores files that may be created automatically to
+	 * store data dumped from a source entity. Once the file is created its data can be accessed normally.
+	 */
+	public final void setOutputDirectory(String directoryPath) {
+		this.OutputDirectory = new FileProvider(directoryPath);
 	}
 
-	public final FileProvider getDumpOutputDirectory() {
-		return this.dumpOutputDirectory;
+	/**
+	 * Returns the output directory onto which files that serve as "clones" of source entities should be created.
+	 * If required, new entities will be created with the exact same name of the source entity, and with the same fields.
+	 *
+	 * @return the output directory where files of dynamically created entities will be stored.
+	 */
+	public final FileProvider getOutputDirectory() {
+		return this.OutputDirectory;
 	}
 }
