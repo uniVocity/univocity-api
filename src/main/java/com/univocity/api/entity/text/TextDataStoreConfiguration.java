@@ -389,7 +389,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 * Creates a new configuration object for an entity of this data store.
 	 * @return new configuration object for an entity of this data store
 	 */
-	protected abstract T newEntityConfiguration();
+	public abstract T newEntityConfiguration();
 
 	public final void setDumpOutputDirectory(String directoryPath, Charset encoding) {
 		this.dumpOutputDirectory = new FileProvider(directoryPath, encoding);

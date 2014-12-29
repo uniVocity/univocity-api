@@ -30,7 +30,7 @@ public final class CsvDataStoreConfiguration extends TextDataStoreConfiguration<
 	 * Creates a configuration object for a CSV data entity.
 	 */
 	@Override
-	protected final CsvEntityConfiguration newEntityConfiguration() {
+	public final CsvEntityConfiguration newEntityConfiguration() {
 		return new CsvEntityConfiguration();
 	}
 }

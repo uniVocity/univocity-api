@@ -65,7 +65,7 @@ public final class FixedWidthEntityConfiguration extends TextEntityConfiguration
 	 */
 	public final void addField(int length) {
 		if (fieldLengths == null) {
-			throw new IllegalStateException("Fields per record not set");
+			throw new IllegalStateException("Field lengths not set for fixed width entity");
 		}
 
 		if (length < 1) {
@@ -84,7 +84,7 @@ public final class FixedWidthEntityConfiguration extends TextEntityConfiguration
 	 */
 	public final int getFieldsPerRecord() {
 		if (fieldLengths == null) {
-			throw new IllegalStateException("Fields per record not set");
+			throw new IllegalStateException("Field lengths not set for fixed width entity");
 		}
 		return fieldLengths.length;
 	}
@@ -102,7 +102,7 @@ public final class FixedWidthEntityConfiguration extends TextEntityConfiguration
 
 	private final void validate() {
 		if (fieldLengths == null) {
-			throw new IllegalStateException("Fields per record not set");
+			throw new IllegalStateException("Field lengths not set for fixed width entity");
 		}
 		if (lengthIndex < fieldLengths.length) {
 			throw new IllegalStateException("Fixed width format not properly defined: there should be " + getFieldsPerRecord() + " fields per record but only the first " + lengthIndex + " fields lengths were set");

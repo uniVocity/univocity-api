@@ -30,7 +30,7 @@ public final class TsvDataStoreConfiguration extends TextDataStoreConfiguration<
 	 * Creates a configuration object for a TSV data entity.
 	 */
 	@Override
-	protected final TsvEntityConfiguration newEntityConfiguration() {
+	public final TsvEntityConfiguration newEntityConfiguration() {
 		return new TsvEntityConfiguration();
 	}
 }
