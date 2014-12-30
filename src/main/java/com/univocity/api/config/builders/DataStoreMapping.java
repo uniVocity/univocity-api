@@ -162,4 +162,63 @@ public interface DataStoreMapping {
 	 */
 	public void setEnabled(boolean enabled);
 
+	/**
+	 * Adds a {@link RowReader} to be executed against the input data of {@link EntityMapping}s defined in this {@code DataStoreMapping}.
+	 * @param rowReader the callback object that will intercept and possibly manipulate the rows
+	 * 	 	  extracted from the source entity before its data is mapped to the destination.
+	 * @param entityNames The names of the data entities used by one or more {@link EntityMapping}s of this {@code DataStoreMapping}.
+	 * 		If no names are given, then all {@link EntityMapping}s of this {@code DataStoreMapping} will have the given {@link RowReader} added.
+	 */
+	public void addInputRowReader(RowReader rowReader, String... entityNames);
+
+	/**
+	 * Associates a single {@link RowReader}, registered in the {@link DataIntegrationEngine}, to be executed against 
+	 * the input data of {@link EntityMapping}s defined in this {@code DataStoreMapping}.
+	 * 
+	 * @param readerName the name of a callback object extending {@link RowReader} that will intercept and possibly manipulate the rows
+	 * 	 	  extracted from the source entity before its data is mapped to the destination.
+	 * 
+	 * @param entityNames The names of the data entities used by one or more {@link EntityMapping}s of this {@code DataStoreMapping}.
+	 * 		If no names are given, then all {@link EntityMapping}s of this {@code DataStoreMapping} will have the given {@link RowReader} added.
+	 */
+	public void addInputRowReader(String readerName, String... entityNames);
+
+	/**
+	 * Adds a {@link RowReader} to be executed against the output data of {@link EntityMapping}s defined in this {@code DataStoreMapping}.
+	 * @param rowReader the callback object that will intercept and possibly manipulate the rows
+	 * 	 	  extracted from the source entity and mapped to the destination, before they are persisted
+	 * @param entityNames The names of the data entities used by one or more {@link EntityMapping}s of this {@code DataStoreMapping}.
+	 * 		If no names are given, then all {@link EntityMapping}s of this {@code DataStoreMapping} will have the given {@link RowReader} added.
+	 */
+	public void addOutputRowReader(RowReader rowReader, String... entityNames);
+
+	/**
+	 * Associates one or more {@link RowReader}s registered, in the {@link DataIntegrationEngine}, with the output data of {@link EntityMapping}s defined in this {@code DataStoreMapping}.
+	 * @param readerName the names of the callback object extending {@link RowReader} that will intercept and possibly manipulate the rows
+	 * 	 	   extracted from the source entity and mapped to the destination, before they are persisted
+	 * @param entityNames The names of the data entities used by one or more {@link EntityMapping}s of this {@code DataStoreMapping}.
+	 * 		If no names are given, then all {@link EntityMapping}s of this {@code DataStoreMapping} will have the given {@link RowReader} added.
+	 */
+	public void addOutputRowReader(String readerName, String... entityNames);
+
+	/**
+	 * Adds a {@link RowReader} to be executed against the data persisted after the execution of entity mappings in this {@code DataStoreMapping}.
+	 * Values generated after insertion, if any, will be available to the {@link RowReader}.
+	 * @param rowReader the callback object that will manipulate rows
+	 * 	 	  extracted from the source entity, mapped and persisted into the destination
+	 * @param entityNames The names of the data entities used by one or more {@link EntityMapping}s of this {@code DataStoreMapping}.
+	 * 		If no names are given, then all {@link EntityMapping}s of this {@code DataStoreMapping} will have the given {@link RowReader} added.
+	 */
+	public void addPersistedRowReader(RowReader rowReader, String... entityNames);
+
+	/**
+	 * Associates {@link RowReader}, registered in the {@link DataIntegrationEngine},
+	 * to be executed against the data persisted after the execution of entity mappings in this {@code DataStoreMapping}.
+	 * Values generated after insertion, if any, will be available to the {@link RowReader}.
+	 * @param readerName the names of the callback object,extending {@link RowReader},  that will manipulate rows
+	 * 	 	  extracted from the source entity, mapped and persisted into the destination
+	 * @param entityNames The names of the data entities used by one or more {@link EntityMapping}s of this {@code DataStoreMapping}.
+	 * 		If no names are given, then all {@link EntityMapping}s of this {@code DataStoreMapping} will have the given {@link RowReader} added.
+	 */
+	public void addPersistedRowReaders(String readerName, String... entityNames);
 }
