@@ -12,7 +12,7 @@ import com.univocity.api.entity.custom.*;
  * A data entity managed by uniVocity. It provides a consistent abstraction for accessing records from any source of data.
  * Instances of this interface must be obtained from {@link DataIntegrationEngine} through {@link DataIntegrationEngine#getEntity(String)}
  *
- * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com
+ * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
 public interface Entity {
