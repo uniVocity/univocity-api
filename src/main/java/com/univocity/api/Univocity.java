@@ -52,7 +52,7 @@ public final class Univocity {
 	private static ServiceLoader<UnivocityFactoryProvider> factoryProviderLoader = ServiceLoader.load(UnivocityFactoryProvider.class);
 	private static String licensePath = "license.zip";
 	static final Map<String, EngineConfiguration> engineConfigurations = new HashMap<String, EngineConfiguration>();
-	static final String API_VERSION = "1.0.4";
+	static final String API_VERSION = "1.0.6";
 
 	private static UnivocityFactoryProvider loadProvider() {
 		for (UnivocityFactoryProvider provider : factoryProviderLoader) {
