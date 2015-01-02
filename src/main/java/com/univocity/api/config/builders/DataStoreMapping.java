@@ -172,12 +172,12 @@ public interface DataStoreMapping {
 	public void addInputRowReader(RowReader rowReader, String... entityNames);
 
 	/**
-	 * Associates a single {@link RowReader}, registered in the {@link DataIntegrationEngine}, to be executed against 
+	 * Associates a single {@link RowReader}, registered in the {@link DataIntegrationEngine}, to be executed against
 	 * the input data of {@link EntityMapping}s defined in this {@code DataStoreMapping}.
-	 * 
+	 *
 	 * @param readerName the name of a callback object extending {@link RowReader} that will intercept and possibly manipulate the rows
 	 * 	 	  extracted from the source entity before its data is mapped to the destination.
-	 * 
+	 *
 	 * @param entityNames The names of the data entities used by one or more {@link EntityMapping}s of this {@code DataStoreMapping}.
 	 * 		If no names are given, then all {@link EntityMapping}s of this {@code DataStoreMapping} will have the given {@link RowReader} added.
 	 */

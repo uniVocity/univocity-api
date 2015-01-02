@@ -411,4 +411,14 @@ public interface DataIntegrationEngine {
 	 * @return an {@link Entity} for the given entity name.
 	 */
 	public Entity getEntity(String entityName);
+
+	/**
+	 * Configures an export operation from a given list of data entities.
+	 *
+	 * @param dataStoreName name of the data store whose entities will be exported
+	 * @param entityNames names of the entities to export from the given data store. If no names are provided, all entities in the data store will be exported.
+	 * @return an {@link Export} configuration object to determine what information to export and to where.
+	 */
+	public Export exportEntities(String dataStoreName, String... entityNames);
+
 }
