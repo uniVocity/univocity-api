@@ -27,7 +27,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	private final Map<String, WriterProvider> entityWriters = new TreeMap<String, WriterProvider>();
 	private final Map<String, FileProvider> namedEntityFiles = new TreeMap<String, FileProvider>();
 	private final Set<FileProvider> unnamedEntityFiles = new HashSet<FileProvider>();
-	private FileProvider OutputDirectory;
+	private FileProvider outputDirectory;
 
 	private final Map<String, T> entityConfigurations = new TreeMap<String, T>();
 
@@ -400,7 +400,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 * @param encoding encoding the encoding that must be used to read from/write to each file in this directory.
 	 */
 	public final void setOutputDirectory(String directoryPath, Charset encoding) {
-		this.OutputDirectory = new FileProvider(directoryPath, encoding);
+		this.outputDirectory = new FileProvider(directoryPath, encoding);
 	}
 
 	/**
@@ -412,7 +412,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 * @param encoding encoding the encoding that must be used to read from/write to each file in this directory.
 	 */
 	public final void setOutputDirectory(String directoryPath, String encoding) {
-		this.OutputDirectory = new FileProvider(directoryPath, encoding);
+		this.outputDirectory = new FileProvider(directoryPath, encoding);
 	}
 
 	/**
@@ -424,7 +424,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 * @param encoding encoding the encoding that must be used to read from/write to each file in this directory.
 	 */
 	public final void setOutputDirectory(File directory, Charset encoding) {
-		this.OutputDirectory = new FileProvider(directory, encoding);
+		this.outputDirectory = new FileProvider(directory, encoding);
 	}
 
 	/**
@@ -436,7 +436,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 * @param encoding encoding the encoding that must be used to read from/write to each file in this directory.
 	 */
 	public final void setOutputDirectory(File directory, String encoding) {
-		this.OutputDirectory = new FileProvider(directory, encoding);
+		this.outputDirectory = new FileProvider(directory, encoding);
 	}
 
 	/**
@@ -449,7 +449,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 * store data dumped from a source entity. Once the file is created its data can be accessed normally.
 	 */
 	public final void setOutputDirectory(File directory) {
-		this.OutputDirectory = new FileProvider(directory);
+		this.outputDirectory = new FileProvider(directory);
 	}
 
 	/**
@@ -462,7 +462,7 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 * store data dumped from a source entity. Once the file is created its data can be accessed normally.
 	 */
 	public final void setOutputDirectory(String directoryPath) {
-		this.OutputDirectory = new FileProvider(directoryPath);
+		this.outputDirectory = new FileProvider(directoryPath);
 	}
 
 	/**
@@ -472,6 +472,6 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 * @return the output directory where files of dynamically created entities will be stored.
 	 */
 	public final FileProvider getOutputDirectory() {
-		return this.OutputDirectory;
+		return this.outputDirectory;
 	}
 }

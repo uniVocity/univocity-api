@@ -6,9 +6,8 @@
 package com.univocity.api.config.builders;
 
 import java.io.*;
+import java.nio.charset.*;
 import java.util.*;
-
-import org.omg.IOP.*;
 
 /**
  * Executes an {@link Export} operation over a given set of data entities and submits the results to a given output.
@@ -20,11 +19,9 @@ public interface ExportOutput {
 
 	/**
 	 * Exports the result of an {@link Export} operation as an object.
-	 * @param <T> the type of the result object
-	 * @param expectedResultType the type of the result object
 	 * @return an object containing the result of the {@link Export} operation
 	 */
-	public <T> T toObject(Class<T> expectedResultType);
+	public Object toObject();
 
 	/**
 	 * Exports the result of an {@link Export} operation as a file.
@@ -47,7 +44,7 @@ public interface ExportOutput {
 	 * @param outputFile the file which will receive the export results.
 	 * @param encoding the encoding used to encode the results.
 	 */
-	public void toFile(File outputFile, Encoding encoding);
+	public void toFile(File outputFile, Charset encoding);
 
 	/**
 	 * Exports the result of an {@link Export} operation as a file.
@@ -70,17 +67,15 @@ public interface ExportOutput {
 	 * @param pathToOutputFile path to the output file which will receive the export results.
 	 * @param encoding the encoding used to encode the results.
 	 */
-	public void toFile(String pathToOutputFile, Encoding encoding);
+	public void toFile(String pathToOutputFile, Charset encoding);
 
 	/**
 	 * Exports the result of an {@link Export} operation as a {@link Map}.
 	 * Keys on the map contain the entity name used to perform the export.
 	 *
-	 * @param <T> type of each result object associated to each entity
-	 * @param expectedResultType type of each result object associated to each entity
 	 * @return a {@link Map} associating the name of each exported entity with their corresponding result
 	 */
-	public <T> Map<String, T> toMap(Class<T> expectedResultType);
+	public Map<String, Object> toMap();
 
 	/**
 	 * Exports the result of an {@link Export} operation as multiple files in a given directory.
@@ -108,7 +103,7 @@ public interface ExportOutput {
 	 * @param outputDir the directory in the file system where the export result files will be created.
 	 * @param encoding the encoding used to encode the export result files.
 	 */
-	public void toDirectory(File outputDir, Encoding encoding);
+	public void toDirectory(File outputDir, Charset encoding);
 
 	/**
 	 * Exports the result of an {@link Export} operation as multiple files in a given directory.
@@ -136,6 +131,6 @@ public interface ExportOutput {
 	 * @param pathToOutputDir path to a directory in the file system where the export result files will be created.
 	 * @param encoding the encoding used to encode the export result files.
 	 */
-	public void toDirectory(String pathToOutputDir, Encoding encoding);
+	public void toDirectory(String pathToOutputDir, Charset encoding);
 
 }

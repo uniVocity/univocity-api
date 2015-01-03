@@ -24,4 +24,14 @@ public interface Export {
 	 * @return the next step of this configuration: determining the output of the export operation, through an {@link ExportOutput} configuration object.
 	 */
 	public ExportOutput asCreateTableScript(DatabaseDialect dialect);
+
+	/**
+	 * Using the names and fields of a given set of data entities, generate a {@code CREATE TABLE} SQL script suitable for a given database.
+	 *
+	 * @param dialect the database dialect to be used to generate the scripts
+	 * @param schema the database schema name
+	 * @param catalog the database catalog name
+	 * @return the next step of this configuration: determining the output of the export operation, through an {@link ExportOutput} configuration object.
+	 */
+	public ExportOutput asCreateTableScript(DatabaseDialect dialect, String schema, String catalog);
 }
