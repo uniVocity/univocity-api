@@ -392,6 +392,16 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	public abstract T newEntityConfiguration();
 
 	/**
+	 * Creates a new configuration object for an entity of this data store using the default values provided in the object returned by {@link #getDefaultEntityConfiguration()}.
+	 * @return new configuration object for an entity of this data store, using the default values provided in the object returned by {@link #getDefaultEntityConfiguration()}.
+	 */
+	public T newEntityConfigurationWithDefaults() {
+		T out = newEntityConfiguration();
+		out.copyDefaultsFrom(defaultEntityConfiguration);
+		return out;
+	}
+
+	/**
 	 *  Defines an output directory onto which files that serve as "clones" of source entities should be created.
 	 *  If required, new entities will be created with the exact same name of the source entity, and with the same fields.
 	 *
