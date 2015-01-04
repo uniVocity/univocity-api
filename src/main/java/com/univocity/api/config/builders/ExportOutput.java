@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * Executes an {@link Export} operation over a given set of data entities and submits the results to a given output.
  *
- * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com
+ * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
 public interface ExportOutput {

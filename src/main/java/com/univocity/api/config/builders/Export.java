@@ -12,7 +12,7 @@ import com.univocity.api.entity.jdbc.*;
  * Configuration of an export operation over a set of data entities, as defined by {@link DataIntegrationEngine#exportEntities(String, String...)}.
  * The configuration methods available here determine the information to be exported.
  *
- * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com
+ * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
 public interface Export {

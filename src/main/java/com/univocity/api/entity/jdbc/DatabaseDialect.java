@@ -10,7 +10,7 @@ import com.univocity.api.engine.*;
 /**
  * Database dialects supported by uniVocity to produce table creation scripts from any data entity available in a {@link DataIntegrationEngine}.
  *
- * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com
+ * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
 public enum DatabaseDialect {
