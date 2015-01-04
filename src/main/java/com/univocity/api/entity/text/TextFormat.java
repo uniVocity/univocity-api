@@ -107,7 +107,7 @@ public class TextFormat extends Configuration {
 	 * @param lineSeparator a sequence of 1 to 2 characters that identifies the end of a line
 	 */
 	public final void setLineSeparator(String lineSeparator) {
-		Args.notEmpty(this.lineSeparator, "Line separator");
+		Args.notEmpty(lineSeparator, "Line separator");
 		setLineSeparator(lineSeparator.toCharArray());
 	}
 
@@ -116,7 +116,7 @@ public class TextFormat extends Configuration {
 	 * @param lineSeparator a sequence of 1 to 2 characters that identifies the end of a line
 	 */
 	public final void setLineSeparator(char[] lineSeparator) {
-		Args.notEmpty(this.lineSeparator, "Line separator");
+		Args.notEmpty(lineSeparator, "Line separator");
 		if (lineSeparator.length > 2) {
 			throw new IllegalArgumentException("Invalid line separator. Up to 2 characters are expected. Got " + lineSeparator.length + " characters.");
 		}
