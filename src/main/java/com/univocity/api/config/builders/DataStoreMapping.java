@@ -7,6 +7,7 @@ package com.univocity.api.config.builders;
 
 import com.univocity.api.engine.*;
 import com.univocity.api.entity.custom.*;
+import com.univocity.api.entity.text.*;
 
 /**
  * The {@link DataStoreMapping} provides builder-style configuration options for defining mappings between entities of two data stores.
@@ -88,6 +89,41 @@ public interface DataStoreMapping {
 	/**
 	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.
 	 *
+	 * <p>Entities and fields with similar names will be automatically associated. Underscores and spaces are ignored, for example: <code>entity1</code> will
+	 * be associated with <code>ENTITY 1</code> or <code>ENTITY_1</code>. When mapping fields, if the field in either source or destination is an identifier,
+	 * the mapping will be created using {@link IdentifierMappingSetup}, otherwise a regular field copy will be created using {@link FieldMappingSetup}.
+	 *
+	 * <p><b>Important: </b> You may want to define the correct sequence of mappings to be
+	 * executed by default using {@link DataIntegrationEngine#setMappingSequence(String...)}
+	 *
+	 * @param createDestinationEntities flag indicating whether "clones" of the source entities should be created in the destination data store. Some data stores
+	 * support dynamic creation of entities, such as uniVocity-provided CSV, TSV and Fixed-Width data stores (but only when an output directory is defined:
+	 * see {@link TextDataStoreConfiguration#setOutputDirectory(java.io.File)}). New entities will be created with the exact same name of the source entity,
+	 * and with the same fields.
+	 */
+	public void autodetectMappings(boolean createDestinationEntities);
+
+	/**
+	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.
+	 *
+	 * <p>A {@link NameMatcher} will be used to match names of entities and create a mapping between them. If an {@link EntityMapping} is created for
+	 * matching entities, then another {@link NameMatcher} will be executed to match the names of each field in both entities.
+	 * If the field in either source or destination is an identifier, the mapping will be created using {@link IdentifierMappingSetup}, otherwise a
+	 * regular field copy will be created using {@link FieldMappingSetup}.
+	 *
+	 *  @param createDestinationEntities flag indicating whether "clones" of the source entities should be created in the destination data store. Some data stores
+	 *  support dynamic creation of entities, such as uniVocity-provided CSV, TSV and Fixed-Width data stores (but only when an output directory is defined:
+	 *  see {@link TextDataStoreConfiguration#setOutputDirectory(java.io.File)}). New entities will be created with the exact same name of the source entity,
+	 *  and with the same fields.
+	 *  @param entityNameMatcher a matcher for entity names. If {@code null}, the default matching algorithm will be used.
+	 *  @param fieldNameMatcher a matcher for field names. If {@code null}, the default matching algorithm will be used.
+	 *
+	 */
+	public void autodetectMappings(boolean createDestinationEntities, NameMatcher entityNameMatcher, NameMatcher fieldNameMatcher);
+
+	/**
+	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.
+	 *
 	 * <p>A {@link NameMatcher} will be used to match names of entities and create a mapping between them. If an {@link EntityMapping} is created for
 	 * matching entities, then another {@link NameMatcher} will be executed to match the names of each field in both entities.
 	 * If the field in either source or destination is an identifier, the mapping will be created using {@link IdentifierMappingSetup}, otherwise a
@@ -126,4 +162,63 @@ public interface DataStoreMapping {
 	 */
 	public void setEnabled(boolean enabled);
 
+	/**
+	 * Adds a {@link RowReader} to be executed against the input data of {@link EntityMapping}s defined in this {@code DataStoreMapping}.
+	 * @param rowReader the callback object that will intercept and possibly manipulate the rows
+	 * 	 	  extracted from the source entity before its data is mapped to the destination.
+	 * @param entityNames The names of the data entities used by one or more {@link EntityMapping}s of this {@code DataStoreMapping}.
+	 * 		If no names are given, then all {@link EntityMapping}s of this {@code DataStoreMapping} will have the given {@link RowReader} added.
+	 */
+	public void addInputRowReader(RowReader rowReader, String... entityNames);
+
+	/**
+	 * Associates a single {@link RowReader}, registered in the {@link DataIntegrationEngine}, to be executed against
+	 * the input data of {@link EntityMapping}s defined in this {@code DataStoreMapping}.
+	 *
+	 * @param readerName the name of a callback object extending {@link RowReader} that will intercept and possibly manipulate the rows
+	 * 	 	  extracted from the source entity before its data is mapped to the destination.
+	 *
+	 * @param entityNames The names of the data entities used by one or more {@link EntityMapping}s of this {@code DataStoreMapping}.
+	 * 		If no names are given, then all {@link EntityMapping}s of this {@code DataStoreMapping} will have the given {@link RowReader} added.
+	 */
+	public void addInputRowReader(String readerName, String... entityNames);
+
+	/**
+	 * Adds a {@link RowReader} to be executed against the output data of {@link EntityMapping}s defined in this {@code DataStoreMapping}.
+	 * @param rowReader the callback object that will intercept and possibly manipulate the rows
+	 * 	 	  extracted from the source entity and mapped to the destination, before they are persisted
+	 * @param entityNames The names of the data entities used by one or more {@link EntityMapping}s of this {@code DataStoreMapping}.
+	 * 		If no names are given, then all {@link EntityMapping}s of this {@code DataStoreMapping} will have the given {@link RowReader} added.
+	 */
+	public void addOutputRowReader(RowReader rowReader, String... entityNames);
+
+	/**
+	 * Associates one or more {@link RowReader}s registered, in the {@link DataIntegrationEngine}, with the output data of {@link EntityMapping}s defined in this {@code DataStoreMapping}.
+	 * @param readerName the names of the callback object extending {@link RowReader} that will intercept and possibly manipulate the rows
+	 * 	 	   extracted from the source entity and mapped to the destination, before they are persisted
+	 * @param entityNames The names of the data entities used by one or more {@link EntityMapping}s of this {@code DataStoreMapping}.
+	 * 		If no names are given, then all {@link EntityMapping}s of this {@code DataStoreMapping} will have the given {@link RowReader} added.
+	 */
+	public void addOutputRowReader(String readerName, String... entityNames);
+
+	/**
+	 * Adds a {@link RowReader} to be executed against the data persisted after the execution of entity mappings in this {@code DataStoreMapping}.
+	 * Values generated after insertion, if any, will be available to the {@link RowReader}.
+	 * @param rowReader the callback object that will manipulate rows
+	 * 	 	  extracted from the source entity, mapped and persisted into the destination
+	 * @param entityNames The names of the data entities used by one or more {@link EntityMapping}s of this {@code DataStoreMapping}.
+	 * 		If no names are given, then all {@link EntityMapping}s of this {@code DataStoreMapping} will have the given {@link RowReader} added.
+	 */
+	public void addPersistedRowReader(RowReader rowReader, String... entityNames);
+
+	/**
+	 * Associates {@link RowReader}, registered in the {@link DataIntegrationEngine},
+	 * to be executed against the data persisted after the execution of entity mappings in this {@code DataStoreMapping}.
+	 * Values generated after insertion, if any, will be available to the {@link RowReader}.
+	 * @param readerName the names of the callback object,extending {@link RowReader},  that will manipulate rows
+	 * 	 	  extracted from the source entity, mapped and persisted into the destination
+	 * @param entityNames The names of the data entities used by one or more {@link EntityMapping}s of this {@code DataStoreMapping}.
+	 * 		If no names are given, then all {@link EntityMapping}s of this {@code DataStoreMapping} will have the given {@link RowReader} added.
+	 */
+	public void addPersistedRowReaders(String readerName, String... entityNames);
 }

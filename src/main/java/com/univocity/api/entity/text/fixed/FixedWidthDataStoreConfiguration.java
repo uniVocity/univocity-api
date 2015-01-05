@@ -30,7 +30,7 @@ public final class FixedWidthDataStoreConfiguration extends TextDataStoreConfigu
 	 * Creates a configuration object for a fixed-width data entity.
 	 */
 	@Override
-	protected final FixedWidthEntityConfiguration newEntityConfiguration() {
+	public final FixedWidthEntityConfiguration newEntityConfiguration() {
 		return new FixedWidthEntityConfiguration();
 	}
 }
