@@ -350,8 +350,7 @@ abstract class TextEntityDefaults<F extends TextFormat> extends Configuration {
 			headerExtractionEnabled = defaults.isHeaderExtractionEnabled();
 		}
 		if (!nullValueSet) {
-			nullValue = defaults.getNullValue();
-			nullValueSet = true;
+			setNullValue(defaults.getNullValue());
 		}
 		if (maxCharsPerColumn == null) {
 			maxCharsPerColumn = defaults.getMaxCharsPerColumn();

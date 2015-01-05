@@ -389,4 +389,14 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 * @return new configuration object for an entity of this data store
 	 */
 	protected abstract T newEntityConfiguration();
+	 * Creates a new configuration object for an entity of this data store using the default values provided in the object returned by {@link #getDefaultEntityConfiguration()}.
+	 * @return new configuration object for an entity of this data store, using the default values provided in the object returned by {@link #getDefaultEntityConfiguration()}.
+	 */
+	public T newEntityConfigurationWithDefaults() {
+		T out = newEntityConfiguration();
+		out.copyDefaultsFrom(defaultEntityConfiguration);
+		return out;
+	}
+
+	/**
 }
