@@ -38,4 +38,17 @@ public interface CreateTableExportOptions extends ExportOutput {
 	 * @return further options to configure this export operation.
 	 */
 	public CreateTableExportOptions noGeneratedIds();
+
+	/**
+	 * Exports the result of this create table {@link Export} operation as a {@code String}. Produces the same result as the {@link #toScript()} method.
+	 * @return an object containing the result of the create table {@link Export} operation
+	 */
+	@Override
+	public String toObject();
+
+	/**
+	 * Exports the result of this create table {@link Export} operation as a script.
+	 * @return an script containing the result of the create table {@link Export} operation
+	 */
+	public String toScript();
 }
