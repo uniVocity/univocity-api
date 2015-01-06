@@ -37,6 +37,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 
 	private String schema;
 	private String catalog;
+	private DatabaseDialect dialect;
 
 	private int transactionTimeout = -1;
 	private int transactionIsolationLevel = Connection.TRANSACTION_REPEATABLE_READ;
@@ -452,5 +453,21 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	@Override
 	public final Set<String> getDatabaseEnabledEntities() {
 		return Collections.emptySet();
+	}
+
+	/**
+	 * Returns the dialect of this database. Used to generate entities (tables) dynamically when required.
+	 * @return the dialect of this database.
+	 */
+	public DatabaseDialect getDialect() {
+		return dialect;
+	}
+
+	/**
+	 * Defines the dialect of this database. Used to generate entities (tables) dynamically when required.
+	 * @param dialect the dialect of this database.
+	 */
+	public void setDialect(DatabaseDialect dialect) {
+		this.dialect = dialect;
 	}
 }
