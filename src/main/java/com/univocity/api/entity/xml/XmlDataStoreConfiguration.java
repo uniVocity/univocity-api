@@ -11,7 +11,7 @@ import java.util.*;
 
 import com.univocity.api.common.*;
 import com.univocity.api.entity.custom.*;
-import com.univocity.api.exception.*;
+import com.univocity.api.entity.xml.XmlReadingConfiguration.ElementPaths;
 
 public class XmlDataStoreConfiguration extends DataStoreConfiguration {
 
@@ -20,27 +20,9 @@ public class XmlDataStoreConfiguration extends DataStoreConfiguration {
 	private final FileProvider xmlFile;
 	private final ReaderProvider xmlInput;
 
-	private final Map<String, ElementPaths> entities = new TreeMap<String, ElementPaths>();
-	private final Map<String, XmlQueryConfiguration> queries = new TreeMap<String, XmlQueryConfiguration>();
+	private final XmlReadingConfiguration entityConfig = new XmlReadingConfiguration();
 
-	public static class ElementPaths {
-		final Set<String> elements = new LinkedHashSet<String>();
-		final Set<String> elementsOfList = new LinkedHashSet<String>();
-		final Set<String> elementsOfGroup = new LinkedHashSet<String>();
-
-		public final Set<String> getElements() {
-			return Collections.unmodifiableSet(elements);
-		}
-
-		public final Set<String> getElementsOfList() {
-			return Collections.unmodifiableSet(elementsOfList);
-		}
-
-		public final Set<String> getElementsOfGroup() {
-			return Collections.unmodifiableSet(elementsOfGroup);
-		}
-
-	}
+	private final Set<XmlQueryConfiguration> queries = new HashSet<XmlQueryConfiguration>();
 
 	public XmlDataStoreConfiguration(String dataStoreName, File xmlFile) {
 		this(dataStoreName, new FileProvider(xmlFile));
@@ -82,27 +64,6 @@ public class XmlDataStoreConfiguration extends DataStoreConfiguration {
 		this.xmlInput = null;
 	}
 
-	public void includeElement(String entityName, String pathToElement) {
-		getPaths(entityName).elements.add(pathToElement);
-	}
-
-	public void includeElementsOfList(String entityName, String pathToList) {
-		getPaths(entityName).elementsOfList.add(pathToList);
-	}
-
-	public void includeElementsOfGroup(String entityName, String pathToElement) {
-		getPaths(entityName).elementsOfGroup.add(pathToElement);
-	}
-
-	private ElementPaths getPaths(String entityName) {
-		ElementPaths paths = entities.get(entityName);
-		if (paths == null) {
-			paths = new ElementPaths();
-			entities.put(entityName, paths);
-		}
-		return paths;
-	}
-
 	public void setLimitOfRowsLoadedInMemory(int limitOfRowsLoadedInMemory) {
 		this.limitOfRowsLoadedInMemory = limitOfRowsLoadedInMemory;
 	}
@@ -120,22 +81,28 @@ public class XmlDataStoreConfiguration extends DataStoreConfiguration {
 		return xmlInput;
 	}
 
+	public void includeElement(String entityName, String pathToElement) {
+		entityConfig.includeElement(entityName, pathToElement);
+	}
+
+	public void includeElementsOfList(String entityName, String pathToList) {
+		entityConfig.includeElementsOfList(entityName, pathToList);
+	}
+
+	public void includeElementsOfGroup(String entityName, String pathToElement) {
+		entityConfig.includeElementsOfGroup(entityName, pathToElement);
+	}
+
 	public void addQuery(XmlQueryConfiguration query) {
 		Args.notNull(query, "XML query configuration");
-		int pathCount = query.getQueryResultPaths().elements.size();
-		pathCount += query.getQueryResultPaths().elementsOfGroup.size();
-		pathCount += query.getQueryResultPaths().elementsOfList.size();
-		if (pathCount == 0) {
-			throw new IllegalConfigurationException("Configuration of XML query '" + query.getName() + "' must contain a list one path to elements of the expected result");
-		}
-		this.queries.put(query.getName(), query);
+		this.queries.add(query);
+	}
+
+	public final Set<XmlQueryConfiguration> getQueries() {
+		return Collections.unmodifiableSet(queries);
 	}
 
 	public final Map<String, ElementPaths> getEntities() {
-		return Collections.unmodifiableMap(entities);
-	}
-	
-	public final Map<String, XmlQueryConfiguration> getQueries(){
-		return Collections.unmodifiableMap(queries);
+		return entityConfig.getEntities();
 	}
 }
