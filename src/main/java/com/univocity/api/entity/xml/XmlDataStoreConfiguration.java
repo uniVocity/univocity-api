@@ -11,6 +11,7 @@ import java.util.*;
 
 import com.univocity.api.common.*;
 import com.univocity.api.entity.custom.*;
+import com.univocity.api.exception.*;
 
 public class XmlDataStoreConfiguration extends DataStoreConfiguration {
 
@@ -20,6 +21,7 @@ public class XmlDataStoreConfiguration extends DataStoreConfiguration {
 	private final ReaderProvider xmlInput;
 
 	private final Map<String, ElementPaths> entities = new TreeMap<String, ElementPaths>();
+	private final Map<String, XmlQueryConfiguration> queries = new TreeMap<String, XmlQueryConfiguration>();
 
 	public static class ElementPaths {
 		final Set<String> elements = new LinkedHashSet<String>();
@@ -62,6 +64,10 @@ public class XmlDataStoreConfiguration extends DataStoreConfiguration {
 
 	public XmlDataStoreConfiguration(String dataStoreName, String pathToXmlFile, Charset encoding) {
 		this(dataStoreName, new FileProvider(pathToXmlFile, encoding));
+	}
+
+	public XmlDataStoreConfiguration(String dataStoreName, UrlReaderProvider xmlInput) {
+		this(dataStoreName, (ReaderProvider) xmlInput);
 	}
 
 	public XmlDataStoreConfiguration(String dataStoreName, ReaderProvider xmlInput) {
@@ -114,7 +120,22 @@ public class XmlDataStoreConfiguration extends DataStoreConfiguration {
 		return xmlInput;
 	}
 
+	public void addQuery(XmlQueryConfiguration query) {
+		Args.notNull(query, "XML query configuration");
+		int pathCount = query.getQueryResultPaths().elements.size();
+		pathCount += query.getQueryResultPaths().elementsOfGroup.size();
+		pathCount += query.getQueryResultPaths().elementsOfList.size();
+		if (pathCount == 0) {
+			throw new IllegalConfigurationException("Configuration of XML query '" + query.getName() + "' must contain a list one path to elements of the expected result");
+		}
+		this.queries.put(query.getName(), query);
+	}
+
 	public final Map<String, ElementPaths> getEntities() {
 		return Collections.unmodifiableMap(entities);
+	}
+	
+	public final Map<String, XmlQueryConfiguration> getQueries(){
+		return Collections.unmodifiableMap(queries);
 	}
 }
