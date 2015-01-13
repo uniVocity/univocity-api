@@ -23,5 +23,4 @@ public interface MergeSetup {
 	 */
 	public Merge merge(String... sourceFields);
 
-	public Merge mergeAll();
 }
