@@ -17,7 +17,7 @@ import com.univocity.api.engine.*;
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
-public interface FieldMappingSetup {
+public interface FieldMappingSetup extends MergeSetup {
 	/**
 	 * Selects a field from the source entity in an {@link EntityMapping} to be split into multiple values using a function.
 	 *
@@ -33,23 +33,6 @@ public interface FieldMappingSetup {
 	 * @return the next step of this configuration: define a split function that will process values read from the given field.
 	 */
 	public Split split(String sourceField);
-
-	/**
-	 * Takes values of multiple fields from the source entity in an {@link EntityMapping} and merges them into a single value using a function.
-	 *
-	 * <p>Example:
-	 *
-	 * <hr><blockquote><pre>
-	 *  //Merges "item", "price" and the result of the function "getDate()" using "pipe_separator_function"
-	 *  //to generate a single value for the field "receipt" in the destination entity.
-	 *
-	 *  mapping.value().merge("item", "price", "{getDate()}").using("pipe_separator_function").into("receipt");
-	 * </pre></blockquote><hr>
-	 *
-	 * @param sourceFields the field names in the source entity to be split into multiple values. Expressions are allowed within curly braces (i.e. "{expression}")
-	 * @return the next step of this configuration: define a merge function that will process values read from the given fields.
-	 */
-	public Merge merge(String... sourceFields);
 
 	/**
 	 * Copies the value of one field from the source entity in an {@link EntityMapping} and writes it to a field in the destination entity.
@@ -105,4 +88,7 @@ public interface FieldMappingSetup {
 	 * @return the next step of this configuration: define functions applied to each value read.
 	 */
 	public CopyTransform read(String... sourceFields);
+
+	public BindToVariable bind(String... sourceFields);
+
 }

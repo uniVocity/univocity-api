@@ -3,21 +3,10 @@
  * This file is subject to the terms and conditions defined in file
  * 'LICENSE.txt', which is part of this source code package.
  ******************************************************************************/
-package com.univocity.api.entity.xml;
+package com.univocity.api.config.builders;
 
-import com.univocity.api.common.*;
+public interface BindToVariable {
 
-public class XmlQueryConfiguration extends XmlReadingConfiguration {
-
-	private final String query;
-
-	public XmlQueryConfiguration(String queryURL) {
-		Args.notBlank(queryURL, "XML query URL");
-		this.query = queryURL;
-	}
-
-	public final String getQuery() {
-		return query;
-	}
+	public CopyTransform toVariable(String destinationVariable);
 
 }
