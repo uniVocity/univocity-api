@@ -61,4 +61,22 @@ public class XmlReadingConfiguration {
 	public final Map<String, ElementPaths> getEntities() {
 		return Collections.unmodifiableMap(entities);
 	}
+
+	private Set<String> toSetOfNames(Map<String, ElementPaths> map) {
+		Set<String> out = new TreeSet<String>();
+		for (String name : map.keySet()) {
+			out.add(name.trim().toLowerCase());
+		}
+		return out;
+	}
+
+	void validateNamesAreUnique(XmlReadingConfiguration other) {
+		Set<String> myNames = toSetOfNames(this.entities);
+		Set<String> otherNames = toSetOfNames(other.entities);
+
+		myNames.retainAll(otherNames);
+		if (!myNames.isEmpty()) {
+			throw new IllegalArgumentException("Duplicate XML entity/query names: " + myNames);
+		}
+	}
 }

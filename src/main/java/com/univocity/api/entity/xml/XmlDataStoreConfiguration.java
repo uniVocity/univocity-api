@@ -95,6 +95,12 @@ public class XmlDataStoreConfiguration extends DataStoreConfiguration {
 
 	public void addQuery(XmlQueryConfiguration query) {
 		Args.notNull(query, "XML query configuration");
+
+		entityConfig.validateNamesAreUnique(query);
+		for (XmlQueryConfiguration q : this.queries) {
+			q.validateNamesAreUnique(query);
+		}
+
 		this.queries.add(query);
 	}
 
