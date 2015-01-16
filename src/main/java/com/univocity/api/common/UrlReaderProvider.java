@@ -37,4 +37,9 @@ public class UrlReaderProvider extends ReaderProvider {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return this.getClass().getSimpleName() + " [" + url + "]";
+	}
+
 }

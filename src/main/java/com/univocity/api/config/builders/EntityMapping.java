@@ -32,13 +32,13 @@ public interface EntityMapping {
 	 * @return the field mapping builder that exposes the appropriate configuration options required to map one or more fields between two data entities.
 	 */
 	public FieldMappingSetup value();
-	
+
 	/**
 	 * Configures the mapping of one or more fields in the source entity to the destination fields used as identifiers.
 	 * @return the identity mapping builder that exposes the appropriate configuration options required to map one or more fields used as identifiers.
 	 */
 	public IdentifierMappingSetup identity();
-	
+
 	/**
 	 * Configures the mapping of one or more fields in the source entity that are used to construct a reference to a destination entity.
 	 * The source fields will be used for querying uniVocity's metadata to restore values associated with the identifier of an entity. For example:
@@ -81,7 +81,6 @@ public interface EntityMapping {
 	 *         fields to references to other entities in the destination data store.
 	 */
 	public ReferenceMappingSetup reference();
-
 
 	/**
 	 * Configures the persistence settings used by this {@link EntityMapping}
@@ -287,7 +286,7 @@ public interface EntityMapping {
 	 * @param enabled a flag indicating whether data read from the source entity in this mapping can be shared and reused by the previous or the next entity mapping
 	 */
 	public void setInputSharingEnabled(boolean enabled);
-	
+
 	/**
 	 * Associates a function to a given list of source field names or expressions. When reading from the source entity, the function will be executed and its result
 	 * will be send to the destination fields. The given function will be executed after other function sequences already applied to these fields.
@@ -297,6 +296,6 @@ public interface EntityMapping {
 	 */
 	public void transformFields(String functionName, String... sourceFieldNames);
 
-	public DependentEntityMapping include(String functionCall);
+	public DependentEntityMappingConfig include(String functionCall);
 
 }
