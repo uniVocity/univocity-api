@@ -296,6 +296,8 @@ public interface EntityMapping {
 	 */
 	public void transformFields(String functionName, String... sourceFieldNames);
 
-	public DependentEntityMappingConfig include(String functionCall);
+	public DependentEntityMappingConfig include(String queryName);
+	
+	public DependentEntityMappingConfig join(String queryName);
 
 }
