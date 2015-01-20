@@ -8,11 +8,17 @@ package com.univocity.api.common;
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
+import java.util.logging.*;
 
 public class UrlReaderProvider extends ReaderProvider {
 
+	private static final Logger log = Logger.getLogger(UrlReaderProvider.class.getName());
+
 	private final String url;
 	private final Charset encoding;
+	private int retries = 0;
+	private long retryInterval = 2000;
+	private int retryCount = 0;
 
 	public UrlReaderProvider(String url) {
 		this(url, (Charset) null);
@@ -28,10 +34,50 @@ public class UrlReaderProvider extends ReaderProvider {
 		this.encoding = encoding == null ? Charset.defaultCharset() : encoding;
 	}
 
+	public final int getRetries() {
+		return retries;
+	}
+
+	public final void setRetries(int retries) {
+		this.retries = retries;
+	}
+
+	public final long getRetryInterval() {
+		return retryInterval;
+	}
+
+	public final void setRetryInterval(long retryInterval) {
+		this.retryInterval = retryInterval;
+	}
+
 	@Override
 	public Reader getResource() {
 		try {
-			return new InputStreamReader(new URL(this.url).openStream(), encoding);
+			URL url = new URL(this.url);
+			HttpURLConnection rc = (HttpURLConnection) url.openConnection();
+			rc.setRequestMethod("GET");
+			InputStreamReader reader = new InputStreamReader(rc.getInputStream(), encoding);
+			retryCount = 0;
+			return reader;
+		} catch (IOException ex) {
+			if (retries > 0) {
+				try {
+					log.log(Level.FINE, "Unable to open URL '" + this.url + "', retrying after " + retryInterval + "ms", ex);
+					Thread.sleep(retryInterval);
+				} catch (InterruptedException e) {
+					Thread.currentThread().interrupt();
+					retryCount = 0;
+					throw new IllegalStateException("Thread interrupted while retrying connection on URL '" + this.url + "' after receiving error " + ex.getMessage(), ex);
+				}
+				if (retryCount >= retries) {
+					int count = retryCount;
+					retryCount = 0;
+					throw new IllegalStateException("Cannot open URL after " + count + " retries", ex);
+				}
+				retryCount++;
+				return getResource();
+			}
+			throw new IllegalStateException("Unable to open URL '" + url + "'", ex);
 		} catch (Exception ex) {
 			throw new IllegalStateException("Unable to open URL '" + url + "'", ex);
 		}

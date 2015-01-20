@@ -11,6 +11,9 @@ public class XmlQueryConfiguration extends XmlReadingConfiguration {
 
 	private final String query;
 
+	private int retries = 0;
+	private long retryInterval = 2000;
+
 	public XmlQueryConfiguration(String queryURL) {
 		Args.notBlank(queryURL, "XML query URL");
 		this.query = queryURL;
@@ -20,4 +23,19 @@ public class XmlQueryConfiguration extends XmlReadingConfiguration {
 		return query;
 	}
 
+	public final int getRetries() {
+		return retries;
+	}
+
+	public final void setRetries(int retries) {
+		this.retries = retries;
+	}
+
+	public final long getRetryInterval() {
+		return retryInterval;
+	}
+
+	public final void setRetryInterval(long retryInterval) {
+		this.retryInterval = retryInterval;
+	}
 }
