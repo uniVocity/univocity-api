@@ -19,6 +19,7 @@ public class XmlDataStoreConfiguration extends DataStoreConfiguration {
 
 	private final FileProvider xmlFile;
 	private final ReaderProvider xmlInput;
+	private boolean pathValidationEnabled = false; //TODO use default configuration class instead.
 
 	private final XmlReadingConfiguration entityConfig = new XmlReadingConfiguration();
 
@@ -83,16 +84,31 @@ public class XmlDataStoreConfiguration extends DataStoreConfiguration {
 
 	public void includeElement(String entityName, String pathToElement) {
 		entityConfig.includeElement(entityName, pathToElement);
+		entityConfig.setPathValidationEnabled(entityName, pathValidationEnabled);
 	}
 
 	public void includeElementsOfList(String entityName, String pathToList) {
 		entityConfig.includeElementsOfList(entityName, pathToList);
+		entityConfig.setPathValidationEnabled(entityName, pathValidationEnabled);
 	}
 
 	public void includeElementsOfGroup(String entityName, String pathToElement) {
 		entityConfig.includeElementsOfGroup(entityName, pathToElement);
+		entityConfig.setPathValidationEnabled(entityName, pathValidationEnabled);
 	}
 
+	public void setPathValidationEnabled(boolean validatePaths){
+		pathValidationEnabled = validatePaths;
+	}
+	
+	public void setPathValidationEnabled(String entityName, boolean validatePaths){
+		entityConfig.setPathValidationEnabled(entityName, validatePaths);
+	}
+	
+	public boolean isPathValidationEnabled(String entityName){
+		return entityConfig.isPathValidationEnabled(entityName);
+	}
+	
 	public void addQuery(XmlQueryConfiguration query) {
 		Args.notNull(query, "XML query configuration");
 

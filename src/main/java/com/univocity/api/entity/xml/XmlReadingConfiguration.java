@@ -10,8 +10,10 @@ import java.util.*;
 public class XmlReadingConfiguration {
 
 	private final Map<String, ElementPaths> entities = new TreeMap<String, ElementPaths>();
-
+	private boolean pathValidationEnabled = false; //TODO use default configuration class instead.
+	
 	public static class ElementPaths {
+		boolean validatePaths = false;
 		final Set<String> elements = new LinkedHashSet<String>();
 		final Set<String> elementsOfList = new LinkedHashSet<String>();
 		final Set<String> elementsOfGroup = new LinkedHashSet<String>();
@@ -33,8 +35,27 @@ public class XmlReadingConfiguration {
 			pathCount += elementsOfGroup.size();
 			pathCount += elementsOfList.size();
 			return pathCount > 0;
-
 		}
+
+		public boolean isPathValidationEnabled() {
+			return this.validatePaths;
+		}
+	}
+
+	public final boolean isPathValidationEnabled() {
+		return pathValidationEnabled;
+	}
+
+	public final void setPathValidationEnabled(boolean pathValidationEnabled) {
+		this.pathValidationEnabled = pathValidationEnabled;
+	}
+
+	public void setPathValidationEnabled(String entityName, boolean validatePaths) {
+		getPaths(entityName).validatePaths = validatePaths;
+	}
+
+	public boolean isPathValidationEnabled(String entityName) {
+		return getPaths(entityName).validatePaths;
 	}
 
 	public void includeElement(String entityName, String pathToElement) {
@@ -55,6 +76,7 @@ public class XmlReadingConfiguration {
 			paths = new ElementPaths();
 			entities.put(entityName, paths);
 		}
+		paths.validatePaths = pathValidationEnabled;
 		return paths;
 	}
 
