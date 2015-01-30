@@ -133,6 +133,10 @@ public interface EntityMapping {
 	 */
 	public void addPersistedRowReaders(String... readerNames);
 
+	public void addTransformedRowReader(RowReader rowReader);
+
+	public void addTransformedRowReaders(String... readerNames);
+	
 	/**
 	 * Removes a {@link RowReader} from the input data of this entity mapping.
 	 * @param rowReader the {@link RowReader} instance to remove from this mapping's input
@@ -169,6 +173,10 @@ public interface EntityMapping {
 	 */
 	public void removePersistedRowReaders(String... readerNames);
 
+	public void removeTransformedRowReader(RowReader rowReader);
+
+	public void removeTransformedRowReaders(String... readerNames);
+	
 	/**
 	 * Executes a process for automatic detection of mappings based on the field names of the mapped entities.
 	 * Fields that are already mapped will not be used in the process.
