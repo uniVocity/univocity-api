@@ -64,6 +64,12 @@ public class XmlDataStoreConfiguration extends DataStoreConfiguration {
 		this.xmlFile = xmlFile;
 		this.xmlInput = null;
 	}
+	
+	public XmlDataStoreConfiguration(String dataStoreName) {
+		super(dataStoreName);
+		this.xmlFile = null;
+		this.xmlInput = null;
+	}
 
 	public void setLimitOfRowsLoadedInMemory(int limitOfRowsLoadedInMemory) {
 		this.limitOfRowsLoadedInMemory = limitOfRowsLoadedInMemory;
