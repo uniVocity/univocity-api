@@ -3,19 +3,19 @@
  * This file is subject to the terms and conditions defined in file
  * 'LICENSE.txt', which is part of this source code package.
  ******************************************************************************/
-package com.univocity.api.entity.xml;
+package com.univocity.api.entity.hierarchical;
 
 import com.univocity.api.common.*;
 
-public class XmlQueryConfiguration extends XmlReadingConfiguration {
+public abstract class HierarchyQueryConfiguration extends PathReaderConfiguration {
 
 	private final String query;
 
 	private int retries = 0;
 	private long retryInterval = 2000;
 
-	public XmlQueryConfiguration(String queryURL) {
-		Args.notBlank(queryURL, "XML query URL");
+	public HierarchyQueryConfiguration(String queryURL) {
+		Args.notBlank(queryURL, "Query URL");
 		this.query = queryURL;
 	}
 

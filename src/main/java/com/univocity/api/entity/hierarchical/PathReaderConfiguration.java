@@ -3,11 +3,11 @@
  * This file is subject to the terms and conditions defined in file
  * 'LICENSE.txt', which is part of this source code package.
  ******************************************************************************/
-package com.univocity.api.entity.xml;
+package com.univocity.api.entity.hierarchical;
 
 import java.util.*;
 
-public class XmlReadingConfiguration {
+public class PathReaderConfiguration {
 
 	private final Map<String, ElementPaths> entities = new TreeMap<String, ElementPaths>();
 	private boolean pathValidationEnabled = false; //TODO use default configuration class instead.
@@ -92,13 +92,12 @@ public class XmlReadingConfiguration {
 		return out;
 	}
 
-	void validateNamesAreUnique(XmlReadingConfiguration other) {
+	void validateNamesAreUnique(PathReaderConfiguration other) {
 		Set<String> myNames = toSetOfNames(this.entities);
 		Set<String> otherNames = toSetOfNames(other.entities);
 
 		myNames.retainAll(otherNames);
 		if (!myNames.isEmpty()) {
-			throw new IllegalArgumentException("Duplicate XML entity/query names: " + myNames);
 		}
 	}
 }

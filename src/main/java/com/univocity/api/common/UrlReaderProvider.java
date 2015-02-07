@@ -8,6 +8,8 @@ package com.univocity.api.common;
 import java.io.*;
 import java.net.*;
 import java.nio.charset.*;
+import java.util.*;
+import java.util.Map.Entry;
 import java.util.logging.*;
 
 public class UrlReaderProvider extends ReaderProvider {
@@ -19,6 +21,8 @@ public class UrlReaderProvider extends ReaderProvider {
 	private int retries = 0;
 	private long retryInterval = 2000;
 	private int retryCount = 0;
+	
+	private final LinkedHashMap<String, String> requestProperties = new LinkedHashMap<String, String>();
 
 	public UrlReaderProvider(String url) {
 		this(url, (Charset) null);
@@ -49,12 +53,20 @@ public class UrlReaderProvider extends ReaderProvider {
 	public final void setRetryInterval(long retryInterval) {
 		this.retryInterval = retryInterval;
 	}
+	
+	public final void addRequestProperty(String property, String value){
+		requestProperties.put(property, value);
+	}
 
 	@Override
 	public Reader getResource() {
 		try {
 			URL url = new URL(this.url);
 			HttpURLConnection rc = (HttpURLConnection) url.openConnection();
+
+			for(Entry<String, String> property : requestProperties.entrySet()){
+				rc.addRequestProperty(property.getKey(), property.getValue());
+			}
 			rc.setRequestMethod("GET");
 			InputStreamReader reader = new InputStreamReader(rc.getInputStream(), encoding);
 			retryCount = 0;
