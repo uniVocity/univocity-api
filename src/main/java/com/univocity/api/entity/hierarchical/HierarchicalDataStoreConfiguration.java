@@ -64,7 +64,7 @@ public abstract class HierarchicalDataStoreConfiguration extends DataStoreConfig
 		this.inputFile = inputFile;
 		this.inputProvider = null;
 	}
-	
+
 	public HierarchicalDataStoreConfiguration(String dataStoreName) {
 		super(dataStoreName);
 		this.inputFile = null;
@@ -103,18 +103,18 @@ public abstract class HierarchicalDataStoreConfiguration extends DataStoreConfig
 		entityConfig.setPathValidationEnabled(entityName, pathValidationEnabled);
 	}
 
-	public void setPathValidationEnabled(boolean validatePaths){
+	public void setPathValidationEnabled(boolean validatePaths) {
 		pathValidationEnabled = validatePaths;
 	}
-	
-	public void setPathValidationEnabled(String entityName, boolean validatePaths){
+
+	public void setPathValidationEnabled(String entityName, boolean validatePaths) {
 		entityConfig.setPathValidationEnabled(entityName, validatePaths);
 	}
-	
-	public boolean isPathValidationEnabled(String entityName){
+
+	public boolean isPathValidationEnabled(String entityName) {
 		return entityConfig.isPathValidationEnabled(entityName);
 	}
-	
+
 	public void addQuery(HierarchyQueryConfiguration query) {
 		Args.notNull(query, "Query configuration");
 

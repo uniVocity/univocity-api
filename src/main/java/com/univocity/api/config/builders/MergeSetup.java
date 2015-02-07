@@ -22,8 +22,7 @@ public interface MergeSetup {
 	 * @return the next step of this configuration: define a merge function that will process values read from the given fields.
 	 */
 	public Merge merge(String... sourceFields);
-	
-	
+
 	public CopyTransform read(String... sourceFields);
 
 }

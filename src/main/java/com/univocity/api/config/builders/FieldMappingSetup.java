@@ -87,6 +87,7 @@ public interface FieldMappingSetup extends MergeSetup {
 	 * Expressions are allowed within curly braces (i.e. "{expression}")
 	 * @return the next step of this configuration: define functions applied to each value read.
 	 */
+	@Override
 	public CopyTransform read(String... sourceFields);
 
 	public BindToVariable bind(String... sourceFields);

@@ -21,7 +21,7 @@ public class UrlReaderProvider extends ReaderProvider {
 	private int retries = 0;
 	private long retryInterval = 2000;
 	private int retryCount = 0;
-	
+
 	private final LinkedHashMap<String, String> requestProperties = new LinkedHashMap<String, String>();
 
 	public UrlReaderProvider(String url) {
@@ -53,8 +53,8 @@ public class UrlReaderProvider extends ReaderProvider {
 	public final void setRetryInterval(long retryInterval) {
 		this.retryInterval = retryInterval;
 	}
-	
-	public final void addRequestProperty(String property, String value){
+
+	public final void addRequestProperty(String property, String value) {
 		requestProperties.put(property, value);
 	}
 
@@ -64,7 +64,7 @@ public class UrlReaderProvider extends ReaderProvider {
 			URL url = new URL(this.url);
 			HttpURLConnection rc = (HttpURLConnection) url.openConnection();
 
-			for(Entry<String, String> property : requestProperties.entrySet()){
+			for (Entry<String, String> property : requestProperties.entrySet()) {
 				rc.addRequestProperty(property.getKey(), property.getValue());
 			}
 			rc.setRequestMethod("GET");

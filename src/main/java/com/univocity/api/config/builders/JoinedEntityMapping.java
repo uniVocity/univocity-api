@@ -6,7 +6,7 @@
 package com.univocity.api.config.builders;
 
 public interface JoinedEntityMapping {
-	
+
 	/**
 	 * Configures the mapping of one or more fields in the source entity to the destination fields used as identifiers.
 	 * @return the identity mapping builder that exposes the appropriate configuration options required to map one or more fields used as identifiers.

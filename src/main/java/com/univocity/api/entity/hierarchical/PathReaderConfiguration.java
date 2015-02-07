@@ -11,7 +11,7 @@ public class PathReaderConfiguration {
 
 	private final Map<String, ElementPaths> entities = new TreeMap<String, ElementPaths>();
 	private boolean pathValidationEnabled = false; //TODO use default configuration class instead.
-	
+
 	public static class ElementPaths {
 		boolean validatePaths = false;
 		final Set<String> elements = new LinkedHashSet<String>();
