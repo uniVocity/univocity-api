@@ -5,11 +5,26 @@
  ******************************************************************************/
 package com.univocity.api.entity.hierarchical.json;
 
+import java.nio.charset.*;
+
+import com.univocity.api.common.*;
 import com.univocity.api.entity.hierarchical.*;
 
 public class JsonQueryConfiguration extends HierarchyQueryConfiguration {
 
-	public JsonQueryConfiguration(String queryURL) {
+	public JsonQueryConfiguration(UrlReaderProvider queryURL) {
 		super(queryURL);
+	}
+
+	public JsonQueryConfiguration(String queryUrl) {
+		this(new UrlReaderProvider(queryUrl));
+	}
+
+	public JsonQueryConfiguration(String url, String encoding) {
+		this(new UrlReaderProvider(url, encoding));
+	}
+
+	public JsonQueryConfiguration(String url, Charset encoding) {
+		this(new UrlReaderProvider(url, encoding));
 	}
 }

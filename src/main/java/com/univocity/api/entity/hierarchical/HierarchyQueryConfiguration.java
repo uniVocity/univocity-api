@@ -5,37 +5,32 @@
  ******************************************************************************/
 package com.univocity.api.entity.hierarchical;
 
+import java.nio.charset.*;
+
 import com.univocity.api.common.*;
 
 public abstract class HierarchyQueryConfiguration extends PathReaderConfiguration {
 
-	private final String query;
+	private final UrlReaderProvider query;
 
-	private int retries = 0;
-	private long retryInterval = 2000;
-
-	public HierarchyQueryConfiguration(String queryURL) {
-		Args.notBlank(queryURL, "Query URL");
-		this.query = queryURL;
+	public HierarchyQueryConfiguration(UrlReaderProvider queryUrl) {
+		Args.notNull(queryUrl, "Query URL");
+		this.query = queryUrl;
 	}
 
-	public final String getQuery() {
+	public HierarchyQueryConfiguration(String queryUrl) {
+		this(new UrlReaderProvider(queryUrl));
+	}
+
+	public HierarchyQueryConfiguration(String url, String encoding) {
+		this(new UrlReaderProvider(url, encoding));
+	}
+
+	public HierarchyQueryConfiguration(String url, Charset encoding) {
+		this(new UrlReaderProvider(url, encoding));
+	}
+
+	public final UrlReaderProvider getQueryProvider() {
 		return query;
-	}
-
-	public final int getRetries() {
-		return retries;
-	}
-
-	public final void setRetries(int retries) {
-		this.retries = retries;
-	}
-
-	public final long getRetryInterval() {
-		return retryInterval;
-	}
-
-	public final void setRetryInterval(long retryInterval) {
-		this.retryInterval = retryInterval;
 	}
 }

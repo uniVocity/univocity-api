@@ -61,7 +61,7 @@ public class UrlReaderProvider extends ReaderProvider {
 	@Override
 	public Reader getResource() {
 		try {
-			URL url = new URL(this.url);
+			URL url = new URL(this.getUrl());
 			HttpURLConnection rc = (HttpURLConnection) url.openConnection();
 
 			for (Entry<String, String> property : requestProperties.entrySet()) {
@@ -74,30 +74,42 @@ public class UrlReaderProvider extends ReaderProvider {
 		} catch (IOException ex) {
 			if (retries > 0) {
 				try {
-					log.log(Level.FINE, "Unable to open URL '" + this.url + "', retrying after " + retryInterval + "ms", ex);
+					log.log(Level.FINE, "Unable to open URL '" + getUrl() + "', retrying after " + retryInterval + "ms", ex);
 					Thread.sleep(retryInterval);
 				} catch (InterruptedException e) {
 					Thread.currentThread().interrupt();
 					retryCount = 0;
-					throw new IllegalStateException("Thread interrupted while retrying connection on URL '" + this.url + "' after receiving error " + ex.getMessage(), ex);
+					throw new IllegalStateException("Thread interrupted while retrying connection on URL '" + getUrl() + "' after receiving error " + ex.getMessage(), ex);
 				}
 				if (retryCount >= retries) {
 					int count = retryCount;
 					retryCount = 0;
-					throw new IllegalStateException("Cannot open URL after " + count + " retries", ex);
+					throw new IllegalStateException("Cannot open URL '" + getUrl() + "' after " + count + " retries", ex);
 				}
 				retryCount++;
 				return getResource();
 			}
-			throw new IllegalStateException("Unable to open URL '" + url + "'", ex);
+			throw new IllegalStateException("Unable to open URL '" + getUrl() + "'", ex);
 		} catch (Exception ex) {
-			throw new IllegalStateException("Unable to open URL '" + url + "'", ex);
+			throw new IllegalStateException("Unable to open URL '" + getUrl() + "'", ex);
 		}
 	}
 
 	@Override
 	public String toString() {
 		return this.getClass().getSimpleName() + " [" + url + "]";
+	}
+
+	public final Charset getEncoding() {
+		return encoding;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public final Map<String, String> getRequestProperties() {
+		return Collections.unmodifiableMap(requestProperties);
 	}
 
 }
