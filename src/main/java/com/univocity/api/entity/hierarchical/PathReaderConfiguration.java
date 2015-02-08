@@ -7,6 +7,8 @@ package com.univocity.api.entity.hierarchical;
 
 import java.util.*;
 
+import com.univocity.api.common.*;
+
 public class PathReaderConfiguration {
 
 	private final Map<String, ElementPaths> entities = new TreeMap<String, ElementPaths>();
@@ -14,20 +16,20 @@ public class PathReaderConfiguration {
 
 	public static class ElementPaths {
 		boolean validatePaths = false;
-		final Set<String> elements = new LinkedHashSet<String>();
-		final Set<String> elementsOfList = new LinkedHashSet<String>();
-		final Set<String> elementsOfGroup = new LinkedHashSet<String>();
+		final Map<String, Integer> elements = new LinkedHashMap<String, Integer>();
+		final Map<String, Integer> elementsOfList = new LinkedHashMap<String, Integer>();
+		final Map<String, Integer> elementsOfGroup = new LinkedHashMap<String, Integer>();
 
-		public final Set<String> getElements() {
-			return Collections.unmodifiableSet(elements);
+		public final Map<String, Integer> getElements() {
+			return Collections.unmodifiableMap(elements);
 		}
 
-		public final Set<String> getElementsOfList() {
-			return Collections.unmodifiableSet(elementsOfList);
+		public final Map<String, Integer> getElementsOfList() {
+			return Collections.unmodifiableMap(elementsOfList);
 		}
 
-		public final Set<String> getElementsOfGroup() {
-			return Collections.unmodifiableSet(elementsOfGroup);
+		public final Map<String, Integer> getElementsOfGroup() {
+			return Collections.unmodifiableMap(elementsOfGroup);
 		}
 
 		public boolean isTargetDefined() {
@@ -59,15 +61,30 @@ public class PathReaderConfiguration {
 	}
 
 	public void includeElement(String entityName, String pathToElement) {
-		getPaths(entityName).elements.add(pathToElement);
+		includeElement(entityName, pathToElement, 0);
+	}
+
+	public void includeElement(String entityName, String pathToElement, int parentsToInclude) {
+		Args.positiveOrZero(parentsToInclude, "Number of parent elements to include");
+		getPaths(entityName).elements.put(pathToElement, parentsToInclude);
 	}
 
 	public void includeElementsOfList(String entityName, String pathToList) {
-		getPaths(entityName).elementsOfList.add(pathToList);
+		includeElementsOfList(entityName, pathToList, 0);
+	}
+
+	public void includeElementsOfList(String entityName, String pathToList, int parentsToInclude) {
+		Args.positiveOrZero(parentsToInclude, "Number of parent elements to include");
+		getPaths(entityName).elementsOfList.put(pathToList, parentsToInclude);
 	}
 
 	public void includeElementsOfGroup(String entityName, String pathToElement) {
-		getPaths(entityName).elementsOfGroup.add(pathToElement);
+		includeElementsOfGroup(entityName, pathToElement, 0);
+	}
+
+	public void includeElementsOfGroup(String entityName, String pathToElement, int parentsToInclude) {
+		Args.positiveOrZero(parentsToInclude, "Number of parent elements to include");
+		getPaths(entityName).elementsOfGroup.put(pathToElement, parentsToInclude);
 	}
 
 	private ElementPaths getPaths(String entityName) {
