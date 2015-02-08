@@ -25,4 +25,5 @@ public interface MergeSetup {
 
 	public CopyTransform read(String... sourceFields);
 
+	public ConditionalOperation where(String fieldName);
 }
