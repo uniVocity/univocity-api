@@ -15,7 +15,7 @@ import com.univocity.api.entity.hierarchical.PathReaderConfiguration.ElementPath
 
 public abstract class HierarchicalDataStoreConfiguration extends DataStoreConfiguration {
 
-	private int limitOfRowsLoadedInMemory = 10000;
+	private int limitOfRowsLoadedInMemory = 5;
 
 	private final FileProvider inputFile;
 	private final ReaderProvider inputProvider;
