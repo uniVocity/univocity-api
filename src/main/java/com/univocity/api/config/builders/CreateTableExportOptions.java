@@ -5,6 +5,8 @@
  ******************************************************************************/
 package com.univocity.api.config.builders;
 
+import com.univocity.api.entity.jdbc.*;
+
 /**
  * Specific configuration options of a an export operation to create table scripts, as defined by {@link Export#asCreateTableScript(com.univocity.api.entity.jdbc.DatabaseDialect)}.
  *
@@ -20,7 +22,31 @@ public interface CreateTableExportOptions extends ExportOutput {
 	 * @return further options to configure this export operation.
 	 */
 	public CreateTableExportOptions noPrimaryKeyConstraint();
+	
+	
+	/**
+	 * Defines the escape sequence to escape table and column names that may conflict with database reserved words. 
+	 * @param escapeSequence the characters to introduce around the identifiers
+	 * @param always flag to indicate whether or not all table and column names should be escaped
+	 * @return further options to configure this export operation.
+	 */
+	public CreateTableExportOptions escapeIdentifiersWith(String escapeSequence, boolean always);
 
+	
+	/**
+	 * Defines the escape sequence to escape table and column names that may conflict with database reserved words. 
+	 * @param escaper a user provided class to handle how to escape reserved words.
+	 * @return further options to configure this export operation.
+	 */
+	public CreateTableExportOptions escapeIdentifiersWith(IdentifierEscaper escaper);
+
+	/**
+	 * Provides additional identifiers to escape, on top of the default identifier list provided by uniVocity.
+	 * @param identifiersToEscape a user provided list of reserved words to escape
+	 * @return further options to configure this export operation.
+	 */
+	public CreateTableExportOptions escapeIdentifiers(String ... identifiersToEscape);
+	
 	/**
 	 * The create table scripts in this export operation should not contain {@code NOT NULL} constraints on column definitions.
 	 * @return further options to configure this export operation.
