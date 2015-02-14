@@ -5,9 +5,13 @@
  ******************************************************************************/
 package com.univocity.api.config.builders;
 
-import com.univocity.api.engine.*;
-import com.univocity.api.entity.custom.*;
-import com.univocity.api.entity.text.*;
+import java.util.List;
+
+import com.univocity.api.engine.DataIntegrationEngine;
+import com.univocity.api.engine.NameMatcher;
+import com.univocity.api.engine.RowReader;
+import com.univocity.api.entity.custom.DataStoreConfiguration;
+import com.univocity.api.entity.text.TextDataStoreConfiguration;
 
 /**
  * The {@link DataStoreMapping} provides builder-style configuration options for defining mappings between entities of two data stores.
@@ -221,4 +225,7 @@ public interface DataStoreMapping {
 	 * 		If no names are given, then all {@link EntityMapping}s of this {@code DataStoreMapping} will have the given {@link RowReader} added.
 	 */
 	public void addPersistedRowReaders(String readerName, String... entityNames);
+	
+	
+	public List<EntityMapping> getMappings();
 }
