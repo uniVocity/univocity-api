@@ -84,19 +84,4 @@ public interface CreateTableExportOptions extends ExportOutput {
 	 */
 	public CreateTableExportOptions noForeignKeyConstraints();
 	
-	
-	/**
-	 * The scripts in this export operation should not contain {@code CREATE INDEX} statements following table definitions.
-	 * @return further options to configure this export operation.
-	 */
-	public CreateTableExportOptions noIndexes();
-	
-	/**
-	 * The scripts in this export operation should not contain {@code CREATE TABLE} statements. Use this option to produce scripts with one or more of:
-	 * {@code PRIMARY KEY}, {@code FOREIGN KEY} and {@code CREATE INDEX}. This is useful on (large) ETL processes where data can be migrated in bulk first, without
-	 * any constraints to slow down the data loading process. The constraints and indexes can be introduced after filling up the database tables with data.
-	 * 
-	 * @return further options to configure this export operation.
-	 */
-	public CreateTableExportOptions noTables();
 }

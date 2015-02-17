@@ -34,4 +34,24 @@ public interface Export {
 	 * @return the next step of this configuration: determining further options and the output of this export operation, through an {@link ExportOutput} configuration object.
 	 */
 	public CreateTableExportOptions asCreateTableScript(DatabaseDialect dialect, String schema, String catalog);
+	
+	/**
+	 * Using the database metadata of JDBC-based data entities, generate {@code CREATE INDEX} SQL scripts suitable for a given database.
+	 * This method won't have any effect on non-JDBC data entities. 
+	 *
+	 * @param dialect the database dialect to be used to generate the scripts
+	 * @return the next step of this configuration: determining further options and the output of this export operation, through an {@link ExportOutput} configuration object.
+	 */
+	public CreateIndexExportOptions asCreateIndexScript(DatabaseDialect dialect);
+	
+	/**
+	 * Using the database metadata of JDBC-based data entities, generate {@code CREATE INDEX} SQL scripts suitable for a given database.
+	 * This method won't have any effect on non-JDBC data entities. 
+	 *
+	 * @param dialect the database dialect to be used to generate the scripts
+	 * @param schema the database schema name
+	 * @param catalog the database catalog name
+	 * @return the next step of this configuration: determining further options and the output of this export operation, through an {@link ExportOutput} configuration object.
+	 */
+	public CreateIndexExportOptions asCreateIndexScript(DatabaseDialect dialect, String schema, String catalog);
 }
