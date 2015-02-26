@@ -47,7 +47,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	private final Collection<String> reservedWordsToEscape = new TreeSet<String>();
 	private IdentifierEscaper identifierEscaper = null;
 
-	private JdbcDataStoreDumpLoadConfiguration initialDumpLoadConfiguration = null;
+	private DumpLoadConfiguration initialDumpLoadConfiguration = null;
 	/**
 	 * Creates a new JDBC data store configuration
 	 * @param dataStoreName the name of the JDBC data store.
@@ -479,7 +479,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	 *
 	 * @param initialDumpLoadConfiguration the configuration of the input dump file.
 	 */
-	public void setInitialDumpLoadConfiguration(JdbcDataStoreDumpLoadConfiguration initialDumpLoadConfiguration) {
+	public void setInitialDumpLoadConfiguration(DumpLoadConfiguration initialDumpLoadConfiguration) {
 		this.initialDumpLoadConfiguration = initialDumpLoadConfiguration;
 	}
 
@@ -488,7 +488,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	 * database. For example, you can load a dump file generated from MySQL into Oracle or Postgres.
 	 *
 	 * @return the configuration to process and load a database dump file, or null if the database does not need to be initialized.	 */
-	public JdbcDataStoreDumpLoadConfiguration getInitialDumpLoadConfiguration() {
+	public DumpLoadConfiguration getInitialDumpLoadConfiguration() {
 		return this.initialDumpLoadConfiguration;
 	}
 
