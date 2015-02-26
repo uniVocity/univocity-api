@@ -45,7 +45,6 @@ public final class FileProvider {
 		if (file == null) {
 			throw new IllegalArgumentException("File cannot be null");
 		}
-		
 		this.encoding = getEncoding(encoding);
 		this.file = file;
 		this.filePath = file.getAbsolutePath();

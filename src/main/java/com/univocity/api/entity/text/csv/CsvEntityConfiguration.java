@@ -49,6 +49,7 @@ public final class CsvEntityConfiguration extends TextEntityConfiguration<CsvFor
 	 * @param emptyValue the default value used instead of {@code null} when reading and writing empty (but not {@code null}) fields.
 	 */
 	public final void setEmptyValue(String emptyValue) {
+		this.emptyValueSet = true;
 		this.emptyValue = emptyValue;
 	}
 
@@ -94,7 +95,7 @@ public final class CsvEntityConfiguration extends TextEntityConfiguration<CsvFor
 			alwaysQuoteOnWrite = defaults.getAlwaysQuoteOnWrite();
 		}
 		if (!emptyValueSet) {
-			this.emptyValue = defaults.getEmptyValue();
+			setEmptyValue(defaults.getEmptyValue());
 		}
 	}
 }

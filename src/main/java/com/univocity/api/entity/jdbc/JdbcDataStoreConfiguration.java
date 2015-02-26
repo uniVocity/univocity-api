@@ -38,6 +38,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 
 	private String schema;
 	private String catalog;
+	private DatabaseDialect dialect;
 
 	private int transactionTimeout = -1;
 	private int transactionIsolationLevel = Connection.TRANSACTION_REPEATABLE_READ;
@@ -46,8 +47,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	private final Collection<String> reservedWordsToEscape = new TreeSet<String>();
 	private IdentifierEscaper identifierEscaper = null;
 
-	private DumpLoadConfiguration initialDumpLoadConfiguration = null;
-
+	private JdbcDataStoreDumpLoadConfiguration initialDumpLoadConfiguration = null;
 	/**
 	 * Creates a new JDBC data store configuration
 	 * @param dataStoreName the name of the JDBC data store.
@@ -458,21 +458,37 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	}
 
 	/**
-	 * Configures this data store to load the entire database from a dump file. The dump file does not need to be compatible with the destination
+	 * Returns the dialect of this database. Used to generate entities (tables) dynamically when required.
+	 * @return the dialect of this database.
+	 */
+	public DatabaseDialect getDialect() {
+		return dialect;
+	}
+
+	/**
+	 * Defines the dialect of this database. Used to generate entities (tables) dynamically when required.
+	 * @param dialect the dialect of this database.
+	 */
+	public void setDialect(DatabaseDialect dialect) {
+		this.dialect = dialect;
+	}
+
+	/**
+	 * Configures this data store to load the entire database from a dump file. The dump file may not be compatible with the destination
 	 * database. For example, you can load a dump file generated from MySQL into Oracle or Postgres.
 	 *
 	 * @param initialDumpLoadConfiguration the configuration of the input dump file.
 	 */
-	public void setInitialDumpLoadConfiguration(DumpLoadConfiguration initialDumpLoadConfiguration) {
+	public void setInitialDumpLoadConfiguration(JdbcDataStoreDumpLoadConfiguration initialDumpLoadConfiguration) {
 		this.initialDumpLoadConfiguration = initialDumpLoadConfiguration;
 	}
 
 	/**
-	 * Returns the configuration for this data store to initialize from a database dump file. The dump file does not need to be compatible with the destination
+	 * Returns the configuration for this data store to initialize from a database dump file. The dump file may not be compatible with the destination
 	 * database. For example, you can load a dump file generated from MySQL into Oracle or Postgres.
 	 *
 	 * @return the configuration to process and load a database dump file, or null if the database does not need to be initialized.	 */
-	public DumpLoadConfiguration getInitialDumpLoadConfiguration() {
+	public JdbcDataStoreDumpLoadConfiguration getInitialDumpLoadConfiguration() {
 		return this.initialDumpLoadConfiguration;
 	}
 

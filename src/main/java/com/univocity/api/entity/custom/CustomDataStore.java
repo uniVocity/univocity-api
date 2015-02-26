@@ -90,4 +90,5 @@ public interface CustomDataStore<E extends CustomReadableEntity> {
 	 * @return the configuration of this data store
 	 */
 	public DataStoreConfiguration getConfiguration();
+
 }
