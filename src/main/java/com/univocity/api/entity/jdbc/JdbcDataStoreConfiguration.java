@@ -48,6 +48,9 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	private IdentifierEscaper identifierEscaper = null;
 
 	private DumpLoadConfiguration initialDumpLoadConfiguration = null;
+
+	private final EnumSet<TableType> tableTypesToUse = EnumSet.allOf(TableType.class);
+
 	/**
 	 * Creates a new JDBC data store configuration
 	 * @param dataStoreName the name of the JDBC data store.
@@ -492,4 +495,20 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 		return this.initialDumpLoadConfiguration;
 	}
 
+	public Set<TableType> getTableTypesToUse() {
+		return this.tableTypesToUse;
+	}
+
+	public void setTableTypesToUse(TableType... tableTypes) {
+		this.tableTypesToUse.clear();
+		for (TableType type : tableTypes) {
+			this.tableTypesToUse.add(type);
+		}
+	}
+
+	public void setTableTypesToIgnore(TableType... tableTypes) {
+		for (TableType type : tableTypes) {
+			this.tableTypesToUse.remove(type);
+		}
+	}
 }
