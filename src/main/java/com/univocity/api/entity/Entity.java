@@ -5,6 +5,8 @@
  ******************************************************************************/
 package com.univocity.api.entity;
 
+import java.util.*;
+
 import com.univocity.api.engine.*;
 import com.univocity.api.entity.custom.*;
 
@@ -17,8 +19,11 @@ import com.univocity.api.entity.custom.*;
  */
 public interface Entity {
 	
-	public String[] getFieldNames();
+	public Set<String> getFieldNames();
 	
+	public Set<String> getIdentiferFieldNames();
+	
+	public DefaultEntityField getField(String name);
 	
 	/**
 	 * <p>Start iterating over the records of this data entity. uniVocity will start a {@link ReadingProcess} in the background which will block when the number of
@@ -59,6 +64,11 @@ public interface Entity {
 	 */
 	public <T> T valueOf(String fieldName, Class<T> type);
 
+	public Object valueOf(int fieldIndex);
+
+	public <T> T valueOf(int fieldIndex, Class<T> type);
+
+	
 	/**
 	 * Returns the position of a given field in the current row.
 	 * @param fieldName name of the field whose value will be returned.
