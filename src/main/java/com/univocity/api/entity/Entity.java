@@ -25,6 +25,12 @@ public interface Entity {
 	
 	public DefaultEntityField getField(String name);
 	
+	public List<DefaultEntityField> getFields(String ... names);
+	
+	public Set<EntityRelationship> getRelationshipsFrom();
+	
+	public Set<EntityRelationship> getRelationshipsTo();
+	
 	/**
 	 * <p>Start iterating over the records of this data entity. uniVocity will start a {@link ReadingProcess} in the background which will block when the number of
 	 * rows loaded in memory reaches the specified limit specified by the parent data store.</p>
