@@ -2,7 +2,7 @@ package com.univocity.api.entity;
 
 import java.util.*;
 
-public abstract class EntityRelationship {
+public abstract class EntityRelationship implements Comparable<EntityRelationship> {
 
 	private String myStringRepresentation = null;
 
@@ -14,9 +14,11 @@ public abstract class EntityRelationship {
 
 	public abstract List<DefaultEntityField> getReferredFields();
 
+	public abstract EntityRelationshipType getType();
+
 	public String toString() {
 		if (myStringRepresentation == null) {
-			myStringRepresentation = printEntityAndFields(getEntity(), getFields()) + "->" + printEntityAndFields(getReferredEntity(), getReferredFields());
+			myStringRepresentation = printEntityAndFields(getEntity(), getFields()) + "->" + printEntityAndFields(getReferredEntity(), getReferredFields()) + "(type: " + getType() + ")";
 		}
 		return myStringRepresentation;
 	}
@@ -33,7 +35,10 @@ public abstract class EntityRelationship {
 		tmp.insert(0, '[');
 		tmp.insert(0, entity.getEntityName());
 		tmp.append(']');
-
 		return tmp.toString();
+	}
+
+	public int compareTo(EntityRelationship e) {
+		return this.toString().compareTo(e.toString());
 	}
 }
