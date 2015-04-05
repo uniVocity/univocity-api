@@ -17,20 +17,20 @@ import com.univocity.api.entity.custom.*;
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
-public interface Entity {
-	
+public interface Entity extends Comparable<Entity> {
+
 	public Set<String> getFieldNames();
-	
+
 	public Set<String> getIdentiferFieldNames();
-	
+
 	public DefaultEntityField getField(String name);
-	
-	public List<DefaultEntityField> getFields(String ... names);
-	
+
+	public List<DefaultEntityField> getFields(String... names);
+
 	public Set<EntityRelationship> getRelationshipsFrom();
-	
+
 	public Set<EntityRelationship> getRelationshipsTo();
-	
+
 	/**
 	 * <p>Start iterating over the records of this data entity. uniVocity will start a {@link ReadingProcess} in the background which will block when the number of
 	 * rows loaded in memory reaches the specified limit specified by the parent data store.</p>
@@ -74,7 +74,6 @@ public interface Entity {
 
 	public <T> T valueOf(int fieldIndex, Class<T> type);
 
-	
 	/**
 	 * Returns the position of a given field in the current row.
 	 * @param fieldName name of the field whose value will be returned.
@@ -93,4 +92,6 @@ public interface Entity {
 	 * @return the name of this data entity
 	 */
 	public String getEntityName();
+
+	public String getDataStoreName();
 }
