@@ -29,7 +29,11 @@ public interface Entity extends Comparable<Entity> {
 
 	public Set<EntityRelationship> getRelationshipsFrom();
 
+	public Set<EntityRelationship> getRelationshipsFrom(EntityRelationshipType type);
+
 	public Set<EntityRelationship> getRelationshipsTo();
+
+	public Set<EntityRelationship> getRelationshipsTo(EntityRelationshipType type);
 
 	/**
 	 * <p>Start iterating over the records of this data entity. uniVocity will start a {@link ReadingProcess} in the background which will block when the number of
