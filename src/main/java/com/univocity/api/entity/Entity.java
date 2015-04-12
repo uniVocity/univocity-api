@@ -19,21 +19,21 @@ import com.univocity.api.entity.custom.*;
  */
 public interface Entity extends Comparable<Entity> {
 
-	public Set<String> getFieldNames();
+	Set<String> getFieldNames();
 
-	public Set<String> getIdentiferFieldNames();
+	Set<String> getIdentifierFieldNames();
 
-	public DefaultEntityField getField(String name);
+	DefaultEntityField getField(String name);
 
-	public List<DefaultEntityField> getFields(String... names);
+	List<DefaultEntityField> getFields(String... names);
 
-	public Set<EntityRelationship> getRelationshipsFrom();
+	Set<EntityRelationship> getRelationshipsFrom();
 
-	public Set<EntityRelationship> getRelationshipsFrom(EntityRelationshipType type);
+	Set<EntityRelationship> getRelationshipsFrom(EntityRelationshipType type);
 
-	public Set<EntityRelationship> getRelationshipsTo();
+	Set<EntityRelationship> getRelationshipsTo();
 
-	public Set<EntityRelationship> getRelationshipsTo(EntityRelationshipType type);
+	Set<EntityRelationship> getRelationshipsTo(EntityRelationshipType type);
 
 	/**
 	 * <p>Start iterating over the records of this data entity. uniVocity will start a {@link ReadingProcess} in the background which will block when the number of
@@ -45,25 +45,25 @@ public interface Entity extends Comparable<Entity> {
 	 * @param fieldNames the fields to be read from the given data entity. Each row returned by the {@link #readNext()} method will organize the values in this specified order.
 	 * 		If no names are given, all fields will be read from the entity.
 	 */
-	public void beginReading(String... fieldNames);
+	void beginReading(String... fieldNames);
 
 	/**
 	 * Reads the next record stored by this data entity.
 	 * @return the next row read from the underlying data entity.
 	 */
-	public Object[] readNext();
+	Object[] readNext();
 
 	/**
 	 * Stops the active reading process created by the {@link #beginReading(String...)} method.
 	 */
-	public void stopReading();
+	void stopReading();
 
 	/**
 	 * Returns the value of a given field in the current row.
 	 * @param fieldName name of the field whose value will be returned.
 	 * @return the value of the field in the current row.
 	 */
-	public Object valueOf(String fieldName);
+	Object valueOf(String fieldName);
 
 	/**
 	 * Returns the value of a given field in the current row.
@@ -72,30 +72,30 @@ public interface Entity extends Comparable<Entity> {
 	 * @return the value of the field in the current row.
 	 * @param <T> type expected type of the value stored by the given field
 	 */
-	public <T> T valueOf(String fieldName, Class<T> type);
+	<T> T valueOf(String fieldName, Class<T> type);
 
-	public Object valueOf(int fieldIndex);
+	Object valueOf(int fieldIndex);
 
-	public <T> T valueOf(int fieldIndex, Class<T> type);
+	<T> T valueOf(int fieldIndex, Class<T> type);
 
 	/**
 	 * Returns the position of a given field in the current row.
 	 * @param fieldName name of the field whose value will be returned.
 	 * @return the position of the field in the current row.
 	 */
-	public int indexOf(String fieldName);
+	int indexOf(String fieldName);
 
 	/**
 	 * Returns the current row read from the input.
 	 * @return the current row read from the input, or {@code null} if the reading process has not begun or has been stopped
 	 */
-	public Object[] getCurrentRow();
+	Object[] getCurrentRow();
 
 	/**
 	 * Returns the name of this data entity
 	 * @return the name of this data entity
 	 */
-	public String getEntityName();
+	String getEntityName();
 
-	public String getDataStoreName();
+	String getDataStoreName();
 }
