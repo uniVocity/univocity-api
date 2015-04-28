@@ -23,7 +23,14 @@ public abstract class PropertyBasedConfiguration {
 		Enumeration<?> keys = properties.propertyNames();
 		while (keys.hasMoreElements()) {
 			String key = (String) keys.nextElement();
-			values.put(key, replaceProperty(properties.getProperty(key)));
+
+			String parent = null;
+			int lastDot = key.lastIndexOf('.');
+			if (lastDot > 0) {
+				parent = key.substring(0, lastDot);
+			}
+
+			values.put(key, replaceProperty(properties.getProperty(key), parent));
 		}
 	}
 
@@ -84,24 +91,46 @@ public abstract class PropertyBasedConfiguration {
 		}
 	}
 
-	private String replaceProperty(String value) {
+	private String replaceProperty(String value, String parentProperty) {
 		if (Args.isBlank(value)) {
 			return null;
 		}
+		String originalValue = value;
+
 		for (String key : listVariables(value)) {
 			String var;
 
 			if (values.containsKey(key)) {
 				var = values.get(key);
-			}
-			if ("user.home".equals(key)) {
-				var = normalizeDirPath(System.getProperty("user.home"));
 			} else {
-				var = System.getProperty(key);
+				if ("user.home".equals(key)) {
+					var = normalizeDirPath(System.getProperty("user.home"));
+				} else {
+					var = System.getProperty(key);
+				}
 			}
-			if (var != null) {
-				value = replaceVariables(value, key, var);
+
+			if (var == null && parentProperty != null) {
+				String parent = parentProperty;
+				
+				while (var == null) {
+					var = values.get(parent + "." + key);
+					if (var != null) {
+						break;
+					}
+					int dot = parent.lastIndexOf('.');
+					if (dot > 0) {
+						parent = parent.substring(0, dot);
+					} else {
+						break;
+					}
+				}
 			}
+
+			if (var == null) {
+				throw new IllegalStateException("Invalid configuration! No value defined for ${" + key + "} in " + originalValue);
+			}
+			value = replaceVariables(value, key, var);
 		}
 		return value;
 	}
