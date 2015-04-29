@@ -99,12 +99,15 @@ public abstract class PropertyBasedConfiguration {
 
 		for (String key : listVariables(value)) {
 			String var;
-
+			boolean found = false;
+			
 			if (values.containsKey(key)) {
 				var = values.get(key);
+				found = true;
 			} else {
 				if ("user.home".equals(key)) {
 					var = normalizeDirPath(System.getProperty("user.home"));
+					found = true;
 				} else {
 					var = System.getProperty(key);
 				}
@@ -114,8 +117,9 @@ public abstract class PropertyBasedConfiguration {
 				String parent = parentProperty;
 				
 				while (var == null) {
-					var = values.get(parent + "." + key);
-					if (var != null) {
+					found = values.containsKey(parent + "." + key);
+					if (found) {
+						var = values.get(parent + "." + key);
 						break;
 					}
 					int dot = parent.lastIndexOf('.');
@@ -127,7 +131,7 @@ public abstract class PropertyBasedConfiguration {
 				}
 			}
 
-			if (var == null) {
+			if (var == null && !found) {
 				throw new IllegalStateException("Invalid configuration! No value defined for ${" + key + "} in " + originalValue);
 			}
 			value = replaceVariables(value, key, var);
