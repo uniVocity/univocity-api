@@ -54,4 +54,8 @@ public interface Export {
 	 * @return the next step of this configuration: determining further options and the output of this export operation, through an {@link ExportOutput} configuration object.
 	 */
 	public CreateIndexExportOptions asCreateIndexScript(DatabaseDialect dialect, String schema, String catalog);
+	
+	
+	
+	public CreateSourceCodeOptions asSourceCode();
 }
