@@ -7,6 +7,7 @@ package com.univocity.api.config.builders;
 
 import com.univocity.api.config.*;
 import com.univocity.api.engine.*;
+import com.univocity.api.entity.*;
 
 /**
  * The <code>IdentifierMappingSetup</code> is the base configuration used to define which fields from the source entity,
@@ -45,4 +46,13 @@ public interface IdentifierMappingSetup {
 	 *         receive the values read from the source.
 	 */
 	public IdentifierType associate(String... sourceFields);
+
+	/**
+	 * Associates one or more fields from the source entity in an {@link EntityMapping} with the identifier of the destination entity.
+	 *
+	 * @param sourceFields the field names in the source entity to be associated with an identifier of the destination.
+	 * @return the next step of this configuration: define what fields of the destination are identifiers and how they will
+	 *         receive the values read from the source.
+	 */
+	public IdentifierType associate(FieldIdentifier... sourceFields);
 }

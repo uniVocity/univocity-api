@@ -11,7 +11,7 @@ import com.univocity.api.entity.*;
  * This class defines the essential text format parameters of all tabular text-based data entities supported by uniVocity.
  *
  * <p>In addition to the configuration options defined in {@link BasicTextFormat}, this class allows the definition of:
- * 
+ *
  *  <li><b>comment:</b> a character that, if found in the beginning of a line of text, represents comment in any text-based input supported by uniVocity.
  *  	<p><i>{@link #comment} defaults to '#'.</i></li>
  * </ul>

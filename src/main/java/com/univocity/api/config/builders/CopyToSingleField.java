@@ -6,6 +6,7 @@
 package com.univocity.api.config.builders;
 
 import com.univocity.api.engine.*;
+import com.univocity.api.entity.*;
 
 /**
  * The <code>CopyToSingleField</code> configuration is obtained from a  {@link FieldMappingSetup} using {@link FieldMappingSetup#copy(String)}.
@@ -26,4 +27,13 @@ public interface CopyToSingleField {
 	 * to transform input values before copying them to the destination field.
 	 */
 	public CopyTransform to(String destinationField);
+
+	/**
+	 * Defines what what field of a destination entity should receive values extracted from a field of the source entity.
+	 *
+	 * @param destinationField the field of the destination entity
+	 * @return the next (optional) step of a field mapping configuration: defining what functions should be executed
+	 * to transform input values before copying them to the destination field.
+	 */
+	public CopyTransform to(FieldIdentifier destinationField);
 }

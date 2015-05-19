@@ -6,6 +6,7 @@
 package com.univocity.api.config.builders;
 
 import com.univocity.api.engine.*;
+import com.univocity.api.entity.*;
 
 /**
  * The <code>IdentifierType</code> configuration is obtained from a  {@link IdentifierMappingSetup} using {@link IdentifierMappingSetup#associate(String...)}.
@@ -62,4 +63,31 @@ public interface IdentifierType extends IdentifierCopy {
 	 * transform input values before associating them to the generated identifier.
 	 */
 	public GeneratedIdentifierTransform toGeneratedId(String destinationField);
+
+	/**
+	 * Defines what generated identifier field of a destination entity should be associated with values extracted from a
+	 * selection of fields in the source entity.
+	 *
+	 * @param destinationField the name of the generated field in the destination entity
+	 * @param valueIfEmpty an expression used to produce a value to insert when adding new records, in case no fields (other than the identifier) are mapped.
+	 * 	      This is required to create a new record in the destination and obtain the generated identifier.
+	 *
+	 * @return the next (optional) step of an identifier mapping configuration: define what functions should be executed to
+	 * transform input values before associating them to the generated identifier.
+	 */
+	public GeneratedIdentifierTransform toGeneratedId(FieldIdentifier destinationField, String valueIfEmpty);
+
+	/**
+	 * Defines what generated identifier field of a destination entity should be associated with values extracted from a
+	 * selection of fields in the source entity.
+
+	 * @param destinationField the name of the generated field in the destination entity
+	 *
+	 * <p>When adding new records, in case no fields (other than the identifier) are mapped, uniVocity will insert a record with <code>null</code>
+	 * to obtain the identifier generated in the destination.
+	 *
+	 * @return the next (optional) step of an identifier mapping configuration: define what functions should be executed to
+	 * transform input values before associating them to the generated identifier.
+	 */
+	public GeneratedIdentifierTransform toGeneratedId(FieldIdentifier destinationField);
 }

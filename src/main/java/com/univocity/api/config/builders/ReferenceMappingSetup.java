@@ -5,6 +5,8 @@
  ******************************************************************************/
 package com.univocity.api.config.builders;
 
+import com.univocity.api.entity.*;
+
 /**
  * The <code>ReferenceMappingSetup</code> is the base configuration used to define which fields should be read from a source entity in an {@link EntityMapping}
  * to construct a reference to a destination entity.
@@ -60,4 +62,13 @@ public interface ReferenceMappingSetup {
 	 *         what entity in the destination had its identifier associated with these fields (using {@link IdentifierMappingSetup}).
 	 */
 	public ReferencedEntity using(String... sourceFields);
+
+	/**
+	 * Associates one or more fields from the source entity in an {@link EntityMapping} with a reference in the destination entity.
+	 *
+	 * @param sourceFields the field names in the source entity to be associated with a reference to an entity in the destination.
+	 * @return the next step of this configuration: define what source entity has an identifier mapped with the given fields, and
+	 *         what entity in the destination had its identifier associated with these fields (using {@link IdentifierMappingSetup}).
+	 */
+	public ReferencedEntity using(FieldIdentifier... sourceFields);
 }

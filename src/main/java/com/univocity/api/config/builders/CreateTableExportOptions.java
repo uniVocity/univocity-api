@@ -22,19 +22,17 @@ public interface CreateTableExportOptions extends ExportOutput {
 	 * @return further options to configure this export operation.
 	 */
 	public CreateTableExportOptions noPrimaryKeyConstraint();
-	
-	
+
 	/**
-	 * Defines the escape sequence to escape table and column names that may conflict with database reserved words. 
+	 * Defines the escape sequence to escape table and column names that may conflict with database reserved words.
 	 * @param escapeSequence the characters to introduce around the identifiers
 	 * @param always flag to indicate whether or not all table and column names should be escaped
 	 * @return further options to configure this export operation.
 	 */
 	public CreateTableExportOptions escapeIdentifiersWith(String escapeSequence, boolean always);
 
-	
 	/**
-	 * Defines the escape sequence to escape table and column names that may conflict with database reserved words. 
+	 * Defines the escape sequence to escape table and column names that may conflict with database reserved words.
 	 * @param escaper a user provided class to handle how to escape reserved words.
 	 * @return further options to configure this export operation.
 	 */
@@ -45,8 +43,8 @@ public interface CreateTableExportOptions extends ExportOutput {
 	 * @param identifiersToEscape a user provided list of reserved words to escape
 	 * @return further options to configure this export operation.
 	 */
-	public CreateTableExportOptions escapeIdentifiers(String ... identifiersToEscape);
-	
+	public CreateTableExportOptions escapeIdentifiers(String... identifiersToEscape);
+
 	/**
 	 * The create table scripts in this export operation should not contain {@code NOT NULL} constraints on column definitions.
 	 * @return further options to configure this export operation.
@@ -70,19 +68,19 @@ public interface CreateTableExportOptions extends ExportOutput {
 	 * @return further options to configure this export operation.
 	 */
 	public CreateTableExportOptions noIndexes();
-	
+
 	/**
 	 * The scripts in this export operation should not contain {@code FOREIGN KEY} constraints following table definitions.
 	 * @return further options to configure this export operation.
 	 */
 	public CreateTableExportOptions noForeignKeyConstraints();
-	
+
 	/**
 	 * The scripts in this export operation should not contain {@code UNIQUE} constraints following table definitions.
 	 * @return further options to configure this export operation.
 	 */
 	public CreateTableExportOptions noUniqueConstraints();
-	
+
 	/**
 	 * Exports the result of this create table {@link Export} operation as a {@code String}. Produces the same result as the {@link #toScript()} method.
 	 * @return an object containing the result of the create table {@link Export} operation
@@ -95,5 +93,5 @@ public interface CreateTableExportOptions extends ExportOutput {
 	 * @return an script containing the result of the create table {@link Export} operation
 	 */
 	public String toScript();
-	
+
 }

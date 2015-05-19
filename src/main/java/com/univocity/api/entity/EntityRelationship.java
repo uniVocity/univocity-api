@@ -16,6 +16,7 @@ public abstract class EntityRelationship implements Comparable<EntityRelationshi
 
 	public abstract EntityRelationshipType getType();
 
+	@Override
 	public String toString() {
 		if (myStringRepresentation == null) {
 			myStringRepresentation = printEntityAndFields(getEntity(), getFields()) + "->" + printEntityAndFields(getReferredEntity(), getReferredFields()) + "(type: " + getType() + ")";
@@ -38,6 +39,7 @@ public abstract class EntityRelationship implements Comparable<EntityRelationshi
 		return tmp.toString();
 	}
 
+	@Override
 	public int compareTo(EntityRelationship e) {
 		return this.toString().compareTo(e.toString());
 	}

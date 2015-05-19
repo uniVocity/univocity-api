@@ -6,6 +6,7 @@
 package com.univocity.api.config.builders;
 
 import com.univocity.api.engine.*;
+import com.univocity.api.entity.*;
 
 /**
  * The <code>CopyToMultipleFields</code> configuration is obtained from a  {@link FieldMappingSetup} using {@link FieldMappingSetup#copy(String...)}.
@@ -26,4 +27,13 @@ public interface CopyToMultipleFields {
 	 * to transform input values before copying them to the destination fields.
 	 */
 	public CopyTransform to(String... destinationFields);
+
+	/**
+	 * Defines what what fields of a destination entity should receive values extracted from a selection of fields in the source entity.
+	 *
+	 * @param destinationFields the fields of the destination entity. The number of destination fields must match the number of source fields.
+	 * @return the next (optional) step of a field mapping configuration: defining what functions should be executed
+	 * to transform input values before copying them to the destination fields.
+	 */
+	public CopyTransform to(FieldIdentifier... destinationFields);
 }

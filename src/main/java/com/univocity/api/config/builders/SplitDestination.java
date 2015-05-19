@@ -5,6 +5,8 @@
  ******************************************************************************/
 package com.univocity.api.config.builders;
 
+import com.univocity.api.entity.*;
+
 /**
  * The <code>SplitDestination</code> configuration is obtained from a {@link Split} configuration, which is part of the configuration initialized
  * by a call to {@link FieldMappingSetup#split(String)}.
@@ -26,4 +28,13 @@ public interface SplitDestination {
 	 * @param destinationFields the field names in the destination entity to receive the result of the split operation.
 	 */
 	public void into(String... destinationFields);
+
+	/**
+	 * Defines what fields of the destination entity in a {@link FieldMappingSetup} should receive values from a split operation applied to an input field.
+	 *
+	 * <p><i>This completes the configuration started in {@link FieldMappingSetup#split(String)}</i>
+	 *
+	 * @param destinationFields the field names in the destination entity to receive the result of the split operation.
+	 */
+	public void into(FieldIdentifier... destinationFields);
 }

@@ -15,7 +15,7 @@ public class XmlQueryConfiguration extends HierarchyQueryConfiguration {
 	public XmlQueryConfiguration(UrlReaderProvider queryURL) {
 		super(queryURL);
 	}
-	
+
 	public XmlQueryConfiguration(String queryUrl) {
 		this(new UrlReaderProvider(queryUrl));
 	}

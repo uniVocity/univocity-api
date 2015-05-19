@@ -5,6 +5,8 @@
  ******************************************************************************/
 package com.univocity.api.config.builders;
 
+import com.univocity.api.entity.*;
+
 /**
  * The <code>ReferencedDestinationFields</code> configuration is obtained from a {@link ReferencedEntity} with {@link ReferencedEntity#referTo(String, String)}.
  *
@@ -31,4 +33,17 @@ public interface ReferencedDestinationFields {
 	 * </ul>
 	 */
 	public ReferenceTransform on(String... fieldsOnDestination);
+
+	/**
+	 * Defines the destination fields in a {@link ReferenceMappingSetup} that will receive
+	 * the identifier values of the referenced entity.
+	 *
+	 * @param fieldsOnDestination the fields in the destination entity that refer to another destination entity.
+	 * @return the (optional) next steps of a reference mapping configuration:
+	 * <ul>
+	 *  <li>provide a function sequence that should be executed to transform input values before using them to look for referenced identifiers in the metadata</li>
+	 *  <li>configure the course of action in case a reference cannot be matched (defaults to "ignore and proceed", leaving it null)</li>
+	 * </ul>
+	 */
+	public ReferenceTransform on(FieldIdentifier... fieldsOnDestination);
 }

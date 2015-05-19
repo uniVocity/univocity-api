@@ -420,10 +420,9 @@ public interface DataIntegrationEngine {
 	 * @return an {@link Export} configuration object to determine what information to export and to where.
 	 */
 	public Export exportEntities(String dataStoreName, String... entityNames);
-	
-	
+
 	public Set<String> getEntityNames();
-	
+
 	public Set<String> getEntityNamesOf(String dataStoreName);
 
 }

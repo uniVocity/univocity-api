@@ -6,6 +6,7 @@
 package com.univocity.api.config.builders;
 
 import com.univocity.api.engine.*;
+import com.univocity.api.entity.*;
 import com.univocity.api.entity.custom.*;
 
 /**
@@ -295,6 +296,15 @@ public interface EntityMapping {
 	 * @param sourceFieldNames field names/expressions against which the given function should be applied to.
 	 */
 	public void transformFields(String functionName, String... sourceFieldNames);
+
+	/**
+	 * Associates a function to a given list of source field names or expressions. When reading from the source entity, the function will be executed and its result
+	 * will be send to the destination fields. The given function will be executed after other function sequences already applied to these fields.
+	 *
+	 * @param functionName the name of the function to associate to fields of the source entity.
+	 * @param sourceFieldNames field names against which the given function should be applied to.
+	 */
+	public void transformFields(String functionName, FieldIdentifier... sourceFieldNames);
 
 	public DependentEntityMappingConfig include(String queryName);
 

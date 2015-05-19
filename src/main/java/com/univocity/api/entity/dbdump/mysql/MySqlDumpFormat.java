@@ -59,7 +59,7 @@ import com.univocity.api.entity.dbdump.*;
  * </pre></blockquote><hr>
  *
  * This class lets you configure the specific format of your database dump files.
- * 
+ *
  * @see MySqlDumpDataStoreConfiguration
  * @see DumpDataStoreConfiguration
  * @see DumpFileFormat
@@ -99,7 +99,7 @@ public class MySqlDumpFormat extends DumpFileFormat {
 	public void setIdentifierEscape(char identifierEscape) {
 		super.setIdentifierEscape(identifierEscape);
 	}
-	
+
 	@Override
 	protected String getDefaultMultiRecordIdentifier() {
 		return "INSERT INTO ? ";

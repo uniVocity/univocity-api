@@ -5,6 +5,8 @@
  ******************************************************************************/
 package com.univocity.api.config.builders;
 
+import com.univocity.api.entity.*;
+
 /**
  * The <code>AdditionalIdentifiers</code> configuration is obtained from an {@link IdentifierType} or {@link IdentifierTransform} configuration.
  *
@@ -28,4 +30,16 @@ public interface AdditionalIdentifiers {
 	 *         receive the values read from the source.
 	 */
 	public IdentifierCopy and(String... sourceFields);
+
+	/**
+	 * This is an optional configuration used to associate additional fields from the source entity
+	 * in an {@link EntityMapping} to other identifier fields in the destination entity.
+	 *
+	 * @param sourceFields the field names in the source entity to be associated with other identifier fields of the destination.
+	 * 		   Expressions are allowed within curly braces (i.e. "{expression}")
+	 * @return the next step of this configuration: define what fields of the destination are identifiers and how they will
+	 *         receive the values read from the source.
+	 */
+	public IdentifierCopy and(FieldIdentifier... sourceFields);
+
 }

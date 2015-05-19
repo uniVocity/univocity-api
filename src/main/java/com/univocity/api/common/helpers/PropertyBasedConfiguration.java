@@ -34,6 +34,7 @@ public abstract class PropertyBasedConfiguration {
 		}
 	}
 
+	@Override
 	public String toString() {
 		StringBuilder out = new StringBuilder(getPropertiesDescription());
 		for (Entry<String, String> e : values.entrySet()) {
@@ -100,7 +101,7 @@ public abstract class PropertyBasedConfiguration {
 		for (String key : listVariables(value)) {
 			String var;
 			boolean found = false;
-			
+
 			if (values.containsKey(key)) {
 				var = values.get(key);
 				found = true;
@@ -115,7 +116,7 @@ public abstract class PropertyBasedConfiguration {
 
 			if (var == null && parentProperty != null) {
 				String parent = parentProperty;
-				
+
 				while (var == null) {
 					found = values.containsKey(parent + "." + key);
 					if (found) {
