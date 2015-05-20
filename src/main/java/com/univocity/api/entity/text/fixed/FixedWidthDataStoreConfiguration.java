@@ -33,4 +33,9 @@ public final class FixedWidthDataStoreConfiguration extends TextDataStoreConfigu
 	public final FixedWidthEntityConfiguration newEntityConfiguration() {
 		return new FixedWidthEntityConfiguration();
 	}
+
+	@Override
+	protected String getDefaultFileExtension() {
+		return "txt";
+	}
 }

@@ -33,4 +33,9 @@ public final class TsvDataStoreConfiguration extends TextDataStoreConfiguration<
 	public final TsvEntityConfiguration newEntityConfiguration() {
 		return new TsvEntityConfiguration();
 	}
+	
+	@Override
+	protected String getDefaultFileExtension() {
+		return "tsv";
+	}
 }

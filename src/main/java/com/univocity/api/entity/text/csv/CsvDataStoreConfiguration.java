@@ -33,4 +33,9 @@ public final class CsvDataStoreConfiguration extends TextDataStoreConfiguration<
 	public final CsvEntityConfiguration newEntityConfiguration() {
 		return new CsvEntityConfiguration();
 	}
+
+	@Override
+	protected String getDefaultFileExtension() {
+		return "csv";
+	}
 }
