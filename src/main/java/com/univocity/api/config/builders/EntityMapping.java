@@ -5,6 +5,8 @@
  ******************************************************************************/
 package com.univocity.api.config.builders;
 
+import java.util.*;
+
 import com.univocity.api.engine.*;
 import com.univocity.api.entity.*;
 import com.univocity.api.entity.custom.*;
@@ -309,5 +311,13 @@ public interface EntityMapping {
 	public DependentEntityMappingConfig include(String queryName);
 
 	public DependentEntityMappingConfig join(String queryName);
+	
+	public Set<String> getUnmappedSourceFields();
+	
+	public Set<String> getUnmappedDestinationFields();
+	
+	public Set<String> getMappedSourceFields();
+	
+	public Set<String> getMappedDestinationFields();
 
 }
