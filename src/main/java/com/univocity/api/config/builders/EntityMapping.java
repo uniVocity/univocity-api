@@ -311,13 +311,18 @@ public interface EntityMapping {
 	public DependentEntityMappingConfig include(String queryName);
 
 	public DependentEntityMappingConfig join(String queryName);
-	
+
 	public Set<String> getUnmappedSourceFields();
-	
+
 	public Set<String> getUnmappedDestinationFields();
-	
+
 	public Set<String> getMappedSourceFields();
-	
+
 	public Set<String> getMappedDestinationFields();
 
+	public String getSourceEntityName();
+
+	public String getDestinationEntityName();
+	
+	public ReplaceValues replaceValues();
 }

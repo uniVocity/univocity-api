@@ -7,7 +7,8 @@ package com.univocity.api.config.builders;
 
 /**
  * The <code>UnmatchedReference</code> configuration is obtained from a {@link ReferenceTransform} configuration
- * which is part of the configuration initialized by a call to {@link ReferenceMappingSetup#using(String...)}
+ * which is part of the configuration initialized by a call to {@link ReferenceMappingSetup#using(String...)}, 
+ * or a {@link ReplaceValues} configuration from {@link EntityMapping#replaceValues()}
  *
  * <p>It is used as an access point for further configuration options that define how to handle references that could not be matched.
  *
