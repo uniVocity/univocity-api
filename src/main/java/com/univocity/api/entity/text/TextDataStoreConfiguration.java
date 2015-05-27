@@ -22,6 +22,7 @@ import com.univocity.api.entity.custom.*;
  */
 public abstract class TextDataStoreConfiguration<T extends TextEntityConfiguration<?>> extends DataStoreConfiguration {
 
+	private final Set<String> entitiesToIgnore = new HashSet<String>();
 	private final Set<FileProvider> fileDirectories = new HashSet<FileProvider>();
 	private final Map<String, ReaderProvider> entityReaders = new TreeMap<String, ReaderProvider>();
 	private final Map<String, WriterProvider> entityWriters = new TreeMap<String, WriterProvider>();
@@ -109,6 +110,12 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 */
 	public final void addEntitiesFromDirectory(String directoryPath, String encoding) {
 		fileDirectories.add(new FileProvider(directoryPath, encoding));
+	}
+
+	public final void removeEntities(String... entityNames) {
+		for (String entityName : entityNames) {
+			entitiesToIgnore.add(entityName);
+		}
 	}
 
 	/**
@@ -352,6 +359,10 @@ public abstract class TextDataStoreConfiguration<T extends TextEntityConfigurati
 	 */
 	final Set<FileProvider> getFileDirectories() {
 		return Collections.unmodifiableSet(fileDirectories);
+	}
+
+	final Set<String> getEntitiesToIgnore() {
+		return Collections.unmodifiableSet(entitiesToIgnore);
 	}
 
 	/**
