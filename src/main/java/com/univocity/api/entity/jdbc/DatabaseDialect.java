@@ -42,6 +42,9 @@ public enum DatabaseDialect {
 	/** Derby 10.7 dialect */
 	Derby_10_7,
 
+	/** EnterpriseDB dialect (same as PostgresPlus) */
+	EnterpriseDB,
+	
 	/** Firebird dialect */
 	Firebird,
 
