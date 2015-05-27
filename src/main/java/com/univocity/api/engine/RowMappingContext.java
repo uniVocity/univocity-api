@@ -119,4 +119,15 @@ public interface RowMappingContext extends EntityMappingContext, EngineExecution
 	 */
 	public <T> T getOutputValue(String fieldName, Class<T> fieldType);
 
+	/**
+	 * Prints the input row data displaying fields names and the values associated to them 
+	 * @return a String with input row data
+	 */
+	public String printInputRow();
+
+	/**
+	 * Prints the output row data displaying fields names and the values associated to them 
+	 * @return a String with output row data 
+	 */
+	public String printOutputRow();
 }

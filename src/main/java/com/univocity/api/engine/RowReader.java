@@ -100,6 +100,6 @@ public abstract class RowReader {
 	 * @param context the contextual information and controls available to the user after the execution of a data mapping process.
 	 * </ul>
 	 */
-	public void error(Map<String, ErrorType> errors, Object[] inputRow, Object[] outputRow, RowMappingContext context) {
+	public void handleError(Map<String, ErrorType> errors, Object[] inputRow, Object[] outputRow, RowMappingContext context) {
 	};
 }
