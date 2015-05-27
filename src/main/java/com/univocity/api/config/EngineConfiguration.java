@@ -54,6 +54,16 @@ public class EngineConfiguration {
 	}
 
 	/**
+	 * Creates a new engine configuration with the essential configuration required by uniVocity for enabling the definition and execution of data mappings.
+	 * A name for this engine will be generated automatically. To explicitly name your engine use {@link #EngineConfiguration(String, DataStoreConfiguration...)}
+	 * @param dataStores optional parameter for the configurations of data stores that will have their entities mapped through this engine.
+	 * More dataStores can be added later using {@link #addDataStoreConfigurations(DataStoreConfiguration...)}
+	 */
+	public EngineConfiguration(DataStoreConfiguration... dataStores) {
+		this("uniVocity_engine#" + UUID.randomUUID().toString(), dataStores);
+	}
+
+	/**
 	 * Defines the database settings required by uniVocity to persist its metadata.
 	 * <p>If set to {@code null}, uniVocity will create an internal in-memory database for metadata handling while this engine is active.
 	 * @param metadataSettings the database settings required for accessing and persisting metadata produced by this engine.

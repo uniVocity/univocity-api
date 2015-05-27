@@ -43,4 +43,13 @@ public interface DataIntegrationEngineFactory {
 	 * @return true if the {@link DataIntegrationEngine} associated with the given engine name is active, false otherwise
 	 */
 	public boolean isActive(String engineName);
+	
+	/**
+	 * Queries whether a data integration engine with the given name has been registered
+	 * <p>A registered engine is one that has been registered via {@link Univocity#registerEngine(com.univocity.api.config.EngineConfiguration)} .
+	 *
+	 * @param engineName the name of the engine to be verified.
+	 * @return true if a {@link DataIntegrationEngine} associated with the given engine name exists, false otherwise
+	 */
+	public boolean isRegistered(String engineName);
 }

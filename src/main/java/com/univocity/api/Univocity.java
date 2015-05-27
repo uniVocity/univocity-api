@@ -141,6 +141,24 @@ public final class Univocity {
 	}
 
 	/**
+	 * Registers a uniVocity engine configuration, initializes and returns the {@link DataIntegrationEngine}.
+	 * This has the same effect as invoking  {@link #registerEngine(EngineConfiguration)} and {@link #getEngine(String)}
+	 * 
+	 * If the engine has been shut down, it will be started again.
+	 *  
+	 * @param engineConfiguration the configuration of a new data integration engine
+	 * @return the {@link DataIntegrationEngine} created with the given configuration.
+	 */
+	public static final synchronized DataIntegrationEngine getEngine(EngineConfiguration engineConfiguration) {
+		String engineName = engineConfiguration.getEngineName();
+		if(!engineFactory().isRegistered(engineName)){
+			registerEngine(engineConfiguration);
+		}
+		
+		return getEngine(engineName);
+	}
+
+	/**
 	 * Obtains the {@link DataIntegrationEngine} instance which was configured using {@link Univocity#registerEngine(com.univocity.api.config.EngineConfiguration)}.
 	 * @param engineName the name of the data integration engine
 	 * @return the {@link DataIntegrationEngine} associated with the given engine name

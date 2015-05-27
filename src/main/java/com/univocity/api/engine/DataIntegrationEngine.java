@@ -13,6 +13,7 @@ import com.univocity.api.config.annotation.*;
 import com.univocity.api.config.builders.*;
 import com.univocity.api.data.*;
 import com.univocity.api.entity.*;
+import com.univocity.api.entity.custom.*;
 
 /**
  * The <code>DataIntegrationEngine</code> is the central component of uniVocity. With it you can define data mappings between entities of different data stores,
@@ -59,6 +60,8 @@ public interface DataIntegrationEngine {
 	 * @return a new {@link DataStoreMapping} instance.
 	 */
 	public DataStoreMapping map(String sourceDataStore, String destinationDataStore);
+	
+	public DataStoreMapping map(DataStoreConfiguration sourceDataStore, DataStoreConfiguration destinationDataStore);
 
 	/**
 	 * Obtains the mapping configuration object between entities of two data stores.
@@ -68,6 +71,8 @@ public interface DataIntegrationEngine {
 	 * @return the existing {@link DataStoreMapping} instance associated with the given data store names, or {@code null} if no such mapping between them exists.
 	 */
 	public DataStoreMapping getMapping(String sourceDataStore, String destinationDataStore);
+	
+	public DataStoreMapping getMapping(DataStoreConfiguration sourceDataStore, DataStoreConfiguration destinationDataStore);
 
 	/**
 	 * Removes the mapping between two data stores. All configuration settings defined in the underlying {@link DataStoreMapping} will be lost.
@@ -75,6 +80,8 @@ public interface DataIntegrationEngine {
 	 * @param destinationDataStore the name of the destination data store. Source and destination data stores can be the same.
 	 */
 	public void removeMapping(String sourceDataStore, String destinationDataStore);
+	
+	public void removeMapping(DataStoreConfiguration sourceDataStore, DataStoreConfiguration destinationDataStore);
 
 	/**
 	 * Adds a callback object that intercepts life cycle events produced within this engine.
@@ -424,5 +431,7 @@ public interface DataIntegrationEngine {
 	public Set<String> getEntityNames();
 
 	public Set<String> getEntityNamesOf(String dataStoreName);
+	
+	public void shutdown();
 
 }
