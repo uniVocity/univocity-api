@@ -6,6 +6,7 @@
 package com.univocity.api.config.builders;
 
 import com.univocity.api.engine.*;
+import com.univocity.api.entity.custom.*;
 
 /**
  * The <code>QuerySetup</code> provides builder-style configuration options for setting up a query that will be used as a function of a {@link DataIntegrationEngine}.
@@ -24,4 +25,11 @@ public interface QuerySetup {
 	 * @return the next step of this configuration: defining the query to be executed.
 	 */
 	public QueryDefinition onDataStore(String dataStoreName);
+	
+	/**
+	 * Determines which data store will execute the query being built.
+	 * @param dataStore the configuration object of the data store that will execute the query whenever it is invoked.
+	 * @return the next step of this configuration: defining the query to be executed.
+	 */
+	public QueryDefinition onDataStore(DataStoreConfiguration dataStore);
 }
