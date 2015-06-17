@@ -96,6 +96,33 @@ public interface DatasetFactory {
 	public <K> ModifiableDataset newDataset(Map<K, Object[]> map, String[] identifiers, String[] fieldNames, FunctionCall<K, Object[]> keyBuilder);
 
 	/**
+	 * Creates a new modifiable dataset, backed by a map.
+	 * <br>The values in the identifier columns will be submitted to the {@link FunctionCall} to be converted into a key to be used in the map.
+	 * <p><i><b>Note </b> new records with duplicate identifier values will replace existing records.</i>
+	 *
+	 * @param <K> the key type
+	 * @param map the map used to hold all records of the data set.
+	 * @param identifiers the field names used to compose the identifier.
+	 * @param fieldName field name of each value associated with an identifier of this data set.
+	 * @param keyBuilder the function that iterates over identifier values to produce keys for the given map.
+	 * @return a new modifiable dataset.
+	 */
+	public <K> ModifiableDataset newDataset(Map<K, Object> map, String[] identifiers, String fieldName, FunctionCall<K, Object[]> keyBuilder);
+
+	/**
+	 * Creates a new modifiable dataset, backed by a map.
+	 * <br>The values in the identifier columns will be concatenated into Strings which will be used as the keys in the map.
+	 * <p><i><b>Note </b> new records with duplicate identifier values will replace existing records.</i>
+	 *
+	 * @param <K> the key type
+	 * @param map the map used to hold all records of the data set.
+	 * @param identifiers the field names used to compose the identifier.
+	 * @param fieldName field name of each value associated with an identifier of this data set.
+	 * @return a new modifiable dataset.
+	 */
+	public <K> ModifiableDataset newDataset(Map<String, Object> map, String[] identifiers, String fieldName);
+
+	/**
 	 * Creates dummy dataset that does not store nor retrieve any data.
 	 *
 	 * @param identifier the name of the field used as an identifier among the fields in this dataset
