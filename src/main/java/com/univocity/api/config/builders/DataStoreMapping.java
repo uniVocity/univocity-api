@@ -122,7 +122,71 @@ public interface DataStoreMapping {
 	 *
 	 */
 	public void autodetectMappings(boolean createDestinationEntities, NameMatcher entityNameMatcher, NameMatcher fieldNameMatcher);
+	
+	/**
+	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.
+	 *
+	 * <p>A {@link NameMatcher} will be used to match names of entities and create a mapping between them. If an {@link EntityMapping} is created for
+	 * matching entities, then another {@link NameMatcher} will be executed to match the names of each field in both entities.
+	 * If the field in either source or destination is an identifier, the mapping will be created using {@link IdentifierMappingSetup}, otherwise a
+	 * regular field copy will be created using {@link FieldMappingSetup}.
+	 *
+	 *  @param createDestinationEntities flag indicating whether "clones" of the source entities should be created in the destination data store. Some data stores
+	 *  support dynamic creation of entities, such as uniVocity-provided CSV, TSV and Fixed-Width data stores (but only when an output directory is defined:
+	 *  see {@link TextDataStoreConfiguration#setOutputDirectory(java.io.File)}). New entities will be created with the exact same name of the source entity,
+	 *  and with the same fields.
+	 *  @param entityNames The names of the entities to map automatically. If empty, all entities in the source data store will be used.
+	 *
+	 */
+	public void autodetectMappings(boolean createDestinationEntities, String ... entityNames);
+	
+	
+	/**
+	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.
+	 *
+	 * <p>A {@link NameMatcher} will be used to match names of entities and create a mapping between them. If an {@link EntityMapping} is created for
+	 * matching entities, then another {@link NameMatcher} will be executed to match the names of each field in both entities.
+	 * If the field in either source or destination is an identifier, the mapping will be created using {@link IdentifierMappingSetup}, otherwise a
+	 * regular field copy will be created using {@link FieldMappingSetup}.
+	 *
+	 *  @param createDestinationEntities flag indicating whether "clones" of the source entities should be created in the destination data store. Some data stores
+	 *  support dynamic creation of entities, such as uniVocity-provided CSV, TSV and Fixed-Width data stores (but only when an output directory is defined:
+	 *  see {@link TextDataStoreConfiguration#setOutputDirectory(java.io.File)}). New entities will be created with the exact same name of the source entity,
+	 *  and with the same fields.
+	 *  @param fieldNameMatcher a matcher for field names. If {@code null}, the default matching algorithm will be used.
+	 *  @param entityNames The names of the entities to map automatically. If empty, all entities in the source data store will be used.
+	 *
+	 */
+	public void autodetectMappings(boolean createDestinationEntities, NameMatcher fieldNameMatcher, String ... entityNames);
 
+	/**
+	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.
+	 *
+	 * <p>A {@link NameMatcher} will be used to match names of entities and create a mapping between them. If an {@link EntityMapping} is created for
+	 * matching entities, then another {@link NameMatcher} will be executed to match the names of each field in both entities.
+	 * If the field in either source or destination is an identifier, the mapping will be created using {@link IdentifierMappingSetup}, otherwise a
+	 * regular field copy will be created using {@link FieldMappingSetup}.
+	 *
+	 *  @param entityNames The names of the entities to map automatically. If empty, all available entities will be mapped.
+	 *
+	 */
+	public void autodetectMappings(String ... entityNames);
+	
+	
+	/**
+	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.
+	 *
+	 * <p>A {@link NameMatcher} will be used to match names of entities and create a mapping between them. If an {@link EntityMapping} is created for
+	 * matching entities, then another {@link NameMatcher} will be executed to match the names of each field in both entities.
+	 * If the field in either source or destination is an identifier, the mapping will be created using {@link IdentifierMappingSetup}, otherwise a
+	 * regular field copy will be created using {@link FieldMappingSetup}.
+	 *
+	 *  @param fieldNameMatcher a matcher for field names. If {@code null}, the default matching algorithm will be used.
+	 *  @param entityNames The names of the entities to map automatically. If empty, all available entities will be mapped.
+	 *
+	 */
+	public void autodetectMappings(NameMatcher fieldNameMatcher, String ... entityNames);
+	
 	/**
 	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.
 	 *

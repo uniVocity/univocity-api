@@ -325,4 +325,8 @@ public interface EntityMapping {
 	public String getDestinationEntityName();
 	
 	public ReplaceValues replaceValues();
+	
+	public Entity getDestinationEntity();
+	
+	public Entity getSourceEntity();
 }
