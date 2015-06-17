@@ -296,8 +296,10 @@ public interface EntityMapping {
 	 *
 	 * @param functionName the name of the function to associate to fields of the source entity.
 	 * @param sourceFieldNames field names/expressions against which the given function should be applied to.
+	 * 
+	 * @return a Set containing the sourceFieldNames that could not be matched  
 	 */
-	public void transformFields(String functionName, String... sourceFieldNames);
+	public Set<String> transformFields(String functionName, String... sourceFieldNames);
 
 	/**
 	 * Associates a function to a given list of source field names or expressions. When reading from the source entity, the function will be executed and its result

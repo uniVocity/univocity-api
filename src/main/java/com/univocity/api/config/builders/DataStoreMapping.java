@@ -7,6 +7,7 @@ package com.univocity.api.config.builders;
 
 import java.util.*;
 
+import com.univocity.api.data.*;
 import com.univocity.api.engine.*;
 import com.univocity.api.entity.custom.*;
 import com.univocity.api.entity.text.*;
@@ -289,4 +290,8 @@ public interface DataStoreMapping {
 	public void addPersistedRowReaders(String readerName, String... entityNames);
 
 	public List<EntityMapping> getMappings();
+	
+	public EntityMapping mapToDataset(String sourceDataEntity, Dataset destinationDataset);
+	
+	public EntityMapping mapToDataset(String sourceDataEntity, String destinationDatasetName, Dataset destinationDataset);
 }
