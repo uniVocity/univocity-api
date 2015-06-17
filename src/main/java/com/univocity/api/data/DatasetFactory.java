@@ -130,7 +130,7 @@ public interface DatasetFactory {
 	 * @param fieldName field name of each value associated with an identifier of this data set.
 	 * @return a new modifiable dataset.
 	 */
-	public ModifiableDataset newCompositeDataset(Map<Object, Map<Object, ?>> map, String[] identifiers, String fieldName);
+	public ModifiableDataset newCompositeDataset(Map<Object, Map<Object, Object>> map, String[] identifiers, String fieldName);
 
 	/**
 	 * Creates dummy dataset that does not store nor retrieve any data.
