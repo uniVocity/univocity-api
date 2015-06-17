@@ -61,6 +61,10 @@ public interface DataIntegrationEngine {
 	 */
 	public DataStoreMapping map(String sourceDataStore, String destinationDataStore);
 	
+	public EntityMapping mapToDataset(String sourceDataStore, String sourceDataEntity, Dataset destinationDataset);
+	
+	public EntityMapping mapToDataset(String sourceDataStore, String sourceDataEntity, String destinationDatasetName, Dataset destinationDataset);
+	
 	public DataStoreMapping map(DataStoreConfiguration sourceDataStore, DataStoreConfiguration destinationDataStore);
 
 	/**
