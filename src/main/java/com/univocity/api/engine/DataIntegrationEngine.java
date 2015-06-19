@@ -196,6 +196,9 @@ public interface DataIntegrationEngine {
 	 */
 	public QuerySetup addQuery(EngineScope scope, String queryName);
 
+	public boolean isQueryRegistered(String queryName);
+
+
 	/**
 	 * Sets or adds then initializes a variable in the current scope. To read the value of a variable in expressions, prepend it with $.
 	 * For example: <code>"$en_US"</code> reads the value of the variable "en_US".

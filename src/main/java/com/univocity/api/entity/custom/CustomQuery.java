@@ -47,4 +47,5 @@ public interface CustomQuery extends CustomReadableEntity {
 	 * @param parameterValue the value associated with the given parameter.
 	 */
 	public void setParameter(String parameterName, Object parameterValue);
+
 }
