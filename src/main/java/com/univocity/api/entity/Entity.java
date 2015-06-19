@@ -28,6 +28,8 @@ public interface Entity extends Comparable<Entity> {
 	DefaultEntityField getField(FieldIdentifier name);
 
 	List<DefaultEntityField> getFields(String... names);
+
+	List<DefaultEntityField> getFields(Collection<String> names);
 	
 	List<DefaultEntityField> getFields();
 
