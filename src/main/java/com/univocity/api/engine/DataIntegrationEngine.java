@@ -241,6 +241,8 @@ public interface DataIntegrationEngine {
 	 */
 	public Object readVariable(String name);
 
+	public <T> T readVariable(String name, Class<T> variableType);
+
 	/**
 	 * Creates new functions based on the methods annotated with {@link FunctionWrapper}. Object instances provided by the user are required,
 	 * as the object might have an internal state that should be updated with each function call.

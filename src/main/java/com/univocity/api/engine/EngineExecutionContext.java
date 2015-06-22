@@ -49,6 +49,8 @@ public interface EngineExecutionContext {
 	 */
 	public Object evaluateExpression(String expression);
 
+	public <T> T evaluateExpression(String expression, Class<T> resultType);
+
 	/**
 	 * Sets the value of a variable in the current scope.
 	 * @param variableName the name of the variable to be set.
@@ -62,6 +64,8 @@ public interface EngineExecutionContext {
 	 * @return the value of the given variable.
 	 */
 	public Object readVariable(String variableName);
+
+	public <T> T readVariable(String variableName, Class<T> variableType);
 
 	/**
 	 * Queries the current scope for the existence of a variable
@@ -79,6 +83,8 @@ public interface EngineExecutionContext {
 	 * In this case the function will only be invoked if there is no previous result cached on its scope.
 	 */
 	public Object executeFunction(String functionName, Object... args);
+
+	public <T> T executeFunction(String functionName, Class<T> resultType, Object... args);
 
 	/**
 	 * Returns the current active scope in the {@link DataIntegrationEngine}
