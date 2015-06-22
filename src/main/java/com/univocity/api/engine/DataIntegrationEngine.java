@@ -196,7 +196,7 @@ public interface DataIntegrationEngine {
 	 */
 	public QuerySetup addQuery(EngineScope scope, String queryName);
 
-	public boolean isQueryRegistered(String queryName);
+	public boolean isFunctionRegistered(String queryName);
 
 
 	/**

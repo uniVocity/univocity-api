@@ -294,4 +294,6 @@ public interface DataStoreMapping {
 	public EntityMapping mapToDataset(String sourceDataEntity, Dataset destinationDataset);
 	
 	public EntityMapping mapToDataset(String sourceDataEntity, String destinationDatasetName, Dataset destinationDataset);
+
+
 }
