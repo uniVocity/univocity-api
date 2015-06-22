@@ -452,4 +452,8 @@ public interface DataIntegrationEngine {
 	
 	public void shutdown();
 
+	public List<DataStoreMapping> getDataStoreMappings();
+
+	public List<EntityMapping> getEntityMappings();
+
 }
