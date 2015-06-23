@@ -60,6 +60,8 @@ public interface RowMappingContext extends EntityMappingContext, EngineExecution
 	 */
 	public int getCurrentRow();
 
+	public boolean containsInputField(String name);
+
 	/**
 	 * Returns the sequence of fields read from the input data entity.
 	 * @return the sequence of fields read from the input data entity.
@@ -71,6 +73,8 @@ public interface RowMappingContext extends EntityMappingContext, EngineExecution
 	 * @return the sequence of fields read from the output data entity.
 	 */
 	public String[] getOutputFields();
+
+	public boolean containsOutputField(String name);
 
 	/**
 	 * Returns the value of a given field in the current input row.

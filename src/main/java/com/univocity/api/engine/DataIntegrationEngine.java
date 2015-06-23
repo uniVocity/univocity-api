@@ -198,6 +198,7 @@ public interface DataIntegrationEngine {
 
 	public boolean isFunctionRegistered(String queryName);
 
+	public boolean isRowReaderRegistered(String rowReaderName);
 
 	/**
 	 * Sets or adds then initializes a variable in the current scope. To read the value of a variable in expressions, prepend it with $.
