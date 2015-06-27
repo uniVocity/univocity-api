@@ -36,7 +36,7 @@ public interface CustomReadableEntity {
 	 * @param fieldNames the fields selected by uniVocity that identify what values to extract from each record in the {@link ReadingProcess}.
 	 * @return a {@link ReadingProcess} object is responsible for reading values for the selected fields in each record contained by this entity.
 	 */
-	public ReadingProcess preareToRead(String[] fieldNames);
+	public ReadingProcess prepareToRead(String[] fieldNames);
 
 	/**
 	 * Informs uniVocity of what fields are available from this data entity.

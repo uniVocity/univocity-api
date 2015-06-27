@@ -16,7 +16,7 @@ import com.univocity.api.config.builders.*;
  * <br>Implementations of CustomQuery provide a query-like behavior:
  * <ul>
  * 	<li>First, parameters are set by uniVocity using {@link #setParameter(String, Object)}</li>
- *  <li>Then, {@link #preareToRead(String[])} is invoked, producing a {@link ReadingProcess} that extracts data from this CustomQuery instance.
+ *  <li>Then, {@link #prepareToRead(String[])} is invoked, producing a {@link ReadingProcess} that extracts data from this CustomQuery instance.
  *  	The result can be influenced by the parameter values provided, but this is implementation dependent.
  *  </li>
  * </ul>
