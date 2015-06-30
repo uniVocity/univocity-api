@@ -6,6 +6,7 @@
 package com.univocity.api.engine;
 
 import com.univocity.api.config.builders.*;
+import com.univocity.api.entity.*;
 
 /**
  * The <code>RowMappingContext</code> is available to {@link RowReader} instances used during the execution of a data mapping between two entities.
@@ -134,4 +135,71 @@ public interface RowMappingContext extends EntityMappingContext, EngineExecution
 	 * @return a String with output row data 
 	 */
 	public String printOutputRow();
+
+	/**
+	 * Returns the position of a field in the input row.
+	 * @param fieldName the name of a field in the input row.
+	 * @return the position of the given field name in the input row.
+	 */
+	public int getInputIndex(FieldIdentifier fieldName);
+
+	/**
+	 * Returns the position of a field in the output row (if available).
+	 * @param fieldName the name of a field in the output row.
+	 * @return the position of the given field name in the output row.
+	 */
+	public int getOutputIndex(FieldIdentifier fieldName);
+
+
+	public boolean containsInputField(FieldIdentifier name);
+
+
+	public boolean containsOutputField(FieldIdentifier name);
+
+	/**
+	 * Returns the value of a given field in the current input row.
+	 * @param fieldName name of the input field whose value will be returned.
+	 * @return the value of the field in the current input row.
+	 */
+	public Object getInputValue(FieldIdentifier fieldName);
+
+	/**
+	 * Returns the value of a given field in the current output row.
+	 * @param fieldName name of the output field whose value will be returned.
+	 * @return the value of the field in the current output row.
+	 */
+	public Object getOutputValue(FieldIdentifier fieldName);
+
+	/**
+	 * Modifies the value of a given field in the current input row.
+	 * @param fieldName name of the input field whose value will be modified.
+	 * @param value the new value of the field in the current input row.
+	 */
+	public void setInputValue(FieldIdentifier fieldName, Object value);
+
+	/**
+	 * Modifies the value of a given field in the current output row.
+	 * @param fieldName name of the output field whose value will be modified.
+	 * @param value the new value of the field in the current output row.
+	 */
+	public void setOutputValue(FieldIdentifier fieldName, Object value);
+
+	/**
+	 * Returns the value of a given field in the current input row.
+	 * @param <T> fieldType the type of the value stored in the input field
+	 * @param fieldName name of the input field whose value will be returned.
+	 * @param fieldType the class of the value stored in the input field
+	 * @return the value of the field in the current input row.
+	 *
+	 */
+	public <T> T getInputValue(FieldIdentifier fieldName, Class<T> fieldType);
+
+	/**
+	 * Returns the value of a given field in the current output row.
+	 * @param <T> fieldType the type of the value stored in the output field
+	 * @param fieldName name of the output field whose value will be returned.
+	 * @param fieldType the class of the value stored in the output field
+	 * @return the value of the field in the current output row.
+	 */
+	public <T> T getOutputValue(FieldIdentifier fieldName, Class<T> fieldType);
 }
