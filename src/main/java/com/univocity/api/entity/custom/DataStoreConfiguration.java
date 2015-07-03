@@ -23,6 +23,9 @@ import com.univocity.api.engine.*;
  */
 public abstract class DataStoreConfiguration {
 
+	private Boolean identifiersAreUpperCase = null;
+	private Boolean identifiersAreLowerCase = null;
+
 	private final String dataStoreName;
 	private final Set<String> databaseWrappedEntities = new TreeSet<String>();
 
@@ -90,4 +93,30 @@ public abstract class DataStoreConfiguration {
 	 * @return the maximum number of rows kept in memory at any given time when reading values from any entity or query of this data store.
 	 */
 	public abstract int getLimitOfRowsLoadedInMemory();
+
+	public void setIdentifiersAreUpperCase(boolean identifiersAreUpperCase){
+		this.identifiersAreUpperCase = identifiersAreUpperCase;
+	}
+
+	public void setIdentifiersAreLowerCase(boolean identifiersAreLowerCase){
+		this.identifiersAreLowerCase = identifiersAreLowerCase;
+	}
+
+	public final boolean identifiersAreUpperCase(){
+		if(identifiersAreUpperCase == null){
+			return false;
+		}
+		return identifiersAreUpperCase;
+	}
+
+	public final boolean identifiersAreLowerCase(){
+		if(identifiersAreLowerCase == null){
+			return false;
+		}
+		return identifiersAreLowerCase;
+	}
+
+	public boolean identifierCaseConfigured(){
+		return identifiersAreLowerCase != null || identifiersAreUpperCase != null;
+	}
 }
