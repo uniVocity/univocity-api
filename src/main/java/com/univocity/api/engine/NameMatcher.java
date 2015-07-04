@@ -12,8 +12,8 @@ import com.univocity.api.config.builders.*;
  *
  * By default, {@link DataStoreMapping#autodetectMappings()} and {@link EntityMapping#autodetectMappings()} will automatically
  * create associations between entities and their fields based on their names.
- * Entities with similar names will be automatically associated. Underscores and spaces are ignored, for example: <code>entity1</code> will
- * be associated with <code>ENTITY 1</code> or <code>ENTITY_1</code>
+ * Entities with similar names will be automatically associated. The identifier case will be ignored. For example: <code>identifier1</code> will
+ * be associated with <code>IDENTIFIER1</code> or even <code>IdEnTiFiEr1</code>.
  *
  * <p>To override this behavior and provide a custom auto detection mechanism,
  * {@link DataStoreMapping#autodetectMappings(NameMatcher, NameMatcher)} and {@link EntityMapping#autodetectMappings(NameMatcher)}

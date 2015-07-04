@@ -80,8 +80,8 @@ public interface DataStoreMapping {
 	/**
 	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.
 	 *
-	 * <p>Entities and fields with similar names will be automatically associated. Underscores and spaces are ignored, for example: <code>entity1</code> will
-	 * be associated with <code>ENTITY 1</code> or <code>ENTITY_1</code>. When mapping fields, if the field in either source or destination is an identifier,
+	 * <p>Entities and fields with similar names will be automatically associated. The identifier case will be ignored. For example: <code>entity1</code> will
+	 * be associated with <code>ENTITY1</code> or even <code>EnTiTy1</code>. When mapping fields, if the field in either source or destination is an identifier,
 	 * the mapping will be created using {@link IdentifierMappingSetup}, otherwise a regular field copy will be created using {@link FieldMappingSetup}.
 	 *
 	 * <p><b>Important: </b> You may want to define the correct sequence of mappings to be
@@ -92,8 +92,8 @@ public interface DataStoreMapping {
 	/**
 	 * Executes a process for automatic detection of mappings based on entity names and their fields. Entities that are already mapped will not be used in the process.
 	 *
-	 * <p>Entities and fields with similar names will be automatically associated. Underscores and spaces are ignored, for example: <code>entity1</code> will
-	 * be associated with <code>ENTITY 1</code> or <code>ENTITY_1</code>. When mapping fields, if the field in either source or destination is an identifier,
+	 * <p>Entities and fields with similar names will be automatically associated. The identifier case will be ignored. For example: <code>entity1</code> will
+	 * be associated with <code>ENTITY1</code> or even <code>EnTiTy1</code>. When mapping fields, if the field in either source or destination is an identifier,
 	 * the mapping will be created using {@link IdentifierMappingSetup}, otherwise a regular field copy will be created using {@link FieldMappingSetup}.
 	 *
 	 * <p><b>Important: </b> You may want to define the correct sequence of mappings to be

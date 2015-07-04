@@ -176,8 +176,8 @@ public interface EntityMapping {
 	 * Executes a process for automatic detection of mappings based on the field names of the mapped entities.
 	 * Fields that are already mapped will not be used in the process.
 	 *
-	 * <p>Fields with similar names will be automatically associated. Underscores and spaces are ignored, for example: <code>field1</code> will
-	 * be associated with <code>FIELD 1</code> or <code>FIELD_1</code>.
+	 * <p>Fields with similar names will be automatically associated. The identifier case will be ignored. For example: <code>field1</code> will
+	 * be associated with <code>FIELD1</code> or even <code>FiElD1</code>.
 	 * If the field in either source or destination is an identifier, the mapping will be created using {@link IdentifierMappingSetup},
 	 * otherwise a regular field copy will be created using {@link FieldMappingSetup}.
 	 */
