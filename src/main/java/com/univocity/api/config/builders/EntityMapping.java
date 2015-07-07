@@ -331,4 +331,6 @@ public interface EntityMapping {
 	public Entity getDestinationEntity();
 	
 	public Entity getSourceEntity();
+
+	public Map<String[], String[]> getMappings();
 }

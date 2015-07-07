@@ -19,6 +19,10 @@ import com.univocity.api.entity.custom.*;
  */
 public interface Entity extends Comparable<Entity> {
 
+	public boolean containsField(String name);
+
+	public boolean containsField(FieldIdentifier name);
+
 	Set<String> getFieldNames();
 
 	Set<String> getIdentifierFieldNames();
