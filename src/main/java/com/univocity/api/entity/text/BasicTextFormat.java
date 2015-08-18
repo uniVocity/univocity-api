@@ -31,6 +31,7 @@ import com.univocity.api.entity.*;
  *		</ul>
  *  	<p><i>{@link #normalizedNewline} defaults to '\n'.</i>
  *  </li>
+ *  </ul>
  *
  * @see com.univocity.api.entity.text.TextFormat
  *

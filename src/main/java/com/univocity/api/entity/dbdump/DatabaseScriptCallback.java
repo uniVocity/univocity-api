@@ -14,7 +14,7 @@ package com.univocity.api.entity.dbdump;
  *
  * @see DumpDataStoreConfiguration
  *
- * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com
+ * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
 public abstract class DatabaseScriptCallback {

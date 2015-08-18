@@ -96,9 +96,8 @@ public abstract class RowReader {
 	 * @param errors a map with each field containing errors, associated to the type of error identified by uniVocity while processing the input/output row.
 	 * @param inputRow the original data in a record read from the input data entity
 	 * @param outputRow the transformed data. It will contain all values transformed from the input, with values for references fully populated and
-	 *  	  ready to be written to the destination entity.</li>
+	 *  	  ready to be written to the destination entity.
 	 * @param context the contextual information and controls available to the user after the execution of a data mapping process.
-	 * </ul>
 	 */
 	public void handleError(Map<String, ErrorType> errors, Object[] inputRow, Object[] outputRow, RowMappingContext context) {
 	};

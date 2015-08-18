@@ -24,7 +24,7 @@ import com.univocity.api.entity.jdbc.*;
  * @see DumpLoadConfiguration
  * @see JdbcDataStoreConfiguration
  *
- * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com
+ * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
 public final class MySqlDumpDataStoreConfiguration extends DumpDataStoreConfiguration<MySqlDumpFormat> {
