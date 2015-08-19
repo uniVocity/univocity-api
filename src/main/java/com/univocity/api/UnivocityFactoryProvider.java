@@ -21,12 +21,18 @@ public interface UnivocityFactoryProvider {
 	 * Returns a {@link DatasetFactory} provided by uniVocity.
 	 * @return a {@link DatasetFactory}
 	 */
-	public DatasetFactory getDatasetFactory();
+	DatasetFactory getDatasetFactory();
 
 	/**
 	 * Returns a {@link DataIntegrationEngineFactory} provided by uniVocity.
 	 * @return a {@link DataIntegrationEngineFactory}
 	 */
-	public DataIntegrationEngineFactory getDataIntegrationEngineFactory();
+	DataIntegrationEngineFactory getDataIntegrationEngineFactory();
 
+
+	/**
+	 * Returns a object configuration builder implementation provided by uniVocity.
+	 * @return a builder implementation provided by uniVocity.
+	 */
+	<T> T newBuilder(Class<T> builderType);
 }

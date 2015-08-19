@@ -93,7 +93,7 @@ public final class Univocity {
 		licensePath = path;
 	}
 
-	private static final synchronized UnivocityFactoryProvider provider() {
+	public static final synchronized UnivocityFactoryProvider provider() {
 		if (provider == null) {
 			provider = loadProvider();
 		}
