@@ -10,7 +10,7 @@ public class HtmlEntityConfiguration extends Configuration {
 
 	private final String entityName;
 
-	final Map<String, HtmlPath> fields = new LinkedHashMap<String, HtmlPath>();
+	final Map<String, List<HtmlPath>> fields = new LinkedHashMap<String, List<HtmlPath>>();
 
 	HtmlEntityConfiguration() {
 		this.entityName = null;
@@ -25,14 +25,19 @@ public class HtmlEntityConfiguration extends Configuration {
 	}
 
 	public HtmlPathStart addField(String fieldName){
-		if(fields.keySet().contains(fieldName)){
-			throw new IllegalArgumentException("Field cannot add duplicate field name to HTML entity " + entityName);
-		}
 		HtmlPath pathBuilder = Univocity.provider().newBuilder(HtmlPath.class, this);
-		fields.put(fieldName, pathBuilder);
+		addPathToField(fieldName, pathBuilder);
 		return pathBuilder;
 	}
 
+	void addPathToField(String fieldName, HtmlPath path){
+		List<HtmlPath> paths = fields.get(fieldName);
+		if(paths == null){
+			paths = new ArrayList<HtmlPath>();
+			fields.put(fieldName, paths);
+		}
+		paths.add(path);
+	}
 
 	public PartialHtmlPathStart newPath(){
 		return Univocity.provider().newBuilder(PartialHtmlPathStart.class, this);
