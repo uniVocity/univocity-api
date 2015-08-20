@@ -16,7 +16,5 @@ public interface HtmlContentReader {
 
 	void mapFollowingText();
 
-	void mapAttributes(String fist, String second, String... remaining);
-
 	void getAttribute(String attributeName);
 }

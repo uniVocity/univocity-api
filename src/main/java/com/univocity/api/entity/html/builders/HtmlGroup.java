@@ -5,4 +5,6 @@ public interface HtmlGroup extends BaseHtmlPath<HtmlGroup>, BaseHtmlPathStart<Ht
 	PartialHtmlPath buildPartialPath();
 
 	HtmlPath buildPathToField(String fieldName);
+
+	HtmlGroup setConstantField(String constantFieldName, String constantValue);
 }
