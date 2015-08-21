@@ -6,7 +6,7 @@ import com.univocity.api.entity.html.builders.*;
 
 import java.util.*;
 
-public class HtmlEntityConfiguration extends Configuration {
+public class HtmlEntityConfiguration extends Configuration implements FieldAdder {
 
 	private final String entityName;
 
@@ -25,7 +25,13 @@ public class HtmlEntityConfiguration extends Configuration {
 	}
 
 	public HtmlPathStart addField(String fieldName){
-		HtmlPath pathBuilder = Univocity.provider().newBuilder(HtmlPath.class, this);
+		HtmlPath pathBuilder = Univocity.provider().newBuilder(HtmlPath.class, this, false);
+		addPathToField(fieldName, pathBuilder);
+		return pathBuilder;
+	}
+
+	public HtmlPathStart addPersistentField(String fieldName){
+		HtmlPath pathBuilder = Univocity.provider().newBuilder(HtmlPath.class, this, true);
 		addPathToField(fieldName, pathBuilder);
 		return pathBuilder;
 	}
