@@ -2,19 +2,19 @@ package com.univocity.api.entity.html.builders;
 
 public interface HtmlContentReader {
 
-	void mapHeadingText();
+	void getHeadingText();
 
-	void mapHeadingText(int headingRowIndex);
+	void getHeadingText(int headingRowIndex);
 
-	void mapTextAbove();
+	void getTextAbove();
 
-	void mapTextAbove(int numberOfElementsAbove);
+	void getTextAbove(int numberOfElementsAbove);
 
 	void getText();
 
-	void mapPrecedingText();
+	void getPrecedingText();
 
-	void mapFollowingText();
+	void getFollowingText();
 
 	void getAttribute(String attributeName);
 }
