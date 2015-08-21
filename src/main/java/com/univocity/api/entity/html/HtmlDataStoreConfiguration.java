@@ -16,6 +16,8 @@ public class HtmlDataStoreConfiguration extends DataStoreConfiguration {
 	private final FileProvider inputFile;
 	private final ReaderProvider inputProvider;
 
+	private int limitOfRowsLoadedInMemory = 1000;
+
 	public HtmlDataStoreConfiguration(String dataStoreName, File inputFile) {
 		this(dataStoreName, new FileProvider(inputFile));
 	}
@@ -84,8 +86,12 @@ public class HtmlDataStoreConfiguration extends DataStoreConfiguration {
 		return inputProvider;
 	}
 
+	public void setLimitOfRowsLoadedInMemory(int limitOfRowsLoadedInMemory){
+		limitOfRowsLoadedInMemory = limitOfRowsLoadedInMemory;
+	}
+
 	@Override
 	public int getLimitOfRowsLoadedInMemory() {
-		return 0;
+		return limitOfRowsLoadedInMemory;
 	}
 }
