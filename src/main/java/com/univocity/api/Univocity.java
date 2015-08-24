@@ -117,7 +117,13 @@ public final class Univocity {
 
 		if (engineConfigurations.containsKey(engineName)) {
 			if (engineConfigurations.get(engineName) != engineConfiguration) {
-				throw new IllegalArgumentException("Duplicate engine name: '" + engineConfiguration.getEngineName() + "'");
+				if(!engineFactory().isRegistered(engineName, engineConfiguration)) {
+					// engine is being discarded, registering new one with same name but different config
+					engineFactory().deRegister(engineName);
+					engineConfigurations.put(engineName, engineConfiguration);
+				} else {
+					throw new IllegalArgumentException("Duplicate engine name: '" + engineConfiguration.getEngineName() + "'");
+				}
 			}
 		} else {
 			engineConfigurations.put(engineName, engineConfiguration);
@@ -151,7 +157,7 @@ public final class Univocity {
 	 */
 	public static final synchronized DataIntegrationEngine getEngine(EngineConfiguration engineConfiguration) {
 		String engineName = engineConfiguration.getEngineName();
-		if(!engineFactory().isRegistered(engineName)){
+		if(!engineFactory().isRegistered(engineName, engineConfiguration)){
 			registerEngine(engineConfiguration);
 		}
 		
