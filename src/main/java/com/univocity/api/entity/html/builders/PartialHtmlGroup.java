@@ -4,4 +4,6 @@ public interface PartialHtmlGroup extends BaseHtmlPath<PartialHtmlGroup>, BaseHt
 
 	HtmlGroup endAt(String elementName);
 
+	HtmlGroup endAtClosing(String elementName);
+
 }
