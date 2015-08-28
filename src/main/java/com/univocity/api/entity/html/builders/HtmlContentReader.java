@@ -12,9 +12,15 @@ public interface HtmlContentReader {
 
 	void getText();
 
+	void getText(int numberOfSiblingsToInclude);
+
 	void getPrecedingText();
 
+	void getPrecedingText(int numberOfSiblingsToInclude);
+
 	void getFollowingText();
+
+	void getFollowingText(int numberOfSiblingsToInclude);
 
 	void getAttribute(String attributeName);
 }
