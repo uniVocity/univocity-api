@@ -20,11 +20,21 @@ interface BaseHtmlPath<T extends BaseHtmlPath<T>>{
 
 	T childOf(String elementName);
 
+	T containedBy(String elementName);
+
+	T containedBy(String elementName, int depthLimit);
+
 	T underHeader(String headerElementName);
 
 	T under(String elementName);
 
 	T parentOf(String elementName);
+
+	T containing(String ... pathOfElementNames);
+
+	T containing(String elementName);
+
+	T containing(String elementName, int depthLimit);
 
 	T withText(String textContent);
 
