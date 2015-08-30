@@ -24,14 +24,26 @@ public class HtmlEntityConfiguration extends Configuration implements FieldAdder
 		return entityName;
 	}
 
+	@Override
+	public HtmlPathStart addSilentField(String fieldName) {
+		return newField(fieldName, false, true);
+	}
+
+	@Override
+	public HtmlPathStart addSilentPersistentField(String fieldName) {
+		return newField(fieldName, true, true);
+	}
+
 	public HtmlPathStart addField(String fieldName){
-		HtmlPath pathBuilder = Univocity.provider().newBuilder(HtmlPath.class, this, false);
-		addPathToField(fieldName, pathBuilder);
-		return pathBuilder;
+		return newField(fieldName, false, false);
 	}
 
 	public HtmlPathStart addPersistentField(String fieldName){
-		HtmlPath pathBuilder = Univocity.provider().newBuilder(HtmlPath.class, this, true);
+		return newField(fieldName, true, false);
+	}
+
+	private HtmlPathStart newField(String fieldName, boolean persistent, boolean inhibitNewRows){
+		HtmlPath pathBuilder = Univocity.provider().newBuilder(HtmlPath.class, this, persistent, inhibitNewRows);
 		addPathToField(fieldName, pathBuilder);
 		return pathBuilder;
 	}
