@@ -118,4 +118,9 @@ public final class FileProvider {
 	public final String getFilePath() {
 		return filePath;
 	}
+
+	@Override
+	public final String toString() {
+		return filePath + " ("+ encoding +")";
+	}
 }

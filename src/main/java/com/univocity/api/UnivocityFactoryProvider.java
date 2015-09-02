@@ -31,12 +31,13 @@ public interface UnivocityFactoryProvider {
 
 
 	/**
-	 * Returns a object configuration builder implementation provided by uniVocity. This is for internal use only.
+	 * Returns an object implementation provided by uniVocity. This is for internal use only.
 	 *
 	 * @param builderType the interface of a builder entry point
 	 * @param args any arguments required to initialize the builder.
 	 *
 	 * @return a builder implementation provided by uniVocity.
+	 * @param <T> the type of builder to instantiate.
 	 */
-	<T> T newBuilder(Class<T> builderType, Object ... args);
+	<T> T build(Class<T> builderType, Object ... args);
 }

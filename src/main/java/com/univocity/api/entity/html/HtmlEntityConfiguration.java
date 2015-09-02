@@ -43,7 +43,7 @@ public class HtmlEntityConfiguration extends Configuration implements FieldAdder
 	}
 
 	private HtmlPathStart newField(String fieldName, boolean persistent, boolean inhibitNewRows){
-		HtmlPath pathBuilder = Univocity.provider().newBuilder(HtmlPath.class, this, persistent, inhibitNewRows);
+		HtmlPath pathBuilder = Univocity.provider().build(HtmlPath.class, this, persistent, inhibitNewRows);
 		addPathToField(fieldName, pathBuilder);
 		return pathBuilder;
 	}
@@ -58,11 +58,11 @@ public class HtmlEntityConfiguration extends Configuration implements FieldAdder
 	}
 
 	public PartialHtmlPathStart newPath(){
-		return Univocity.provider().newBuilder(PartialHtmlPathStart.class, this);
+		return Univocity.provider().build(PartialHtmlPathStart.class, this);
 	}
 
 	public HtmlGroupStart newGroup(){
-		return Univocity.provider().newBuilder(HtmlGroupStart.class, this);
+		return Univocity.provider().build(HtmlGroupStart.class, this);
 	}
 
 	@Override

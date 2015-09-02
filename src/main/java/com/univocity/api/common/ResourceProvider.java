@@ -17,5 +17,5 @@ public interface ResourceProvider<T> {
 	 * Returns the resource provided by this class
 	 * @return the resource provided by this class
 	 */
-	public T getResource();
+	T getResource();
 }

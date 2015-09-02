@@ -52,7 +52,7 @@ public class HtmlDataStoreConfiguration extends DataStoreConfiguration {
 		this.inputFile = null;
 	}
 
-	private HtmlDataStoreConfiguration(String dataStoreName, FileProvider inputFile) {
+	public HtmlDataStoreConfiguration(String dataStoreName, FileProvider inputFile) {
 		super(dataStoreName);
 		this.inputFile = inputFile;
 		this.inputProvider = null;

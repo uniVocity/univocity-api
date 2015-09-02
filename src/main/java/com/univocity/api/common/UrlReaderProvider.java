@@ -5,37 +5,39 @@
  ******************************************************************************/
 package com.univocity.api.common;
 
+import com.univocity.api.*;
+
 import java.io.*;
-import java.net.*;
 import java.nio.charset.*;
-import java.util.*;
-import java.util.Map.Entry;
-import java.util.logging.*;
 
 public class UrlReaderProvider extends ReaderProvider {
 
-	private static final Logger log = Logger.getLogger(UrlReaderProvider.class.getName());
-
-	private final String url;
-	private final Charset encoding;
 	private int retries = 0;
 	private long retryInterval = 2000;
-	private int retryCount = 0;
-
-	private final LinkedHashMap<String, String> requestProperties = new LinkedHashMap<String, String>();
+	private final Charset defaultEncoding;
+	private HttpResponse response;
+	protected HttpRequest request;
 
 	public UrlReaderProvider(String url) {
 		this(url, (Charset) null);
 	}
 
-	public UrlReaderProvider(String url, String encoding) {
-		this(url, Charset.forName(encoding));
+	public UrlReaderProvider(String url, String defaultEncoding) {
+		this(url, Charset.forName(defaultEncoding));
 	}
 
-	public UrlReaderProvider(String url, Charset encoding) {
+	public UrlReaderProvider(String url, Charset defaultEncoding) {
 		Args.notBlank(url, "URL");
-		this.url = url;
-		this.encoding = encoding == null ? Charset.defaultCharset() : encoding;
+		this.request = new HttpRequest(url);
+		this.defaultEncoding = defaultEncoding == null ? Charset.forName("UTF-8") : defaultEncoding;
+	}
+
+	public HttpRequest getRequestConfiguration(){
+		return request;
+	}
+
+	public final Charset getDefaultEncoding(){
+		return defaultEncoding;
 	}
 
 	public final int getRetries() {
@@ -54,62 +56,25 @@ public class UrlReaderProvider extends ReaderProvider {
 		this.retryInterval = retryInterval;
 	}
 
-	public final void addRequestProperty(String property, String value) {
-		requestProperties.put(property, value);
+	public HttpResponse getResponse() {
+		if (response == null) {
+			response = Univocity.provider().build(HttpResponse.class, this);
+		}
+		return response;
 	}
 
 	@Override
-	public Reader getResource() {
+	public final Reader getResource() {
 		try {
-			URL url = new URL(this.getUrl());
-			HttpURLConnection rc = (HttpURLConnection) url.openConnection();
-
-			for (Entry<String, String> property : requestProperties.entrySet()) {
-				rc.addRequestProperty(property.getKey(), property.getValue());
-			}
-			rc.setRequestMethod("GET");
-			InputStreamReader reader = new InputStreamReader(rc.getInputStream(), encoding);
-			retryCount = 0;
-			return reader;
-		} catch (IOException ex) {
-			if (retries > 0) {
-				try {
-					log.log(Level.FINE, "Unable to open URL '" + getUrl() + "', retrying after " + retryInterval + "ms", ex);
-					Thread.sleep(retryInterval);
-				} catch (InterruptedException e) {
-					Thread.currentThread().interrupt();
-					retryCount = 0;
-					throw new IllegalStateException("Thread interrupted while retrying connection on URL '" + getUrl() + "' after receiving error " + ex.getMessage(), ex);
-				}
-				if (retryCount >= retries) {
-					int count = retryCount;
-					retryCount = 0;
-					throw new IllegalStateException("Cannot open URL '" + getUrl() + "' after " + count + " retries", ex);
-				}
-				retryCount++;
-				return getResource();
-			}
-			throw new IllegalStateException("Unable to open URL '" + getUrl() + "'", ex);
+			return getResponse().getContentReader();
 		} catch (Exception ex) {
-			throw new IllegalStateException("Unable to open URL '" + getUrl() + "'", ex);
+			throw new IllegalStateException("Unable to open URL '" + request.getUrl() + "'", ex);
 		}
 	}
 
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " [" + url + "]";
-	}
-
-	public final Charset getEncoding() {
-		return encoding;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public final Map<String, String> getRequestProperties() {
-		return Collections.unmodifiableMap(requestProperties);
+		return this.getClass().getSimpleName() + " [" + request.getUrl() + "]";
 	}
 
 }
