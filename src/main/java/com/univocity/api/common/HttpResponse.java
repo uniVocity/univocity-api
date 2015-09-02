@@ -8,8 +8,6 @@ import java.util.*;
 
 public interface HttpResponse extends Closeable {
 
-	Reader getContentReader();
-
 	String getRedirectionUrl();
 
 	int getStatusCode();
@@ -29,4 +27,8 @@ public interface HttpResponse extends Closeable {
 	Map<String, String> getCookies();
 
 	void close();
+
+	Reader getContentReader();
+
+	void readContent(HttpResponseReader responseReader);
 }

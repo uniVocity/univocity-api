@@ -76,5 +76,4 @@ public class UrlReaderProvider extends ReaderProvider {
 	public String toString() {
 		return this.getClass().getSimpleName() + " [" + request.getUrl() + "]";
 	}
-
 }
