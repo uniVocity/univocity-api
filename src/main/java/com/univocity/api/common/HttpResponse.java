@@ -27,4 +27,6 @@ public interface HttpResponse extends Closeable {
 	Map<String, String> getHeaders(String name);
 
 	Map<String, String> getCookies();
+
+	void close();
 }

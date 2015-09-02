@@ -5,6 +5,7 @@ import java.util.*;
 import java.util.Map.Entry;
 
 import com.univocity.api.common.*;
+import com.univocity.api.exception.*;
 
 public abstract class PropertyBasedConfiguration {
 
@@ -133,7 +134,7 @@ public abstract class PropertyBasedConfiguration {
 			}
 
 			if (var == null && !found) {
-				throw new IllegalStateException("Invalid configuration! No value defined for ${" + key + "} in " + originalValue);
+				throw new IllegalConfigurationException("Invalid configuration! No value defined for ${" + key + "} in " + originalValue);
 			}
 			value = replaceVariables(value, key, var);
 		}
@@ -156,7 +157,29 @@ public abstract class PropertyBasedConfiguration {
 		return values.get(property);
 	}
 
+	public String getProperty(String property, String... keyValuePairs) {
+		String previous = getProperty(property);
+
+		String result = previous;
+		if (previous != null && keyValuePairs.length > 0) {
+			do {
+				previous = result;
+				for (int i = 0; i < keyValuePairs.length; i += 2) {
+					String key = keyValuePairs[i];
+					String value = keyValuePairs[i + 1];
+					result = result.replace("!{" + key + "}", value);
+				}
+
+			} while (!result.equals(previous));
+		}
+
+		return result;
+	}
+
 	protected String normalizeDirPath(String dirPath) {
+		if (dirPath == null) {
+			throw new IllegalConfigurationException("Directory path undefined");
+		}
 		dirPath = dirPath.replaceAll("\\\\", "/");
 		if (!dirPath.endsWith("/")) {
 			dirPath = dirPath + "/";
@@ -164,8 +187,11 @@ public abstract class PropertyBasedConfiguration {
 		return dirPath;
 	}
 
-	protected File getDirectory(String property, boolean validateRead, boolean validateWrite, boolean create) {
-		String dirPath = getProperty(property);
+	protected File getDirectory(String property, boolean validateRead, boolean validateWrite, boolean create, String... keyValuePairs) {
+		String dirPath = getProperty(property, keyValuePairs);
+		if (dirPath == null) {
+			throw new IllegalConfigurationException("Directory path undefined. Property '" + property + "' must be set with a valid directory path.");
+		}
 		dirPath = normalizeDirPath(dirPath);
 
 		File dir = new File(dirPath);
