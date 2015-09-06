@@ -32,4 +32,6 @@ public interface GeneratedIdentifierTransform {
 	 *  				If the first function trims strings, then the second function will receive a trimmed String instead of the original value.</p>
 	 */
 	public void readingWith(String... functionNames);
+
+	public void readingWith(FunctionCall<?,?> functionCall);
 }

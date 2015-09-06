@@ -33,4 +33,6 @@ public interface IdentifierTransform extends AdditionalIdentifiers {
 	 */
 	public AdditionalIdentifiers readWith(String... functionNames);
 
+
+	public AdditionalIdentifiers readWith(FunctionCall<?,?> functionCall);
 }
