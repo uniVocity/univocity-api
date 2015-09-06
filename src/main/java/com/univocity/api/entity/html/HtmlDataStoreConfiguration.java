@@ -16,6 +16,8 @@ public class HtmlDataStoreConfiguration extends DataStoreConfiguration {
 	private final FileProvider inputFile;
 	private final ReaderProvider inputProvider;
 
+	private HtmlParserListener listener;
+
 	private int limitOfRowsLoadedInMemory = 1000;
 
 	public HtmlDataStoreConfiguration(String dataStoreName, File inputFile) {
@@ -93,5 +95,13 @@ public class HtmlDataStoreConfiguration extends DataStoreConfiguration {
 	@Override
 	public int getLimitOfRowsLoadedInMemory() {
 		return limitOfRowsLoadedInMemory;
+	}
+
+	public void setHtmlParserListener(HtmlParserListener listener){
+		this.listener = listener;
+	}
+
+	public HtmlParserListener getHtmlParserListener(){
+		return listener;
 	}
 }
