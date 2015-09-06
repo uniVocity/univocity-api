@@ -32,4 +32,15 @@ public interface InsertionWithMetadata extends InsertionConfig {
 	 * <p><i>This completes the configuration started with {@link EntityMapping#persistence()}.</i>
 	 */
 	public void updateNewRows();
+
+	/**
+	 * Configures the {@link EntityMapping} to insert any new records mapped from the source entity, into the destination entity. If the record exists
+	 * in the destination, then an update will be executed. The behavior of the update operation will be the one defined by the choices made using {@link UpdateWithMetadata}
+	 * in the previous configuration step.
+	 * <br>This is particularly useful when multiple {@link EntityMapping}s may write to the same destination entity. One mapping can insert rows and the second one,
+	 *     using this configuration option, will then update these records with information extracted from another source.
+	 *
+	 * <p><i>This completes the configuration started with {@link EntityMapping#persistence()}.</i>
+	 */
+	public void upsert();
 }
