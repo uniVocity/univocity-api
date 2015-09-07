@@ -16,4 +16,5 @@ public interface HtmlElement {
 	HtmlElement grab();
 	String id();
 	Set<String> classes();
+	boolean containsElementInHierarchy(HtmlElement element);
 }
