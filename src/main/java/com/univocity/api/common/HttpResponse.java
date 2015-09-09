@@ -22,7 +22,7 @@ public interface HttpResponse extends Closeable {
 
 	HttpMethodType getMethod();
 
-	Map<String, String> getHeaders(String name);
+	Map<String, String> getHeaders();
 
 	Map<String, String> getCookies();
 
