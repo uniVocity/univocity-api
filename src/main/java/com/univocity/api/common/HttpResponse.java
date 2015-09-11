@@ -1,7 +1,5 @@
 package com.univocity.api.common;
 
-import com.univocity.api.common.helpers.*;
-
 import java.io.*;
 import java.net.*;
 import java.util.*;

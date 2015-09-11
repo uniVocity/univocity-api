@@ -1,4 +1,4 @@
-package com.univocity.api.common.helpers;
+package com.univocity.api.common;
 
 public enum HttpMethodType {
 
