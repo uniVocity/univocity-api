@@ -50,9 +50,13 @@ public class InputFileQueue extends ReaderProvider {
 		inputQueue.offer(fileProvider);
 	}
 
+	protected FileProvider poll(){
+		return inputQueue.poll();
+	}
+
 	@Override
 	public Reader getResource() {
-		FileProvider fileProvider = inputQueue.poll();
+		FileProvider fileProvider = poll();
 		if (fileProvider == null) {
 			throw new IllegalStateException("No files to process");
 		}
