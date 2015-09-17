@@ -29,4 +29,6 @@ public interface Merge {
 	 * {@link FieldMappingSetup} will receive the value obtained from the merging function.
 	 */
 	public MergeDestination using(String functionName);
+
+	public MergeDestination using(FunctionCall<?,?> functionCall);
 }
