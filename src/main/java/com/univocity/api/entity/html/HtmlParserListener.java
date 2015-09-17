@@ -9,7 +9,7 @@ public abstract class HtmlParserListener {
 	public void elementVisited(HtmlElement element, HtmlParsingContext context) {
 	}
 
-	public void elementMatched(HtmlElement element, HtmlParsingContext context) {
+	public void elementMatched(HtmlElement element, HtmlMatchingContext context) {
 	}
 
 	public void parsingEnded(HtmlParsingContext context) {
