@@ -60,12 +60,6 @@ public class HtmlDataStoreConfiguration extends DataStoreConfiguration {
 		this.inputProvider = null;
 	}
 
-	public HtmlDataStoreConfiguration(String dataStoreName) {
-		super(dataStoreName);
-		this.inputFile = null;
-		this.inputProvider = null;
-	}
-
 	public Set<String> getEntityNames(){
 		return new TreeSet<String>(entities.keySet());
 	}
