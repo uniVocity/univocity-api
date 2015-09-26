@@ -302,12 +302,31 @@ public interface EntityMapping {
 	public Set<String> transformFields(String functionName, String... sourceFieldNames);
 
 	/**
+	 * Associates a function to a given list of source field names or expressions. When reading from the source entity, the function will be executed and its result
+	 * will be sent to the destination fields. The given function will be executed before any other function sequences already applied to these fields.
+	 *
+	 * @param functionName the name of the function to associate to fields of the source entity.
+	 * @param sourceFieldNames field names/expressions against which the given function should be applied to.
+	 *
+	 * @return a Set containing the sourceFieldNames that could not be matched
+	 */
+	public Set<String> transformFieldsFirst(String functionName, String... sourceFieldNames);
+
+	/**
 	 * Associates a function to all source field names or expressions. When reading from the source entity, the function will be executed and its result
 	 * will be sent to the destination fields. The given function will be executed after other function sequences already applied to these fields.
 	 *
 	 * @param functionName the name of the function to associate to all fields of the source entity.
 	 */
 	public void transformFields(String functionName);
+
+	/**
+	 * Associates a function to all source field names or expressions. When reading from the source entity, the function will be executed and its result
+	 * will be sent to the destination fields. The given function will be executed before any other function sequences already applied to these fields.
+	 *
+	 * @param functionName the name of the function to associate to all fields of the source entity.
+	 */
+	public void transformFieldsFirst(String functionName);
 
 	/**
 	 * Associates a function to a given list of source field names or expressions. When reading from the source entity, the function will be executed and its result
@@ -317,6 +336,15 @@ public interface EntityMapping {
 	 * @param sourceFieldNames field names against which the given function should be applied to.
 	 */
 	public void transformFields(String functionName, FieldIdentifier... sourceFieldNames);
+
+	/**
+	 * Associates a function to a given list of source field names or expressions. When reading from the source entity, the function will be executed and its result
+	 * will be sent to the destination fields. The given function will be executed before any other function sequences already applied to these fields.
+	 *
+	 * @param functionName the name of the function to associate to fields of the source entity.
+	 * @param sourceFieldNames field names against which the given function should be applied to.
+	 */
+	public void transformFieldsFirst(String functionName, FieldIdentifier... sourceFieldNames);
 
 	public DependentEntityMappingConfig include(String queryName);
 
