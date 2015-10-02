@@ -58,11 +58,16 @@ public interface UnmatchedReferenceHandling {
 	public void abort();
 
 	/**
-	 * Defines that in case a reference cannot be matched, this will be ignored.
-	 * The fields that are part of the reference will be set to null, and the record will be mapped anyway.
+	 * Defines that in case a reference cannot be matched, this will be ignored and reference value will be applied anyway.
 	 * <p><i>This completes the configuration started in {@link ReferenceMappingSetup#using(String...)} </i></p>
 	 */
 	public void ignore();
+
+	/**
+	 * Defines that in case a reference cannot be matched, this will be ignored and the reference will be set to null.
+	 * <p><i>This completes the configuration started in {@link ReferenceMappingSetup#using(String...)} </i></p>
+	 */
+	public void setNull();
 
 	/**
 	 * Defines that in case a reference cannot be matched, the entire record must be discarded.
@@ -89,7 +94,7 @@ public interface UnmatchedReferenceHandling {
 	public void executeAndAbort(String... functionNames);
 
 	/**
-	 * Defines that in case a reference cannot be matched, this will be ignored.
+	 * Defines that in case a reference cannot be matched, this will be ignored and reference value will be applied anyway.
 	 * Fields that are part of the reference will be set to whatever result is obtained from a given sequence of function calls, and the record will be mapped.
 	 * <p><i>This completes the configuration started in {@link ReferenceMappingSetup#using(String...)} </i></p>
 	 *
@@ -98,4 +103,15 @@ public interface UnmatchedReferenceHandling {
 	 *  				If the first function trims strings, then the second function will receive a trimmed String instead of the original value.</p>
 	 */
 	public void executeAndIgnore(String... functionNames);
+
+	/**
+	 * Defines that in case a reference cannot be matched, this will be ignored and the reference will be set to null.
+	 * Fields that are part of the reference will be set to null regardless of the result obtained from the given sequence of function calls, and the record will be mapped.
+	 * <p><i>This completes the configuration started in {@link ReferenceMappingSetup#using(String...)} </i></p>
+	 *
+	 * @param functionNames the sequence of function names that will be executed against the reference values read from the source entity.
+	 * <p><i>Note: </i> The sequence of declared function names establishes a chaining of functions:
+	 *  				If the first function trims strings, then the second function will receive a trimmed String instead of the original value.</p>
+	 */
+	public void executeAndSetNull(String... functionNames);
 }
