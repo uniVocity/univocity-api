@@ -202,4 +202,33 @@ public interface RowMappingContext extends EntityMappingContext, EngineExecution
 	 * @return the value of the field in the current output row.
 	 */
 	public <T> T getOutputValue(FieldIdentifier fieldName, Class<T> fieldType);
+
+	/**
+	 * Returns the values of a given list of fields in the current input row.
+	 * @param fieldNames names of the input fields whose values will be returned.
+	 * @return the values of the fields in the current input row.
+	 */
+	public Object[] getInputValues(FieldIdentifier ... fieldNames);
+
+	/**
+	 * Returns the values of a given list of fields in the current output row.
+	 * @param fieldNames names of the output fields whose values will be returned.
+	 * @return the values of the fields in the current output row.
+	 */
+	public Object[] getOutputValues(FieldIdentifier ... fieldNames);
+
+	/**
+	 * Returns the values of a given list of fields in the current input row.
+	 * @param fieldNames names of the input fields whose values will be returned.
+	 * @return the values of the fields in the current input row.
+	 */
+	public Object[] getInputValues(String ... fieldNames);
+
+	/**
+	 * Returns the values of a given list of fields in the current output row.
+	 * @param fieldNames names of the output fields whose values will be returned.
+	 * @return the values of the fields in the current output row.
+	 */
+	public Object[] getOutputValues(String ... fieldNames);
+
 }
