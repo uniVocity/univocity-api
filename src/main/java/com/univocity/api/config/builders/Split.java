@@ -29,4 +29,6 @@ public interface Split {
 	 * {@link FieldMappingSetup} will receive values obtained from the splitting function.
 	 */
 	public SplitDestination with(String functionName);
+
+	public SplitDestination with(FunctionCall<?,?> functionCall);
 }
