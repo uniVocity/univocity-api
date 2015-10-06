@@ -148,4 +148,32 @@ public class DefaultEntityField {
 		this.type = type;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		DefaultEntityField that = (DefaultEntityField) o;
+
+		if (isIdentifier != that.isIdentifier) return false;
+		if (isNullable != that.isNullable) return false;
+		if (isGenerated != that.isGenerated) return false;
+		if (length != that.length) return false;
+		if (!name.equals(that.name)) return false;
+		if (defaultValue != null ? !defaultValue.equals(that.defaultValue) : that.defaultValue != null) return false;
+		return !(type != null ? !type.equals(that.type) : that.type != null);
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = name.hashCode();
+		result = 31 * result + (isIdentifier ? 1 : 0);
+		result = 31 * result + (isNullable ? 1 : 0);
+		result = 31 * result + (isGenerated ? 1 : 0);
+		result = 31 * result + (defaultValue != null ? defaultValue.hashCode() : 0);
+		result = 31 * result + length;
+		result = 31 * result + (type != null ? type.hashCode() : 0);
+		return result;
+	}
 }
