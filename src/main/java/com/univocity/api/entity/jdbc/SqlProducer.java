@@ -107,4 +107,14 @@ public abstract class SqlProducer {
 	public String newTruncateStatement(String tableName) {
 		return null;
 	}
+
+	/**
+	 * Creates a custom row count statement to return the number of records of a table
+	 * @param tableName the name of the database table whose row count is going to be queried.
+	 * <p><b>Note: </b><i>The tableName might have been escaped.</i>
+	 * @return a custom row count statement or {@code null} if the default row count statement produced by uniVocity should be used.
+	 */
+	public String newRowCountStatement(String tableName) {
+		return null;
+	}
 }
