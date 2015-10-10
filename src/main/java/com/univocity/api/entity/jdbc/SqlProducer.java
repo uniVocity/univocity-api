@@ -98,4 +98,13 @@ public abstract class SqlProducer {
 		return null;
 	}
 
+	/**
+	 * Creates a custom truncate statement to delete all records of a table, provided that it is not used by foreign key relationships.
+	 * @param tableName the name of the database table that will have all records removed
+	 * <p><b>Note: </b><i>The tableName might have been escaped.</i>
+	 * @return a custom truncate statement or {@code null} if the default truncate statement produced by uniVocity should be used.
+	 */
+	public String newTruncateStatement(String tableName) {
+		return null;
+	}
 }
