@@ -4,4 +4,6 @@ public interface PartialHtmlPath extends BaseHtmlPath<PartialHtmlPath>, PartialH
 
 	PartialHtmlPath copyPath();
 
+	RecordTriggerStart addRecordTrigger();
+
 }

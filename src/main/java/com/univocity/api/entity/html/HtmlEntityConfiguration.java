@@ -11,6 +11,7 @@ public class HtmlEntityConfiguration extends Configuration implements FieldAdder
 	private final String entityName;
 
 	final Map<String, List<HtmlPath>> fields = new LinkedHashMap<String, List<HtmlPath>>();
+	final List<RecordTrigger> triggers = new ArrayList<RecordTrigger>();
 
 	HtmlEntityConfiguration() {
 		this.entityName = null;
@@ -57,12 +58,22 @@ public class HtmlEntityConfiguration extends Configuration implements FieldAdder
 		paths.add(path);
 	}
 
+	void addTrigger(RecordTrigger trigger){
+		this.triggers.add(trigger);
+	}
+
 	public PartialHtmlPathStart newPath(){
 		return Univocity.provider().build(PartialHtmlPathStart.class, this);
 	}
 
 	public HtmlGroupStart newGroup(){
 		return Univocity.provider().build(HtmlGroupStart.class, this);
+	}
+
+	public RecordTriggerStart addRecordTrigger(){
+		RecordTrigger out = Univocity.provider().build(RecordTrigger.class, this);
+		addTrigger(out);
+		return out;
 	}
 
 	@Override
