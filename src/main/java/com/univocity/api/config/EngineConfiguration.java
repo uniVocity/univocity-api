@@ -1,8 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2013 uniVocity Software Pty Ltd. All rights reserved.
+/*
+ * Copyright (c) 2015 uniVocity Software Pty Ltd. All rights reserved.
  * This file is subject to the terms and conditions defined in file
  * 'LICENSE.txt', which is part of this source code package.
- ******************************************************************************/
+ *
+ */
 package com.univocity.api.config;
 
 import java.util.*;
@@ -11,6 +12,7 @@ import com.univocity.api.*;
 import com.univocity.api.common.*;
 import com.univocity.api.engine.*;
 import com.univocity.api.entity.custom.*;
+import com.univocity.api.stream.*;
 
 /**
  * The <code>EngineConfiguration</code> provides the essential configuration of a {@link DataIntegrationEngine}. Use {@link Univocity#registerEngine(EngineConfiguration)}
@@ -33,7 +35,9 @@ public class EngineConfiguration {
 
 	private final String engineName;
 	private final HashSet<DataStoreConfiguration> dataStoreConfigurations = new HashSet<DataStoreConfiguration>();
+	private final HashSet<StreamingDataStoreConfiguration> dataStreamConfigurations = new HashSet<StreamingDataStoreConfiguration>();
 	private final HashSet<CustomDataStoreFactory<?>> customDataStoreFactories = new HashSet<CustomDataStoreFactory<?>>();
+
 	private MetadataSettings metadataSettings;
 	private ScopeStorageProvider persistentStorageProvider;
 
@@ -60,7 +64,11 @@ public class EngineConfiguration {
 	 * More dataStores can be added later using {@link #addDataStoreConfigurations(DataStoreConfiguration...)}
 	 */
 	public EngineConfiguration(DataStoreConfiguration... dataStores) {
-		this("uniVocity_engine#" + UUID.randomUUID().toString(), dataStores);
+		this(generateEngineName(), dataStores);
+	}
+
+	private static String generateEngineName(){
+		return "uniVocity_engine#" + UUID.randomUUID().toString();
 	}
 
 	/**
@@ -129,7 +137,7 @@ public class EngineConfiguration {
 	 */
 	public final ScopeStorageProvider getPersistentScopeStorageProvider() {
 		return persistentStorageProvider;
-	};
+	}
 
 	/**
 	 * Adds the configurations for data stores whose entities will be mapped using the engine created by this class.
@@ -151,5 +159,4 @@ public class EngineConfiguration {
 	public final Set<DataStoreConfiguration> getDataStoreConfigurations() {
 		return Collections.unmodifiableSet(dataStoreConfigurations);
 	}
-
 }

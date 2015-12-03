@@ -1,8 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2013 uniVocity Software Pty Ltd. All rights reserved.
+/*
+ * Copyright (c) 2015 uniVocity Software Pty Ltd. All rights reserved.
  * This file is subject to the terms and conditions defined in file
  * 'LICENSE.txt', which is part of this source code package.
- ******************************************************************************/
+ *
+ */
 package com.univocity.api.engine;
 
 import java.util.*;
@@ -14,6 +15,7 @@ import com.univocity.api.config.builders.*;
 import com.univocity.api.data.*;
 import com.univocity.api.entity.*;
 import com.univocity.api.entity.custom.*;
+import com.univocity.api.stream.*;
 
 /**
  * The <code>DataIntegrationEngine</code> is the central component of uniVocity. With it you can define data mappings between entities of different data stores,
@@ -48,7 +50,7 @@ public interface DataIntegrationEngine {
 	 * The name of the data integration engine. This name is unique and {@link Univocity} will always return the same engine instance for a given name.
 	 * @return the data integration engine name.
 	 */
-	public String getName();
+	String getName();
 
 	/**
 	 * Creates a mapping configuration object between entities of two data stores. This is the first step in defining data mappings.
@@ -59,13 +61,13 @@ public interface DataIntegrationEngine {
 	 * @param destinationDataStore the name of the destination data store. Source and destination data stores can be the same.
 	 * @return a new {@link DataStoreMapping} instance.
 	 */
-	public DataStoreMapping map(String sourceDataStore, String destinationDataStore);
+	DataStoreMapping map(String sourceDataStore, String destinationDataStore);
 	
-	public EntityMapping mapToDataset(String sourceDataStore, String sourceDataEntity, Dataset destinationDataset);
+	EntityMapping mapToDataset(String sourceDataStore, String sourceDataEntity, Dataset destinationDataset);
 	
-	public EntityMapping mapToDataset(String sourceDataStore, String sourceDataEntity, String destinationDatasetName, Dataset destinationDataset);
+	EntityMapping mapToDataset(String sourceDataStore, String sourceDataEntity, String destinationDatasetName, Dataset destinationDataset);
 	
-	public DataStoreMapping map(DataStoreConfiguration sourceDataStore, DataStoreConfiguration destinationDataStore);
+	DataStoreMapping map(DataStoreConfiguration sourceDataStore, DataStoreConfiguration destinationDataStore);
 
 	/**
 	 * Obtains the mapping configuration object between entities of two data stores.
@@ -74,30 +76,30 @@ public interface DataIntegrationEngine {
 	 * @param destinationDataStore the name of the destination data store. Source and destination data stores can be the same.
 	 * @return the existing {@link DataStoreMapping} instance associated with the given data store names, or {@code null} if no such mapping between them exists.
 	 */
-	public DataStoreMapping getMapping(String sourceDataStore, String destinationDataStore);
+	DataStoreMapping getMapping(String sourceDataStore, String destinationDataStore);
 	
-	public DataStoreMapping getMapping(DataStoreConfiguration sourceDataStore, DataStoreConfiguration destinationDataStore);
+	DataStoreMapping getMapping(DataStoreConfiguration sourceDataStore, DataStoreConfiguration destinationDataStore);
 
 	/**
 	 * Removes the mapping between two data stores. All configuration settings defined in the underlying {@link DataStoreMapping} will be lost.
 	 * @param sourceDataStore the name of the source data store.
 	 * @param destinationDataStore the name of the destination data store. Source and destination data stores can be the same.
 	 */
-	public void removeMapping(String sourceDataStore, String destinationDataStore);
+	void removeMapping(String sourceDataStore, String destinationDataStore);
 	
-	public void removeMapping(DataStoreConfiguration sourceDataStore, DataStoreConfiguration destinationDataStore);
+	void removeMapping(DataStoreConfiguration sourceDataStore, DataStoreConfiguration destinationDataStore);
 
 	/**
 	 * Adds a callback object that intercepts life cycle events produced within this engine.
 	 * @param interceptor the callback object that will be notified of this engine's life cycle events.
 	 */
-	public void addInterceptor(EngineLifecycleInterceptor interceptor);
+	void addInterceptor(EngineLifecycleInterceptor interceptor);
 
 	/**
 	 * Removes a {@link EngineLifecycleInterceptor} instance from this engine, so it stops being notified of updates in this engine's internal state.
 	 * @param interceptor the callback object to be removed
 	 */
-	public void removeInterceptor(EngineLifecycleInterceptor interceptor);
+	void removeInterceptor(EngineLifecycleInterceptor interceptor);
 
 	/**
 	 * Associates a variable name to an expression. When the variable is accessed, the expression will be evaluated and the result will be
@@ -136,7 +138,7 @@ public interface DataIntegrationEngine {
 	 * @param name the name of the expression variable
 	 * @param expression the expression to be executed when the variable name is read for the first time in its scope.
 	 */
-	public void addExpression(EngineScope scope, String name, String expression);
+	void addExpression(EngineScope scope, String name, String expression);
 
 	/**
 	 * Adds a custom function implementation to this engine. The result of a function call will be reused within a given scope. For example,
@@ -150,7 +152,7 @@ public interface DataIntegrationEngine {
 	 * @param name the name of the given function. This name can be used in expressions, followed by the function arguments.
 	 * @param function the actual implementation of the function.
 	 */
-	public <F extends FunctionCall<?, ?>> void addFunction(EngineScope scope, String name, F function);
+	<F extends FunctionCall<?, ?>> void addFunction(EngineScope scope, String name, F function);
 
 	/**
 	 * Creates a function backed by an implementation of {@link java.util.Map}. Functions based on a map accept only one parameter as an argument, which is used as the key
@@ -179,7 +181,7 @@ public interface DataIntegrationEngine {
 	 * @param name the name of the function
 	 * @param mapFunction the implementation of {@link java.util.Map} that will be used to store and fetch key-value pairs.
 	 */
-	public <F extends Map<?, ?>> void addMap(String name, F mapFunction);
+	<F extends Map<?, ?>> void addMap(String name, F mapFunction);
 
 	/**
 	 * Configures a query to be executed against a data store as a function. The query will be accessible from any {@link EntityMapping}s of this engine.
@@ -194,11 +196,11 @@ public interface DataIntegrationEngine {
 	 * @param queryName the name of the given query. This name can be used in expressions, followed by the query arguments.
 	 * @return an object used to properly configure the query as a function.
 	 */
-	public QuerySetup addQuery(EngineScope scope, String queryName);
+	QuerySetup addQuery(EngineScope scope, String queryName);
 
-	public boolean isFunctionRegistered(String queryName);
+	boolean isFunctionRegistered(String queryName);
 
-	public boolean isRowReaderRegistered(String rowReaderName);
+	boolean isRowReaderRegistered(String rowReaderName);
 
 	/**
 	 * Sets or adds then initializes a variable in the current scope. To read the value of a variable in expressions, prepend it with $.
@@ -209,7 +211,7 @@ public interface DataIntegrationEngine {
 	 * @param name the name of the new variable
 	 * @param value the value of the variable to be set/created in the current scope.
 	 */
-	public void setVariable(String name, Object value);
+	void setVariable(String name, Object value);
 
 	/**
 	 * Sets or adds then initializes a variable in the persistent scope ({@link EngineScope#PERSISTENT}). If no {@link ScopeStorageProvider} is defined
@@ -221,7 +223,7 @@ public interface DataIntegrationEngine {
 	 * @param name the name of the new variable added to the {@link EngineScope#PERSISTENT} scope
 	 * @param value the value of the variable to be set/created in the persistent scope.
 	 */
-	public void setPersistentVariable(String name, Object value);
+	void setPersistentVariable(String name, Object value);
 
 	/**
 	 * Adds a constant value that can accessed from any scope. To read the value of a constant in expressions, prepend it with $.
@@ -232,7 +234,7 @@ public interface DataIntegrationEngine {
 	 * @param name the name of the new constant
 	 * @param value the value of the constant
 	 */
-	public void setConstant(String name, Object value);
+	void setConstant(String name, Object value);
 
 	/**
 	 * Reads the value of a variable or constant registered to this engine
@@ -240,16 +242,16 @@ public interface DataIntegrationEngine {
 	 * @param name the name of the variable
 	 * @return the value of the variable
 	 */
-	public Object readVariable(String name);
+	Object readVariable(String name);
 
-	public <T> T readVariable(String name, Class<T> variableType);
+	<T> T readVariable(String name, Class<T> variableType);
 
 	/**
 	 * Creates new functions based on the methods annotated with {@link FunctionWrapper}. Object instances provided by the user are required,
 	 * as the object might have an internal state that should be updated with each function call.
 	 * @param objectsWithFunctions a sequence of objects whose classes define one or more methods annotated by with {@link FunctionWrapper}.
 	 */
-	public void addFunctions(Object... objectsWithFunctions);
+	void addFunctions(Object... objectsWithFunctions);
 
 	/**
 	 * Associates a {@link RowReader} implementation class to a name and a scope. When required, a row reader instance will be instantiated using the class's default
@@ -259,7 +261,7 @@ public interface DataIntegrationEngine {
 	 * @param name the name of the given row reader.
 	 * @param reader the implementation of a {@link RowReader} to be instantiated when required.
 	 */
-	public void addRowReader(EngineScope scope, String name, Class<? extends RowReader> reader);
+	void addRowReader(EngineScope scope, String name, Class<? extends RowReader> reader);
 
 	/**
 	 * Associates a {@link RowReader} instance to name. As this is a user-provided instance, it is the user's
@@ -268,7 +270,7 @@ public interface DataIntegrationEngine {
 	 * @param name the name of the given row reader
 	 * @param reader an instance of a row reader, managed by the user.
 	 */
-	public void addRowReader(String name, RowReader reader);
+	void addRowReader(String name, RowReader reader);
 
 	/**
 	 * Adds a new {@link Dataset} to this engine. The given dataset can contain data and be used as a source or, if the dataset implements
@@ -280,7 +282,7 @@ public interface DataIntegrationEngine {
 	 * @param name the name of the dataset
 	 * @param dataset the dataset implementation
 	 */
-	public void addDataset(String name, Dataset dataset);
+	void addDataset(String name, Dataset dataset);
 
 	/**
 	 * Adds and configures a {@link DatasetProducer} for reading information from an entity accessible through this engine, and producing different
@@ -291,7 +293,7 @@ public interface DataIntegrationEngine {
 	 * @param producer the object responsible for producing datasets.
 	 * @return a {@link DatasetProducerSetup} object for configuring the inputs and outputs of the given dataset producer.
 	 */
-	public DatasetProducerSetup addDatasetProducer(EngineScope scope, DatasetProducer producer);
+	DatasetProducerSetup addDatasetProducer(EngineScope scope, DatasetProducer producer);
 
 	/**
 	 * Disables data modifications on a given set of records of a data entity that were already mapped.
@@ -303,7 +305,7 @@ public interface DataIntegrationEngine {
 	 * @param dataEntityName the name of the data entity to have some records disabled for updates.
 	 * @param dataset the dataset containing the identifiers of a mapped destination entity.
 	 */
-	public void disableUpdateOnRecords(String dataEntityName, Dataset dataset);
+	void disableUpdateOnRecords(String dataEntityName, Dataset dataset);
 
 	/**
 	 * Disables data modifications to all records of this data entity that were already mapped.
@@ -315,7 +317,7 @@ public interface DataIntegrationEngine {
 	 *
 	 * @param dataEntityName the name of the data entity to have all records already mapped disabled for updates.
 	 */
-	public void disableUpdateOnAllRecords(String dataEntityName);
+	void disableUpdateOnAllRecords(String dataEntityName);
 
 	/**
 	 * Re-enables data modifications on a given set records of a data entity. This reverts the metadata changes made
@@ -324,7 +326,7 @@ public interface DataIntegrationEngine {
 	 * @param dataEntityName the name of the data entity to have some records enabled for updates.
 	 * @param dataset the dataset containing the identifiers of a mapped destination entity.
 	 */
-	public void enableUpdateOnRecords(String dataEntityName, Dataset dataset);
+	void enableUpdateOnRecords(String dataEntityName, Dataset dataset);
 
 	/**
 	 * Re-enables data modifications on all records of a data entity. This will any metadata changes made
@@ -332,7 +334,7 @@ public interface DataIntegrationEngine {
 	 *
 	 * @param dataEntityName the name of the data entity to have all of its records enabled for data updates.
 	 */
-	public void enableUpdateOnAllRecords(String dataEntityName);
+	void enableUpdateOnAllRecords(String dataEntityName);
 
 	/**
 	 * Use this method to define the correct sequence of mappings that have to be executed in order to correctly process the default data mapping cycle
@@ -349,13 +351,13 @@ public interface DataIntegrationEngine {
 	 * @param sequenceOfDestinationEntities the sequence of destination fields to be mapped. Not all destination entities need to be declared here. The ones that appear
 	 * in the sequence will be executed first, in the given order. Omitted data entities will have their mappings executed after the give sequence of mappings took place.
 	 */
-	public void setMappingSequence(String... sequenceOfDestinationEntities);
+	void setMappingSequence(String... sequenceOfDestinationEntities);
 
 	/**
 	 * Executes a data mapping cycle with all mappings configured in this engine (i.e. via {@link #map(String, String)}).
 	 * A transactional operation for all mappings in this cycle will be created.
 	 */
-	public void executeCycle();
+	void executeCycle();
 
 	/**
 	 * Executes a data mapping cycle against a {@link DataIncrement} object with all mappings configured in this engine (i.e. via {@link #map(String, String)}).
@@ -363,7 +365,7 @@ public interface DataIntegrationEngine {
 	 *
 	 * @param increment The increment with data changes for one or more source entities that should be applied to the destination using the configured mappings.
 	 */
-	public void executeCycle(DataIncrement increment);
+	void executeCycle(DataIncrement increment);
 
 	/**
 	 * Executes a data mapping cycle against the selected destination entities. If there are duplicate names from different data stores, these names must be written in
@@ -371,7 +373,7 @@ public interface DataIntegrationEngine {
 	 *
 	 * @param destinationEntities the sequence of destination entities to receive data from the mappings.
 	 */
-	public void executeCycle(String... destinationEntities);
+	void executeCycle(String... destinationEntities);
 
 	/**
 	 * Executes a data mapping cycle against a {@link DataIncrement} object and a selection of destination entities.
@@ -383,13 +385,13 @@ public interface DataIntegrationEngine {
 	 * @param increment the object with additional data to be used in place of one or more source data entities in this cycle.
 	 * @param destinationEntities the sequence of destination entities to receive data from the mappings.
 	 */
-	public void executeCycle(DataIncrement increment, String... destinationEntities);
+	void executeCycle(DataIncrement increment, String... destinationEntities);
 
 	/**
 	 * Executes a data mapping cycle with all mappings configured in this engine (i.e. via {@link #map(String, String)}).
 	 * @param transactionConfig the configuration that defines how transactions should be created while executing mappings in this cycle.
 	 */
-	public void executeCycle(Transactions transactionConfig);
+	void executeCycle(Transactions transactionConfig);
 
 	/**
 	 * Executes a data mapping cycle against a {@link DataIncrement} object with all mappings configured in this engine (i.e. via {@link #map(String, String)}).
@@ -398,7 +400,7 @@ public interface DataIntegrationEngine {
 	 * @param transactionConfig the configuration that defines how transactions should be created while executing mappings in this cycle.
 	 * @param increment The increment with data changes for one or more source entities that should be applied to the destination using the configured mappings.
 	 */
-	public void executeCycle(Transactions transactionConfig, DataIncrement increment);
+	void executeCycle(Transactions transactionConfig, DataIncrement increment);
 
 	/**
 	 * Executes a data mapping cycle against the selected destination entities. If there are duplicate names from different data stores, these names must be written in
@@ -407,7 +409,7 @@ public interface DataIntegrationEngine {
 	 * @param transactionConfig the configuration that defines how transactions should be created while executing mappings in this cycle.
 	 * @param destinationEntities the sequence of destination entities to receive data from the mappings.
 	 */
-	public void executeCycle(Transactions transactionConfig, String... destinationEntities);
+	void executeCycle(Transactions transactionConfig, String... destinationEntities);
 
 	/**
 	 * Executes a data mapping cycle against a {@link DataIncrement} object and a selection of destination entities.
@@ -420,14 +422,14 @@ public interface DataIntegrationEngine {
 	 * @param increment the object with additional data to be used in place of one or more source data entities in this cycle.
 	 * @param destinationEntities the sequence of destination entities to receive data from the mappings.
 	 */
-	public void executeCycle(Transactions transactionConfig, DataIncrement increment, String... destinationEntities);
+	void executeCycle(Transactions transactionConfig, DataIncrement increment, String... destinationEntities);
 
 	/**
 	 * Get an accessible data entity which provides direct access to the underlying data store.
 	 * @param entityName the name of a data entity managed by this {@code DataIntegrationEngine}
 	 * @return an {@link Entity} for the given entity name.
 	 */
-	public Entity getEntity(String entityName);
+	Entity getEntity(String entityName);
 
 	/**
 	 * Configures an export operation from a given list of data entities.
@@ -436,7 +438,7 @@ public interface DataIntegrationEngine {
 	 * @param entityNames names of the entities to export from the given data store. If no names are provided, all entities in the data store will be exported.
 	 * @return an {@link Export} configuration object to determine what information to export and to where.
 	 */
-	public Export exportEntities(String dataStoreName, String... entityNames);
+	Export exportEntities(String dataStoreName, String... entityNames);
 	
 	/**
 	 * Configures an export operation from a given list of data entities.
@@ -445,18 +447,19 @@ public interface DataIntegrationEngine {
 	 * @param entityNames names of the entities to export from the given data store. If no names are provided, all entities in the data store will be exported.
 	 * @return an {@link Export} configuration object to determine what information to export and to where.
 	 */
-	public Export exportEntities(DataStoreConfiguration dataStore, String... entityNames);
+	Export exportEntities(DataStoreConfiguration dataStore, String... entityNames);
 
-	public Set<String> getEntityNames();
+	Set<String> getEntityNames();
 
-	public Set<String> getEntityNamesOf(String dataStoreName);
+	Set<String> getEntityNamesOf(String dataStoreName);
 	
-	public Set<String> getEntityNamesOf(DataStoreConfiguration dataStore);
+	Set<String> getEntityNamesOf(DataStoreConfiguration dataStore);
 	
-	public void shutdown();
+	void shutdown();
 
-	public List<DataStoreMapping> getDataStoreMappings();
+	List<DataStoreMapping> getDataStoreMappings();
 
-	public List<EntityMapping> getEntityMappings();
+	List<EntityMapping> getEntityMappings();
 
+	DataStreamingProcess stream();
 }
