@@ -15,7 +15,7 @@ public class MySqlBinlogStreamConfiguration extends StreamingDataStoreConfigurat
 	private int port = 3306;
 	private String schema = null;
 	private String username = "root";
-	private String password = null;
+	private String password = "";
 	private long connectionTimeout = 3000L;
 
 	public MySqlBinlogStreamConfiguration(String streamName) {
@@ -59,6 +59,9 @@ public class MySqlBinlogStreamConfiguration extends StreamingDataStoreConfigurat
 	}
 
 	public void setPassword(String password) {
+		if(password == null){
+			password = "";
+		}
 		this.password = password;
 	}
 

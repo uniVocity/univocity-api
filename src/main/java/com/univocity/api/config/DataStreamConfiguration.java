@@ -18,7 +18,7 @@ public class DataStreamConfiguration {
 	private final String engineName;
 	private final StreamingDataStoreConfiguration masterConfig;
 
-	private final Set<DataStoreConfiguration> targetDataStores = new TreeSet<DataStoreConfiguration>();
+	private final Set<DataStoreConfiguration> targetDataStores = new HashSet<DataStoreConfiguration>();
 
 	public DataStreamConfiguration(String engineName, StreamingDataStoreConfiguration masterConfig) {
 		Args.notBlank(engineName, "Engine name");
