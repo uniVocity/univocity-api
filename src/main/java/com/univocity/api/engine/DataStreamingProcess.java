@@ -8,4 +8,6 @@
 package com.univocity.api.engine;
 
 public interface DataStreamingProcess {
+
+	void start();
 }

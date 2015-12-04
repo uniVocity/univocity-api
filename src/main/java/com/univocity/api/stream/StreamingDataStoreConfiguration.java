@@ -13,24 +13,10 @@ import java.util.*;
 
 public abstract class StreamingDataStoreConfiguration extends DataStoreConfiguration {
 
-	private final Set<String> targetDataStores = new TreeSet<String>();
 	private int limitOfRowsLoadedInMemory = 10000;
 
 	public StreamingDataStoreConfiguration(String dataStoreName) {
 		super(dataStoreName);
-	}
-
-	public void addTargetDataStore(String dataStoreName) {
-		targetDataStores.add(dataStoreName);
-	}
-
-	public void addTargetDataStore(DataStoreConfiguration dataStore) {
-		targetDataStores.add(dataStore.getDataStoreName());
-	}
-
-
-	public Set<String> getTargetDataStores() {
-		return Collections.unmodifiableSet(targetDataStores);
 	}
 
 	public void setLimitOfRowsLoadedInMemory(int limitOfRowsLoadedInMemory) {

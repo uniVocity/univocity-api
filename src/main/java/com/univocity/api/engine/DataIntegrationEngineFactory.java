@@ -1,8 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2014 uniVocity Software Pty Ltd. All rights reserved.
+/*
+ * Copyright (c) 2015 uniVocity Software Pty Ltd. All rights reserved.
  * This file is subject to the terms and conditions defined in file
  * 'LICENSE.txt', which is part of this source code package.
- ******************************************************************************/
+ *
+ */
 package com.univocity.api.engine;
 
 import com.univocity.api.*;
@@ -25,7 +26,7 @@ public interface DataIntegrationEngineFactory {
 	 * @param engineName the name of the data integration engine
 	 * @return the {@link DataIntegrationEngine} associated with the given engine name
 	 */
-	public DataIntegrationEngine getEngine(String engineName);
+	DataIntegrationEngine getEngine(String engineName);
 
 	/**
 	 * Shuts down the {@link DataIntegrationEngine} associated with the given engine name. All resources allocated by this engine will be released.
@@ -34,7 +35,7 @@ public interface DataIntegrationEngineFactory {
 	 *
 	 * @param engineName the name of the engine to be stopped.
 	 */
-	public void shutdown(String engineName);
+	void shutdown(String engineName);
 
 	/**
 	 * Is the data integration engine with the given name active?
@@ -43,7 +44,7 @@ public interface DataIntegrationEngineFactory {
 	 * @param engineName the name of the engine to be verified.
 	 * @return true if the {@link DataIntegrationEngine} associated with the given engine name is active, false otherwise
 	 */
-	public boolean isActive(String engineName);
+	boolean isActive(String engineName);
 	
 	/**
 	 * Queries whether a data integration engine with the given name has been registered
@@ -53,7 +54,7 @@ public interface DataIntegrationEngineFactory {
 	 * @param engineConfiguration the configuration object associated with the given engine (if available).
 	 * @return true if a {@link DataIntegrationEngine} associated with the given engine name exists, false otherwise
 	 */
-	public boolean isRegistered(String engineName, EngineConfiguration engineConfiguration);
+	boolean isRegistered(String engineName, EngineConfiguration engineConfiguration);
 
 	/**
 	 * De-registers a data integration engine with the given name. Only engines that have been be shut down can be de-registered.
@@ -61,5 +62,8 @@ public interface DataIntegrationEngineFactory {
 	 * <p>A registered engine is one that has been registered via {@link Univocity#registerEngine(com.univocity.api.config.EngineConfiguration)} .</p>
 	 * @param engineName the name of the engine to be de-registered.
 	 */
-	public void deRegister(String engineName);
+	void deRegister(String engineName);
+
+
+	DataStreamingProcess getDataStream(DataStreamConfiguration streamingEngineConfiguration);
 }
