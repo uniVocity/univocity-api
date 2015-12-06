@@ -27,4 +27,6 @@ public abstract class StreamingDataStoreConfiguration extends DataStoreConfigura
 	public int getLimitOfRowsLoadedInMemory() {
 		return limitOfRowsLoadedInMemory;
 	}
+
+
 }

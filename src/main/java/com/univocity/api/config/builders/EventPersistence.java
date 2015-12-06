@@ -5,10 +5,12 @@
  *
  */
 
-package com.univocity.api.engine;
+package com.univocity.api.config.builders;
 
-public interface DataStreamingProcess {
+import java.io.*;
 
-	void start();
+public interface EventPersistence {
+
+	void inDirectory(File directory);
 
 }
