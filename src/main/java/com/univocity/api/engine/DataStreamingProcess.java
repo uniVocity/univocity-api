@@ -11,4 +11,6 @@ public interface DataStreamingProcess {
 
 	void start();
 
+	void resynchronize();
+
 }
