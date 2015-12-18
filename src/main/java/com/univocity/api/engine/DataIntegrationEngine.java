@@ -440,6 +440,8 @@ public interface DataIntegrationEngine {
 	 */
 	Export exportEntities(String dataStoreName, String... entityNames);
 	
+	Set<String> getEntityNames();
+
 	/**
 	 * Configures an export operation from a given list of data entities.
 	 *
@@ -448,8 +450,6 @@ public interface DataIntegrationEngine {
 	 * @return an {@link Export} configuration object to determine what information to export and to where.
 	 */
 	Export exportEntities(DataStoreConfiguration dataStore, String... entityNames);
-
-	Set<String> getEntityNames();
 
 	Set<String> getEntityNamesOf(String dataStoreName);
 	
