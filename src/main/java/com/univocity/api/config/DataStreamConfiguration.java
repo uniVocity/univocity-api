@@ -23,6 +23,7 @@ public class DataStreamConfiguration implements EventPersistence {
 	private final StreamingDataStoreConfiguration masterConfig;
 
 	private final Set<DataStoreConfiguration> targetDataStores = new HashSet<DataStoreConfiguration>();
+	private final Set<StreamEventListener> eventListeners = new LinkedHashSet<StreamEventListener>();
 
 	public DataStreamConfiguration(String engineName, StreamingDataStoreConfiguration masterConfig) {
 		Args.notBlank(engineName, "Engine name");
@@ -48,9 +49,17 @@ public class DataStreamConfiguration implements EventPersistence {
 		return Collections.unmodifiableSet(targetDataStores);
 	}
 
+	public Set<StreamEventListener> getStreamEventListeners() {
+		return Collections.unmodifiableSet(eventListeners);
+	}
+
 	public EventPersistence persistEvents() {
 		persistEvents = true;
 		return this;
+	}
+
+	public void addStreamEventListener(StreamEventListener listener){
+		this.eventListeners.add(listener);
 	}
 
 	@Override
