@@ -236,6 +236,10 @@ public abstract class PropertyBasedConfiguration {
 		return file;
 	}
 
+	protected File getDirectory(String property, boolean validateRead, boolean validateWrite, boolean create, String... keyValuePairs) {
+		return getDirectory(property, true, validateWrite, validateWrite, create, keyValuePairs);
+	}
+
 	public File getDirectory(String property, boolean mandatory, boolean validateRead, boolean validateWrite, boolean create, String... keyValuePairs) {
 		return getValidatedPath(property, null, true, mandatory, validateRead, validateWrite, create, keyValuePairs);
 	}
