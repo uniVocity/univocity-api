@@ -108,7 +108,7 @@ public abstract class PropertyBasedConfiguration {
 				found = true;
 			} else {
 				if ("user.home".equals(key)) {
-					var = normalizeDirPath(System.getProperty("user.home"));
+					var = normalizeFilePath(System.getProperty("user.home"));
 					found = true;
 				} else {
 					var = System.getProperty(key);
@@ -176,34 +176,80 @@ public abstract class PropertyBasedConfiguration {
 		return result;
 	}
 
-	protected String normalizeDirPath(String dirPath) {
-		if (dirPath == null) {
-			throw new IllegalConfigurationException("Directory path undefined");
+	protected String normalizeFilePath(String filePath) {
+		if (filePath == null) {
+			throw new IllegalConfigurationException("File path undefined");
 		}
-		dirPath = dirPath.replaceAll("\\\\", "/");
-		if (!dirPath.endsWith("/")) {
-			dirPath = dirPath + "/";
+		filePath = filePath.replaceAll("\\\\", "/");
+		if (!filePath.endsWith("/")) {
+			filePath = filePath + "/";
 		}
-		return dirPath;
+		return filePath;
 	}
 
-	protected File getDirectory(String property, boolean validateRead, boolean validateWrite, boolean create, String... keyValuePairs) {
-		String dirPath = getProperty(property, keyValuePairs);
-		if (dirPath == null) {
-			throw new IllegalConfigurationException("Directory path undefined. Property '" + property + "' must be set with a valid directory path.");
+	private File getValidatedPath(String property, File defaultFile, boolean isDirectory, boolean mandatory, boolean validateRead, boolean validateWrite, boolean create, String... keyValuePairs) {
+		String path = getProperty(property, keyValuePairs);
+		String description = isDirectory ? "Directory" : "File";
+
+		if (path == null) {
+			if (mandatory) {
+				throw new IllegalConfigurationException(description + " path undefined. Property '" + property + "' must be set with a valid path.");
+			} else {
+				return defaultFile;
+			}
 		}
-		dirPath = normalizeDirPath(dirPath);
+		path = normalizeFilePath(path);
 
-		File dir = new File(dirPath);
-		if (create && (!dir.exists() || !dir.isDirectory())) {
-			dir.mkdirs();
+		File file = new File(path);
+
+		String baseErrorMessage = ". Path defined by property '" + property + "' is: " + path;
+
+		if (create && !file.exists()) {
+			boolean created = false;
+			if (isDirectory) {
+				created = file.mkdirs();
+			} else {
+				try {
+					created = file.createNewFile();
+				} catch (IOException e) {
+					throw new IllegalConfigurationException("Cannot create " + description + baseErrorMessage, e);
+				}
+			}
+			if (!created) {
+				throw new IllegalConfigurationException("Cannot create " + description + baseErrorMessage);
+			}
 		}
 
-		if ((validateRead && !dir.exists()) || (validateWrite && !dir.canWrite())) {
-			throw new IllegalStateException("Unable to access directory '" + dir.getAbsolutePath() + "'");
+		if ((validateRead || validateWrite)) {
+			if (!file.exists()) {
+				throw new IllegalConfigurationException(description + " does not exist" + baseErrorMessage);
+			}
+			if(validateRead && !file.canRead()){
+				throw new IllegalConfigurationException(description + " can't be read" + baseErrorMessage);
+			}
+
+			if(validateWrite && !file.canWrite()){
+				throw new IllegalConfigurationException(description + " is not writable" + baseErrorMessage);
+			}
 		}
 
-		return dir;
-
+		return file;
 	}
+
+	public File getDirectory(String property, boolean mandatory, boolean validateRead, boolean validateWrite, boolean create, String... keyValuePairs) {
+		return getValidatedPath(property, null, true, mandatory, validateRead, validateWrite, create, keyValuePairs);
+	}
+
+	public File getDirectory(String property, File defaultDir, boolean validateRead, boolean validateWrite, String... keyValuePairs) {
+		return getValidatedPath(property, defaultDir, true, false, validateRead, validateWrite, false, keyValuePairs);
+	}
+
+	public File getFile(String property, boolean mandatory, boolean validateRead, boolean validateWrite, boolean create, String... keyValuePairs) {
+		return getValidatedPath(property, null, false, mandatory, validateRead, validateWrite, create, keyValuePairs);
+	}
+
+	public File getFile(String property, File defaultFile, boolean validateRead, boolean validateWrite, String... keyValuePairs) {
+		return getValidatedPath(property, defaultFile, false, false, validateRead, validateWrite, false, keyValuePairs);
+	}
+
 }
