@@ -224,11 +224,11 @@ public abstract class PropertyBasedConfiguration {
 			if (!file.exists()) {
 				throw new IllegalConfigurationException(description + " does not exist" + baseErrorMessage);
 			}
-			if(validateRead && !file.canRead()){
+			if (validateRead && !file.canRead()) {
 				throw new IllegalConfigurationException(description + " can't be read" + baseErrorMessage);
 			}
 
-			if(validateWrite && !file.canWrite()){
+			if (validateWrite && !file.canWrite()) {
 				throw new IllegalConfigurationException(description + " is not writable" + baseErrorMessage);
 			}
 		}
@@ -256,4 +256,34 @@ public abstract class PropertyBasedConfiguration {
 		return getValidatedPath(property, defaultFile, false, false, validateRead, validateWrite, false, keyValuePairs);
 	}
 
+	public Integer getInteger(String property) {
+		String value = getProperty(property);
+		if (value == null) {
+			return null;
+		}
+		try {
+			return Integer.valueOf(value);
+		} catch (Exception ex) {
+			throw new IllegalConfigurationException("Cannot convert value of property {}" + property + " to a valid integer number. Got: " + value);
+		}
+	}
+
+	public List<String> getList(String property) {
+		return getList(property, ",");
+	}
+
+	public List<String> getList(String property, String separator) {
+		String value = getProperty(property);
+		ArrayList out = new ArrayList<String>();
+		if (value == null) {
+			return out;
+		}
+		for (String e : value.split(separator)) {
+			e = e.trim();
+			if (e.length() > 0) {
+				out.add(e);
+			}
+		}
+		return out;
+	}
 }
