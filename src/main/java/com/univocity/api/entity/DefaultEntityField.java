@@ -11,7 +11,6 @@ import com.univocity.api.common.*;
  * Provides basic information for a data entity field.
  *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
- *
  */
 public class DefaultEntityField {
 
@@ -21,10 +20,12 @@ public class DefaultEntityField {
 	private boolean isGenerated = false;
 	private Object defaultValue = null;
 	private int length = -1;
+	private int scale = -1;
 	private Class<?> type = null;
 
 	/**
 	 * Creates an entity field instance with its name.
+	 *
 	 * @param name a name that describes a particular field in each record of an entity.
 	 */
 	public DefaultEntityField(String name) {
@@ -34,6 +35,7 @@ public class DefaultEntityField {
 
 	/**
 	 * Obtains the name that describes a particular field in each record of an entity.
+	 *
 	 * @return the field name
 	 */
 	public String getName() {
@@ -42,6 +44,7 @@ public class DefaultEntityField {
 
 	/**
 	 * Indicates whether values for this field are generated automatically.
+	 *
 	 * @return true if values of this field are generated automatically; false otherwise
 	 */
 	public boolean isGenerated() {
@@ -50,6 +53,7 @@ public class DefaultEntityField {
 
 	/**
 	 * Indicates this field is part of the identifier of a record.
+	 *
 	 * @return true if this field is part of the identifier of a record; false otherwise
 	 */
 	public boolean isIdentifier() {
@@ -58,6 +62,7 @@ public class DefaultEntityField {
 
 	/**
 	 * Indicates whether this field can store null values.
+	 *
 	 * @return true if this field accepts null values; false otherwise
 	 */
 	public boolean isNullable() {
@@ -66,6 +71,7 @@ public class DefaultEntityField {
 
 	/**
 	 * Obtains a default value to use when the value of this field is null.
+	 *
 	 * @return the default value of this field.
 	 */
 	public Object getDefaultValue() {
@@ -74,6 +80,7 @@ public class DefaultEntityField {
 
 	/**
 	 * Defines this field as an identifier (or part of an identifier) of records produced by a data entity.
+	 *
 	 * @param isIdentifier a flag indicating this field is part of the identifiers of a data entity.
 	 */
 	public void setIdentifier(boolean isIdentifier) {
@@ -82,6 +89,7 @@ public class DefaultEntityField {
 
 	/**
 	 * Defines whether this field can store null values.
+	 *
 	 * @param isNullable a flag indicating whether this field accepts null values.
 	 */
 	public void setNullable(boolean isNullable) {
@@ -90,6 +98,7 @@ public class DefaultEntityField {
 
 	/**
 	 * Defines a default value to use when the value of this field is null.
+	 *
 	 * @param defaultValue the default value of this field.
 	 */
 	public void setDefaultValue(Object defaultValue) {
@@ -98,6 +107,7 @@ public class DefaultEntityField {
 
 	/**
 	 * Updates the indication that values for this field are generated automatically.
+	 *
 	 * @param isGenerated a flag indicating values for this field are generated automatically.
 	 */
 	public void setGenerated(boolean isGenerated) {
@@ -106,7 +116,7 @@ public class DefaultEntityField {
 
 	/**
 	 * Obtains the maximum length of this field. A value of -1 means the length is undefined.
-	 * <p><i>defaults to -1</i>
+	 * <p><i>defaults to -1</i></p>
 	 *
 	 * @return the length of this field.
 	 */
@@ -116,6 +126,7 @@ public class DefaultEntityField {
 
 	/**
 	 * Defines the maximum length of this field. A value of -1 means the length is undefined. Zero is not a valid length.
+	 *
 	 * @param length the length of this field.
 	 */
 	public void setLength(int length) {
@@ -130,7 +141,7 @@ public class DefaultEntityField {
 	/**
 	 * Obtains the type of values stored by this field. If defined, uniVocity will
 	 * try to convert values before writing to this field.
-	 * <p><i>defaults to {@code null}</i>
+	 * <p><i>defaults to {@code null}</i></p>
 	 *
 	 * @return the type of values stored by this field.
 	 */
@@ -148,6 +159,28 @@ public class DefaultEntityField {
 		this.type = type;
 	}
 
+	/**
+	 * Returns the scale of numeric values stored by this field. A value of -1 means the scale is undefined.
+	 * <p><i>defaults to -1</i></p>
+	 *
+	 * @return the scale to use when writing decimal values.
+	 */
+	public int getScale() {
+		return scale;
+	}
+
+	/**
+	 * Defines the scale of numeric values stored by this field.
+	 *
+	 * @para scale the scale to use when writing decimal values.
+	 */
+	public void setScale(int scale) {
+		if(scale != -1 && scale != 0){
+			Args.positive(scale, "Scale of field " + name);
+		}
+		this.scale = scale;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -159,6 +192,7 @@ public class DefaultEntityField {
 		if (isNullable != that.isNullable) return false;
 		if (isGenerated != that.isGenerated) return false;
 		if (length != that.length) return false;
+		if (scale != that.scale) return false;
 		if (!name.equals(that.name)) return false;
 		if (defaultValue != null ? !defaultValue.equals(that.defaultValue) : that.defaultValue != null) return false;
 		return !(type != null ? !type.equals(that.type) : that.type != null);
@@ -173,7 +207,17 @@ public class DefaultEntityField {
 		result = 31 * result + (isGenerated ? 1 : 0);
 		result = 31 * result + (defaultValue != null ? defaultValue.hashCode() : 0);
 		result = 31 * result + length;
+		result = 31 * result + scale;
 		result = 31 * result + (type != null ? type.hashCode() : 0);
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Field: '" + name + '\'' +
+				", length=" + length +
+				", scale=" + scale +
+				", type=" + type +
+				'}';
 	}
 }

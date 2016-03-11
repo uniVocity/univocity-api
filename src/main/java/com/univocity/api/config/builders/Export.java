@@ -6,6 +6,7 @@
 package com.univocity.api.config.builders;
 
 import com.univocity.api.engine.*;
+import com.univocity.api.entity.custom.*;
 import com.univocity.api.entity.jdbc.*;
 
 /**
@@ -56,4 +57,47 @@ public interface Export {
 	public CreateIndexExportOptions asCreateIndexScript(DatabaseDialect dialect, String schema, String catalog);
 
 	public CreateSourceCodeOptions asSourceCode();
+
+
+	/**
+	 * Using the names and fields of a given set of data entities, generate an {@code ALTER TABLE} SQL script suitable for a given database.
+	 *
+	 * @param targetDataStoreName the name of the target data store whose structure will be analyzed to identify schema updates.
+	 * @param dialect the database dialect to be used to generate the scripts
+	 * @return the next step of this configuration: determining further options and output of this export operation, through an {@link ExportOutput} configuration object.
+	 */
+	public CreateTableExportOptions asSchemaUpdateScript(String targetDataStoreName, DatabaseDialect dialect);
+
+	/**
+	 * Using the names and fields of a given set of data entities, generate an {@code ALTER TABLE} SQL script suitable for a given database.
+	 *
+	 * @param targetDataStoreName the name of the target data store whose structure will be analyzed to identify schema updates.
+	 * @param dialect the database dialect to be used to generate the scripts
+	 * @param schema the database schema name
+	 * @param catalog the database catalog name
+	 * @return the next step of this configuration: determining further options and the output of this export operation, through an {@link ExportOutput} configuration object.
+	 */
+	public CreateTableExportOptions asSchemaUpdateScript(String targetDataStoreName, DatabaseDialect dialect, String schema, String catalog);
+
+
+	/**
+	 * Using the names and fields of a given set of data entities, generate an {@code ALTER TABLE} SQL script suitable for a given database.
+	 *
+	 * @param targetDataStore the target data store whose structure will be analyzed to identify schema updates.
+	 * @param dialect the database dialect to be used to generate the scripts
+	 * @return the next step of this configuration: determining further options and output of this export operation, through an {@link ExportOutput} configuration object.
+	 */
+	public CreateTableExportOptions asSchemaUpdateScript(DataStoreConfiguration targetDataStore, DatabaseDialect dialect);
+
+	/**
+	 * Using the names and fields of a given set of data entities, generate an {@code ALTER TABLE} SQL script suitable for a given database.
+	 *
+	 * @param targetDataStore the target data store whose structure will be analyzed to identify schema updates.
+	 * @param dialect the database dialect to be used to generate the scripts
+	 * @param schema the database schema name
+	 * @param catalog the database catalog name
+	 * @return the next step of this configuration: determining further options and the output of this export operation, through an {@link ExportOutput} configuration object.
+	 */
+	public CreateTableExportOptions asSchemaUpdateScript(DataStoreConfiguration targetDataStore, DatabaseDialect dialect, String schema, String catalog);
+
 }
