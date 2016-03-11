@@ -22,6 +22,7 @@ public class DefaultEntityField {
 	private int length = -1;
 	private int scale = -1;
 	private Class<?> type = null;
+	private Integer sqlTypeCode = null;
 
 	/**
 	 * Creates an entity field instance with its name.
@@ -181,6 +182,27 @@ public class DefaultEntityField {
 		this.scale = scale;
 	}
 
+	/**
+	 * Returns the SQL type code (from {@link java.sql.Types}) that identifies a compatible database type for values of this field.
+	 * A value of {@code null} means the type is undefined.
+	 * <p><i>defaults to {@code null}</i></p>
+	 *
+	 * @return the SQL type to use when values of this field interact with a database.
+	 */
+	public Integer getSqlTypeCode() {
+		return sqlTypeCode;
+	}
+
+	/**
+	 * Defines a SQL type code (from {@link java.sql.Types}) that identifies a compatible database type for values of this field.
+	 * A value of {@code null} means the type is undefined.
+	 *
+	 * @param sqlTypeCode the SQL type to use when values of this field interact with a database.
+	 */
+	public void setSqlTypeCode(Integer sqlTypeCode) {
+		this.sqlTypeCode = sqlTypeCode;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -195,7 +217,8 @@ public class DefaultEntityField {
 		if (scale != that.scale) return false;
 		if (!name.equals(that.name)) return false;
 		if (defaultValue != null ? !defaultValue.equals(that.defaultValue) : that.defaultValue != null) return false;
-		return !(type != null ? !type.equals(that.type) : that.type != null);
+		if (type != null ? !type.equals(that.type) : that.type != null) return false;
+		return sqlTypeCode != null ? sqlTypeCode.equals(that.sqlTypeCode) : that.sqlTypeCode == null;
 
 	}
 
@@ -209,6 +232,7 @@ public class DefaultEntityField {
 		result = 31 * result + length;
 		result = 31 * result + scale;
 		result = 31 * result + (type != null ? type.hashCode() : 0);
+		result = 31 * result + (sqlTypeCode != null ? sqlTypeCode.hashCode() : 0);
 		return result;
 	}
 
