@@ -1,6 +1,7 @@
 package com.univocity.api.common;
 
 import java.io.*;
+import java.net.*;
 import java.util.*;
 
 public class HttpRequest {
@@ -13,6 +14,11 @@ public class HttpRequest {
 	private final LinkedHashMap<String, String> headers = new LinkedHashMap<String, String>();
 	private final LinkedHashMap<String, String> cookies = new LinkedHashMap<String, String>();
 	private final List<Object[]> data = new ArrayList<Object[]>();
+
+	private String proxyUser;
+	private String proxyHost;
+	private String proxyPassword;
+	private int proxyPort = -1;
 
 	public HttpRequest(String url) {
 		this.url = url;
@@ -113,5 +119,38 @@ public class HttpRequest {
 
 	public List<Object[]> getData() {
 		return Collections.unmodifiableList(data);
+	}
+
+	public void setProxy(String host, int port) {
+		setProxy(host, port, null, null);
+	}
+
+	public void setProxy(String host, int port, String user) {
+		setProxy(host, port, user, "");
+	}
+
+	public void setProxy(String host, int port, String user, String password) {
+		Args.positive(port, "Proxy port");
+		Args.notBlank(host, "Proxy host");
+		this.proxyHost = host;
+		this.proxyPort = port;
+		this.proxyUser = user;
+		this.proxyPassword = password;
+	}
+
+	public String getProxyUser() {
+		return proxyUser;
+	}
+
+	public String getProxyHost() {
+		return proxyHost;
+	}
+
+	public String getProxyPassword() {
+		return proxyPassword;
+	}
+
+	public int getProxyPort() {
+		return proxyPort;
 	}
 }
