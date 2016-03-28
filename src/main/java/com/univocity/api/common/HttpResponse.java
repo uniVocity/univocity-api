@@ -29,4 +29,6 @@ public interface HttpResponse extends Closeable {
 	Reader getContentReader();
 
 	void readContent(HttpResponseReader responseReader);
+
+	int getRetriesPerformed();
 }
