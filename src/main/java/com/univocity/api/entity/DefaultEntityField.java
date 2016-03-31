@@ -176,7 +176,7 @@ public class DefaultEntityField {
 	 * @para scale the scale to use when writing decimal values.
 	 */
 	public void setScale(int scale) {
-		if(scale != -1 && scale != 0){
+		if (scale != -1 && scale != 0) {
 			Args.positive(scale, "Scale of field " + name);
 		}
 		this.scale = scale;
@@ -244,4 +244,21 @@ public class DefaultEntityField {
 				", type=" + type +
 				'}';
 	}
+
+	public void copyPropertiesTo(DefaultEntityField field) {
+		field.isIdentifier = isIdentifier;
+		field.isNullable = isNullable;
+		field.isGenerated = isGenerated;
+		field.defaultValue = defaultValue;
+		field.length = length;
+		field.scale = scale;
+		field.type = type;
+		field.sqlTypeCode = sqlTypeCode;
+	}
+
+
+	public void copyPropertiesFrom(DefaultEntityField field) {
+		field.copyPropertiesTo(this);
+	}
+
 }
