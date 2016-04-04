@@ -173,7 +173,7 @@ public class DefaultEntityField {
 	/**
 	 * Defines the scale of numeric values stored by this field.
 	 *
-	 * @para scale the scale to use when writing decimal values.
+	 * @param scale the scale to use when writing decimal values.
 	 */
 	public void setScale(int scale) {
 		if (scale != -1 && scale != 0) {
