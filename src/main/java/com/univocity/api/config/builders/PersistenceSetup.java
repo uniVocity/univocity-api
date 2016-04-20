@@ -27,6 +27,17 @@ public interface PersistenceSetup {
 	public ExclusionWithMetadata usingMetadata();
 
 	/**
+	 * Initializes persistence configuration options of an {@link EntityMapping}, that use uniVocity metadata tables.
+	 * <br>Through the usage of metadata, uniVocity is able to execute complex update operations when mapping data between entities.
+	 *
+	 * @param fromEntity name of source entity whose metadata will accessed.
+	 *
+	 * @return the next step of this configuration: define how to remove records in the destination entity, with or without
+	 *         the usage of metadata.
+	 */
+	public ExclusionWithMetadata usingMetadata(String fromEntity);
+
+	/**
 	 * Initializes persistence configuration options of an {@link EntityMapping}, that do not use uniVocity metadata tables.
 	 * <br>Without metadata, uniVocity is only able to execute simple operations:
 	 *     when mapping data between entities for a second time, it is unable to differentiate between new and old records.
