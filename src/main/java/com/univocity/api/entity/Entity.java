@@ -54,6 +54,17 @@ public interface Entity extends Comparable<Entity> {
 	 * <p>If you do not intend to read all rows, invoke the {@link #stopReading()}
 	 * method to stop the background {@link ReadingProcess} and clear up rows loaded but not yet processed.</p>
 	 *
+	 * As no names are given, all fields will be read from the entity.
+	 */
+	void beginReading();
+
+	/**
+	 * <p>Start iterating over the records of this data entity. uniVocity will start a {@link ReadingProcess} in the background which will block when the number of
+	 * rows loaded in memory reaches the specified limit specified by the parent data store.</p>
+	 *
+	 * <p>If you do not intend to read all rows, invoke the {@link #stopReading()}
+	 * method to stop the background {@link ReadingProcess} and clear up rows loaded but not yet processed.</p>
+	 *
 	 * @param fieldNames the fields to be read from the given data entity. Each row returned by the {@link #readNext()} method will organize the values in this specified order.
 	 * 		If no names are given, all fields will be read from the entity.
 	 */
