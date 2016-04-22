@@ -132,6 +132,17 @@ public interface DatasetFactory {
 	 */
 	public ModifiableDataset newCompositeDataset(Map<Object, Map<Object, Object>> map, String[] identifiers, String fieldName);
 
+
+	/**
+	 * Creates a new composite dataset, with key-record maps, one map per key.
+	 *
+	 * @param map the map used to hold all records of the data set.
+	 * @param identifiers the field names used to compose the identifier.
+	 * @param fieldNames field names of each record associated with an identifier of this data set.
+	 * @return a new modifiable dataset.
+	 */
+	public ModifiableDataset newCompositeDataset(Map<Object, Map<Object, Object[]>> map, String[] identifiers, String ... fieldNames);
+
 	/**
 	 * Creates dummy dataset that does not store nor retrieve any data.
 	 *
