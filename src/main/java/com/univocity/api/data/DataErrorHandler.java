@@ -12,7 +12,7 @@ import com.univocity.api.config.builders.*;
  * In case of exceptions or unexpected data, it provides a way to handle and potentially recover from the error.
  *
  * <p>For example, if a query is configured to return a single row (i.e. through {@link QueryResult#returnSingleRow()}, but it actually produces 3 rows,
- * {@link #handleUnexpectedData(Object[][])} can be used to return the first row.
+ * {@link #handleUnexpectedData(Object[][], Object...)} can be used to return the first row.
  *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
@@ -24,7 +24,7 @@ public interface DataErrorHandler<T> {
 	 * @param t the exception thrown while executing a query.
 	 * @return an object with data if the handler recovered from the error.
 	 */
-	public T handleException(Throwable t);
+	public T handleException(Throwable t, Object ... args);
 
 	/**
 	 * Handles unexpected data produced by a query.
@@ -32,5 +32,5 @@ public interface DataErrorHandler<T> {
 	 * @param data the data produced by a query.
 	 * @return an object with data if the handler recovered from the error.
 	 */
-	public T handleUnexpectedData(Object[][] data);
+	public T handleUnexpectedData(Object[][] data, Object ... args);
 }
