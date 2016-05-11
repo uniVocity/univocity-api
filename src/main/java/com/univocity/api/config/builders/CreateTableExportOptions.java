@@ -84,6 +84,12 @@ public interface CreateTableExportOptions extends ExportOutput {
 	CreateTableExportOptions noUniqueConstraints();
 
 	/**
+	 * The scripts in this export operation should have the length of any identifiers - such as table and index names - restricted.
+	 * @return further options to configure this export operation.
+	 */
+	CreateTableExportOptions restrictIdentifierLengthTo(int maxLength);
+
+	/**
 	 * Exports the result of this create table {@link Export} operation as a list of {@code String}s.
 	 * Each element will be a "create table" DDL statement for an individual table.
 	 * @return an object containing the result of the create table {@link Export} operation
