@@ -231,4 +231,9 @@ public interface RowMappingContext extends EntityMappingContext, EngineExecution
 	 */
 	public Object[] getOutputValues(String ... fieldNames);
 
+
+	public DefaultEntityField getOutputFieldMetaData(String fieldName);
+
+	public DefaultEntityField getInputFieldMetaData(String fieldName);
+
 }
