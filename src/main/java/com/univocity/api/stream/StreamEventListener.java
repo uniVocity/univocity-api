@@ -5,6 +5,7 @@ public abstract class StreamEventListener {
 	public void initialize(){};
 	public void onEventGroupStarted(String target){};
 	public void onEventGroupClosed(String target){};
+	public void onEventGroupAborted(String target){};
 	public void onInsert(String target, Object[] newRow, StreamingContext context){};
 	public void onUpdate(String target, Object[] originalRow, Object[] updatedRow, StreamingContext context){};
 	public void onDelete(String target, Object[] deletedRow, StreamingContext context){};

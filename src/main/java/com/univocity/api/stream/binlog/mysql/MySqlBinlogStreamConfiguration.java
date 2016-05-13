@@ -7,7 +7,10 @@
 
 package com.univocity.api.stream.binlog.mysql;
 
+import com.univocity.api.common.*;
 import com.univocity.api.stream.*;
+
+import java.io.*;
 
 public class MySqlBinlogStreamConfiguration extends StreamingDataStoreConfiguration {
 
@@ -17,6 +20,7 @@ public class MySqlBinlogStreamConfiguration extends StreamingDataStoreConfigurat
 	private String username = "root";
 	private String password = "";
 	private long connectionTimeout = 3000L;
+	private FileProvider positionTrackingFile = null;
 
 	public MySqlBinlogStreamConfiguration(String streamName) {
 		super(streamName);
@@ -71,6 +75,18 @@ public class MySqlBinlogStreamConfiguration extends StreamingDataStoreConfigurat
 
 	public void setConnectionTimeout(long connectionTimeout) {
 		this.connectionTimeout = connectionTimeout;
+	}
+
+	public FileProvider getPositionTrackingFile() {
+		return positionTrackingFile;
+	}
+
+	public void setPositionTrackingFile(File positionTrackingFile) {
+		this.positionTrackingFile = new FileProvider(positionTrackingFile);
+	}
+
+	public void setPositionTrackingFile(String pathToPositionTrackingFile) {
+		this.positionTrackingFile = new FileProvider(pathToPositionTrackingFile);
 	}
 
 	@Override
