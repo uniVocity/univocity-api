@@ -5,9 +5,9 @@
  ******************************************************************************/
 package com.univocity.api.engine;
 
-import java.util.*;
-
 import com.univocity.api.config.builders.*;
+
+import java.util.*;
 
 /**
  * A <code>RowReader</code> provides access to rows being processed during the mapping between two data entities.

@@ -236,4 +236,10 @@ public interface RowMappingContext extends EntityMappingContext, EngineExecution
 
 	public DefaultEntityField getInputFieldMetaData(String fieldName);
 
+	/**
+	 * Returns the last exception that occurred when attempting to persist a row.
+	 * @return exception that occurred while attempting to persist the current output row.
+	 */
+	public Exception getError();
+
 }
