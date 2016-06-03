@@ -103,4 +103,23 @@ public interface CreateTableExportOptions extends ExportOutput {
 	 */
 	String toScript();
 
+
+	/**
+	 * Selects the columns to export from a given entity.
+	 *
+	 * @param entityName the entity whose columns will be exported
+	 * @param columnList the selection of columns to export. If empty all columns will be exported.
+	 * @return further options to configure this export operation.
+	 */
+	CreateTableExportOptions selectColumns(String entityName, String ... columnList);
+
+	/**
+	 * Selects the columns to omit from the export operation over given entity.
+	 *
+	 * @param entityName the entity whose columns will be exported
+	 * @param columnList the selection of columns to omit from the export
+	 * @return further options to configure this export operation.
+	 */
+	CreateTableExportOptions omitColumns(String entityName, String ... columnList);
+
 }
