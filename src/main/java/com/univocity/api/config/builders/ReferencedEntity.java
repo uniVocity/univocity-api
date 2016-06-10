@@ -30,4 +30,8 @@ public interface ReferencedEntity {
 	 * {@link ReferenceMappingSetup} will receive the values of an identifier of the referenced entity.
 	 */
 	public ReferencedDestinationFields referTo(String sourceEntityName, String destinationEntityName);
+
+
+	public ReferencedDestinationFields referTo(EntityMapping entityMapping);
+
 }

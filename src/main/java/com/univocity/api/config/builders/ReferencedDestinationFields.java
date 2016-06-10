@@ -20,7 +20,7 @@ import com.univocity.api.entity.*;
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  *
  */
-public interface ReferencedDestinationFields {
+public interface ReferencedDestinationFields extends ReferenceTransform{
 	/**
 	 * Defines the destination fields in a {@link ReferenceMappingSetup} that will receive
 	 * the identifier values of the referenced entity.
