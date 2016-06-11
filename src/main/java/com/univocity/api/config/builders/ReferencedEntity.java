@@ -34,4 +34,13 @@ public interface ReferencedEntity {
 
 	public ReferencedDestinationFields referTo(EntityMapping entityMapping);
 
+	/**
+	 * Identifies what entity is being referred to.
+	 *
+	 * @param destinationEntityName the name of the destination entity who is mapped to the given source entity.
+	 * @return the next step of a reference mapping configuration: define what destination fields in a
+	 * {@link ReferenceMappingSetup} will receive the values of an identifier of the referenced entity.
+	 */
+	public ReferencedMatchingFields referTo(String destinationEntityName);
+
 }

@@ -47,5 +47,5 @@ public interface PersistenceSetup {
 	 * @return the next step of this configuration: define how to remove records in the destination entity, without
 	 *         the usage of metadata.
 	 */
-	public ExclusionWithoutMetadata notUsingMetadata();
+	public RecordTracking notUsingMetadata();
 }
