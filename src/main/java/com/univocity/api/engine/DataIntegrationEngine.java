@@ -6,8 +6,6 @@
  */
 package com.univocity.api.engine;
 
-import java.util.*;
-
 import com.univocity.api.*;
 import com.univocity.api.config.*;
 import com.univocity.api.config.annotation.*;
@@ -15,7 +13,8 @@ import com.univocity.api.config.builders.*;
 import com.univocity.api.data.*;
 import com.univocity.api.entity.*;
 import com.univocity.api.entity.custom.*;
-import com.univocity.api.stream.*;
+
+import java.util.*;
 
 /**
  * The <code>DataIntegrationEngine</code> is the central component of uniVocity. With it you can define data mappings between entities of different data stores,
@@ -62,11 +61,19 @@ public interface DataIntegrationEngine {
 	 * @return a new {@link DataStoreMapping} instance.
 	 */
 	DataStoreMapping map(String sourceDataStore, String destinationDataStore);
-	
+
+	DataStoreMapping mapToDatasets(String sourceDataStore);
+
+	DataStoreMapping mapToDatasets(DataStoreConfiguration sourceDataStore);
+
+	DataStoreMapping mapFromDatasets(String sourceDataStore);
+
+	DataStoreMapping mapFromDatasets(DataStoreConfiguration sourceDataStore);
+
 	EntityMapping mapToDataset(String sourceDataStore, String sourceDataEntity, Dataset destinationDataset);
 	
 	EntityMapping mapToDataset(String sourceDataStore, String sourceDataEntity, String destinationDatasetName, Dataset destinationDataset);
-	
+
 	DataStoreMapping map(DataStoreConfiguration sourceDataStore, DataStoreConfiguration destinationDataStore);
 
 	/**
