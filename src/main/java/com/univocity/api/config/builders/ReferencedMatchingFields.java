@@ -5,6 +5,6 @@ package com.univocity.api.config.builders;
  */
 public interface ReferencedMatchingFields {
 
-	ReferenceFields matching(String firstColumn, String ... otherColumns);
+	ReferenceFields matching(String ... fields);
 
 }

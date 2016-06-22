@@ -5,6 +5,6 @@ package com.univocity.api.config.builders;
  */
 public interface ReferenceFields {
 
-	ReferencedDestinationFields toAssign(String firstColumn, String ... otherColumns);
+	ReferencedDestinationFields toAssign(String ... fields);
 
 }
