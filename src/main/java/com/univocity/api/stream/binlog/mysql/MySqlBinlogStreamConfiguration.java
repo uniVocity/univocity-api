@@ -82,11 +82,15 @@ public class MySqlBinlogStreamConfiguration extends StreamingDataStoreConfigurat
 	}
 
 	public void setPositionTrackingFile(File positionTrackingFile) {
-		this.positionTrackingFile = new FileProvider(positionTrackingFile);
+		if(positionTrackingFile != null) {
+			this.positionTrackingFile = new FileProvider(positionTrackingFile);
+		}
 	}
 
 	public void setPositionTrackingFile(String pathToPositionTrackingFile) {
-		this.positionTrackingFile = new FileProvider(pathToPositionTrackingFile);
+		if(pathToPositionTrackingFile != null) {
+			this.positionTrackingFile = new FileProvider(pathToPositionTrackingFile);
+		}
 	}
 
 	@Override
