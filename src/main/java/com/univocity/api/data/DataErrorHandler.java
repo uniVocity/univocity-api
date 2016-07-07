@@ -22,6 +22,7 @@ public interface DataErrorHandler<T> {
 	/**
 	 * Handles an exception that happened when executing a query.
 	 * @param t the exception thrown while executing a query.
+	 * @param args additional arguments provided to the exception handler
 	 * @return an object with data if the handler recovered from the error.
 	 */
 	public T handleException(Throwable t, Object ... args);
@@ -30,6 +31,7 @@ public interface DataErrorHandler<T> {
 	 * Handles unexpected data produced by a query.
 	 *
 	 * @param data the data produced by a query.
+	 * @param args additional arguments provided to the exception handler
 	 * @return an object with data if the handler recovered from the error.
 	 */
 	public T handleUnexpectedData(Object[][] data, Object ... args);

@@ -271,12 +271,12 @@ public final class JdbcEntityConfiguration extends BaseJdbcEntityConfiguration {
 	 * Specifies whether batch operations on the entity should be retried automatically in case of failure
 	 * If enabled, and a batch operation fails, uniVocity will retry processing the rows one-by-one (i.e. without batching).
 	 * <p>
-	 * Individual rows that could not be processed will be sent to {@link com.univocity.api.engine.RowReader#handleError(Exception, Map, Object[], Object[], RowMappingContext)},
+	 * Individual rows that could not be processed will be sent to {@link com.univocity.api.engine.RowReader#handleError(Map, Object[], Object[], RowMappingContext)},
 	 * where the user will be able to amend the input for a last retry, discard the row, skip the entity mapping, or abort the process altogether.
 	 * </p>
 	 * <p>
 	 * <b>Important: </b>
-	 * uniVocity will <i>only</i> invoke the {@link com.univocity.api.engine.RowReader#handleError(Exception, Map, Object[], Object[], RowMappingContext)} for <i>output</i>
+	 * uniVocity will <i>only</i> invoke the {@link com.univocity.api.engine.RowReader#handleError(Map, Object[], Object[], RowMappingContext)} for <i>output</i>
 	 * {@link RowReader} instances (i.e. those registered using {@link EntityMapping#addOutputRowReader(RowReader)}.
 	 * </p>
 	 *
@@ -293,12 +293,12 @@ public final class JdbcEntityConfiguration extends BaseJdbcEntityConfiguration {
 	 * Specifies whether batch operations on the entity should be retried automatically in case of failure
 	 * If enabled, and a batch operation fails, uniVocity will retry processing the rows one-by-one (i.e. without batching).
 	 * <p>
-	 * Individual rows that could not be processed will be sent to {@link com.univocity.api.engine.RowReader#handleError(Exception, Map, Object[], Object[], RowMappingContext)},
+	 * Individual rows that could not be processed will be sent to {@link com.univocity.api.engine.RowReader#handleError(Map, Object[], Object[], RowMappingContext)},
 	 * where the user will be able to amend the input for a last retry, discard the row, skip the entity mapping, or abort the process altogether.
 	 * </p>
 	 * <p>
 	 * <b>Important: </b>
-	 * uniVocity will <i>only</i> invoke the {@link com.univocity.api.engine.RowReader#handleError(Exception, Map, Object[], Object[], RowMappingContext)} for <i>output</i>
+	 * uniVocity will <i>only</i> invoke the {@link com.univocity.api.engine.RowReader#handleError(Map, Object[], Object[], RowMappingContext)} for <i>output</i>
 	 * {@link RowReader} instances (i.e. those registered using {@link EntityMapping#addOutputRowReader(RowReader)}.
 	 * </p>
 	 *

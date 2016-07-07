@@ -85,6 +85,7 @@ public interface CreateTableExportOptions extends ExportOutput {
 
 	/**
 	 * The scripts in this export operation should have the length of any identifiers - such as table and index names - restricted.
+	 * @param maxLength maximum length of an identifier in the target database.
 	 * @return further options to configure this export operation.
 	 */
 	CreateTableExportOptions restrictIdentifierLengthTo(int maxLength);
@@ -121,5 +122,16 @@ public interface CreateTableExportOptions extends ExportOutput {
 	 * @return further options to configure this export operation.
 	 */
 	CreateTableExportOptions omitColumns(String entityName, String ... columnList);
+
+
+	/**
+	 * Modifies the type of fields to be used when generating the export. Used to prevent creating tables
+	 * with columns that might contain incompatible or problematic types.
+	 *
+	 * @param newFieldType the new type to use when generating the export
+	 * @param originalFieldTypes types that if found in the fields of the source entities being exported, will be replaced by the new field type.
+	 * @return further options to configure this export operation.
+     */
+	CreateTableExportOptions modifyType(Class<?> newFieldType, Class<?> ... originalFieldTypes);
 
 }

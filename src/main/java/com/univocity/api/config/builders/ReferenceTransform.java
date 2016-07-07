@@ -10,9 +10,9 @@ import com.univocity.api.engine.*;
 /**
  * The <code>ReferenceTransform</code> configuration is obtained from an {@link UnmatchedReference} configuration
  * which is part of the configuration initialized by a call to {@link ReferenceMappingSetup#using(String...)}
- * <p>
+ *
  * <p>It is used to define what functions in the {@link DataIntegrationEngine} should be used to process values from an input field and transform them into values
- * that will then be used to restore the identifier of a destination field.
+ * that will then be used to restore the identifier of a destination field.</p>
  *
  * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
  * @see ReferenceMappingSetup
