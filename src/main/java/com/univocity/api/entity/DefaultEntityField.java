@@ -133,8 +133,6 @@ public class DefaultEntityField {
 	public void setLength(int length) {
 		if (length < 0) {
 			length = -1;
-		} else {
-			Args.positive(length, "Field length");
 		}
 		this.length = length;
 	}
@@ -176,8 +174,8 @@ public class DefaultEntityField {
 	 * @param scale the scale to use when writing decimal values.
 	 */
 	public void setScale(int scale) {
-		if (scale != -1 && scale != 0) {
-			Args.positive(scale, "Scale of field " + name);
+		if (scale < 0) {
+			scale = -1;
 		}
 		this.scale = scale;
 	}
