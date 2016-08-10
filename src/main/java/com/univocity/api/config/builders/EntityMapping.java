@@ -5,11 +5,11 @@
  ******************************************************************************/
 package com.univocity.api.config.builders;
 
-import java.util.*;
-
 import com.univocity.api.engine.*;
 import com.univocity.api.entity.*;
 import com.univocity.api.entity.custom.*;
+
+import java.util.*;
 
 /**
  * The {@link EntityMapping} provides builder-style configuration options for defining mappings between fields of two data entities,
@@ -369,4 +369,16 @@ public interface EntityMapping {
 	public Entity getSourceEntity();
 
 	public Map<String[], String[]> getMappings();
+
+	public boolean containsInputRowReader(RowReader rowReader);
+
+	public boolean containsInputRowReader(String readerName);
+
+	public boolean containsOutputRowReader(RowReader rowReader);
+
+	public boolean containsOutputRowReade(String readerName);
+
+	public boolean containsPersistedRowReader(RowReader rowReader);
+
+	public boolean containsPersistedRowReader(String readerName);
 }
