@@ -469,4 +469,43 @@ public interface DataIntegrationEngine {
 	List<EntityMapping> getEntityMappings();
 
 	DataStreamingProcess stream();
+
+
+	/**
+	 * Executes an expression and returns the result. Acceptable expressions conform to the following format:
+	 *
+	 * <ul>
+	 *  <li>Variables and constant names are prefixed with {@code $}</li>
+	 *  <li>A function call is represented by its name and a sequence of parameters, if any, between {@code ()} and separated by commas.
+	 *      Additional expressions such as function calls are accepted as parameters.
+	 *  </li>
+	 *  <li>A single expression can return multiple values. Each value must be separated by a comma.</li>
+	 *  <li>The word "null", without quotes, will be evaluated as a {@code null} object; 'null' will be evaluated to the "null" {@code String}.
+	 *  </li>
+	 *  <li>Any value between single quotes is interpreted as a {@code String} literal. Single quotes are only required if the {@code String} literal contains:
+	 *  	<ul>
+	 *  		<li>leading or trailing white spaces,</li>
+	 *  		<li>any of the following characters: <code> $ ) ' ( , </code> </li>
+	 *  		<li>in case the single quote is part of the value, it must be escaped with an addition single quote:
+	 *  			<p>the expression: <code>"' '' this is escaped ''  '"</code> will be parsed as the string <code>" ' this is escaped ' "</code>
+	 *  		</li>
+	 *  	</ul>
+	 * 	</li>
+	 * </ul>
+	 *
+	 * <p>Example:</p>
+	 * <blockquote><pre>
+	 * setVariable("b", 1);
+	 * setVariable("e", 2);
+	 * evaluateExpression("a, $b, concat( d, $e, 'f')"); //assume the concat function concatenates any number of arguments into a String.
+	 * </pre></blockquote>
+	 * Will return an object array with: <code>"a", 1, "d2f"</code>
+	 *
+	 * @param expression the expression to be executed
+	 * @return the result of the expression.
+	 */
+	public Object evaluateExpression(String expression);
+
+	public <T> T evaluateExpression(String expression, Class<T> resultType);
+
 }
