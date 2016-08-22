@@ -4,7 +4,10 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public interface HttpResponse extends Closeable {
+/**
+ * @author uniVocity Software Pty Ltd - <a href="mailto:dev@univocity.com">dev@univocity.com</a>
+ */
+public interface HttpResponse extends Closeable,Cloneable{
 
 	String getRedirectionUrl();
 
@@ -31,4 +34,6 @@ public interface HttpResponse extends Closeable {
 	void readContent(HttpResponseReader responseReader);
 
 	int getRetriesPerformed();
+
+	HttpResponse clone();
 }
