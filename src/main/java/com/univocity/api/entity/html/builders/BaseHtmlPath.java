@@ -38,6 +38,8 @@ interface BaseHtmlPath<T extends BaseHtmlPath<T>>{
 
 	T withText(String textContent);
 
+	T withExactText(String textContent);
+
 	T withMatchingText(String textContent);
 
 	T classes(String firstCssClass, String... otherCssClasses);
