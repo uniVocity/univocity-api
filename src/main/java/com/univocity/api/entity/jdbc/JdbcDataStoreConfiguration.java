@@ -5,16 +5,15 @@
  ******************************************************************************/
 package com.univocity.api.entity.jdbc;
 
+import com.univocity.api.common.*;
+import com.univocity.api.engine.*;
+import com.univocity.api.entity.custom.*;
+
+import javax.sql.*;
 import java.io.*;
 import java.nio.charset.*;
 import java.sql.*;
 import java.util.*;
-
-import javax.sql.*;
-
-import com.univocity.api.common.*;
-import com.univocity.api.engine.*;
-import com.univocity.api.entity.custom.*;
 
 /**
  * The JDBC data store configuration class. Use it to configure the JDBC data entities and queries that will be manipulated by a {@link DataIntegrationEngine}.
@@ -40,6 +39,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	private String catalog;
 	private DatabaseDialect dialect;
 
+	private int limitOfRowsInMemory = 10000;
 	private int transactionTimeout = -1;
 	private int transactionIsolationLevel = Connection.TRANSACTION_REPEATABLE_READ;
 
@@ -371,7 +371,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	 */
 	@Override
 	public final int getLimitOfRowsLoadedInMemory() {
-		return defaultEntityConfiguration.getFetchSize();
+		return this.limitOfRowsInMemory;
 	}
 
 	/**
@@ -381,8 +381,7 @@ public final class JdbcDataStoreConfiguration extends DataStoreConfiguration {
 	 * @param rowLimit the maximum number of rows kept in memory at any given time when reading values from any entity or query of this data store.
 	 */
 	public final void setLimitOfRowsLoadedInMemory(int rowLimit) {
-		this.defaultEntityConfiguration.setFetchSize(rowLimit);
-		this.defaultQueryConfiguration.setFetchSize(rowLimit);
+		this.limitOfRowsInMemory = rowLimit;
 	}
 
 	/**
