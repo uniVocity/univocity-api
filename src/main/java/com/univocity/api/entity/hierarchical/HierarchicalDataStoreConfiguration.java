@@ -5,13 +5,13 @@
  ******************************************************************************/
 package com.univocity.api.entity.hierarchical;
 
+import com.univocity.api.common.*;
+import com.univocity.api.entity.custom.*;
+import com.univocity.api.entity.hierarchical.PathReaderConfiguration.*;
+
 import java.io.*;
 import java.nio.charset.*;
 import java.util.*;
-
-import com.univocity.api.common.*;
-import com.univocity.api.entity.custom.*;
-import com.univocity.api.entity.hierarchical.PathReaderConfiguration.ElementPaths;
 
 public abstract class HierarchicalDataStoreConfiguration extends DataStoreConfiguration {
 
@@ -59,7 +59,7 @@ public abstract class HierarchicalDataStoreConfiguration extends DataStoreConfig
 		this.inputFile = null;
 	}
 
-	private HierarchicalDataStoreConfiguration(String dataStoreName, FileProvider inputFile) {
+	public HierarchicalDataStoreConfiguration(String dataStoreName, FileProvider inputFile) {
 		super(dataStoreName);
 		this.inputFile = inputFile;
 		this.inputProvider = null;

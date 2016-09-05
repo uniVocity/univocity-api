@@ -5,11 +5,11 @@
  ******************************************************************************/
 package com.univocity.api.entity.hierarchical.xml;
 
-import java.io.*;
-import java.nio.charset.*;
-
 import com.univocity.api.common.*;
 import com.univocity.api.entity.hierarchical.*;
+
+import java.io.*;
+import java.nio.charset.*;
 
 public class XmlDataStoreConfiguration extends HierarchicalDataStoreConfiguration {
 	public XmlDataStoreConfiguration(String dataStoreName, File inputFile, Charset encoding) {
@@ -48,4 +48,7 @@ public class XmlDataStoreConfiguration extends HierarchicalDataStoreConfiguratio
 		super(dataStoreName);
 	}
 
+	public XmlDataStoreConfiguration(String dataStoreName, FileProvider fileProvider) {
+		super(dataStoreName, fileProvider);
+	}
 }

@@ -5,11 +5,11 @@
  ******************************************************************************/
 package com.univocity.api.entity.hierarchical.json;
 
-import java.io.*;
-import java.nio.charset.*;
-
 import com.univocity.api.common.*;
 import com.univocity.api.entity.hierarchical.*;
+
+import java.io.*;
+import java.nio.charset.*;
 
 public class JsonDataStoreConfiguration extends HierarchicalDataStoreConfiguration {
 	public JsonDataStoreConfiguration(String dataStoreName, File inputFile, Charset encoding) {
@@ -46,6 +46,10 @@ public class JsonDataStoreConfiguration extends HierarchicalDataStoreConfigurati
 
 	public JsonDataStoreConfiguration(String dataStoreName) {
 		super(dataStoreName);
+	}
+
+	public JsonDataStoreConfiguration(String dataStoreName, FileProvider fileProvider) {
+		super(dataStoreName, fileProvider);
 	}
 
 }
