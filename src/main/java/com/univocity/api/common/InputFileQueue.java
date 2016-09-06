@@ -4,23 +4,8 @@ import com.univocity.api.*;
 
 import java.io.*;
 import java.nio.charset.*;
-import java.util.*;
 
-public class InputFileQueue extends ReaderProvider {
-
-	private final Queue<FileProvider> inputQueue = new LinkedList<FileProvider>();
-
-	public InputFileQueue() {
-
-	}
-
-	public boolean isEmpty() {
-		return inputQueue.isEmpty();
-	}
-
-	public int size() {
-		return inputQueue.size();
-	}
+public class InputFileQueue extends InputQueue<FileProvider> {
 
 	public void addFile(File file) {
 		this.addFile(file, (Charset) null);
@@ -47,19 +32,11 @@ public class InputFileQueue extends ReaderProvider {
 	}
 
 	public void addFile(FileProvider fileProvider) {
-		inputQueue.offer(fileProvider);
-	}
-
-	protected FileProvider poll(){
-		return inputQueue.poll();
+		offer(fileProvider);
 	}
 
 	@Override
-	public Reader getResource() {
-		FileProvider fileProvider = poll();
-		if (fileProvider == null) {
-			throw new IllegalStateException("No files to process");
-		}
-		return Univocity.provider().build(Reader.class, fileProvider);
+	protected Reader open(FileProvider input) {
+		return Univocity.provider().build(Reader.class, input);
 	}
 }
