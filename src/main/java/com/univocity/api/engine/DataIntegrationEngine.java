@@ -221,6 +221,16 @@ public interface DataIntegrationEngine {
 	void setVariable(String name, Object value);
 
 	/**
+	 * Sets or adds then initializes a variable in the current scope. To read the value of a variable in expressions, prepend it with $.
+	 * For example: <code>"$en_US"</code> reads the value of the variable "en_US".
+	 *
+	 * @param name the name of the new variable
+	 * @param value the value of the variable to be set/created in the current scope.
+	 * @param scope the scope where the variable should be available. If the given scope is unavailable, an {@code IllegalStateException} will be thrown
+	 */
+	void setVariable(String name, Object value, EngineScope scope);
+
+	/**
 	 * Sets or adds then initializes a variable in the persistent scope ({@link EngineScope#PERSISTENT}). If no {@link ScopeStorageProvider} is defined
 	 * in {@link EngineConfiguration#getPersistentScopeStorageProvider()}, the variable will be added/set using {@link EngineScope#APPLICATION}.
 	 *
