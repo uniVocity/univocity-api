@@ -5,9 +5,9 @@
  ******************************************************************************/
 package com.univocity.api.entity.hierarchical;
 
-import java.util.*;
-
 import com.univocity.api.common.*;
+
+import java.util.*;
 
 public class PathReaderConfiguration {
 
@@ -18,6 +18,7 @@ public class PathReaderConfiguration {
 		boolean validatePaths = false;
 		final Map<String, Integer> elements = new LinkedHashMap<String, Integer>();
 		final Map<String, Integer> elementsOfList = new LinkedHashMap<String, Integer>();
+		final Map<String, Integer> elementsOfCumulativeList = new LinkedHashMap<String, Integer>();
 		final Map<String, Integer> elementsOfGroup = new LinkedHashMap<String, Integer>();
 
 		public final Map<String, Integer> getElements() {
@@ -28,6 +29,10 @@ public class PathReaderConfiguration {
 			return Collections.unmodifiableMap(elementsOfList);
 		}
 
+		public final Map<String, Integer> getElementsOfCumulativeList() {
+			return Collections.unmodifiableMap(elementsOfCumulativeList);
+		}
+
 		public final Map<String, Integer> getElementsOfGroup() {
 			return Collections.unmodifiableMap(elementsOfGroup);
 		}
@@ -36,6 +41,7 @@ public class PathReaderConfiguration {
 			int pathCount = elements.size();
 			pathCount += elementsOfGroup.size();
 			pathCount += elementsOfList.size();
+			pathCount += elementsOfCumulativeList.size();
 			return pathCount > 0;
 		}
 
@@ -76,6 +82,15 @@ public class PathReaderConfiguration {
 	public void includeElementsOfList(String entityName, String pathToList, int parentsToInclude) {
 		Args.positiveOrZero(parentsToInclude, "Number of parent elements to include");
 		getPaths(entityName).elementsOfList.put(pathToList, parentsToInclude);
+	}
+
+	public void accumulateElementsOfList(String entityName, String pathToList) {
+		accumulateElementsOfList(entityName, pathToList, 0);
+	}
+
+	public void accumulateElementsOfList(String entityName, String pathToList, int parentsToInclude) {
+		Args.positiveOrZero(parentsToInclude, "Number of parent elements to include");
+		getPaths(entityName).elementsOfCumulativeList.put(pathToList, parentsToInclude);
 	}
 
 	public void includeElementsOfGroup(String entityName, String pathToElement) {

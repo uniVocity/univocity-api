@@ -93,6 +93,11 @@ public abstract class HierarchicalDataStoreConfiguration extends DataStoreConfig
 		entityConfig.setPathValidationEnabled(entityName, pathValidationEnabled);
 	}
 
+	public void accumulateElementsOfList(String entityName, String pathToList) {
+		entityConfig.accumulateElementsOfList(entityName, pathToList);
+		entityConfig.setPathValidationEnabled(entityName, pathValidationEnabled);
+	}
+
 	public void includeElementsOfList(String entityName, String pathToList) {
 		entityConfig.includeElementsOfList(entityName, pathToList);
 		entityConfig.setPathValidationEnabled(entityName, pathValidationEnabled);
