@@ -88,24 +88,40 @@ public abstract class HierarchicalDataStoreConfiguration extends DataStoreConfig
 		return inputProvider;
 	}
 
+	public void includeElement(String entityName, String pathToElement, int parentElementsToInclude) {
+		entityConfig.includeElement(entityName, pathToElement, parentElementsToInclude);
+		entityConfig.setPathValidationEnabled(entityName, pathValidationEnabled);
+	}
+
 	public void includeElement(String entityName, String pathToElement) {
-		entityConfig.includeElement(entityName, pathToElement);
+		includeElement(entityName, pathToElement, 0);
+	}
+
+	public void accumulateElementsOfList(String entityName, String pathToList, int parentElementsToInclude) {
+		entityConfig.accumulateElementsOfList(entityName, pathToList, parentElementsToInclude);
 		entityConfig.setPathValidationEnabled(entityName, pathValidationEnabled);
 	}
 
 	public void accumulateElementsOfList(String entityName, String pathToList) {
-		entityConfig.accumulateElementsOfList(entityName, pathToList);
+		accumulateElementsOfList(entityName, pathToList, 0);
+	}
+
+	public void includeElementsOfList(String entityName, String pathToList, int parentElementsToInclude) {
+		entityConfig.includeElementsOfList(entityName, pathToList, parentElementsToInclude);
 		entityConfig.setPathValidationEnabled(entityName, pathValidationEnabled);
 	}
 
 	public void includeElementsOfList(String entityName, String pathToList) {
-		entityConfig.includeElementsOfList(entityName, pathToList);
+		includeElementsOfList(entityName, pathToList, 0);
+	}
+
+	public void includeElementsOfGroup(String entityName, String pathToElement, int parentElementsToInclude) {
+		entityConfig.includeElementsOfGroup(entityName, pathToElement, parentElementsToInclude);
 		entityConfig.setPathValidationEnabled(entityName, pathValidationEnabled);
 	}
 
 	public void includeElementsOfGroup(String entityName, String pathToElement) {
-		entityConfig.includeElementsOfGroup(entityName, pathToElement);
-		entityConfig.setPathValidationEnabled(entityName, pathValidationEnabled);
+		includeElementsOfGroup(entityName, pathToElement, 0);
 	}
 
 	public void setPathValidationEnabled(boolean validatePaths) {
