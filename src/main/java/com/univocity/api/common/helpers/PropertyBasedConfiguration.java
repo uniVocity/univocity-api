@@ -1,11 +1,11 @@
 package com.univocity.api.common.helpers;
 
-import java.io.*;
-import java.util.*;
-import java.util.Map.Entry;
-
 import com.univocity.api.common.*;
 import com.univocity.api.exception.*;
+
+import java.io.*;
+import java.util.*;
+import java.util.Map.*;
 
 public abstract class PropertyBasedConfiguration {
 
@@ -185,6 +185,14 @@ public abstract class PropertyBasedConfiguration {
 			filePath = filePath + "/";
 		}
 		return filePath;
+	}
+
+	public File getValidatedFile(String pathToFile, boolean mandatory, boolean validateRead, boolean validateWrite, boolean create) {
+		return getValidatedPath(pathToFile, null, false, mandatory, validateRead, validateWrite, create);
+	}
+
+	public File getValidatedDirectory(String pathToFile, boolean mandatory, boolean validateRead, boolean validateWrite, boolean create) {
+		return getValidatedPath(pathToFile, null, true, mandatory, validateRead, validateWrite, create);
 	}
 
 	private File getValidatedPath(String property, File defaultFile, boolean isDirectory, boolean mandatory, boolean validateRead, boolean validateWrite, boolean create, String... keyValuePairs) {
