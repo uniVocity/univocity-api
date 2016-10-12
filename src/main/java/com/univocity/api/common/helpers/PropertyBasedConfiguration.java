@@ -13,12 +13,36 @@ public abstract class PropertyBasedConfiguration {
 	private final Map<String, String> values = new LinkedHashMap<String, String>();
 
 	protected PropertyBasedConfiguration(InputStream inputProperties) {
+		this((Closeable) inputProperties);
+	}
 
+	protected PropertyBasedConfiguration(Reader inputProperties) {
+		this((Closeable) inputProperties);
+	}
+
+	protected PropertyBasedConfiguration(File inputProperties) {
+		this(getFileReader(inputProperties));
+	}
+
+	private PropertyBasedConfiguration(Closeable inputProperties) {
+		Args.notNull(inputProperties, "Properties file input");
 		properties = new OrderedProperties();
 		try {
-			properties.load(inputProperties);
+			if (inputProperties instanceof InputStream) {
+				properties.load((InputStream) inputProperties);
+			} else if (inputProperties instanceof Reader) {
+				properties.load((Reader) inputProperties);
+			}
 		} catch (Exception e) {
 			throw new IllegalStateException("Error loading configuration from properties " + getPropertiesDescription(), e);
+		} finally {
+			if (inputProperties != null) {
+				try {
+					inputProperties.close();
+				} catch (Exception e) {
+					//ignore
+				}
+			}
 		}
 
 		Enumeration<?> keys = properties.propertyNames();
@@ -35,6 +59,36 @@ public abstract class PropertyBasedConfiguration {
 		}
 	}
 
+	protected PropertyBasedConfiguration(String... configurationPaths) {
+		this(openConfiguration(configurationPaths));
+	}
+
+	protected static InputStream openConfiguration(String... pathsToTry) {
+		Args.notEmpty(pathsToTry, "List of paths to look for a properties file");
+		for (String path : pathsToTry) {
+			try {
+				return new FileInputStream(path);
+			} catch (Exception e) {
+				InputStream out = PropertyBasedConfiguration.class.getResourceAsStream(path);
+				if (out != null) {
+					return out;
+				}
+			}
+		}
+		System.err.println("Could not load a properties file from any of the given paths: " + Arrays.toString(pathsToTry));
+		System.exit(1);
+		return null;
+	}
+
+	private static Reader getFileReader(File file) {
+		Args.notNull(file, "Properties file");
+		try {
+			return new FileReader(file);
+		} catch (Exception ex) {
+			throw new IllegalStateException("Error loading properties from file " + file.getAbsolutePath(), ex);
+		}
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder out = new StringBuilder(getPropertiesDescription());
@@ -48,7 +102,9 @@ public abstract class PropertyBasedConfiguration {
 		return out.toString();
 	}
 
-	protected abstract String getPropertiesDescription();
+	protected String getPropertiesDescription() {
+		return "properties file";
+	}
 
 	protected String replaceVariables(String s, String variable, String value) {
 		variable = "${" + variable + "}";
