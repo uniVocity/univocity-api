@@ -457,8 +457,6 @@ public interface DataIntegrationEngine {
 	 */
 	Export exportEntities(String dataStoreName, String... entityNames);
 	
-	Set<String> getEntityNames();
-
 	/**
 	 * Configures an export operation from a given list of data entities.
 	 *
@@ -468,9 +466,15 @@ public interface DataIntegrationEngine {
 	 */
 	Export exportEntities(DataStoreConfiguration dataStore, String... entityNames);
 
+	Set<String> getEntityNames();
+
 	Set<String> getEntityNamesOf(String dataStoreName);
 	
 	Set<String> getEntityNamesOf(DataStoreConfiguration dataStore);
+
+	Set<String> getEntityNamesOf(String dataStoreName, boolean includeDataStorePrefix);
+
+	Set<String> getEntityNamesOf(DataStoreConfiguration dataStore, boolean includeDataStorePrefix);
 	
 	void shutdown();
 

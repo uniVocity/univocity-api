@@ -6,4 +6,6 @@ package com.univocity.api.config.builders;
 public interface RecordTracking extends ExclusionWithoutMetadata {
 
 	public RecordTrackingFields trackRecords();
+
+	public RecordTrackingFields trackRecords(String filter);
 }
