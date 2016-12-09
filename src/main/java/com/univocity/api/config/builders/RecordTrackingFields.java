@@ -5,5 +5,5 @@ package com.univocity.api.config.builders;
  */
 public interface RecordTrackingFields {
 
-	public ExclusionWithMetadata using(String ... fields);
+	public ExclusionWithMetadata using(String ... fieldsAtDestination);
 }
