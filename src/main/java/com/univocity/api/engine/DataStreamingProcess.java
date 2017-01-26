@@ -7,10 +7,14 @@
 
 package com.univocity.api.engine;
 
-public interface DataStreamingProcess {
+import java.io.*;
+
+public interface DataStreamingProcess extends Closeable{
 
 	void start();
 
 	void resynchronize();
+
+	void close();
 
 }
