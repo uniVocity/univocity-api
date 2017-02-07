@@ -24,7 +24,16 @@ public class HttpRequest {
 		this.url = url;
 	}
 
-	public void setUrl(String url){
+	public void setKeepAliveEnabled(boolean enableKeepAlive) {
+		setHeader("Connection", enableKeepAlive ? "keep-alive" : "close");
+	}
+
+	public boolean isKeepAliveEnabled() {
+		String value = headers.get("Connection");
+		return value == null || "keep-alive".equalsIgnoreCase(value);
+	}
+
+	public void setUrl(String url) {
 		this.url = url;
 	}
 
