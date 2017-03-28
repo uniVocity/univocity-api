@@ -9,8 +9,6 @@ package com.univocity.api.stream;
 
 import com.univocity.api.entity.custom.*;
 
-import java.util.*;
-
 public abstract class StreamingDataStoreConfiguration extends DataStoreConfiguration {
 
 	private int limitOfRowsLoadedInMemory = 10000;

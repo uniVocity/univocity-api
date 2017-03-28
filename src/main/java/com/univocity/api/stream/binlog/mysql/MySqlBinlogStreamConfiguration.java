@@ -63,7 +63,7 @@ public class MySqlBinlogStreamConfiguration extends StreamingDataStoreConfigurat
 	}
 
 	public void setPassword(String password) {
-		if(password == null){
+		if (password == null) {
 			password = "";
 		}
 		this.password = password;
@@ -82,13 +82,13 @@ public class MySqlBinlogStreamConfiguration extends StreamingDataStoreConfigurat
 	}
 
 	public void setPositionTrackingFile(File positionTrackingFile) {
-		if(positionTrackingFile != null) {
+		if (positionTrackingFile != null) {
 			this.positionTrackingFile = new FileProvider(positionTrackingFile);
 		}
 	}
 
 	public void setPositionTrackingFile(String pathToPositionTrackingFile) {
-		if(pathToPositionTrackingFile != null) {
+		if (pathToPositionTrackingFile != null) {
 			this.positionTrackingFile = new FileProvider(pathToPositionTrackingFile);
 		}
 	}

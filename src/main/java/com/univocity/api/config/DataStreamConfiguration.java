@@ -14,10 +14,12 @@ import com.univocity.api.stream.*;
 
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.*;
 
 public class DataStreamConfiguration implements EventPersistence {
 
 	private boolean persistEvents = false;
+	private long activityReportFrequency = 0L;
 	private File eventDirectory;
 	private final String engineName;
 	private final StreamingDataStoreConfiguration masterConfig;
@@ -58,7 +60,7 @@ public class DataStreamConfiguration implements EventPersistence {
 		return this;
 	}
 
-	public void addStreamEventListener(StreamEventListener listener){
+	public void addStreamEventListener(StreamEventListener listener) {
 		this.eventListeners.add(listener);
 	}
 
@@ -70,5 +72,17 @@ public class DataStreamConfiguration implements EventPersistence {
 
 	public File getEventDirectory() {
 		return eventDirectory;
+	}
+
+	public long getActivityReportFrequency() {
+		return activityReportFrequency;
+	}
+
+	public void setActivityReportFrequency(long activityReportFrequency) {
+		this.activityReportFrequency = activityReportFrequency;
+	}
+
+	public void setActivityReportFrequency(long activityReportFrequency, TimeUnit timeUnit) {
+		this.activityReportFrequency = timeUnit.toMillis(activityReportFrequency);
 	}
 }
