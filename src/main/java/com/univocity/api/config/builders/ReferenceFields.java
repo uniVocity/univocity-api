@@ -7,4 +7,6 @@ public interface ReferenceFields {
 
 	ReferencedDestinationFields toAssign(String ... fields);
 
+	ReferenceFields filter(String expression);
+
 }
