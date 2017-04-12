@@ -40,4 +40,13 @@ public interface UnivocityFactoryProvider {
 	 * @param <T> the type of builder to instantiate.
 	 */
 	<T> T build(Class<T> builderType, Object ... args);
+
+	/**
+	 * Executes an internal command whose implementation is provided by uniVocity. For internal use only.
+	 * @param command the command to be executed
+	 * @param args any arguments required to perform the operation
+	 * @param <T> the type of the return value produced by the operation
+	 * @return the result of the given command.
+	 */
+	<T> T execute(String command, Object ... args);
 }
