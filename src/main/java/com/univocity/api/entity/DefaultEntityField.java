@@ -23,6 +23,7 @@ public class DefaultEntityField {
 	private int scale = -1;
 	private Class<?> type = null;
 	private Integer sqlTypeCode = null;
+	private String comments;
 
 	/**
 	 * Creates an entity field instance with its name.
@@ -203,19 +204,39 @@ public class DefaultEntityField {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
 		DefaultEntityField that = (DefaultEntityField) o;
 
-		if (isIdentifier != that.isIdentifier) return false;
-		if (isNullable != that.isNullable) return false;
-		if (isGenerated != that.isGenerated) return false;
-		if (length != that.length) return false;
-		if (scale != that.scale) return false;
-		if (!name.equals(that.name)) return false;
-		if (defaultValue != null ? !defaultValue.equals(that.defaultValue) : that.defaultValue != null) return false;
-		if (type != null ? !type.equals(that.type) : that.type != null) return false;
+		if (isIdentifier != that.isIdentifier) {
+			return false;
+		}
+		if (isNullable != that.isNullable) {
+			return false;
+		}
+		if (isGenerated != that.isGenerated) {
+			return false;
+		}
+		if (length != that.length) {
+			return false;
+		}
+		if (scale != that.scale) {
+			return false;
+		}
+		if (!name.equals(that.name)) {
+			return false;
+		}
+		if (defaultValue != null ? !defaultValue.equals(that.defaultValue) : that.defaultValue != null) {
+			return false;
+		}
+		if (type != null ? !type.equals(that.type) : that.type != null) {
+			return false;
+		}
 		return sqlTypeCode != null ? sqlTypeCode.equals(that.sqlTypeCode) : that.sqlTypeCode == null;
 
 	}
@@ -252,6 +273,7 @@ public class DefaultEntityField {
 		field.scale = scale;
 		field.type = type;
 		field.sqlTypeCode = sqlTypeCode;
+		field.comments = comments;
 	}
 
 
@@ -259,4 +281,21 @@ public class DefaultEntityField {
 		field.copyPropertiesTo(this);
 	}
 
+	/**
+	 * Returns a comment describing the field
+	 *
+	 * @return remarks about the field, if any.
+	 */
+	public String getComments() {
+		return comments;
+	}
+
+	/**
+	 * Defines a comment describing the field
+	 *
+	 * @param comments remarks about the field.
+	 */
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
 }
