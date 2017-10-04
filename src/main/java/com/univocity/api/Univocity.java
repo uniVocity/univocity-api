@@ -186,6 +186,28 @@ public final class Univocity {
 	}
 
 	/**
+	 * De-registers a data integration engine with the given name. Only engines that have been be shut down can be de-registered.
+	 * This allows a new data integration engine with the same name, but different configuration, to be registered.
+	 * <p>A registered engine is one that has been registered via {@link Univocity#registerEngine(com.univocity.api.config.EngineConfiguration)} .</p>
+	 * @param engineName the name of the engine to be de-registered.
+	 */
+	public static final synchronized void deRegister(String engineName) {
+		engineFactory().deRegister(engineName);
+	}
+
+
+	/**
+	 * Shuts down and de-registers a data integration engine with the given name.
+	 * This allows a new data integration engine with the same name, but different configuration, to be registered.
+	 * <p>A registered engine is one that has been registered via {@link Univocity#registerEngine(com.univocity.api.config.EngineConfiguration)} .</p>
+	 * @param engineName the name of the engine to be shut down and de-registered.
+	 */
+	public static final synchronized void discard(String engineName) {
+		shutdown(engineName);
+		deRegister(engineName);
+	}
+
+	/**
 	 * Is the data integration engine with the given name active?
 	 * <p>An active engine is one that has been instantiated through {@link Univocity#getEngine(String)} and has yet to be shut down.
 	 *

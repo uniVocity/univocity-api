@@ -478,6 +478,8 @@ public interface DataIntegrationEngine {
 	
 	void shutdown();
 
+	void discard();
+
 	List<DataStoreMapping> getDataStoreMappings();
 
 	List<EntityMapping> getEntityMappings();
