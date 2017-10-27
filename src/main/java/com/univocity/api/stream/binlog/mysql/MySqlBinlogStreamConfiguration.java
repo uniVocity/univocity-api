@@ -11,6 +11,7 @@ import com.univocity.api.common.*;
 import com.univocity.api.stream.*;
 
 import java.io.*;
+import java.util.*;
 
 public class MySqlBinlogStreamConfiguration extends StreamingDataStoreConfiguration {
 
@@ -20,6 +21,8 @@ public class MySqlBinlogStreamConfiguration extends StreamingDataStoreConfigurat
 	private String username = "root";
 	private String password = "";
 	private long connectionTimeout = 3000L;
+	private long serverId = 65535;
+	private boolean randomizeServerIdOnDuplicate = true;
 	private FileProvider positionTrackingFile = null;
 
 	public MySqlBinlogStreamConfiguration(String streamName) {
@@ -93,6 +96,26 @@ public class MySqlBinlogStreamConfiguration extends StreamingDataStoreConfigurat
 		}
 	}
 
+	public long getServerId() {
+		return serverId;
+	}
+
+	public void setServerId(Long serverId) {
+		if (serverId == null || serverId <= 0) {
+			this.serverId = (UUID.randomUUID().getLeastSignificantBits() % 4294967290L) + 1;
+		} else {
+			this.serverId = serverId;
+		}
+	}
+
+	public boolean getRandomizeServerIdOnDuplicate() {
+		return randomizeServerIdOnDuplicate;
+	}
+
+	public void setRandomizeServerIdOnDuplicate(boolean randomizeServerIdOnDuplicate) {
+		this.randomizeServerIdOnDuplicate = randomizeServerIdOnDuplicate;
+	}
+
 	@Override
 	public String toString() {
 		return "MySqlBinlogStreamConfiguration{" +
@@ -100,6 +123,7 @@ public class MySqlBinlogStreamConfiguration extends StreamingDataStoreConfigurat
 				", port=" + port +
 				", schema='" + schema + '\'' +
 				", username='" + username + '\'' +
+				", server_id='" + serverId + '\'' +
 				'}';
 	}
 }

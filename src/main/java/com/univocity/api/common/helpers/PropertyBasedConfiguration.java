@@ -332,6 +332,19 @@ public abstract class PropertyBasedConfiguration {
 		}
 	}
 
+	public Long getLong(String property) {
+		String value = getProperty(property);
+		if (value == null) {
+			return null;
+		}
+		try {
+			return Long.valueOf(value);
+		} catch (Exception ex) {
+			throw new IllegalConfigurationException("Cannot convert value of property {}" + property + " to a valid long number. Got: " + value);
+		}
+	}
+
+
 	public List<String> getList(String property) {
 		return getList(property, ",");
 	}
