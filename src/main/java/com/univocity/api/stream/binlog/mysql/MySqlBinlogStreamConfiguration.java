@@ -102,7 +102,7 @@ public class MySqlBinlogStreamConfiguration extends StreamingDataStoreConfigurat
 
 	public void setServerId(Long serverId) {
 		if (serverId == null || serverId <= 0) {
-			this.serverId = (UUID.randomUUID().getLeastSignificantBits() % 4294967290L) + 1;
+			this.serverId = Math.abs((UUID.randomUUID().getLeastSignificantBits() % 4294967290L))  + 1;
 		} else {
 			this.serverId = serverId;
 		}
