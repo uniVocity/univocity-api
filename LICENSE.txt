@@ -1,359 +1,698 @@
-uniVocity License Agreement
+Univocity License Agreement
 ===========================
 
-## TERMS AND CONDITIONS
+TERMS AND CONDITIONS
 
-1. ACCEPTANCE  
+  1. ACCEPTANCE
 
-1.1. These Terms and Conditions (Terms) form the agreement (Agreement) between uniVocity Software Pty Ltd trading as uniVocity Data Integration ABN 37 165 465 501 (referred to as "uniVocity", "we" or "us") and the user (referred to as "the User" or "you"), collectively referred to as the Parties or each a Party.
+     1.1. These Terms and Conditions (Terms) form the agreement (Agreement)
+          between Univocity Software Pty Ltd trading as Univocity
+          ABN 37165465501 (referred to as "Univocity", "we" or "us") and the
+          user (referred to as "the User" or "you"), collectively referred to as
+          the Parties or each a Party.
+
+     1.2. Univocity owns all software packages (Software) available for download
+          at www.univocity.com (Site).
+
+     1.3. The User wishes to use the Software.
+
+     1.4. This Agreement sets out the Terms upon which Univocity has agreed to
+          grant a license to the User to use the Software.
+
+     1.5. These Terms are binding on any use of the Software and apply to the
+          User from the time that Univocity provides the user with the required
+          license (License) to use the Software.
+
+     1.6. By using our Software or obtaining a License, you acknowledge that you
+          have read and understood these Terms and you have the authority to act
+          on behalf of any person or entity for whom you are using the Software,
+          and you are deemed to have agreed to these Terms on behalf of any
+          entity for whom you use the Software.
  
-1.2. uniVocity owns the data integration software package (Software) that is available for download at www.univocity.com (Site).
+  2. SOFTWARE
 
-1.3. The User wishes to use the Software.
+     2.1. Univocity grants the User the right to download and use the Software
+          with the particular license available to the User according to the
+          license type. This right is a non-exclusive, non-transferable, and
+          limited by and subject to this Agreement.
 
-1.4. This Agreement sets out the Terms upon which uniVocity has agreed to grant a license to the User to use the Software. 
+     2.2. Univocity may, upon request by the User, customize the Software to
+          meet the particular needs of the User. It is at our sole discretion,
+          whether or not we customize the Software for you. If we agree to
+          customize the Software for you, an agreement will be drafted between
+          Univocity and you, outlining the terms and conditions for doing so.
 
-1.5. These Terms are binding on any use of the Software and apply to the User from the time that uniVocity provides the user with the required license (License) to use the Software.
+     2.3. The Software operates within the User's computing system (End User
+          System). The Software is a library which provides a framework for
+          developing software solutions using JAVA.
 
-1.6. By using our Software and obtaining a License, you acknowledge that you have read and understood these Terms and you have the authority to act on behalf of any person or entity for whom you are using the Software, and you are deemed to have agreed to these Terms on behalf of any entity for whom you use the Software.
+     2.4. The Software is provided to you with a specification along with
+          instructions on how to configure and use the Software. To use the
+          Software, the User must first integrate the Software into their
+          computing systems through configuration and other components developed
+           by the User.
+
+     2.5. Software components developed by the User and the Software provided by
+          Univocity will have to be integrated to enable our Software to run.
+          The Software provided by Univocity is part of a software solution
+          which is dependent on how the Users own software components behave.
+
+     2.6. Univocity will provide you with updates for the Software (Software
+          Updates) in accordance with the form of Upgrade Support outlined in
+          this Agreement. Software Updates will be valid only while your License
+          is valid.
+
+  3. ACCOUNT AND LICENSE
+
+     3.1. The License you will receive is the License as outlined in this
+          Agreement.
+     
+     3.2. The Site requests you to provide personal information for registration
+          purposes. This personal information includes your name, company
+          details, email address, residential or office address, username and
+          password.
+     
+     3.3. Univocity agrees to grant to the User a perpetual, royalty free,
+          worldwide, irrevocable, non-exclusive, non-transferable License to use
+          the Software. You have no right to grant a sub-license.
+     
+     3.4. The License is perpetual.
+     
+     3.5. To use the Software, the User must have a License, which must be
+          obtained on our Site and activated by our Software.
+     
+     3.6. A License will be generated for the computer that the Software will be
+          executed on.
+     
+     3.7. You will be required to pay a set fee for each License (License Fee)
+          as set out on our Site.
+     
+     3.8. The User is encouraged to obtain a Trial License, to determine whether
+          the Software is suitable for their needs, prior to the purchase of a
+          License.
+     
+     3.9. The License is valid only for one computer at a time. A new License
+          must be purchased for each additional computer from our Site.
+     
+     3.10. We will provide the License details to you via email.
+     
+     3.11. The License can be transferred to a new user, computer or a new
+           computing system multiple times. You will have to reassign the
+           licenses from our Site.
+     
+     3.12. No License, with Trial Licenses excepted, will be sent to the User
+           until payment is confirmed.
+     
+     3.13. Each License comes with one year upgrade support which allows you to
+           upgrade to newer versions of the Software for a period of one year
+           from the License purchase date. If you wish to continue upgrading the
+           Software, you must renew the License by making appropriate payment
+           for renewal. This payment can be made prior or after expiration,
+           but you will not be able to access the updated version of the
+           Software until payment is received.
  
-2. SOFTWARE
+  4. PAYMENT
 
-2.1. uniVocity grants the User the right to download and use the Software with the particular licenses available to the User according to the license type. This right is a non-exclusive, non-transferable, and limited by and subject to this Agreement. 
+     4.1. When purchasing a License, the User will agree to pay the License Fee
+          as required.
 
-2.2. uniVocity may, upon request by the User, customize the Software to meet the particular needs of the User. It is at our sole discretion, whether or not we customize the Software for you. If we agree to customize the Software for you, an agreement will be drafted between uniVocity and you, outlining the terms and conditions for doing so. 
-
-2.3. The Software operates within the User's computing system (End User System). The Software is a library which provides a framework for developing data integration solutions using JAVA. 
-
-2.4. The Software is provided to you with a specification along with instructions on how to configure and use the Software. To use the Software, the User must first integrate the Software into their computing systems through configuration and other components developed by the User. 
-
-2.5. Software components developed by the User and the Software provided by uniVocity will have to be integrated to enable our Software to run. The Software provided by uniVocity is part of a software solution which is dependent on how the Users own software components behave. 
-
-2.6. uniVocity will provide you with updates for the Software (Software Updates) in accordance with the form of Upgrade Support outlined in this Agreement. Software Updates will be valid only while your License is valid. 
-
-3. ACCOUNT AND LICENSE 
-
-3.1. The License you will receive is the License as outlined in this Agreement. 
-
-3.2. The Site requests you to provide personal information for registration purposes. This personal information includes your name, company details, email address, residential or office address, username and password. This is only requested for Production or Development License. This is not required for Evaluation Licenses. 
-
-3.3. uniVocity agrees to grant to the User a royalty free, worldwide, irrevocable, non-exclusive, non-transferable License to use the Software. You have no right to grant a sub-license. 
-
-3.4. The License may be perpetual or expire after a set time period. This is dependent on the choice of the User. Perpetual licenses are not entitled to Major Upgrade Support. 
-
-3.5. To use the Software, the User must have a License, which may be obtained by executing a request in the form of a License Request Script.
-
-3.6. A License will be generated for the computer that the Software will be executed on. 
-
-3.7. You will be required to pay a set fee for each License (License Fee) as set out on our Site. 
-
-3.8. The User is encouraged to obtain an Evaluation License, to determine whether the Software is suitable for their needs, prior to purchase of a Production License or Development License.
-
-3.9. The License is valid only for one computer. A new License must be purchased for each additional computer from our Site. 
-
-3.10. We will provide the License to you via email.
-
-3.11. The License can be transferred to a new computer or a new computing system once every 2 years at no cost. You will have to contact us at contact@univocity.com to arrange a License for the new computer or computing system
-
-3.12. No License, with Evaluation Licenses excepted, will be sent to the User until payment is confirmed. 
-
-3.13. Each non-perpetual License will expire after a set time period. If you wish to continue using the Software, you must renew the License by making appropriate payment for renewal. This payment can be made prior or after expiration, but you will not be able to access the Software, until payment is received.
+     4.2. The User may make payment by way of direct transfer or credit card.
+          We will provide you with our bank details.
  
-4. PAYMENT
+  5. TERMINATION
 
-4.1. When purchasing a Production License or Development License, the User will agree to pay the License Fee as required. 
+     5.1. Prior to purchasing an License, the User is encouraged to evaluate the
+          Software by obtaining a Trial License.
+     
+     5.2. The Trial License will automatically expire after 14 days.
+     
+     5.3. We may terminate the Terms immediately, in our sole discretion, if:
+     
+        (a) you breach any of these Terms and do not remedy the breach within
+            30 days after receiving notice of the breach if the breach is
+            capable of being remedied;
 
-4.2. The User will may make payment by way of direct transfer or credit card. We will provide you with our bank details.
- 
-5. TERMINATION
+        (b) if we reasonably suspect that you are attempting to reverse engineer
+            the Software that is provided to you;
 
-5.1. Prior to purchasing a Production or Development License, the User is encouraged to trial the Software by obtaining an Evaluation License. 
+        (c) we consider that a request for a License is in appropriate, improper
+            or unlawful;
 
-5.2. The Evaluation License will automatically expire after 30 days. 
+        (d) if you fail to provide us with clear or timely instructions to
+            enable us to provide you with a License;
 
-5.3. If you have purchased a Production License or Development License, the License will expire after a set time period. Once your License has expired, you will not be able to use the Software. 
+        (e) we consider that our working relationship has broken down including
+            a loss of confidence and trust; or
 
-5.4. We may terminate the Terms immediately, in our sole discretion, if:
+        (f) for any other reason outside our control which has the effect of
+            compromising our ability to provide you with the required Software
+            or License within a required timeframe.
+     
+     5.4. Event after termination, we will retain your documents (including
+          copies) as required by law or regularity requirements. Your express or
+          implied agreement to the Terms constitutes your authority for us to
+          retain or destroy documents in accordance with the statutory periods,
+          or on termination of these Terms.
 
-  (a) you breach any of these Terms and do not remedy the breach within 30 days after receiving notice of the breach if the breach is capable of being remedied; 
+  6. USER OBLIGATONS
 
-  (b) if we reasonably suspect that you are attempting to reverse engineer the Software that is provided to you; 
+     6.1. The User warrants that all information provided to Univocity is true,
+          accurate and complete.
 
-  (c) we consider that a request for a License is in appropriate, improper or unlawful;
+     6.2. You acknowledge and agree that:
 
-  (d) if you fail to provide us with clear or timely instructions to enable us to provide you with a License;
+       (a) you are authorized to use the Software and the Site and to access any
+           information or data that you input (Data) into the Software and/or
+           the Site, including any Data which has been inputted into the
+           Software and/or Site by any person you have authorized to do so;
 
-  (e) we consider that our working relationship has broken down including a loss of confidence and trust; or
+       (b) the Software and the Site must only be used for your own lawful
+           internal business purposes, in accordance with these Terms;
 
-  (f) for any other reason outside our control which has the effect of compromising our ability to provide you with the required Software or License within a required timeframe. 
+       (c) all usernames and passwords required to access the Site are kept
+           secure and confidential;
 
-5.5. On expiration of your License, we will retain your documents (including copies) as required by law or regularity requirements. Your express or implied agreement to the Terms constitutes your authority for us to retain or destroy documents in accordance with the statutory periods, or on termination of these Terms.
+       (d) if there is any unauthorized use of your passwords or any other
+           breach of security, you will immediately notify Univocity of such
+           activity;
 
-6. USER OBLIGATONS
+       (e) the Software operates within the End User System and so the
+           reliability of the Software is dependent upon the User's
+           configuration, implementation and testing of the Software;
 
-6.1. The User warrants that all information provided to uniVocity is true, accurate and complete. 
+       (f) it is the responsibility of the User to configure, implement and test
+           the Software to ensure that it works on the computer for which the
+           Software is executed;
 
-6.2. You acknowledge and agree that:
+       (g) it is the responsibility of the User to determine that the Software
+           meets the needs of the User and their business, and is suitable for
+           the purposes for which the Software is used; and
 
-  (a) you are authorized to use the Software and the Site and to access any information or data that you input (Data) into the Software and/or the Site, including any Data which has been inputted into the Software and/or Site by any person you have authorized to do so;
+       (h) the Trial License is available to each User to evaluate the Software
+           and determine its suitability and compatibility with User development
+           environment and systems and its suitability for the User's needs,
+           prior to purchasing a License.
 
-  (b) the Software and the Site must only be used for your own lawful internal business purposes, in accordance with these Terms; 
+     6.3. You may use the Software and the Site on behalf of others or in order
+          to provide services to others but if you do so you must ensure that
+          you are authorized to do so and that all persons for whom or to whom
+          services are provided comply with and accept all terms of this
+          Agreement that apply to you.
 
-  (c) all usernames and passwords required to access the Site are kept secure and confidential;
+     6.4. Univocity has no responsibility to any person or entity other than you
+          and nothing in this Agreement confers, or purports to confer, a
+          benefit on any person or entity other than you. If you use the
+          Software on behalf of or for the benefit of anyone other than yourself
+          you agree that:
 
-  (d) if there is any unauthorized use of your passwords or any other breach of security, you will immediately notify uniVocity of such activity; 
+       (a) you are responsible for ensuring that you have the right to do so;
 
-  (e) the Software operates within the End User System and so the reliability of the Software is dependent upon the User's configuration, implementation and testing of the Software; 
+       (b) you are responsible for authorizing any person who is given access to
+           your Data, and you agree that Univocity has no obligation to provide
+           any person or entity with access to such Data without authorization
+           from you and may refer any requests for access to the Data to you to
+           address; and
 
-  (f) it is the responsibility of the User to configure, implement and test the Software to ensure that it works on the computer for which the Software is executed;
+       (c) you will indemnity Univocity against any claims or loss relating to
+           Univocity's refusal to provide any persons with access to your Data
+           in accordance with these Terms and Univocity making Data available to
+           any person with authorization from you.
 
-  (g) it is the responsibility of the User to determine that the Software meets the needs of the User and their business, and is suitable for the purposes for which the Software is used; and
+     6.5. The use of the Software is at the User's own risk.
 
-  (h) the Evaluation License is available to each User to trial the Software and determine its suitability and compatibility with User development environment and systems and its suitability for the User's needs, prior to purchasing a Production or Development License. 
+     6.6. You remain solely responsible for complying with all applicable laws.
+          It is your responsibility to ensure that the storage of and access to
+          your Data via the Software and/or the Site comply with laws which are
+          applicable to you, including any laws requiring you to retain records
+          of your Data.
 
-6.3. You may use the Software and the Site on behalf of others or in order to provide services to others but if you do so you must ensure that you are authorized to do so and that all persons for whom or to whom services are provided comply with and accept all terms of this Agreement that apply to you.
-
-6.4. uniVocity has no responsibility to any person or entity other than you and nothing in this Agreement confers, or purports to confer, a benefit on any person or entity other than you. If you use the Software on behalf of or for the benefit of anyone other than yourself, you agree that:
-
-  (a) you are responsible for ensuring that you have the right to do so;
-
-  (b) you are responsible for authorizing any person who is given access to your Data, and you agree that uniVocity has no obligation to provide any person or entity with access to such Data without authorization from you and may refer any requests for access to the Data to you to address; and 
-
-  (c) you will indemnity uniVocity against any claims or loss relating to uniVocity's refusal to provide any persons with access to your Data in accordance with these Terms and uniVocity making Data available to any person with authorization from you. 
-
-6.5. The use of the Software is at the User's own risk. 
-
-6.6. You remain solely responsible for complying with all applicable laws. It is your responsibility to ensure that the storage of and access to your Data via the Software and/or the Site comply with laws which are applicable to you, including any laws requiring you to retain records of your Data. 
-
-6.7. Each User must have their own safeguards and back up processes in place to recover from any failures or loss of Data which might occur whilst using the Software.
+     6.7. Each User must have their own safeguards and back up processes in
+          place to recover from any failures or loss of Data which might occur
+          whilst using the Software.
   
-7. PROHIBITED USE
+  7. PROHIBITED USE
 
-7.1. You acknowledge and agree that you will not:
+     7.1. You acknowledge and agree that you will not:
 
-  (a) attempt to circumvent or disable the Software or any technology features or measures in the Software by any means or in any manner; 
+       (a) attempt to circumvent or disable the Software or any technology
+           features or measures in the Software by any means or in any manner;
 
-  (b) attempt to modify, copy, adapt or reproduce the Software except as necessary to use it for normal operation;
+       (b) attempt to modify, copy, adapt or reproduce the Software except as
+           necessary to use it for normal operation;
 
-  (c) attempt to decompile, disassemble, reverse engineer, or otherwise attempt to derive the source code for the Software; 
+       (c) attempt to decompile, disassemble, reverse engineer, or otherwise
+           attempt to derive the source code for the Software;
 
-  (d) distribute, encumber, sell, rent, lease, sublicense, or otherwise transfer, publish or disclose the Software to any third party (except as permitted under this Agreement);
+       (d) distribute, encumber, sell, rent, lease, sublicense, or otherwise
+           transfer, publish or disclose the Software to any third party (except
+           as permitted under this Agreement);
 
-  (e) remove or alter any trademark, logo, copyright or other proprietary notices, legends, symbols or labels in or on the Software or used in connection with the Software; 
+       (e) remove or alter any trademark, logo, copyright or other proprietary
+           notices, legends, symbols or labels in or on the Software or used in
+           connection with the Software;
 
-  (f) use the Software in any manner to aid in the violation of any third party Intellectual Property, including but not limited to another's copyrights, trade secrets, and patents; 
+       (f) use the Software in any manner to aid in the violation of any third
+           party Intellectual Property, including but not limited to another's
+           copyrights, trade secrets, and patents;
 
-  (g) take any action that interferes, in any manner, with uniVocity's rights with respect to the Software;
+       (g) take any action that interferes, in any manner, with Univocity's
+           rights with respect to the Software;
 
-  (h) attempt to undermine the security or integrity of uniVocity's computing systems or where the Software is hosted by a third party, that third party's computing systems and networks; 
+       (h) attempt to undermine the security or integrity of Univocity's
+           computing systems or where the Software is hosted by a third party,
+           that third party's computing systems and networks;
 
-  (i) use, or misuse, the Software in any way which may impair the functionality of the Software or Site, or other systems used to deliver the Software or impair the ability of any other user to use the Software or Site,
+       (i) use, or misuse, the Software in any way which may impair the
+           functionality of the Software or Site, or other systems used to
+           deliver the Software or impair the ability of any other user to use
+           the Software or Site,
 
-  (j) attempt to gain unauthorized access to any materials other than those to which you have been given express permission to access or to the computer system on which the License for the Software is executed; and
+       (j) attempt to gain unauthorized access to any materials other than those
+           to which you have been given express permission to access or to the
+           computer system on which the License for the Software is executed;
+           and
 
-  (k) transmit, or input into the Software or Site, any files that may damage any other person's computing devices or software, content that may be offensive, or material or Data in violation of any law (including any content protected by copyright or trade secrets which you do not have the right to use).
+       (k) transmit, or input into the Software or Site, any files that may
+           damage any other person's computing devices or software, content that
+           may be offensive, or material or Data in violation of any law
+           (including any content protected by copyright or trade secrets which
+           you do not have the right to use).
 
-7.2. In addition, title, ownership rights and intellectual property rights in and to any content displayed on the Site or in the Software, or accessed through the Site or the Software, are the property of the applicable content owner and may be protected by applicable copyright or other law. This Agreement gives you no rights to such content.
+     7.2. In addition, title, ownership rights and intellectual property rights
+          in and to any content displayed on the Site or in the Software, or
+          accessed through the Site or the Software, are the property of the
+          applicable content owner and may be protected by applicable copyright
+          or other law. This Agreement gives you no rights to such content.
 
-7.3. You acknowledge that any breaches of this clause may lead to termination of this Agreement.
+     7.3. You acknowledge that any breaches of this clause may lead to
+          termination of this Agreement.
 
-8. CONFIDENTIAL INFORMATION
+  8. CONFIDENTIAL INFORMATION
 
-8.1. Subject to clause The User's obligations set out in sub-clause 1 do not apply to Confidential Information:, the User agrees:
+     8.1. Subject to clause 8.2, the User agrees:
 
-  (a) not to disclose the Confidential Information to any third party at any time; 
+       (a) not to disclose the Confidential Information to any third party at
+           any time;
 
-  (b) to use its best endeavors to protect the Confidential Information from any unauthorized disclosure;
+       (b) to use its best endeavors to protect the Confidential Information
+           from any unauthorized disclosure;
 
-  (c) only to use the Confidential Information for the purpose for which it was disclosed by uniVocity and not for any other purpose; and
+       (c) only to use the Confidential Information for the purpose for which it
+           was disclosed by Univocity and not for any other purpose; and
 
-  (d) to be responsible for and assume liability in relation to all of its employees, agents, consultants and contractors to whom Confidential Information is disclosed and ensure that they maintain the confidentiality of the Confidential Information and otherwise comply with the obligations set out in this Agreement.
+       (d) to be responsible for and assume liability in relation to all of its
+           employees, agents, consultants and contractors to whom Confidential
+           Information is disclosed and ensure that they maintain the
+           confidentiality of the Confidential Information and otherwise comply
+           with the obligations set out in this Agreement.
 
-8.2. The User's obligations set out in sub-clause 1 do not apply to Confidential Information:
+     8.2. The User's obligations set out in sub-clause 1 do not apply to
+          Confidential Information:
 
-  (a) that is already in the public domain, except as a result of the actions of the User in breach of any of the Terms of this Agreement; 
+       (a) that is already in the public domain, except as a result of the
+           actions of the User in breach of any of the Terms of this Agreement;
 
-  (b) received from a third party, except where there has been a breach of confidence;
+       (b) received from a third party, except where there has been a breach of
+           confidence;
 
-  (c) that must be disclosed by law, provided that the Users reveals only so much of the Confidential Information as the User is required by law to disclose and gives sufficient notice to uniVocity in order to allow uniVocity to object to, or otherwise prevent, the Confidential Information being disclosed.
+       (c) that must be disclosed by law, provided that the Users reveals only
+           so much of the Confidential Information as the User is required by
+           law to disclose and gives sufficient notice to Univocity in order to
+           allow Univocity to object to, or otherwise prevent, the Confidential
+           Information being disclosed.
 
-8.3. This clause CONFIDENTIAL INFORMATION will survive termination of this Agreement.
+     8.3. This clause 8 will survive termination of this Agreement.
  
-9. PRIVACY POLICY
-
-9.1. We agree to comply with the legal requirements of the Australian Privacy Principles as set out in the Privacy Act 1988 (Cth) and any other applicable legislation or privacy guidelines, as set out in our Privacy Policy which is available on our Site. 
-
-9.2. You will be taken to have read the terms of the Privacy Policy when you accept these Terms.
- 
-10. INTELLECTUAL PROPERTY
-
-10.1. Title to, and all Intellectual Property rights in the Software, the Site, and any documentation relating to the Software, remain the property of uniVocity and its licensors. 
-
-10.2. In the event that uniVocity offers services to customize, modify and/or enhance any Software licensed by the User, or to develop programs, software or materials related to such Software, the User may contract with uniVocity to provide any such services in a separate agreement. If the Parties contract for any such services:
-
-  (a) the Parties shall do so via a validly executed agreement; and 
-
-  (b) all items produced via such customization, modification and/or enhancement services are software products owned by uniVocity and all Intellectual Property rights remains with uniVocity. 
-
-10.3. Title to and all Intellectual Property rights in any data you input into the Software remain your property. However, your continued use of the Software is contingent on full payment of your License Fee. You will still have access to your data after your License expires. 
-
-10.4. You grant uniVocity a license to use, copy, transmit, store, and back-up your information and data for the purposes of enabling you to access and use the Software and for any other purpose related to provision of services to you. 
-
-10.5. It is the responsibility of the User to maintain copies of all data which is inputted into the Software. uniVocity will use its best endeavors to prevent data loss, including backing up files created by uniVocity, executing database operations in transactions and providing logging options to monitor how the data is being processed, but does not make any guarantees that there will be no loss of data. 
-
-10.6. If the User enables third-party applications for use in conjunction with the Software, the User acknowledges that uniVocity may allow the providers of those third-party applications to access any inputted data as required for the interoperation of such third-party applications with the Software. uniVocity is not responsible for any disclosure, modification or deletion of data resulting from any such access by third-party application providers.
-
-11. SUPPORT 
-
-11.1. uniVocity can provide paid support services to the User. If you require technical support, please contact uniVocity at support@univocity.com. 
-
-11.2. uniVocity provides different levels of support as outlined on the Site. 
-
-11.3. You acknowledge and agree that no support is provided for Evaluation Licenses. 
-
-11.4. Whilst uniVocity intends that the Site should be available on a full-time basis, it is possible that the Site is unavailable to due to maintenance or other development activity. 
-
-12. FEEDBACK AND DISPUTE RESOLUTION 
-
-12.1. Your feedback is important to us.  We seek to resolve your concerns quickly and effectively. If you have any feedback or questions about our Services, please contact uniVocity at contact@univocity.com. 
-
-12.2. If there is a dispute between the Parties in relation to these Terms, the Parties agree to the following dispute resolution procedure:
-
-  (a.i) The complainant must tell the respondent in writing, the nature of the dispute, what outcome the complainant wants and what action the complainant thinks will settle the dispute.  The Parties agree to meet in good faith to seek to resolve the dispute by agreement between them (Initial Meeting). 
-
-  (a.ii) If the Parties cannot agree how to resolve the dispute at the Initial Meeting, any Party may refer the matter to a mediator. If the parties cannot agree on who the mediator should be, the complainant will ask the Law Society of South Australia to appoint a mediator.  The mediator will decide the time and place for mediation. The Parties must attend the mediation in good faith, to seek to resolve the dispute.
-
-12.3. Any attempts made by the Parties to resolve a dispute pursuant to this clause are without prejudice to other rights or entitlements of the Parties under these Terms, by law or in equity.
- 
-13. LIMITATION OF LIABILITY AND DISCLAIMERS
-
-13.1. uniVocity and the User agree that uniVocity's liability for the services provided via the Site, Software and License is governed solely by the Australian Consumer Law to the extent applicable, and this Agreement. 
-
-13.2. You acknowledge that whilst uniVocity will take reasonable steps to ensure that the Software will work for you, uniVocity gives no guarantees that:
-
-  (a) the Software will meet your requirements as the functionality of the Software is dependent upon configuration provided by the End User, their systems and other software and hardware components;
-
-  (b) the Software will work in each scenario; and
-
-  (c) the Software can be executed in conjunction with every software developed by the User, application services or operating systems, as it is impossible to test each variant. 
-
-13.3. The Software uses other libraries which are provided without any sort of warranties, and uniVocity cannot ensure that these libraries are provided free of defect. 
-
-13.4. uniVocity does not warrant that use of the Software will be uninterrupted or error free. The operation of the Software is dependent on open-source libraries by third parties which are distributed without warranties or conditions of any kind. These may contain errors which may, from time to time, interfere with the use of the Software. uniVocity accepts no responsibility for any such interference or prevention of your use of the Software. 
-
-13.5. All risk arising out of the use or performance of the Software remains with you. You understand and agree that the use of the Software, material or data downloaded or otherwise obtained through the use of the Software, is at your own discretion and risk and that you will be solely responsible for any infections, contaminations or damage to your computer, system or network. uniVocity is not responsible or liable for delays, inaccuracies, errors or omissions arising out of your use of the Software, any third party software or operating system.
-
-13.6. To the maximum extent permitted by applicable law, uniVocity and its licensors disclaim all warranties, express or implied, including, without limitation, any implied warranties of merchantability, fitness for a particular purpose and non-infringement of third party intellectual property rights or lack of viruses, for the Software. In no event will uniVocity or its licensors be liable for any consequential, incidental, indirect, special, punitive, or other damages whatsoever arising out of this Agreement, the use of or inability to use the Software, even if uniVocity has been advised of the possibility of such damages.
-
-13.7. The Software is not intended for use in the operation of military systems, any systems in industries which create offensive weapons, nuclear facilities, aircraft navigation or communications systems or air traffic control machines or any other machines in which case the failure of the Software could lead to death, personal injury or severe physical or environmental damage. 
-
-13.8. The User acknowledges that uniVocity may pursue any available equitable or other remedy against you as a result of a breach by the User of any provision of this Agreement. 
-
-13.9. uniVocity or its licensors' liability for breach of any of its obligations under this Agreement for the Software, or breach of any warranty implied by law, will be limited, to the extent permitted by law, to the total price paid for the License to execute the Software. uniVocity's total liability to you for all damages in connection with the Software will not exceed the price paid by you under this Agreement for the License to use the Software. The foregoing limitations, exclusions and disclaimers will apply to the maximum extent permitted by applicable law, even if any remedy fails its essential purpose. 
-
-14. AUSTRALIAN CONSUMER LAW 
-
-14.1. Certain legislation including the Australian Consumer Law (ACL) in the Consumer and Competition Act 2010 (Cth), and similar consumer protection laws and regulations may confer you with rights, warranties, guarantees and remedies relating to the provision of services by us to you which cannot be excluded, restricted or modified (Statutory Rights).   
-
-14.2. Nothing in these Terms removes your Statutory Rights as a consumer under the ACL. You agree that our liability for services provided to consumers is governed solely by the ACL and these Terms.  We exclude all conditions and warranties implied by custom, law or statute except for your Statutory Rights.
-
-14.3. Except for your Statutory Rights, all material and work is provided to you without warranties of any kind, either express or implied; and we expressly disclaim all warranties of any kind including but not limited to implied warranties of merchantability and fitness for a particular purpose.
-
-14.4. If you are a consumer as defined in the ACL, the following applies to you: We guarantee that the services we supply to you are rendered with due care and skill; fit for the purpose that we advertise, or that you have told us you are acquiring the services for or for a result which you have told us you wish the services achieve, unless we consider and disclose that this purpose is not achievable; and will be supplied within a reasonable time. To the extent we are unable to exclude liability; our total liability for loss or damage you suffer or incur from our services is limited to us re-supplying the services to you, or, at our option, us refunding to you the amount you have paid us for the services to which your claim relates.
-
-15. INDEMNITY
-
-15.1. You will be liable for and agree to indemnify, defend and hold us harmless for and against any and all claims, liabilities, suits, actions and expenses, including costs of litigation and reasonable legal costs, resulting directly or indirectly from: (i) any information that is not accurate, up to date or complete or is misleading or a misrepresentation; (ii) any breach of these Terms; (iii) and any misuse of the Software and/or License; from or by you, your employees, contractors or agents.
-
-15.2. You agree to co-operate with us (at your own expense) in the handling of disputes, complaints, investigations or litigation that arise as a result of your use of our Software and License including but not limited to disputes, complaints, investigations or litigation that arises out of or relates to incorrect information you have given us. 
-
-15.3. The obligations under this clause will survive termination of these Terms.
-
-16. NOTICE
-
-16.1. Any notice required or permitted to be given to the User under these Terms will be addressed to the User at the email address provided by the User when requesting a License.  
-
-17. RELATIONSHIP OF PARTIES
-
-17.1. Neither Party is authorized to bind the other Party in any way without prior written consent of the other Party.
-
-17.2. The Parties acknowledge and agree that they will not seek to bind the other Party other than with the prior written consent of the other Party.
-
-18. RIGHTS OF THIRD PARTIES
-
-18.1. Any person or entity who is not a party to these Terms has no right to benefit under or to enforce any of these Terms. 
-
-19. ASSIGNMENT
-
-19.1. This Agreement is personal to the Parties.  A Party must not assign or deal with the whole or any part of its rights and/or obligations under this Agreement without the prior written consent of the other Parties (such consent not to be unreasonably withheld).
-
-19.2. Any purported dealing in breach of this clause is of no effect.
-
-20. WAIVER OR VARIATION OF RIGHTS
-
-20.1. Any failure or delay by a Party in exercising a power or right (either wholly or partially) in relation to this Agreement does not operate as a waiver or prevent that Party from exercising that power or right or any other power or right.
-
-20.2. A Party is not liable to any other Party for any loss, cost or expense that may have been caused or contributed to by the failure, delay, waiver or exercise of a power or right.
-
-21. POWERS, RIGHTS AND REMEDIES
-
-21.1. Except as expressly stated to the contrary in this Agreement, the powers, rights and/or remedies of a Party under this Agreement are cumulative and are in addition to any other powers, rights and remedies of that Party.  Nothing in this Agreement merges, extinguishes, postpones, lessens or otherwise prejudicially affects any power, right, or remedy that a Party may have at any time against the other Party to this Agreement or any other person.
-
-22. FORCE MAJEURE
-
-22.1. Neither Party will be liable for any delay in performing any of its obligations under this Agreement if such delay is caused by circumstances beyond the reasonable control of the party so delaying, and such party will be entitled to a reasonable extension of time for the performance of such obligations.
-
-23. CONSENTS AND APPROVALS
-
-23.1. Where this Agreement provides that a Party may conditionally or unconditionally give or withhold any consent or approval in relation to any matter in this Agreement, that Party may in its absolute discretion, and without being obliged to give reasons for doing so, withhold any consent or approval or give consent or approval conditionally or unconditionally. 
-
-24. FURTHER ASSURANCE
-
-24.1. Each Party must from time to time and in a timely manner do all things reasonably required of it by another Party to give effect to this Agreement. 
-
-25. ENFORCEABILITY 
-
-25.1. If any provision of these Terms is held by any competent authority to be invalid or unenforceable in whole or in part, the validity of the other provisions of these Terms and the remainder of the provisions in question will not be affected. 
-
-26. COUNTERPARTS 
-
-26.1. This Agreement may be executed in any number of counterparts and, if so, the counterparts taken together will constitute one and the same Agreement. 
-
-27. ENTIRE AGREEMENT AND UNDERSTANDING
+  9. PRIVACY POLICY
+
+     9.1. We agree to comply with the legal requirements of the Australian
+          Privacy Principles as set out in the Privacy Act 1988 (Cth) and any
+          other applicable legislation or privacy guidelines, as set out in our
+          Privacy Policy which is available on our Site.
+
+     9.2. You will be taken to have read the terms of the Privacy Policy when
+          you accept these Terms.
+
+  10. INTELLECTUAL PROPERTY
+
+     10.1. Title to, and all Intellectual Property rights in the Software, the
+           Site, and any documentation relating to the Software, remain the
+           property of Univocity and its licensors.
+
+     10.2. In the event that Univocity offers services to customize, modify
+           and/or enhance any Software licensed by the User, or to develop
+           programs, software or materials related to such Software, the User
+           may contract with Univocity to provide any such services in a
+           separate agreement. If the Parties contract for any such services:
+
+       (a) the Parties shall do so via a validly executed agreement; and
+
+       (b) all items produced via such customization, modification and/or
+           enhancement services are software products owned by Univocity and all
+           Intellectual Property rights remains with Univocity.
+
+     10.3. Title to and all Intellectual Property rights in any data you input
+           into the Software remain your property. However, your continued use
+           of the Software is contingent on full payment of your License Fee.
+           You will still have access to your data after your License expires.
+
+     10.4. You grant Univocity a license to use, copy, transmit, store, and
+           back-up your information and data for the purposes of enabling you to
+           access and use the Software and for any other purpose related to
+           provision of services to you.
+
+     10.5. It is the responsibility of the User to maintain copies of all data
+           which is inputted into the Software. Univocity will use its best
+           endeavors to prevent data loss, including backing up files created by
+           Univocity, executing database operations in transactions and
+           providing logging options to monitor how the data is being processed,
+           but does not make any guarantees that there will be no loss of data.
+
+     10.6. If the User enables third-party applications for use in conjunction
+           with the Software, the User acknowledges that Univocity may allow the
+           providers of those third-party applications to access any inputted
+           data as required for the interoperation of such third-party
+           applications with the Software. Univocity is not responsible for any
+           disclosure, modification or deletion of data resulting from any such
+           access by third-party application providers.
+
+  11. SUPPORT
+
+     11.1. Univocity can provide paid support services to the User. If you
+           require technical support, please contact Univocity at
+           support@univocity.com.
+
+     11.2. Univocity provides different levels of support as outlined on the
+           Site.
+
+     11.3. You acknowledge and agree that no support is provided for Trial
+           Licenses.
+
+     11.4. Whilst Univocity intends that the Site should be available on a
+           full-time basis, it is possible that the Site is unavailable to due
+           to maintenance or other development activity.
+
+  12. FEEDBACK AND DISPUTE RESOLUTION
+
+     12.1. Your feedback is important to us.  We seek to resolve your concerns
+           quickly and effectively. If you have any feedback or questions about
+           our Services, please contact Univocity at contact@univocity.com.
+
+     12.2. If there is a dispute between the Parties in relation to these Terms,
+           the Parties agree to the following dispute resolution procedure:
+
+       (a.i) The complainant must tell the respondent in writing, the nature of
+             the dispute, what outcome the complainant wants and what action the
+             complainant thinks will settle the dispute. The Parties agree to
+             meet in good faith to seek to resolve the dispute by agreement
+             between them (Initial Meeting).
+
+       (a.ii) If the Parties cannot agree how to resolve the dispute at the
+              Initial Meeting, any Party may refer the matter to a mediator. If
+              the parties cannot agree on who the mediator should be, the
+              complainant will ask the Law Society of South Australia to appoint
+              a mediator. The mediator will decide the time and place for
+              mediation. The Parties must attend the mediation in good faith,
+              to seek to resolve the dispute.
+
+     12.3. Any attempts made by the Parties to resolve a dispute pursuant to
+           this clause are without prejudice to other rights or entitlements of
+           the Parties under these Terms, by law or in equity.
+
+  13. LIMITATION OF LIABILITY AND DISCLAIMERS
+
+     13.1. Univocity and the User agree that Univocity's liability for the
+           services provided via the Site, Software and License is governed
+           solely by the Australian Consumer Law to the extent applicable, and
+           this Agreement.
+
+     13.2. You acknowledge that whilst Univocity will take reasonable steps to
+           ensure that the Software will work for you, Univocity gives no
+           guarantees that:
+
+       (a) the Software will meet your requirements as the functionality of the
+           Software is dependent upon configuration provided by the End User,
+           their systems and other software and hardware components;
+
+       (b) the Software will work in each scenario; and
+
+       (c) the Software can be executed in conjunction with every software
+           developed by the User, application services or operating systems, as
+           it is impossible to test each variant.
+
+     13.3. The Software uses other libraries which are provided without any sort
+           of warranties, and Univocity cannot ensure that these libraries are
+           provided free of defect.
+
+     13.4. Univocity does not warrant that use of the Software will be
+           uninterrupted or error free. The operation of the Software is
+           dependent on open-source libraries by third parties which are
+           distributed without warranties or conditions of any kind. These may
+           contain errors which may, from time to time, interfere with the use
+           of the Software. Univocity accepts no responsibility for any such
+           interference or prevention of your use of the Software.
+
+     13.5. All risk arising out of the use or performance of the Software
+           remains with you. You understand and agree that the use of the
+           Software, material or data downloaded or otherwise obtained through
+           the use of the Software, is at your own discretion and risk and that
+           you will be solely responsible for any infections, contaminations or
+           damage to your computer, system or network. Univocity is not
+           responsible or liable for delays, inaccuracies, errors or omissions
+           arising out of your use of the Software, any third party software or
+           operating system.
+
+     13.6. To the maximum extent permitted by applicable law, Univocity and its
+           licensors disclaim all warranties, express or implied, including,
+           without limitation, any implied warranties of merchantability,
+           fitness for a particular purpose and non-infringement of third party
+           intellectual property rights or lack of viruses, for the Software. In
+           no event will Univocity or its licensors be liable for any
+           consequential, incidental, indirect, special, punitive, or other
+           damages whatsoever arising out of this Agreement, the use of or
+           inability to use the Software, even if Univocity has been advised of
+           the possibility of such damages.
+
+     13.7. The Software is not intended for use in the operation of military
+           systems, any systems in industries which create offensive weapons,
+           nuclear facilities, aircraft navigation or communications systems or
+           air traffic control machines or any other machines in which case the
+           failure of the Software could lead to death, personal injury or
+           severe physical or environmental damage.
+
+     13.8. The User acknowledges that Univocity may pursue any available
+           equitable or other remedy against you as a result of a breach by the
+           User of any provision of this Agreement.
+
+     13.9. Univocity or its licensors' liability for breach of any of its
+           obligations under this Agreement for the Software, or breach of any
+           warranty implied by law, will be limited, to the extent permitted by
+           law, to the total price paid for the License to execute the Software.
+           Univocity's total liability to you for all damages in connection with
+           the Software will not exceed the price paid by you under this
+           Agreement for the License to use the Software. The foregoing
+           limitations, exclusions and disclaimers will apply to the maximum
+           extent permitted by applicable law, even if any remedy fails its
+           essential purpose.
+
+  14. AUSTRALIAN CONSUMER LAW
+
+     14.1. Certain legislation including the Australian Consumer Law (ACL) in
+           the Consumer and Competition Act 2010 (Cth), and similar consumer
+           protection laws and regulations may confer you with rights,
+           warranties, guarantees and remedies relating to the provision of
+           services by us to you which cannot be excluded, restricted or
+           modified (Statutory Rights).
+
+     14.2. Nothing in these Terms removes your Statutory Rights as a consumer
+           under the ACL. You agree that our liability for services provided to
+           consumers is governed solely by the ACL and these Terms.  We exclude
+           all conditions and warranties implied by custom, law or statute
+           except for your Statutory Rights.
+
+     14.3. Except for your Statutory Rights, all material and work is provided
+           to you without warranties of any kind, either express or implied; and
+           we expressly disclaim all warranties of any kind including but not
+           limited to implied warranties of merchantability and fitness for a
+           particular purpose.
+
+     14.4. If you are a consumer as defined in the ACL, the following applies to
+           you: We guarantee that the services we supply to you are rendered
+           with due care and skill; fit for the purpose that we advertise, or
+           that you have told us you are acquiring the services for or for a
+           result which you have told us you wish the services achieve, unless
+           we consider and disclose that this purpose is not achievable; and
+           will be supplied within a reasonable time. To the extent we are
+           unable to exclude liability; our total liability for loss or damage
+           you suffer or incur from our services is limited to us re-supplying
+           the services to you, or, at our option, us refunding to you the
+           amount you have paid us for the services to which your claim relates.
+
+  15. INDEMNITY
+
+     15.1. You will be liable for and agree to indemnify, defend and hold us
+           harmless for and against any and all claims, liabilities, suits,
+           actions and expenses, including costs of litigation and reasonable
+           legal costs, resulting directly or indirectly from:
+
+        (i)   any information that is not accurate, up to date or complete or is
+              misleading or a misrepresentation;
+
+        (ii)  any breach of these Terms;
+
+        (iii) and any misuse of the Software and/or License; from or by you,
+              your employees, contractors or agents.
+
+     15.2. You agree to co-operate with us (at your own expense) in the handling
+           of disputes, complaints, investigations or litigation that arise as a
+           result of your use of our Software and License including but not
+           limited to disputes, complaints, investigations or litigation that
+           arises out of or relates to incorrect information you have given us. 
+
+     15.3. The obligations under this clause will survive termination of these
+           Terms.
+
+  16. NOTICE
+
+     16.1. Any notice required or permitted to be given to the User under these
+           Terms will be addressed to the User at the email address provided by
+           the User when requesting a License.
+
+  17. RELATIONSHIP OF PARTIES
+
+     17.1. Neither Party is authorized to bind the other Party in any way
+           without prior written consent of the other Party.
+
+     17.2. The Parties acknowledge and agree that they will not seek to bind the
+           other Party other than with the prior written consent of the other
+           Party.
+
+  18. RIGHTS OF THIRD PARTIES
+
+     18.1. Any person or entity who is not a party to these Terms has no right
+           to benefit under or to enforce any of these Terms.
+
+  19. ASSIGNMENT
+
+     19.1. This Agreement is personal to the Parties.  A Party must not assign
+           or deal with the whole or any part of its rights and/or obligations
+           under this Agreement without the prior written consent of the other
+           Parties (such consent not to be unreasonably withheld).
+
+     19.2. Any purported dealing in breach of this clause is of no effect.
+
+  20. WAIVER OR VARIATION OF RIGHTS
+
+     20.1. Any failure or delay by a Party in exercising a power or right
+           (either wholly or partially) in relation to this Agreement does not
+           operate as a waiver or prevent that Party from exercising that power
+           or right or any other power or right.
+
+     20.2. A Party is not liable to any other Party for any loss, cost or
+           expense that may have been caused or contributed to by the failure,
+           delay, waiver or exercise of a power or right.
+
+  21. POWERS, RIGHTS AND REMEDIES
+
+     21.1. Except as expressly stated to the contrary in this Agreement, the
+           powers, rights and/or remedies of a Party under this Agreement are
+           cumulative and are in addition to any other powers, rights and
+           remedies of that Party. Nothing in this Agreement merges,
+           extinguishes, postpones, lessens or otherwise prejudicially affects
+           any power, right, or remedy that a Party may have at any time against
+           the other Party to this Agreement or any other person.
+
+  22. FORCE MAJEURE
+
+     22.1. Neither Party will be liable for any delay in performing any of its
+           obligations under this Agreement if such delay is caused by
+           circumstances beyond the reasonable control of the party so delaying,
+           and such party will be entitled to a reasonable extension of time for
+           the performance of such obligations.
+
+  23. CONSENTS AND APPROVALS
+
+     23.1. Where this Agreement provides that a Party may conditionally or
+           unconditionally give or withhold any consent or approval in relation
+           to any matter in this Agreement, that Party may in its absolute
+           discretion, and without being obliged to give reasons for doing so,
+           withhold any consent or approval or give consent or approval
+           conditionally or unconditionally.
+
+  24. FURTHER ASSURANCE
+
+     24.1. Each Party must from time to time and in a timely manner do all
+           things reasonably required of it by another Party to give effect to
+           this Agreement.
+
+  25. ENFORCEABILITY
+
+     25.1. If any provision of these Terms is held by any competent authority to
+           be invalid or unenforceable in whole or in part, the validity of the
+           other provisions of these Terms and the remainder of the provisions
+           in question will not be affected.
+
+  26. COUNTERPARTS
+
+     26.1. This Agreement may be executed in any number of counterparts and, if
+           so, the counterparts taken together will constitute one and the same
+           Agreement.
+
+  27. ENTIRE AGREEMENT AND UNDERSTANDING
 	
-27.1. The date of this Agreement is the date that these Terms are accepted by the User.
- 
-27.2. In respect of the subject matter of this Agreement:
+     27.1. The date of this Agreement is the date that these Terms are accepted
+           by the User.
 
-  (a) this Agreement contains the entire understanding between the Parties; and 
+     27.2. In respect of the subject matter of this Agreement:
 
-  (b) all previous oral and written communications, representations, warranties or commitments are superseded by this Agreement and do not affect the interpretation or meaning of this Agreement. 
+       (a) this Agreement contains the entire understanding between the Parties;
+           and
 
-28. GOVERNING LAW AND JURISDICTION
+       (b) all previous oral and written communications, representations,
+           warranties or commitments are superseded by this Agreement and do not
+           affect the interpretation or meaning of this Agreement.
 
-28.1. This Agreement is governed by the laws of South Australia. Each party irrevocably and unconditionally submits to the non-exclusive jurisdiction of the courts of South Australia. 
+  28. GOVERNING LAW AND JURISDICTION
 
-29. DEFINITIONS
+     28.1. This Agreement is governed by the laws of South Australia. Each party
+           irrevocably and unconditionally submits to the non-exclusive
+           jurisdiction of the courts of South Australia.
 
-Confidential Information includes confidential information about the business, structure, programs, processes, methods, operating procedures, activities, products and services, trade secrets, know how, financial, accounting, marketing and technical information, customer and supplier lists (including prospective customer and supplier information), ideas, concepts, know-how, Intellectual Property, technology, and other information whether or not such information is reduced to a tangible form or marked in writing as "confidential".
+  29. DEFINITIONS
 
-Intellectual Property includes any and all intellectual and industrial property rights throughout the world, whether subsisting now or in the future and includes all copyright and analogous rights, all rights in relation to inventions (including patent rights), registered and unregistered trademarks, designs (whether or not registered or registrable), circuit layouts, trade names, trade secrets, business names, company names or internet domain names.
+     *Confidential Information* includes confidential information about the
+      business, structure, programs, processes, methods, operating procedures,
+      activities, products and services, trade secrets, know how, financial,
+      accounting, marketing and technical information, customer and supplier
+      lists (including prospective customer and supplier information), ideas,
+      concepts, know-how, Intellectual Property, technology, and other
+      information whether or not such information is reduced to a tangible form
+      or marked in writing as "confidential".
+
+     *Intellectual Property* includes any and all intellectual and industrial
+     property rights throughout the world, whether subsisting now or in the
+     future and includes all copyright and analogous rights, all rights in
+     relation to inventions (including patent rights), registered and
+     unregistered trademarks, designs (whether or not registered or
+     registrable), circuit layouts, trade names, trade secrets, business names,
+     company names or internet domain names.
 
 
------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
-uniVocity reserves the right to make changes to these Terms at any time, effective 
-upon the posting of modified terms and uniVocity will make every  effort to 
-communicate these changes to the User via email. It is the User's  obligation to 
-ensure that the User has read, understood and agree to the most recent Terms 
-available on our Site. 
+    Univocity reserves the right to make changes to these Terms at any time,
+    effective upon the posting of modified terms and Univocity will make every
+    effort to communicate these changes to the User via email. It is the User's
+    obligation to ensure that the User has read, understood and agree to the
+    most recent Terms available on our Site.
 
-If you have any questions or notices in relation to these Terms, please contact us at:
+    If you have any questions or notices in relation to these Terms, please
+    contact us at:
 
-uniVocity Software Pty Ltd trading as uniVocity Data Integration ABN 37 165 465 501
-PO Box 318, Welland SA 5007
-contact@univocity.com 
+    Univocity Software Pty Ltd trading as Univocity ABN 37 165 465 501
+    29 Campbell Drive, Reynella East SA 5161 Australia
+    contact@univocity.com
 
------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
-Last update: 29 July 2014
+Last update: 23 June 2018
